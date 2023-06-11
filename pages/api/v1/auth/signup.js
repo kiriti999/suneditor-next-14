@@ -1,5 +1,5 @@
 import Cors from 'cors'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import { v4 as uuidv4 } from 'uuid'
 import jwt from 'jsonwebtoken'
 import isEmail from 'validator/lib/isEmail'

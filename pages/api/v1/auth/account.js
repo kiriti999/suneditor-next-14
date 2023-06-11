@@ -1,6 +1,6 @@
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import isLength from 'validator/lib/isLength'
 import { 

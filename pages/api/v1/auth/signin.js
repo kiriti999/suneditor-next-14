@@ -1,5 +1,5 @@
 import Cors from 'cors'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import isEmail from 'validator/lib/isEmail'
 import initMiddleware from '@/lib/init-middleware'
