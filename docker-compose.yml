@@ -7,25 +7,32 @@ services:
     restart: always
     ports:
       - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: 12qwaszx
+      DB_NAME: skillaro_database_development
     depends_on:
-      - postgres
+      - db
+    links:
+      - db
+    volumes:
+      - './:/app'
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
   
-  postgres:
-    container_name: next_postgres
-    image: postgres
+  db:
+    image: postgres:15-alpine
     restart: always
     environment:
-      - DATABASE_HOST=gateway.docker.internal
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=12qwaszx
-      - POSTGRES_DB=skillaro_database_development
     ports:
       - 5432:5432
+    volumes: 
+      - db:/var/lib/postgresql/data
 
-networks:
-  stagingnetwork:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.0.0/16
-          gateway: 192.168.29.1
+volumes:
+  db:
+    driver: local

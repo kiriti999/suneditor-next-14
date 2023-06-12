@@ -1,12 +1,21 @@
 FROM node:alpine
+
 WORKDIR /app
 
-COPY package.json yarn.lock ./
-RUN yarn install
+COPY package.json package-lock.json ./
 
 COPY . /app
-RUN yarn build
+
+RUN npm install
+
+RUN npm run build
+
+RUN chmod +x entrypoint.sh
+
+RUN npm i -g sequelize-cli
 
 EXPOSE 3000
 
-CMD ["yarn", "dev"]
+ENTRYPOINT [ "./entrypoint.sh" ]
+
+CMD ["npm", "run", "dev"]
