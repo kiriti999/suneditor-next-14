@@ -1,10 +1,11 @@
 terraform {
   required_version = ">= 1.0.11"
+  backend "s3" { /* See the backend config in config/backend-config.tf */ }
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 3.68.0"
+      version = ">= 3.68.0",
     }
     random = {
       source  = "hashicorp/random"
@@ -23,6 +24,7 @@ variable "aws_region" {
 
 provider "aws" {
   region = var.aws_region
+  profile = "skillaro"
 }
 
 resource "aws_ecr_repository" "repository" {
