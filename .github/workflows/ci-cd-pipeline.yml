@@ -44,7 +44,7 @@ jobs:
     needs: [registry]
     env:
       REPOSITORY_NAME: ${{ needs.registry.outputs.repository-name }}
-      ACCOUNT_ID: {{ secrets.ACCOUNT_ID }}
+      ACCOUNT_ID: '516666139624'
     steps:
       - name: Check Out
         uses: actions/checkout@v2
