@@ -1,21 +1,32 @@
-FROM node:alpine
-
+# Stage 1: Install dependencies and build the app
+FROM node:16-alpine AS builder
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package.json yarn.lock ./
+RUN yarn install --production=false --frozen-lockfile
 
-COPY . /app
+COPY . .
+RUN yarn build
 
-RUN npm install
+# Stage 2: Install production dependencies
+FROM node:16-alpine AS production-dependencies
+WORKDIR /app
 
-RUN npm run build
+COPY package.json yarn.lock ./
+RUN yarn install --production=true --frozen-lockfile
 
-RUN chmod +x entrypoint.sh
+# Stage 3: Prepare the final image
+FROM node:16-alpine
+WORKDIR /app
 
-RUN npm i -g sequelize-cli
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=production-dependencies /app/node_modules ./node_modules
+COPY package.json ./
+
+RUN chown -R node:node /app
+USER node
 
 EXPOSE 3000
 
-ENTRYPOINT [ "./entrypoint.sh" ]
-
-CMD ["npm", "run", "dev"]
+CMD ["yarn", "start"]
