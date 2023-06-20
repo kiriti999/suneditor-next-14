@@ -8,6 +8,10 @@ RUN yarn install --production=false --frozen-lockfile
 COPY . .
 RUN yarn build
 
+RUN chmod +x entrypoint.sh
+
+RUN npm i -g sequelize-cli
+
 # Stage 2: Install production dependencies
 FROM node:16-alpine AS production-dependencies
 WORKDIR /app
@@ -29,4 +33,6 @@ USER node
 
 EXPOSE 3000
 
-CMD ["yarn", "start"]
+ENTRYPOINT [ "./entrypoint.sh" ]
+
+CMD ["yarn", "run", "dev"]
