@@ -92,4 +92,5 @@ amplifytools.xcconfig
 **.sample
 #amplify-do-not-edit-end
 
+.terraform
 terraform/registry/.terraform/providers/*

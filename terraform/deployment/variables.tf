@@ -27,7 +27,3 @@ variable "service_name" {
   type        = string
   description = "the name of the service."
 }
-
-variable "image_tag" {
-  type        = string
-}
