@@ -9,8 +9,8 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm config set legacy-peer-deps true
-        - npm install
+        - '# Test'
+        - npm ci
     build:
       commands:
         - npx sequelize-cli db:drop
