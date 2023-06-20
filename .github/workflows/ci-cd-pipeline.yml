@@ -38,6 +38,21 @@ jobs:
           export REPOSITORY_NAME=$(terraform output --raw repository_name)
           echo "::set-output name=repository-name::$REPOSITORY_NAME"
 
+          cd terraform/deployment/
+
+          terraform init \
+          -backend-config=config/backend-config.tf \
+          -reconfigure \
+          -input=false
+          
+          terraform apply \
+          -var-file=vars.tfvars \
+          -input=false \
+          -auto-approve 
+          
+          export REPOSITORY_NAME=$(terraform output --raw repository_name)
+          echo "::set-output name=repository-name::$REPOSITORY_NAME"
+
   docker-build:
     runs-on: ubuntu-20.04
     needs: [registry]
