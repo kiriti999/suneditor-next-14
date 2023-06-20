@@ -1,32 +1,3 @@
-terraform {
-  required_version = ">= 1.0.11"
-  backend "s3" { /* See the backend config in config/backend-config.tf */ }
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = ">= 3.68.0",
-    }
-    random = {
-      source  = "hashicorp/random"
-      version = ">= 3.1.0"
-    }
-  }
-}
-
-variable "registry_name" {
-  type = string
-}
-
-variable "aws_region" {
-  type = string
-}
-
-provider "aws" {
-  region = var.aws_region
-  profile = "skillaro"
-}
-
 resource "aws_ecr_repository" "repository" {
   name                 = var.registry_name
   image_tag_mutability = "MUTABLE"
