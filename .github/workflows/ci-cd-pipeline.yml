@@ -38,7 +38,8 @@ jobs:
           export REPOSITORY_NAME=$(terraform output --raw repository_name)
           echo "::set-output name=repository-name::$REPOSITORY_NAME"
 
-          cd terraform/deployment/
+          cd ..
+          cd deployment
 
           terraform init \
           -backend-config=config/backend-config.tf \
