@@ -1,9 +1,5 @@
-terraform {
-  backend "s3" {
-    bucket = "skillaro-terraform-states"
-    key    = "terraform.tfstate"
-    region = "ap-south-1"
-    encrypt = true
-    dynamodb_table = "terraform-locks"
-  }
-}
+bucket = "skillaro-terraform-states"
+key    = "terraform.tfstate"
+region = "ap-south-1"
+encrypt = true
+dynamodb_table = "terraform-locks"
