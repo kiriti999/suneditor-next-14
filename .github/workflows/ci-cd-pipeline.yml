@@ -19,7 +19,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: arn:aws:iam::516666139624:role/git_admin_role
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region: "ap-south-1"
       - name: Create ECR
         id: create-registry
         run: |
