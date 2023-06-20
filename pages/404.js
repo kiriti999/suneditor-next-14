@@ -10,7 +10,7 @@ const Custom404 = () => {
                         <div className="error-content">
                             <img src="/images/error.png" alt="image" />
                             <h3>Error 404 : Page Not Found</h3>
-                            <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
+                            <p>The page you are looking for might have been removed  had its name changed or is temporarily unavailable.</p>
                             
 							<div className="btn-box">
 								<Link href="/">
