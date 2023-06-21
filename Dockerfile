@@ -6,11 +6,16 @@ COPY package.json yarn.lock ./
 RUN yarn install --production=false --frozen-lockfile
 
 COPY . .
+COPY entrypoint.sh .
+
+RUN ["chmod", "+x", "./entrypoint.sh"]
+
 RUN yarn build
 
-RUN chmod +x entrypoint.sh
-
 RUN npm i -g sequelize-cli
+
+ENTRYPOINT [ "sh", "entrypoint.sh" ]
+
 
 # Stage 2: Install production dependencies
 FROM node:16-alpine AS production-dependencies
@@ -28,11 +33,12 @@ COPY --from=builder /app/public ./public
 COPY --from=production-dependencies /app/node_modules ./node_modules
 COPY package.json ./
 
+RUN ["chmod", "+x", "./package.json"]
+
 RUN chown -R node:node /app
+RUN chown -R node:node /app/.next/package.json
 USER node
 
 EXPOSE 3000
-
-ENTRYPOINT [ "./entrypoint.sh" ]
 
 CMD ["yarn", "run", "dev"]
