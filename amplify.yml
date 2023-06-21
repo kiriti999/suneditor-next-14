@@ -9,7 +9,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - '# Test'
+        - '# test'
         - npm ci
     build:
       commands:
