@@ -14,11 +14,13 @@ import Order from './order'
 import Enroled_courses from './enroled_courses'
 
 let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+if (config[env]) {
+  sequelize = new Sequelize(process.env[config[env]], config);
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
+
+console.log('@@@@@@ ENV ', process.env.NODE_ENV)
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
