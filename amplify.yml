@@ -13,8 +13,6 @@ frontend:
         - npm install
     build:
       commands:
-        - npx sequelize-cli db:create
-        - npx sequelize-cli db:migrate
         - npm run build
   artifacts:
     baseDirectory: .next
