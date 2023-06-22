@@ -65,10 +65,7 @@ out
 
 # dotenv environment variables file
 .env
-.env.*
-.env.local
-.env.production
-.env.dev
+.env*.local
 
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
