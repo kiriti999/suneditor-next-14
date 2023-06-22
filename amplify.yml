@@ -9,13 +9,10 @@ frontend:
   phases:
     preBuild:
       commands:
-        - '# test'
         - npm config set legacy-peer-deps true
         - npm ci
     build:
       commands:
-        - npx sequelize-cli db:create
-        - npx sequelize-cli db:migrate
         - npm run build
   artifacts:
     baseDirectory: .next
