@@ -6,7 +6,7 @@ COPY package.json package-lock.json ./
 
 COPY . /app
 
-RUN npm install --omit=dev
+RUN npm install --legacy-peer-deps --omit=dev
 
 RUN npm i -g sequelize-cli
 

@@ -20,6 +20,7 @@
 		"jsonwebtoken": "^8.5.1",
 		"next": "12.3.4",
 		"next-translate": "^2.0.6",
+		"next-translate-plugin": "^2.0.5",
 		"nodemailer": "^6.6.3",
 		"nookies": "^2.5.0",
 		"pg": "^8.7.1",
@@ -50,8 +51,7 @@
 		"swiper": "^9.1.0",
 		"uuid": "^8.3.1",
 		"uuid-validate": "0.0.3",
-		"validator": "^13.1.17",
-		"next-translate-plugin": "^2.0.5"
+		"validator": "^13.1.17"
 	},
 	"devDependencies": {
 		"eslint": "8.42.0",
