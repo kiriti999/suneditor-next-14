@@ -11,7 +11,7 @@ frontend:
       commands:
         - '# test'
         - npm config set legacy-peer-deps true
-        - npm ci
+        - npm install
     build:
       commands:
         - npx sequelize-cli db:create
