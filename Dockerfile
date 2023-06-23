@@ -1,10 +1,14 @@
 FROM node:alpine
 
+RUN apk add curl
+
 WORKDIR /app
 
 COPY package.json package-lock.json ./
 
 COPY . /app
+
+RUN npm install -g @aws-amplify/datastore
 
 RUN npm install --legacy-peer-deps --omit=dev
 
