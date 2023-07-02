@@ -1,9 +1,5 @@
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware'
-import {
-    courses as Course,
-} from '@/models/index';
-const Sequelize = require('sequelize');
 
 // Initialize the cors middleware
 const cors = initMiddleware(

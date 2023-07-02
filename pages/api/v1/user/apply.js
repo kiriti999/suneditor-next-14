@@ -1,8 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import Cors from 'cors'
-import jwt from 'jsonwebtoken'
 import initMiddleware from '@/lib/init-middleware'
-import { users as User } from '@/models/index'
 
 // Initialize the cors middleware
 const cors = initMiddleware(

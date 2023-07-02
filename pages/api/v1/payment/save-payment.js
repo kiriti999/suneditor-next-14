@@ -1,9 +1,5 @@
 import Cors from "cors";
 import initMiddleware from "@/lib/init-middleware";
-// import mailAboutPayment from "../../../../utils/mailAboutPayment";
-import {
-  orders as Order
-} from '@/models/index'
 
 const cors = initMiddleware(
   Cors({

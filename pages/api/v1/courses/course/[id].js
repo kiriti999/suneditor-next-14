@@ -1,10 +1,5 @@
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware'
-import { 
-    courses as Course, 
-    users as User,
-    videos as Video
-} from '@/models/index'
 
 // Initialize the cors middleware
 const cors = initMiddleware(

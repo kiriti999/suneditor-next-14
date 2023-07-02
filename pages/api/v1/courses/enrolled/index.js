@@ -1,12 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware'
-import jwt from 'jsonwebtoken'
-import {
-    courses as Course,
-    users as User,
-    enroled_courses as Enroled_courses
-} from '@/models/index'
 
 // Initialize the cors middleware
 const cors = initMiddleware(
