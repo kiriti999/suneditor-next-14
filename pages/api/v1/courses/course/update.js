@@ -1,7 +1,5 @@
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware'
-import jwt from 'jsonwebtoken'
-import { courses as Course } from '@/models/index'
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -12,12 +10,9 @@ const cors = initMiddleware(
     })
 )
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
     await cors(req, res)
-    if(!("authorization" in req.headers)){
-        return res.status(401).json({message: "No authorization token"});
-    }
-
     const {
         id,
         title,
@@ -34,8 +29,11 @@ export default async (req, res) => {
     } = req.body
 
     try {
-        await Course.update(
-            {
+        const response = await api.request({
+            url: `/course/update`,
+            method: 'POST',
+            data: {
+                id,
                 title,
                 overview,
                 price,
@@ -43,18 +41,16 @@ export default async (req, res) => {
                 duration,
                 lessons,
                 category,
-                profilePhoto: profile,
-                coverPhoto: cover,
-                course_preview_img: preview,
+                profile,
+                cover,
+                preview,
                 course_preview_video
-            },
-            {
-                where: {id: id}
             }
-        )
-
-        res.send("Congratulations! Successfully updated the course.")
+        });
+        console.log('update.js:: response: ', response?.data);
+        res.status(200).json(response?.data);
     } catch (error) {
-        console.log(error)
+        console.error(error)
+        res.status(403).json({ message: "error" });
     }
 }

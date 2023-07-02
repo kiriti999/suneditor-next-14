@@ -5,8 +5,8 @@ import Cors from "cors";
 import initMiddleware from "@/lib/init-middleware";
 
 const instance = new Razorpay({
-  key_id: "rzp_test_TzmRUbStt5mrDV", // hide this key to .env
-  key_secret: "dW0gyFZ7RZKuhhhtq4h6XH0a", // hide this key to .env
+  key_id: process.env.RAZORPAY_KEY, // hide this key to .env
+  key_secret: process.env.RAZORPAY_SECRET, // hide this key to .env
 });
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -18,14 +18,10 @@ const cors = initMiddleware(
 
 export default async (req, res) => {
   await cors(req, res);
-  // if (!("authorization" in req.headers)) {
-  //   return res.status(401).json({ message: "No authorization token" });
-  // }
-  const { buyer_email, userId, cartItems, price } = req.body;
-  // const course = await getCourseById(courseId)
 
-  try {
-    // const { userId } = jwt.verify(req.headers.authorization, process.env.JWT_SECRET)
+  const { buyer_email, userId, cartItems, price } = req.body;
+
+  try {    
     const options = {
       amount: Number(price),// amount in the smallest currency unit
       currency: "INR",

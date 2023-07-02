@@ -12,22 +12,24 @@ const cors = initMiddleware(
     })
 )
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
     await cors(req, res)
-    if(!("authorization" in req.headers)){
-        return res.status(401).json({message: "No authorization token"});
+    if (!("authorization" in req.headers)) {
+        return res.status(401).json({ message: "No authorization token" });
     }
 
     const { id } = req.query
 
     try {
-        const existingData = await Course.findOne({
-            where: {id: id}
-        })
-
-        res.send({existingData})
+        const response = await api.request({
+            url: `/course?id=${id}`,
+            method: 'GET',
+        });
+        console.log('search id.js:: response: ', response?.data);
+        res.status(200).json(response?.data);
     } catch (error) {
-        console.log(error)
+        console.error(error)
+        res.status(403).json({ message: "error" });
     }
-
 }

@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware'
-import { enroled_courses as Enroled_courses } from '@/models/index'
+import { enrolled_courses as Enrolled_courses } from '@/models/index'
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -12,6 +12,7 @@ const cors = initMiddleware(
     })
 )
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
     await cors(req, res)
     if(!("authorization" in req.headers)){
@@ -23,15 +24,15 @@ export default async (req, res) => {
     try {
         const {userId} = jwt.verify(req.headers.authorization, process.env.JWT_SECRET)
 
-        await Enroled_courses.create({
+        await Enrolled_courses.create({
             payment_email: paymentData.email,
             cost: paymentData.stripeTotal,
             userId: userId,
             courseId: paymentData.courseId
         })
-        res.send("Enroled successful!")
+        res.send("Enrolled successful!")
     } catch (error) {
         console.error(error)
-        res.send("Error proccessing charge")
+        res.send("Error processing charge")
     }
 }

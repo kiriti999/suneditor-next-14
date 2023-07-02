@@ -1,7 +1,8 @@
+/* eslint-disable import/no-anonymous-default-export */
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware'
 import jwt from 'jsonwebtoken'
-import { 
+import {
     courses as Course,
     users as User,
     enroled_courses as Enroled_courses
@@ -18,35 +19,15 @@ const cors = initMiddleware(
 
 export default async (req, res) => {
     await cors(req, res)
-    if(!("authorization" in req.headers)){
-        return res.status(401).json({message: "No authorization token"});
-    }
-
     try {
-        const { userId } = jwt.verify(req.headers.authorization, process.env.JWT_SECRET)
-        const enrolled = await Enroled_courses.findAll({
-            order: [
-                ['createdAt', 'DESC']
-            ],
-            where: {
-                userId: userId
-            },
-            include: [{
-                model: User, as: 'user',
-                attributes: ['id', 'name', 'profilePhoto']
-            },{
-                model: Course, as: 'course',
-                // separate: true,
-                // include: [{
-                //     model: Enroled_courses, as: 'enroled_courses',
-                //     attributes: ['id']
-                // }]
-            }]
+        const response = await api.request({
+            url: `/enrolled`,
+            method: 'GET',
         });
-
-        res.send({enrolled})
+        console.log('enrolled id.js:: response: ', response?.data);
+        res.status(200).json(response?.data);
     } catch (error) {
-        console.log(error)
+        console.error(error)
+        res.status(403).json({ message: "error" });
     }
-
 }

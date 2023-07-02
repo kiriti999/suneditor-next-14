@@ -1,7 +1,8 @@
-import Cors from 'cors'
-import { Op } from "sequelize"
-import initMiddleware from '../../../../lib/init-middleware'
-import { users as User } from '../../../../models'
+/* eslint-disable import/no-anonymous-default-export */
+import api from '../configs/axiosConfigs';
+import Cors from 'cors';
+import initMiddleware from '@/lib/init-middleware';
+
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -12,24 +13,17 @@ const cors = initMiddleware(
     })
 )
 
+
 export default async (req, res) => {
     await cors(req, res)
-    if(!("authorization" in req.headers)){
-        return res.status(401).json({message: "No authorization token"});
-    }
-    
+    const { userId } = req.body
     try {
-        const pendingRequests = await User.findAll({
-            where: {
-                [Op.and]: [
-                    { as_teacher_apply: true},
-                    { as_teacher_confirmed: null}
-                ]
-            }
-        })
-    
-        // console.log(pendingRequests)
-        res.send({pendingRequests: pendingRequests})
+        const response = await api.request({
+            url: `/apply/pending`,
+            method: 'POST',
+        });
+        console.log('pending-requests.js:: response: ', response?.data);
+        return response?.data || [];
     } catch (error) {
         console.log(error)
         res.send("Error! Try again")

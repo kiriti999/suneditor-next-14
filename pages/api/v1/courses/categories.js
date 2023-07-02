@@ -14,19 +14,19 @@ const cors = initMiddleware(
     })
 )
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
     await cors(req, res)
 
     try {
-        const categories = await Course.findAll({
-            attributes: [
-                'category',
-                [Sequelize.fn('COUNT', Sequelize.col('category')), 'count'],
-            ],
-            group: ['Course.category']
-        })
-        res.send({ categories })
+        const response = await api.request({
+            url: `/category`,
+            method: 'GET',
+        });
+        console.log('categories.js:: response: ', response?.data);
+        res.status(200).json(response?.data);
     } catch (error) {
-        console.log(error)
+        console.error(error)
+        res.status(403).json({ message: "error" });
     }
 }

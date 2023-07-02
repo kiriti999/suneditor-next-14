@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware'
 import { 
@@ -17,17 +18,16 @@ export default async (req, res) => {
     await cors(req, res)
     const { id } = req.query
 
-    // console.log(id)
     try {
-        const enrolled = await Enroled_courses.findAndCountAll({
-            where: { courseId: id },
-        })
-
-        // console.log(course)
-
-        res.send(enrolled.count)
+        const response = await api.request({
+            url: `/course/video-upload`,
+            method: 'POST',
+            data: {id} 
+        });
+        console.log('enrolled id.js:: response: ', response?.data);
+        res.status(200).json(response?.data);
     } catch (error) {
-        // console.log(error)
-        res.send(error.message)
+        console.error(error)
+        res.status(403).json({ message: "error" });
     }
 }

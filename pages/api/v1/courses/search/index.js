@@ -17,28 +17,22 @@ const cors = initMiddleware(
     })
 )
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
     await cors(req, res)
 
     const { keyword } = req.query;
 
     try {
-        const courses = await Course.findAll({
-            order: [
-                ['createdAt', 'DESC']
-            ],
-            include: [{
-                model: User, as: 'user',
-                attributes: ['name', 'profilePhoto']
-            }, {
-                model: Enroled_courses, as: 'enroled_courses',
-                attributes: ['courseId']
-            }],
-        })
-
-        res.send({ data: courses })
+        const response = await api.request({
+            url: `/search?keyword=${keyword}`,
+            method: 'GET'
+        });
+        console.log('search index.js:: response: ', response?.data);
+        res.status(200).json(response?.data);
     } catch (error) {
-        console.log(error)
+        console.error(error)
+        res.status(403).json({ message: "error" });
     }
 
 }

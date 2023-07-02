@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import Cors from 'cors'
 import jwt from 'jsonwebtoken'
 import initMiddleware from '@/lib/init-middleware'
@@ -13,30 +14,19 @@ const cors = initMiddleware(
 )
 
 export default async (req, res) => {
-    if(!("authorization" in req.headers)){
-        return res.status(401).send("No authorization token");
-    }
     await cors(req, res)
-    let { as_teacher_apply, as_teacher_req_desc, number } = req.body
+    let { as_teacher_apply, as_teacher_req_desc, number } = req.body;
     try {
-        const {userId} = jwt.verify(req.headers.authorization, process.env.JWT_SECRET)
-
-        await User.update(
-            {
-                as_teacher_apply,
-                as_teacher_req_desc,
-                phone: number
-            },
-            {
-                where: {
-                    id: userId
-                }
-            }
-        )
-        res.send("Your request sent successfully! You will get confirmation soon.")
-        
+        const response = await api.request({
+            url: `/user`,
+            method: 'POST',
+            data: { as_teacher_apply, as_teacher_req_desc, number }
+        });
+        console.log('signup.js:: response: ', response?.data);
+        res.status(200).json(response?.data);
     } catch (error) {
-        console.log(error.message)
-        res.send("Error on apply! Try again.")
+        console.error(error)
+        res.status(403).json({ message: "Invalid token" });
     }
+
 }

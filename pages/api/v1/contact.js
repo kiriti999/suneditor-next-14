@@ -19,6 +19,7 @@ const mailer = nodemailer.createTransport({
     }
 });
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
     const { name, email, number, subject, text } = req.body;
     console.log(name, email, number, subject, text);

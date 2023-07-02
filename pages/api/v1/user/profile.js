@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware'
 import { 
@@ -19,21 +20,15 @@ export default async (req, res) => {
     await cors(req, res)
 
     try {
-        const courses = await User.findById({
-            order: [
-                ['createdAt', 'DESC']
-            ],
-            include: [{
-                model: User, as: 'user',
-                attributes: ['name', 'profilePhoto']
-            },{
-                model: User, as: 'user',
-            }],
-        })
-
-        res.send({courses})
+        const response = await api.request({
+            url: `/profile`,
+            method: 'GET'
+        });
+        console.log('profile.js:: response: ', response?.data);
+        res.status(200).json(response?.data.user);
     } catch (error) {
-        console.log(error)
+        console.error(error)
+        res.status(403).json({ message: "error" });
     }
 
 }

@@ -1,9 +1,5 @@
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware'
-import {
-    courses as Course, enroled_courses as Enroled_courses,
-} from '@/models/index';
-const Sequelize = require('sequelize');
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -14,44 +10,18 @@ const cors = initMiddleware(
     })
 )
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
     await cors(req, res)
-
     try {
-        // const enrolled = await Course.findAll({
-        //     include: [{
-        //         model: Enroled_courses,
-        //         as: 'enroled_courses',
-        //         attributes: [
-        //             'courseId',
-        //             [Sequelize.fn('COUNT', Sequelize.col('courseId')), 'count'],
-        //         ],
-        //     }],
-        //     group: ['Enroled_courses.courseId'],
-        //     limit: req.query.limit || 10
-        // })
-        // res.send({ enrolled })
-
-        // const enrolled = await Course.findAll({
-        //     include: [{
-        //         model: Enroled_courses,
-        //         as: 'enroled_courses',
-        //     }],
-        //     limit: req.query.limit || 10
-        // })
-        // res.send({ enrolled })
-
-    const enrolled = await Enroled_courses.findAll({
-        attributes: [
-            'courseId',
-            [Sequelize.fn('COUNT', Sequelize.col('courseId')), 'count'],
-        ],
-        group: ['Enroled_courses.courseId'],
-        order: [[Sequelize.col("count"), "DESC"]],
-        limit: req.query.limit || 10,
-    })
-    res.send({ enrolled })
+        const response = await api.request({
+            url: `/popularity`,
+            method: 'GET',
+        });
+        console.log('popularity:: response: ', response?.data);
+        res.status(200).json(response?.data);
     } catch (error) {
-        console.log(error)
+        console.error(error)
+        res.status(403).json({ message: "error" });
     }
 }

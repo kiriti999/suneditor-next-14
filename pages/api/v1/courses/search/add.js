@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware'
 const algoliasearch = require('algoliasearch')
@@ -29,7 +30,7 @@ export default async (req, res) => {
         "published": true,
         "profilePhoto": "https://res.cloudinary.com/dev-empty/image/upload/v1611676955/c4rde6bgusmnuwoymfve.jpg",
         "coverPhoto": "https://res.cloudinary.com/dev-empty/image/upload/v1611676956/d4qbneh0yodvzbwl2fo1.jpg",
-        "courese_preview_img": null,
+        "course_preview_img": null,
         "course_preview_video": "https://www.youtube.com/watch?v=N3AkSS5hXMA",
         "duration": "15 Hours",
         "lessons": "15",
@@ -39,10 +40,10 @@ export default async (req, res) => {
         "createdAt": "2021-01-26T16:02:39.510Z",
         "updatedAt": "2021-01-26T16:02:39.510Z",
         "user": {
-            "name": "EnvyTheme",
+            "name": "SkillaroTheme",
             "profilePhoto": null
         },
-        "enroled_courses": [
+        "enrolled_courses": [
             {
                 "courseId": "9839b20b-d45c-4c93-ba52-81d53839feb2"
             },
@@ -74,7 +75,7 @@ export default async (req, res) => {
         .search('The Complete Digital Marketing')
         .then(({ hits }) => console.log(hits[0]))
 
-    res.send('succcess')
+    res.send('success')
 
 
 }

@@ -1,9 +1,6 @@
+/* eslint-disable import/no-anonymous-default-export */
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware'
-import { 
-    videos as Video,
-    courses as Course
-} from '@/models/index'
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -16,31 +13,19 @@ const cors = initMiddleware(
 
 export default async (req, res) => {
     await cors(req, res)
-    if(!("authorization" in req.headers)){
-        return res.status(401).json({message: "No authorization token"});
-    }
 
-    const {courseId} = req.query
-    // console.log(courseId)
+    const { courseId } = req.query
 
     try {
-        const videos = await Video.findAll({
-            order: [
-                ['createdAt', 'ASC']
-            ],
-            where: {
-                courseId: courseId
-            },
-            include: [{
-                model: Course, as: 'course',
-                attributes: ['id', 'title', 'profilePhoto']
-            }]
-        })
-
-        res.send({videos})
+        const response = await api.request({
+            url: `/video?courseId=${courseId}`,
+            method: 'GET',
+        });
+        console.log('videos.js:: response: ', response?.data);
+        res.status(200).json(response?.data);
     } catch (error) {
-        console.log(error)
-        res.send(error)
+        console.error(error)
+        res.status(403).json({ message: "error" });
     }
 
 }

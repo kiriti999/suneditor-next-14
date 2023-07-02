@@ -1,13 +1,7 @@
+/* eslint-disable import/no-anonymous-default-export */
+import api from '../configs/axiosConfigs'
 import Cors from 'cors'
-import initMiddleware from '@/lib/init-middleware'
-import bcrypt from 'bcryptjs'
-import jwt from 'jsonwebtoken'
-import isLength from 'validator/lib/isLength'
-import { 
-    users as User,
-    enroled_courses as Enroled_courses,
-    courses as Course
-} from '@/models/index'
+import initMiddleware from '@/lib/init-middleware';
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -20,10 +14,10 @@ const cors = initMiddleware(
 
 export default async (req, res) => {
     await cors(req, res)
-    if(!("authorization" in req.headers)){
-        return res.status(401).json({message: "No authorization token"});
+    if (!("authorization" in req.headers)) {
+        return res.status(401).json({ message: "No authorization token" });
     }
-    switch(req.method){
+    switch (req.method) {
         case "POST":
             await handlePostRequest(req, res);
             break;
@@ -39,88 +33,47 @@ export default async (req, res) => {
 }
 
 const handlePostRequest = async (req, res) => {
-    const {currentPassword, newPassword, newConfirmPassword} = req.body
+    const { currentPassword, newPassword, newConfirmPassword } = req.body
     try {
-        const {userId} = jwt.verify(req.headers.authorization, process.env.JWT_SECRET)
-        // check email, name, password format
-        if (!currentPassword){
-            return res.status(422).send({message: "Must be provide current Password!"})
-        } else if (!isLength(newPassword, {min: 6, max: 12})){
-            return res.status(422).send({message: "New Password must be 6-12 characters long!"})
-        } else if (newPassword != newConfirmPassword){
-            return res.status(422).json({message: "Confirm password doesn't matched!"})
-        }
-
-        const newPasswordHash = await bcrypt.hash(newPassword, 10)
-
-        const user = await User.findOne({ 
-            attributes: ['password'],
-            where: { id: userId }
-        })
-
-        const match = await bcrypt.compare(currentPassword, user.password)
-
-        if(!match){
-            return res.status(422).send({message: "Current Password doesn't match!"})
-        }
-
-        await User.update(
-            {
-                password: newPasswordHash
-            },
-            {
-                where: {id: userId}
-            }
-        )
-       
-        res.status(200).json({"message": "Successfully updated the password!"})
+        const response = await api.request({
+            url: `/account/new`,
+            method: 'POST',
+            data: { currentPassword, newPassword, newConfirmPassword }
+        });
+        console.log('handlePostRequest:: response: ', response?.data);
+        res.status(200).json({ "message": "Successfully posted the profile!" })
     } catch (error) {
         console.error(error)
-        res.status(403).json({message: "Invalid token"});
+        res.status(403).json({ message: "Invalid token" });
     }
 }
 
 const handlePutRequest = async (req, res) => {
-    const {name, designation, location, description} = req.body
+    const { name, designation, location, description } = req.body;
     try {
-        const {userId} = jwt.verify(req.headers.authorization, process.env.JWT_SECRET);
-        await User.update(
-            {
-                name: name,
-                designation: designation,
-                description: description,
-                location: location
-            },
-            {
-                where: {id: userId}
-            }
-        )
-       
-        res.status(200).json({"message": "Successfully updated the profile!"})
+        const response = await api.request({
+            url: `/account/new`,
+            method: 'PUT',
+            data: { name, designation, location, description }
+        });
+        console.log('handlePutRequest:: response: ', response?.data);
+        res.status(200).json({ "message": "Successfully updated the profile!" })
     } catch (error) {
-        res.status(403).json({message: "Invalid token"});
+        console.error(error)
+        res.status(403).json({ message: "Invalid token" });
     }
 }
 
 const handleGetRequest = async (req, res) => {
     try {
-        const {userId} = jwt.verify(req.headers.authorization, process.env.JWT_SECRET);
-        const user = await User.findOne({ 
-            attributes: {
-                exclude: ['password']
-            },
-            where: { id: userId },
-            include: [{
-                model: Enroled_courses, as: 'enroled_courses',
-                attributes: ['courseId']
-            }]
-        })
-        if(user){
-            res.status(200).json(user);
-        } else {
-            res.status(404).send("User not found");
-        }
+        const response = await api.request({
+            url: `/account`,
+            method: 'GET'
+        });
+        console.log('handleGetRequest:: response: ', response?.data);
+        res.status(200).json(response?.data.user);
     } catch (error) {
-        res.status(403).send("Invalid token");
+        console.error(error)
+        res.status(403).json({ message: "Invalid token" });
     }
 }

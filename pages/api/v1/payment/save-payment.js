@@ -11,6 +11,7 @@ const cors = initMiddleware(
   })
 );
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
   await cors(req, res);
   console.log('save-payment:: req.body: ', req.body);
@@ -30,11 +31,17 @@ export default async (req, res) => {
   }
 
   try {
-    const orders = await Order.create(payload)
-    console.log('save-payment.js:: orders: ', orders);
-    res.send({ orders })
-  } catch (error) {
-    console.log(error);
-  }
+    const response = await api.request({
+        url: `/payment`,
+        method: 'POST',
+        data: payload
+    });
+    console.log('payment:: response: ', response?.data);
+    res.status(200).json(response?.data);
+} catch (error) {
+    console.error(error)
+    res.status(403).json({ message: "error" });
+}
+
 };
 

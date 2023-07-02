@@ -15,31 +15,19 @@ const cors = initMiddleware(
     })
 )
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
     await cors(req, res)
     const { id } = req.query
-
-    // console.log(id)
     try {
-        const course = await Course.findOne({
-            where: { id: id },
-
-            include: [{
-                model: User, as: 'user'
-            },{
-                model: Video, as: 'videos',
-                attributes: ['name'],
-                order: [
-                    ['createdAt', 'ASC']
-                ],
-            }]
-        })
-
-        // console.log(course)
-
-        res.send({ course })
+        const response = await api.request({
+            url: `/course?id=${id}`,
+            method: 'GET',
+        });
+        console.log('id.js:: response: ', response?.data);
+        res.status(200).json(response?.data);
     } catch (error) {
-        // console.log(error)
-        res.send(error.message)
+        console.error(error)
+        res.status(403).json({ message: "error" });
     }
 }

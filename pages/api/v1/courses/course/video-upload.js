@@ -1,11 +1,9 @@
+/* eslint-disable import/no-anonymous-default-export */
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware'
-import jwt from 'jsonwebtoken'
-import { videos as Video } from '@/models/index'
 
 // Initialize the cors middleware
 const cors = initMiddleware(
-    // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
     Cors({
         // Only allow requests with GET, POST and OPTIONS
         methods: ['GET', 'POST', 'OPTIONS', 'DELETE', 'PUT'],
@@ -13,28 +11,18 @@ const cors = initMiddleware(
 )
 
 export default async (req, res) => {
+    const {order, name, description, courseId, videoUrl}  = req.body;
     await cors(req, res)
-    if(!("authorization" in req.headers)){
-        return res.status(401).json({message: "No authorization token"});
-    }
-
-    const {order, name, description, courseId, videoUrl} = req.body
-
     try {
-        const { userId } = jwt.verify(req.headers.authorization, process.env.JWT_SECRET)
-
-        await Video.create({
-            order,
-            name,
-            description,
-            video_url: videoUrl,
-            courseId,
-            userId
-        })
-
-        res.send("Uploaded this video")
+        const response = await api.request({
+            url: `/course/video-upload`,
+            method: 'POST',
+            data: {order, name, description, courseId, videoUrl} 
+        });
+        console.log('video-upload.js:: response: ', response?.data);
+        res.status(200).json(response?.data);
     } catch (error) {
-        console.log(error)
-        res.send("Error!")
+        console.error(error)
+        res.status(403).json({ message: "error" });
     }
 }

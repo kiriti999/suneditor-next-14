@@ -1,9 +1,5 @@
 import Cors from 'cors'
-import bcrypt from 'bcryptjs'
-import jwt from 'jsonwebtoken'
-import isEmail from 'validator/lib/isEmail'
 import initMiddleware from '@/lib/init-middleware'
-import { users as User } from '@/models/index'
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -14,35 +10,20 @@ const cors = initMiddleware(
     })
 )
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
     await cors(req, res)
-    const { email, password } = req.body
+    const { email, password } = req.body;
     try {
-        if (!isEmail(email)){
-            return res.status(422).send("Email should be a valid email address")
-        }
-
-        const user = await User.findOne({
-            where: { email: email }
-        })
-
-        if(!user) {
-            return res.status(404).send("User account does not exist");
-        }
-
-        if(!user.active){
-            return res.status(404).send("This account is temporarily disabled, please contact the support email");
-        }
-
-        const passwordsMatch = await bcrypt.compare(password, user.password)
-        if (passwordsMatch){
-            const token = jwt.sign({ userId: user.id}, process.env.JWT_SECRET, {expiresIn: '7d'});
-            res.status(200).send(token);
-        } else {
-            res.status(401).send("Password is not correct");
-        }
+        const response = await api.request({
+            url: `/login`,
+            method: 'POST',
+            data: { email, password }
+        });
+        console.log('signin.js:: response: ', response?.data);
+        res.status(200).json(response?.data.user);
     } catch (error) {
-        // console.error(error)
-        res.status(500).send("Error logging in user")
+        console.error(error)
+        res.status(403).json({ message: "Invalid token" });
     }
 }
