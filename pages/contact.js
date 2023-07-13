@@ -26,7 +26,7 @@ const Contact = () => {
                                         </div>
                                         <h3>Contact</h3>
                                         <p>Mobile: <a href="tel:+44457895789">+91 8309580094</a></p>
-                                        <p>Mail: <a href="mailto:support@rootscope.in">support@rootscope.in</a></p>
+                                        <p>Mail: <a href="mailto:support@skillaro.in">support@skillaro.in</a></p>
                                     </li>
                                     <li>
                                         <div className="icon">

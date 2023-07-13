@@ -16,12 +16,12 @@ const TopCourses = ({ courses }) => {
 				<div className="row justify-content-center">
 					{courses ? (
 						courses.map((course) => (
-							<div className="col-lg-4 col-md-6" key={course.id}>
+							<div className="col-lg-4 col-md-6" key={course._id}>
 								<div className="single-courses-box">
 									<div className="courses-image">
 										<Link
 											href="/courses/[id]"
-											as={`/courses/${course.id}`}
+											as={`/courses/${course._id}`}
 										>
 											<a className="d-block image">
 												<img src={course.profilePhoto}
@@ -45,7 +45,7 @@ const TopCourses = ({ courses }) => {
 										<h3 title={course.title}>
 											<Link
 												href="/courses/[id]"
-												as={`/courses/${course.id}`}>
+												as={`/courses/${course._id}`}>
 												<a>
 													{course.title.slice(0, 20)}
 													...
@@ -64,7 +64,7 @@ const TopCourses = ({ courses }) => {
 
 												<Link
 													href="/courses/[id]"
-													as={`/courses/${course.id}`}>
+													as={`/courses/${course._id}`}>
 													<a>
 														More details
 													</a>

@@ -24,7 +24,7 @@ const SingleCourses = ({ videos }) => {
                             <div className="course-video-list">
                                 {videos.length ? videos.map(video => (
                                     <div key={video.id}>
-                                        <Link href="/my-courses/[videos]/[id]" as={`/my-courses/${video.course.id}/${video.id}`}>
+                                        <Link href="/my-courses/[videos]/[id]" as={`/my-courses/${video.course._id}/${video.id}`}>
                                             <a
                                                 onClick={e => {
                                                     e.preventDefault();

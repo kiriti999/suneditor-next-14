@@ -77,7 +77,7 @@ const UploadCourseVideo = ({ courses }) => {
 
             // console.log(videoUrl)
 
-            const url = `${baseUrl}/api/v1/courses/course/video-upload`
+            const url = `${baseUrl}/api/v1/course/video-upload`
             const { order, name, description, courseId } = video
             const payload = { 
                 order,
@@ -162,7 +162,7 @@ const UploadCourseVideo = ({ courses }) => {
                                         <select onChange={handleChange} name="courseId" className="form-control">
                                             <option>Select Course</option>
                                             {courses.map(course => (
-                                                <option value={course.id} key={course.id}>
+                                                <option value={course._id} key={course._id}>
                                                     {course.title}
                                                 </option>
                                             ))}

@@ -84,7 +84,7 @@ const Create = () => {
                 profile = profile.replace(/^http:\/\//i, 'https://');
             }
 
-            const url = `${baseUrl}/api/v1/courses/course/new`
+            const url = `${baseUrl}/api/v1/course/new`
             const {
                 title,
                 overview,

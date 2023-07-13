@@ -47,7 +47,7 @@ const CoursesDetailsSidebar = ({
 			const payload = {
 				params: { userId: loggedInUser.id, courseId: id },
 			};
-			const url = `${baseUrl}/api/v1/courses/course/exist`;
+			const url = `${baseUrl}/api/v1/course/exist`;
 			axios.get(url, payload).then((result) => {
 				setAlreadyBuy(result.data.enroll);
 			});

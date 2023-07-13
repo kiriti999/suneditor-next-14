@@ -80,10 +80,10 @@ const HomePageCourses = ({ data }) => {
 
                             <div className="row">
                                 {courses ? courses.map(course => (
-                                    <div className="col-lg-6 col-md-6" key={course.id}>
+                                    <div className="col-lg-6 col-md-6" key={course._id}>
                                         <div className="single-courses-box">
                                             <div className="courses-image">
-                                                <Link href="/courses/[id]" as={`/courses/${course.id}`}>
+                                                <Link href="/courses/[id]" as={`/courses/${course._id}`}>
                                                     <a className="d-block image">
                                                         <img src={course.profilePhoto} alt={course.title} />
                                                     </a>
@@ -100,7 +100,7 @@ const HomePageCourses = ({ data }) => {
                                                 </div>
 
                                                 <h3 title={course.title}>
-                                                    <Link href="/courses/[id]" as={`/courses/${course.id}`}>
+                                                    <Link href="/courses/[id]" as={`/courses/${course._id}`}>
                                                         <a>{course.title.slice(0, 20)}...</a>
                                                     </Link>
                                                 </h3>
@@ -109,7 +109,7 @@ const HomePageCourses = ({ data }) => {
                                                 <ul className="courses-box-footer d-flex justify-content-between align-items-center">
                                                     <li>
                                                         <i className='flaticon-agenda'></i>
-                                                        <Link href="/courses/[id]" as={`/courses/${course.id}`}>
+                                                        <Link href="/courses/[id]" as={`/courses/${course._id}`}>
                                                             <a>More details</a>
                                                         </Link>
                                                     </li>
@@ -158,10 +158,10 @@ HomePageCourses.getInitialProps = async () => {
     let courses;
     let coursesPopularity;
 
-    // get courses data
     let url = `${baseUrl}/api/v1/course?limit=10`
-    const response = await axios.get(url)
-    courses = response.data.courses
+    const response = await axios.get(url);
+    console.log('pages/courses/index.js:: response:' , response.data);
+    courses = response.data.courses;
 
     // get data for courses popularity
     url = `${baseUrl}/api/v1/popularity`
@@ -170,7 +170,7 @@ HomePageCourses.getInitialProps = async () => {
 
     // add popularity to courses
     courses.forEach(course => {
-        const popularity = coursesPopularity.find(popular => popular.courseId === course.id)
+        const popularity = coursesPopularity.find(popular => popular.courseId === course._id)
         course.popularity = popularity ? popularity.count : 0
     });
 

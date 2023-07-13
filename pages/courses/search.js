@@ -79,7 +79,7 @@ const Index = ({ data, q, filteredCourses }) => {
 
                         {courses.map(course => {
                             return (
-                                <CourseCard highlight={q} {...course} key={course.id} />
+                                <CourseCard highlight={q} {...course} key={course._id} />
                             )
                         }
                         )}
@@ -111,7 +111,7 @@ export const getServerSideProps = async ({ query }) => {
 
     // add popularity to courses
     courses.forEach(course => {
-        const popularity = coursesPopularity.find(popular => popular.courseId === course.id)
+        const popularity = coursesPopularity.find(popular => popular.courseId === course._id)
         course.popularity = popularity ? popularity.count : 0
     });
 

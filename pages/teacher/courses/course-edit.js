@@ -51,13 +51,13 @@ const courseEdit = ({ courses }) => {
 
                                     <tbody>
                                         {courses.length ? courses.map(course => (
-                                            <tr key={course.id}>
+                                            <tr key={course._id}>
                                                 <th scope="row">1</th>
                                                 <td>
                                                     {course.title}
                                                 </td>
                                                 <td className="text-right">
-                                                    <Link href="/teacher/course/[id]" as={`/teacher/course/${course.id}`}>
+                                                    <Link href="/teacher/course/[id]" as={`/teacher/course/${course._id}`}>
                                                         <a className="btn btn-success">
                                                             <i className='bx bxs-edit'></i> Edit
                                                         </a>

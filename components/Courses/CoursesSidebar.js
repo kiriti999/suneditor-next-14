@@ -48,7 +48,7 @@ const CoursesSidebar = ({sendToParent}) => {
                         <div className="info">
                             <span>&#8377;{kConverter(course.price)}</span>
                             <h4 className="title usmall">
-                                <Link href="/courses/[id]" as={`/courses/${course.id}`}>
+                                <Link href="/courses/[id]" as={`/courses/${course._id}`}>
                                     <a>{course.title}</a>
                                 </Link>
                             </h4>

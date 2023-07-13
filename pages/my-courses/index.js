@@ -20,7 +20,7 @@ const MyCourses = ({enrolled}) => {
                 <div className="container">
                     <div className="row">
                         {enrolled.length > 0 ? enrolled.map(enrolledCourse => (
-                            <div className="col-lg-4 col-md-6" key={enrolledCourse.id}>
+                            <div className="col-lg-4 col-md-6" key={enrolledcourse._id}>
                                 <div className="single-courses-box">
                                     <div className="courses-image">
                                         <Link href="/single-courses-1">
@@ -43,7 +43,7 @@ const MyCourses = ({enrolled}) => {
                                         </div>
 
                                         <h3>
-                                            <Link href="/my-courses/view/[id]" as={`/my-courses/view/${enrolledCourse.course.id}`}>
+                                            <Link href="/my-courses/view/[id]" as={`/my-courses/view/${enrolledCourse.course._id}`}>
                                                 <a>{enrolledCourse.course.title}</a>
                                             </Link>
                                         </h3>

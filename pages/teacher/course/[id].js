@@ -84,7 +84,7 @@ const Edit = ({ existingData }) => {
                 profile = await handleProfilePhotoUpload()
             }
 
-            const url = `${baseUrl}/api/v1/courses/course/update`
+            const url = `${baseUrl}/api/v1/course/update`
             const {
                 id,
                 title,

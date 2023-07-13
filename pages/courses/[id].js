@@ -42,18 +42,8 @@ const Details = ({ course, user }) => {
 													<div className="col-lg-4 col-md-4">
 														<div className="advisor-image">
 															<img
-																src={`${
-																	course.user
-																		.profilePhoto
-																		? course
-																				.user
-																				.profilePhoto
-																		: "/images/advisor/advisor2.jpg"
-																}`}
-																alt={
-																	course.user
-																		.name
-																}
+																src={`${course.user.profilePhoto ? course.user.profilePhoto : "/images/advisor/advisor2.jpg"}`}
+																alt={course.user.name}
 															/>
 														</div>
 													</div>
@@ -61,31 +51,19 @@ const Details = ({ course, user }) => {
 													<div className="col-lg-8 col-md-8">
 														<div className="advisor-content">
 															<h3>
-																{
-																	course.user
-																		.name
-																}
+																{course.user.name}
 															</h3>
 															<span className="sub-title">
-																{course.user
-																	.designation ||
-																	"Empty"}
+																{course.user.designation || "Empty"}
 															</span>
 															<p>
-																{course.user
-																	.about ||
-																	"Empty"}
+																{course.user.about || "Empty"}
 															</p>
 
 															<ul className="social-link">
 																<li>
 																	<a
-																		href={
-																			course
-																				.user
-																				.fb_url ||
-																			"#"
-																		}
+																		href={course.user.fb_url || "#"}
 																		className="d-block"
 																		target="_blank"
 																	>
@@ -94,12 +72,7 @@ const Details = ({ course, user }) => {
 																</li>
 																<li>
 																	<a
-																		href={
-																			course
-																				.user
-																				.tw_url ||
-																			"#"
-																		}
+																		href={course.user.tw_url || "#"}
 																		className="d-block"
 																		target="_blank"
 																	>
@@ -108,12 +81,7 @@ const Details = ({ course, user }) => {
 																</li>
 																<li>
 																	<a
-																		href={
-																			course
-																				.user
-																				.insta_url ||
-																			"#"
-																		}
+																		href={course.user.insta_url || "#"}
 																		className="d-block"
 																		target="_blank"
 																	>
@@ -122,12 +90,7 @@ const Details = ({ course, user }) => {
 																</li>
 																<li>
 																	<a
-																		href={
-																			course
-																				.user
-																				.in_url ||
-																			"#"
-																		}
+																		href={course.user.in_url || "#"}
 																		className="d-block"
 																		target="_blank"
 																	>
@@ -365,9 +328,9 @@ const Details = ({ course, user }) => {
 
 Details.getInitialProps = async (ctx) => {
 	const { id } = ctx.query;
-	const url = `${baseUrl}/api/v1/courses/course/${id}`;
+	const url = `${baseUrl}/api/v1/course/${id}`;
 	const response = await axios.get(url);
-	console.log('[id].js:: getInitialProps:: course/${id}:' , response.data?.course);
+	console.log('pages/courses/[id].js:: getInitialProps:: course/${id}:', response.data?.course);
 	return response.data;
 };
 
