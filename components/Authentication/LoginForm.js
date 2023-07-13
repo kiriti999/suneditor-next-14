@@ -33,7 +33,7 @@ const LoginForm = () => {
 		try {
 			setLoading(true);
 			setError("");
-			const url = `${baseUrl}/api/v1/auth/signin`;
+			const url = `${baseUrl}/api/v1/auth/login`;
 			const payload = { ...user };
 			const response = await axios.post(url, payload);
 			handleLogin(response.data);

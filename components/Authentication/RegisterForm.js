@@ -1,6 +1,6 @@
 import React from "react";
 import { Alert } from "reactstrap";
-import axios from "axios";
+import api from "../../axiosConfigs"
 import catchErrors from "../../utils/catchErrors";
 import baseUrl from "../../utils/baseUrl";
 import { handleLogin } from "../../utils/auth";
@@ -35,9 +35,13 @@ const RegisterForm = () => {
 		try {
 			setLoading(true);
 			setError("");
-			const url = `${baseUrl}/api/v1/auth/signup`;
+			const url = `${baseUrl}/api/v1/auth/register`;
 			const payload = { ...user };
-			const response = await axios.post(url, payload);
+			const response = await api.request({
+				url: url,
+				method: 'POST',
+				data: payload
+			});
 			handleLogin(response.data);
 			// console.log(response.data)
 		} catch (error) {

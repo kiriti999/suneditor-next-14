@@ -159,12 +159,12 @@ HomePageCourses.getInitialProps = async () => {
     let coursesPopularity;
 
     // get courses data
-    let url = `${baseUrl}/api/v1/courses/homepage-courses?limit=10`
+    let url = `${baseUrl}/api/v1/course?limit=10`
     const response = await axios.get(url)
     courses = response.data.courses
 
     // get data for courses popularity
-    url = `${baseUrl}/api/v1/courses/popularity`
+    url = `${baseUrl}/api/v1/popularity`
     const popularResponse = await axios.get(url)
     coursesPopularity = popularResponse.data.enrolled
 

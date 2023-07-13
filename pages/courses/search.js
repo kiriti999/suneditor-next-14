@@ -105,7 +105,7 @@ export const getServerSideProps = async ({ query }) => {
     courses = response.data.data;
 
     // get data for courses popularity
-    url = `${baseUrl}/api/v1/courses/popularity`
+    url = `${baseUrl}/api/v1/popularity`
     const popularResponse = await axios.get(url)
     coursesPopularity = popularResponse.data.enrolled;
 
