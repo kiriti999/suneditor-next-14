@@ -16,7 +16,7 @@ export default async (req, res) => {
 
     try {
         const response = await api.request({
-            url: `/category`,
+            url: `/courses/categories`,
             method: 'GET',
         });
         console.log('categories.js:: response: ', response?.data);

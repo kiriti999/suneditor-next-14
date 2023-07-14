@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { kConverter } from '../../utils/cart/currencyHelper';
 
 const CoursesDetailsSidebar = ({
-	id,
+	_id,
 	price,
 	user,
 	profilePhoto,
@@ -40,25 +40,25 @@ const CoursesDetailsSidebar = ({
 
 	useEffect(() => {
 		const courseExist = cartItems.find((cart) => {
-			return id === cart.id;
+			return _id === cart.id;
 		});
 		courseExist && setAdd(true);
-		if (loggedInUser && id) {
+		if (loggedInUser && _id) {
 			const payload = {
-				params: { userId: loggedInUser.id, courseId: id },
+				params: { userId: loggedInUser.id, courseId: _id },
 			};
 			const url = `${baseUrl}/api/v1/course/exist`;
 			axios.get(url, payload).then((result) => {
 				setAlreadyBuy(result.data.enroll);
 			});
 		}
-	}, [cartItems, id]);
+	}, [cartItems, _id]);
 
 	useEffect(() => {
 		setDisplay(true);
 	}, []);
 	// console.log(loggedInUser)
-	const { enroled_courses } = loggedInUser ? loggedInUser : "";
+	const { enrolled_courses } = loggedInUser ? loggedInUser : "";
 	const router = useRouter();
 	// Popup Video
 	const [enrolled, setEnrolled] = React.useState(0);
@@ -69,9 +69,9 @@ const CoursesDetailsSidebar = ({
 
 	useEffect(() => {
 		const countEnrolled = async () => {
-			const url = `${baseUrl}/api/v1/courses/enrolled/${id}`;
+			const url = `${baseUrl}/api/v1/courses/enrolled/${_id}`;
 			const response = await axios.get(url);
-			setEnrolled(response.data);
+			setEnrolled(response.data?.count || 0);
 		};
 		// setEnrolled(response.data.enrolled)
 		countEnrolled();
@@ -79,7 +79,7 @@ const CoursesDetailsSidebar = ({
 
 	const checkBoughtAlready = () => {
 		return (
-			enroled_courses.filter(function (val) {
+			enrolled_courses.filter(function (val) {
 				return val.courseId === id;
 			}).length > 0
 		);
@@ -194,7 +194,7 @@ const CoursesDetailsSidebar = ({
 									className="default-btn"
 									onClick={() =>
 										addToCart(
-											id,
+											_id,
 											title,
 											price,
 											lessons,

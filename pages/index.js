@@ -34,7 +34,7 @@ const index = ({ courses }) => {
 };
 
 index.getInitialProps = async () => {
-	const url = `${baseUrl}/api/v1/course`;
+	const url = `${baseUrl}/api/v1/courses/course`;
 	const response = await axios.get(url);
 	console.log('pages/index.js:: homepage-courses ', response.data)
 	return response.data;

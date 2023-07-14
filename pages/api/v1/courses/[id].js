@@ -21,7 +21,7 @@ export default async (req, res) => {
 
     try {
         const response = await api.request({
-            url: `/course?id=${id}`,
+            url: `/courses/course?id=${id}`,
             method: 'GET',
         });
         console.log('search id.js:: response: ', response?.data);

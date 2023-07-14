@@ -18,7 +18,7 @@ export default async (req, res) => {
 
     try {
         const response = await api.request({
-            url: `/search?keyword=${keyword}`,
+            url: `/courses/search?keyword=${keyword}`,
             method: 'GET'
         });
         console.log('search index.js:: response: ', response?.data);

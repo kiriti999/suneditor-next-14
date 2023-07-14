@@ -30,7 +30,7 @@ export default async (req, res) => {
 
     try {
         const response = await api.request({
-            url: `/course/new`,
+            url: `/courses/course/new`,
             method: 'POST',
             data: {
                 title,

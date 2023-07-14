@@ -252,9 +252,7 @@ const Navbar = ({ user }) => {
 														<Link href="/">
 															<a
 																className="nav-link"
-																onClick={(
-																	e
-																) => {
+																onClick={(e) => {
 																	e.preventDefault();
 																	handleLogout();
 																}}

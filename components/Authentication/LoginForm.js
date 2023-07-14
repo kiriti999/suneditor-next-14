@@ -38,6 +38,7 @@ const LoginForm = () => {
 			const response = await axios.post(url, payload);
 			handleLogin(response.data);
 		} catch (error) {
+			console.log('error ', error);
 			catchErrors(error, setError);
 		} finally {
 			setLoading(false);

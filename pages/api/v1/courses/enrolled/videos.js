@@ -18,7 +18,7 @@ export default async (req, res) => {
 
     try {
         const response = await api.request({
-            url: `/video?courseId=${courseId}`,
+            url: `/courses/enrolled/video?courseId=${courseId}`,
             method: 'GET',
         });
         console.log('videos.js:: response: ', response?.data);

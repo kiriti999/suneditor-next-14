@@ -15,7 +15,7 @@ export default async (req, res) => {
     await cors(req, res)
     try {
         const response = await api.request({
-            url: `/enrolled`,
+            url: `/courses/enrolled`,
             method: 'GET',
         });
         console.log('enrolled id.js:: response: ', response?.data);

@@ -9,7 +9,7 @@ const CoursesSidebar = ({sendToParent}) => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        const url = `${baseUrl}/api/v1/course?limit=3`;
+        const url = `${baseUrl}/api/v1/courses/course?limit=3`;
         (async () => {
             const response = await axios.get(url)
             console.log('CoursesSidebar.js:: useEffect: courses:', response.data.courses);
@@ -18,7 +18,7 @@ const CoursesSidebar = ({sendToParent}) => {
     }, [])
 
     useEffect(() => {
-        const url = `${baseUrl}/api/v1/category`;
+        const url = `${baseUrl}/api/v1/courses/categories`;
         (async () => {
             const response = await axios.get(url)
             console.log('CoursesSidebar.js:: useEffect: categories:', response.data.courses);
@@ -27,7 +27,7 @@ const CoursesSidebar = ({sendToParent}) => {
     }, [])
 
     const getCoursesByTagName = async (tagName) => {
-        const url = `${baseUrl}/api/v1/courses/coursesByTag?tagName=${tagName}`;
+        const url = `${baseUrl}/api/v1/courses/course?tagName=${tagName}`;
         const response = await axios.get(url);
         console.log('CoursesSidebar.js:: getCoursesByTagName:: response: ', response.data.courses); 
         sendToParent(response.data.courses);

@@ -39,6 +39,7 @@ const MyApp = ({ Component, pageProps }) => {
 };
 
 MyApp.getInitialProps = async ({ Component, ctx }) => {
+	console.log('app.js')
 	const { token } = parseCookies(ctx);
 	let pageProps = {};
 
@@ -73,9 +74,11 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
 			const url = `${baseUrl}/api/v1/account`;
 			const response = await axios.get(url, payload);
 			const user = response.data;
+			console.log('user ', user)
 
 			// If user status disabled then user automatically logged out
 			if (!user || !user.active) {
+				console.log('destroy cookie called')
 				destroyCookie(ctx, "token");
 			}
 
@@ -83,6 +86,7 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
 		} catch (error) {
 			// console.error("Error getting current user", error);
 			//invalid token
+			console.log('destroy cookie called', error)
 			destroyCookie(ctx, "token");
 		}
 	}

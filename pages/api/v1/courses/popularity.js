@@ -15,7 +15,7 @@ export default async (req, res) => {
     await cors(req, res)
     try {
         const response = await api.request({
-            url: `/popularity`,
+            url: `/courses/popularity`,
             method: 'GET',
         });
         console.log('popularity:: response: ', response?.data);

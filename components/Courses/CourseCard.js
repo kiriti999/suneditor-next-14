@@ -5,9 +5,9 @@ import Highlighter from 'react-highlight-words';
 import { Context } from 'context/filterStore';
 
 const CourseCard = ({
-    id, title, price, overview, profilePhoto, lessons, user, enroled_courses, highlight
+    id, title, price, overview, profilePhoto, lessons, user, enrolled_courses, highlight
 }) => {
-    const enrolled = enroled_courses ? enroled_courses : []
+    const enrolled = enrolled_courses ? enrolled_courses : []
 
     const [state, setState] = useContext(Context);
 

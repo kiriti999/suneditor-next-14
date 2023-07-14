@@ -2,6 +2,7 @@ import cookie from 'js-cookie'
 import Router from 'next/router'
 
 export const handleLogin = (token) => {
+    console.log('login called');
     cookie.set('token', token);
     Router.push('/');
 }
@@ -16,6 +17,7 @@ export const redirectUser = (ctx, location) => {
 }
 
 export const handleLogout = () => {
+    console.log('logout called')
     cookie.remove('token')
     Router.push('/')
 }

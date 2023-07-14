@@ -38,8 +38,8 @@ const MyCourses = ({enrolled}) => {
 
                                     <div className="courses-content">
                                         <div className="course-author d-flex align-items-center">
-                                            <img src={`${enrolledCourse.user.profilePhoto ? enrolledCourse.user.profilePhoto : "/images/user1.jpg"}`} className="rounded-circle" alt={enrolledCourse.user.name} />
-                                            <span>{enrolledCourse.user.name}</span>
+                                            <img src={`${enrolledcourse.userId.profilePhoto ? enrolledcourse.userId.profilePhoto : "/images/user1.jpg"}`} className="rounded-circle" alt={enrolledcourse.userId.name} />
+                                            <span>{enrolledcourse.userId.name}</span>
                                         </div>
 
                                         <h3>

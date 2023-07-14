@@ -72,7 +72,7 @@ const TopCourses = ({ courses }) => {
 											</li>
 											{/* <li>
 												<i className="flaticon-people"></i>{" "}
-												{course.enroled_courses.length}{" "}
+												{course.enrolled_courses.length}{" "}
 												Students
 											</li> */}
 										</ul>

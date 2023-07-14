@@ -15,7 +15,7 @@ export default async (req, res) => {
     await cors(req, res)
     try {
         const response = await api.request({
-            url: `/course/video-upload`,
+            url: `/courses/course/video-upload`,
             method: 'POST',
             data: {order, name, description, courseId, videoUrl} 
         });

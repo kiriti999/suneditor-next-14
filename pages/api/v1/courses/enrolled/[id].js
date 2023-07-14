@@ -17,7 +17,7 @@ export default async (req, res) => {
 
     try {
         const response = await api.request({
-            url: `/course/video-upload`,
+            url: `/courses/enrolled/video-upload`,
             method: 'POST',
             data: {id} 
         });

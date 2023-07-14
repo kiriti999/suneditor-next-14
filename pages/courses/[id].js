@@ -6,6 +6,7 @@ import baseUrl from "@/utils/baseUrl";
 import CoursesCurriculum from "@/components/Courses/CoursesCurriculum";
 
 const Details = ({ course, user }) => {
+	console.log('pages/courses/[id].js:: course, user: ', course, user);
 	return (
 		<>
 			<div className="courses-details-area pb-100">
@@ -42,8 +43,8 @@ const Details = ({ course, user }) => {
 													<div className="col-lg-4 col-md-4">
 														<div className="advisor-image">
 															<img
-																src={`${course.user.profilePhoto ? course.user.profilePhoto : "/images/advisor/advisor2.jpg"}`}
-																alt={course.user.name}
+																src={`${course.userId.profilePhoto ? course.userId.profilePhoto : "/images/advisor/advisor2.jpg"}`}
+																alt={course.userId.name}
 															/>
 														</div>
 													</div>
@@ -51,19 +52,19 @@ const Details = ({ course, user }) => {
 													<div className="col-lg-8 col-md-8">
 														<div className="advisor-content">
 															<h3>
-																{course.user.name}
+																{course.userId.name}
 															</h3>
 															<span className="sub-title">
-																{course.user.designation || "Empty"}
+																{course.userId.designation || "Empty"}
 															</span>
 															<p>
-																{course.user.about || "Empty"}
+																{course.userId.about || "Empty"}
 															</p>
 
 															<ul className="social-link">
 																<li>
 																	<a
-																		href={course.user.fb_url || "#"}
+																		href={course.userId.fb_url || "#"}
 																		className="d-block"
 																		target="_blank"
 																	>
@@ -72,7 +73,7 @@ const Details = ({ course, user }) => {
 																</li>
 																<li>
 																	<a
-																		href={course.user.tw_url || "#"}
+																		href={course.userId.tw_url || "#"}
 																		className="d-block"
 																		target="_blank"
 																	>
@@ -81,7 +82,7 @@ const Details = ({ course, user }) => {
 																</li>
 																<li>
 																	<a
-																		href={course.user.insta_url || "#"}
+																		href={course.userId.insta_url || "#"}
 																		className="d-block"
 																		target="_blank"
 																	>
@@ -90,7 +91,7 @@ const Details = ({ course, user }) => {
 																</li>
 																<li>
 																	<a
-																		href={course.user.in_url || "#"}
+																		href={course.userId.in_url || "#"}
 																		className="d-block"
 																		target="_blank"
 																	>
@@ -328,7 +329,7 @@ const Details = ({ course, user }) => {
 
 Details.getInitialProps = async (ctx) => {
 	const { id } = ctx.query;
-	const url = `${baseUrl}/api/v1/course/${id}`;
+	const url = `${baseUrl}/api/v1/courses/course/${id}`;
 	const response = await axios.get(url);
 	console.log('pages/courses/[id].js:: getInitialProps:: course/${id}:', response.data?.course);
 	return response.data;
