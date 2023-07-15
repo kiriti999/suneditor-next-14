@@ -5,16 +5,16 @@ import { parseCookies } from 'nookies'
 import axios from 'axios'
 import baseUrl from '@/utils/baseUrl'
 
-const MyCourses = ({enrolled}) => {
+const MyCourses = ({ enrolled }) => {
     console.log(enrolled)
     return (
         <>
-            <PageBanner 
-                pageTitle="My Courses" 
-                homePageUrl="/" 
-                homePageText="Home" 
-                activePageText="My Courses" 
-            />  
+            <PageBanner
+                pageTitle="My Courses"
+                homePageUrl="/"
+                homePageText="Home"
+                activePageText="My Courses"
+            />
 
             <div className="pt-100 pb-70">
                 <div className="container">
@@ -75,12 +75,12 @@ const MyCourses = ({enrolled}) => {
 
 MyCourses.getInitialProps = async ctx => {
     const { token } = parseCookies(ctx)
-    if(!token){
-        return {enrolled: []}
+    if (!token) {
+        return { enrolled: [] }
     }
 
     const payload = {
-        headers: {Authorization: token}
+        headers: { Authorization: token }
     }
 
     const url = `${baseUrl}/api/v1/courses/enrolled`

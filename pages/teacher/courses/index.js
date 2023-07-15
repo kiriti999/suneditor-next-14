@@ -54,21 +54,21 @@ const index = ({ courses }) => {
                     </div>
                 </div>
             </div>
-        </>  
+        </>
     )
 }
 
 index.getInitialProps = async ctx => {
     const { token } = parseCookies(ctx)
-    if(!token){
-        return {courses: []}
+    if (!token) {
+        return { courses: [] }
     }
 
     const payload = {
-        headers: {Authorization: token}
+        headers: { Authorization: token }
     }
 
-    const url = `${baseUrl}/api/v1/courses/my-courses`
+    const url = `${baseUrl}/api/v1/courses/teacher/my-courses`
     const response = await axios.get(url, payload)
     // console.log(response.data)
     return response.data

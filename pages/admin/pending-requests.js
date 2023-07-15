@@ -10,7 +10,7 @@ import PageBanner from '@/components/Common/PageBanner'
 import Link from '@/utils/ActiveLink'
 
 const pendingRequests = ({pendingRequests}) => {
-    // console.log(pendingRequests)
+    console.log('pendingRequests ', pendingRequests)
     const { addToast } = useToasts()
     const router = useRouter()
 
@@ -85,7 +85,7 @@ const pendingRequests = ({pendingRequests}) => {
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Intructor</th>
+                                            <th scope="col">Instructor</th>
                                             <th scope="col" className="text-right">Action</th> 
                                         </tr>
                                     </thead>
@@ -95,7 +95,7 @@ const pendingRequests = ({pendingRequests}) => {
                                             <>
                                                 {pendingRequests.map((request) => {
                                                     return (
-                                                        <tr key={request.id}>
+                                                        <tr key={request._id}>
                                                             <th scope="row">1</th>
                                                             <td>
                                                                 {request.name}
@@ -103,7 +103,7 @@ const pendingRequests = ({pendingRequests}) => {
                                                             <td className="text-right">
                                                                 <button
                                                                     onClick={ e => {
-                                                                        window.confirm("Are you sure?") && approveReq(request.id)
+                                                                        window.confirm("Are you sure?") && approveReq(request._id)
                                                                     }} 
                                                                     className="btn btn-success mr-05"
                                                                 >
@@ -112,7 +112,7 @@ const pendingRequests = ({pendingRequests}) => {
 
                                                                 <button
                                                                     onClick={ e => {
-                                                                        window.confirm("Are you sure?") && declineReq(request.id)
+                                                                        window.confirm("Are you sure?") && declineReq(request._id)
                                                                     }} 
                                                                     className="btn btn-danger"
                                                                 >

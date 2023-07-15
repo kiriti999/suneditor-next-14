@@ -90,7 +90,7 @@ courseEdit.getInitialProps = async ctx => {
         headers: {Authorization: token}
     }
 
-    const url = `${baseUrl}/api/v1/courses/my-courses`
+    const url = `${baseUrl}/api/v1/courses/teacher/my-courses`
     const response = await axios.get(url, payload)
     // console.log(response.data)
     return response.data
