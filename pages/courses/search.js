@@ -57,7 +57,7 @@ const Index = ({ data, q, filteredCourses }) => {
 
             <div className="courses-area courses-section pt-50 pb-70">
                 <div className="container">
-                    <div className="skillaro-grid-sorting row align-items-center">
+                    <div className="whatsnxt-grid-sorting row align-items-center">
                         <div className="col-lg-8 col-md-6 result-count">
                             <p>We found <span className="count">12</span> courses available for you</p>
                         </div>

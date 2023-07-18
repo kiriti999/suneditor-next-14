@@ -40,7 +40,7 @@ export default async (req, res) => {
         "createdAt": "2021-01-26T16:02:39.510Z",
         "updatedAt": "2021-01-26T16:02:39.510Z",
         "user": {
-            "name": "SkillaroTheme",
+            "name": "WhatsnxtTheme",
             "profilePhoto": null
         },
         "enrolled_courses": [

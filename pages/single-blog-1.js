@@ -138,7 +138,7 @@ const BlogDetails = () => {
                                     </div>
                                 </div>
 
-                                <div className="skillaro-post-navigation">
+                                <div className="whatsnxt-post-navigation">
                                     <div className="prev-link-wrapper">
                                         <div className="info-prev-link-wrapper">
                                             <a href="#">

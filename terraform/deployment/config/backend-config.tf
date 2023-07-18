@@ -1,4 +1,4 @@
-bucket = "skillaro-terraform-states"
+bucket = "whatsnxt-terraform-states"
 key = "deployment/terraform.tfstate"
 region = "ap-south-1"
 encrypt = true

@@ -13,7 +13,7 @@ const ProductsDetailsTabs = () => {
                 <TabPanel>
                     <p>This story, dazzling in its powerful simplicity and soul-stirring wisdom, is about an Andalusian shepherd boy named Santiago who travels from his homeland in Spain to the Egyptian desert in search of a treasure buried near the Pyramids. Lorem ipsum dolor sit.</p>
                     <ul>
-                        <li>Instant skillaro bestseller</li>
+                        <li>Instant whatsnxt bestseller</li>
                         <li>Translated into 18 languages</li>
                         <li>#1 Most Recommended Book of the year.</li>
                         <li>A neglected project, widely dismissed, its champion written off as unhinged.</li>

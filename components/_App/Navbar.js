@@ -36,7 +36,7 @@ const Navbar = ({ user }) => {
 	return (
 		<>
 			<div id="navbar" className="navbar-area">
-				<div className="skillaro-nav">
+				<div className="whatsnxt-nav">
 					<div className="container-fluid">
 						<div className="navbar navbar-expand-lg navbar-light">
 							<Link href="/">

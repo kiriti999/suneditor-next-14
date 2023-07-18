@@ -19,7 +19,7 @@ const FeedbackSliderWithFunFacts = () => {
 									Your Own Needs
 								</h2>
 								<p>
-									With the skillaro, you can study whenever and
+									With the whatsnxt, you can study whenever and
 									wherever you choose. We have students in over
 									175 countries and a global reputation as a
 									pioneer in the field of flexible learning. Our

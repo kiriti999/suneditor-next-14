@@ -2,22 +2,22 @@
 	"development": {
 		"username": "postgres",
 		"password": "12qwaszx",
-		"database": "skillaro_database_development",
+		"database": "whatsnxt_database_development",
 		"host": "127.0.0.1",
 		"dialect": "postgres"
 	},
 	"test": {
 		"username": "postgres",
 		"password": "12qwaszx",
-		"database": "skillaro_database_development",
+		"database": "whatsnxt_database_development",
 		"host": "host.docker.internal",
 		"dialect": "postgres"
 	},
 	"production": {
 		"username": "postgres",
 		"password": "12qwaszx",
-		"database": "skillaro_database_production",
-		"host": "skillaro-db.cymrjjcmwkuz.ap-south-1.rds.amazonaws.com",
+		"database": "whatsnxt_database_production",
+		"host": "whatsnxt-db.cymrjjcmwkuz.ap-south-1.rds.amazonaws.com",
 		"dialect": "postgres"
 	}
 }

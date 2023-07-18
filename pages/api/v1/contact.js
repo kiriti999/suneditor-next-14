@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 
 //Load environment variables from .env file
-// dotenv.config({ path: __dirname + '/./skillaro/.env' });
+// dotenv.config({ path: __dirname + '/./whatsnxt/.env' });
 // dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
 // dotenv.config({ path: `../../../.env.${process.env.NODE_ENV}` })
 
@@ -24,7 +24,7 @@ export default async (req, res) => {
     const { name, email, number, subject, text } = req.body;
     console.log(name, email, number, subject, text);
     const data = {
-        to: 'support@skillaro.in',
+        to: 'support@whatsnxt.in',
         from: email,
         subject: 'Hi there',
         text: text,

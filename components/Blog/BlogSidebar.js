@@ -17,7 +17,7 @@ const BlogSidebar = () => {
                 </form>
             </div>
 
-            <div className="widget widget_skillaro_posts_thumb">
+            <div className="widget widget_whatsnxt_posts_thumb">
                 <h3 className="widget-title">Popular Posts</h3>
 
                 <div className="item">

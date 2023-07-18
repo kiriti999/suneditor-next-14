@@ -1358,7 +1358,7 @@ $value_nine: 1550px;
         }
     }
 
-    .skillaro-grid-sorting {
+    .whatsnxt-grid-sorting {
         text-align: center;
 
         .result-count {
@@ -2392,7 +2392,7 @@ $value_nine: 1550px;
                 }
             }
         }
-        .widget_skillaro_posts_thumb {
+        .widget_whatsnxt_posts_thumb {
             .item {
                 .info {
                     .title {
@@ -3402,7 +3402,7 @@ $value_nine: 1550px;
         }
     }
 
-    .skillaro-nav {
+    .whatsnxt-nav {
         .navbar {
             .navbar-nav {
                 .nav-item {
@@ -3683,7 +3683,7 @@ $value_nine: 1550px;
 
 /* Min width 576px Max width 767px */
 @media only #{$media} and ($feature_min : $value_one) and ($feature_max : $value_two) {
-    .skillaro-nav {
+    .whatsnxt-nav {
         .navbar {
             .navbar-nav {
                 .nav-item {
@@ -3700,8 +3700,8 @@ $value_nine: 1550px;
         max-width: 540px;
     }
 
-    .skillaro-responsive-nav {
-        .skillaro-responsive-menu {
+    .whatsnxt-responsive-nav {
+        .whatsnxt-responsive-menu {
             &.mean-container {
                 .navbar-nav {
                     .nav-item {
@@ -5971,11 +5971,11 @@ $value_nine: 1550px;
         };
     }
 
-    .skillaro-responsive-nav {
+    .whatsnxt-responsive-nav {
         .logo {
             width: 25%;
         }
-        .skillaro-responsive-menu {
+        .whatsnxt-responsive-menu {
             &.mean-container {
                 .mean-nav {
                     margin-top: 51px;
@@ -7189,7 +7189,7 @@ $value_nine: 1550px;
         padding-bottom: 15px;
     }
 
-    .skillaro-nav {
+    .whatsnxt-nav {
         .navbar {
             .navbar-nav {
                 .nav-item {
@@ -7372,7 +7372,7 @@ $value_nine: 1550px;
         max-width: 1140px;
     }
 
-    .skillaro-nav {
+    .whatsnxt-nav {
         .container-fluid {
             max-width: 1200px;
             padding: {
@@ -7594,7 +7594,7 @@ $value_nine: 1550px;
 /* Min width 1550px */
 @media only #{$media} and ($feature_min : $value_nine) {
 
-    .skillaro-nav {
+    .whatsnxt-nav {
         .container-fluid {
             padding: {
                 left: 120px;
@@ -7711,7 +7711,7 @@ $value_nine: 1550px;
 }
 
 @media only screen and (max-width : 991px) {
-    .skillaro-nav {
+    .whatsnxt-nav {
         .container-fluid {
             padding-left: 15px;
             padding-right: 15px;

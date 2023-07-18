@@ -11,7 +11,7 @@ const nextConfig = nextTranslate({
   },
   env: {
     JWT_SECRET: "djhfghbdsgrasklkajsdgf",
-    CLOUDINARY_UPLOAD_PRESET: "skillaro",
+    CLOUDINARY_UPLOAD_PRESET: "whatsnxt",
     CLOUDINARY_NAME: "cloudinary999",
     CLOUDINARY_API_KEY: "429854764125427",
     CLOUDINARY_SECRET: "PxEdUKCLC9Shs-DJbMWUEmZGC-s",

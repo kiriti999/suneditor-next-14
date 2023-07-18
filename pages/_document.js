@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-const APP_NAME = "skillaro";
+const APP_NAME = "whatsnxt";
 class MyDocument extends Document {
 	render() {
 		return (

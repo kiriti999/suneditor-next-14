@@ -42,7 +42,7 @@ export default async (req, res) => {
         <p>Thank you for purchasing the course. We hope you enjoy it!</p>
         <p>If you have any questions or need assistance, please don't hesitate to contact us.</p>
         <p>Best regards,</p>
-        <p>Skillaro</p>
+        <p>Whatsnxt</p>
       `,
     };
 

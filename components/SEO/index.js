@@ -13,8 +13,8 @@ const SEO = ({ title, description, image }) => {
 };
 
 SEO.defaultProps = {
-	title: "skillaro",
-	description: "skillaro - Education",
+	title: "whatsnxt",
+	description: "whatsnxt - Education",
 	image: "https://res.cloudinary.com/dev-empty/image/upload/v1595838139/vivi/about-img-two.jpg",
 };
 

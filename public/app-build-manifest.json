@@ -1,14 +1,14 @@
 {
     "manifest_package": "org.chromium.webapk.test",
-    "name": "skillaro",
-    "short_name": "skillaro",
+    "name": "whatsnxt",
+    "short_name": "whatsnxt",
     "display": "standalone",
     "orientation": "portrait",
     "theme_color": "#3056de",
     "background_color": "#3056de",
     "intent_filters": {
       "scope_url_scheme": "https",
-      "scope_url_host": "skillaro.in",
+      "scope_url_host": "whatsnxt.in",
       "scope_url_path": "/"
     },
     "scope": "/",

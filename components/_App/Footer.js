@@ -123,7 +123,7 @@ const Footer = () => {
                                 </li>
                                 <li>
                                     <i className='bx bx-envelope'></i>
-                                    <a href="mailto:support@skillaro.in">support@skillaro.in</a>
+                                    <a href="mailto:support@whatsnxt.in">support@whatsnxt.in</a>
                                 </li>
                             </ul>
                         </div>
@@ -133,7 +133,7 @@ const Footer = () => {
                 <div className="footer-bottom-area">
                     <div className="row align-items-center">
                         <div className="col-lg-6 col-md-6">
-                            <p><i className='bx bx-copyright'></i>{currentYear} skillaro <a target="_blank" href="https://www.skillaro.in/">Copyright reserved</a></p>
+                            <p><i className='bx bx-copyright'></i>{currentYear} whatsnxt <a target="_blank" href="https://www.whatsnxt.in/">Copyright reserved</a></p>
                         </div>
 
                         <div className="col-lg-6 col-md-6">

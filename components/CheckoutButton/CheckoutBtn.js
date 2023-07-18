@@ -44,8 +44,8 @@ const CheckoutBtn = ({ user, cartItems, onClearCart }) => {
             // amount: price,
             amount: cartTotal,
             currency: "INR",
-            name: "Skillaro",
-            description: "Skillaro course purchase",
+            name: "Whatsnxt",
+            description: "Whatsnxt course purchase",
             image: "https://sid86-dashboard.s3-ap-south-1.amazonaws.com/project-ss/gfaUwc4SQrKduehfbsq9jJ.png",
             order_id: order.id,
             handler: async (res, error) => {

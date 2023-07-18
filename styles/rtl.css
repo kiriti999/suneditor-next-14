@@ -5,57 +5,57 @@
 [lang=ar] ul {
   padding-right: 0;
 }
-[lang=ar] .skillaro-nav .navbar .navbar-brand {
+[lang=ar] .whatsnxt-nav .navbar .navbar-brand {
   margin-right: 0;
   margin-left: 1rem;
 }
-[lang=ar] .skillaro-nav .navbar .navbar-nav {
+[lang=ar] .whatsnxt-nav .navbar .navbar-nav {
   margin-left: 0;
   margin-right: auto;
 }
-[lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item a {
+[lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item a {
   margin-left: 13px !important;
   margin-right: 13px !important;
 }
-[lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item .dropdown-menu {
+[lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu {
   left: auto;
   right: 0;
   text-align: right;
 }
-[lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item .dropdown-menu li a {
+[lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li a {
   margin: 0 !important;
 }
-[lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item .dropdown-menu li a i {
+[lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li a i {
   right: auto;
   left: 15px;
 }
-[lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
+[lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
   left: auto;
   right: -100%;
 }
-[lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .megamenu-submenu li a {
+[lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .megamenu-submenu li a {
   padding: 8px 20px;
 }
-[lang=ar] .skillaro-nav .navbar .search-box {
+[lang=ar] .whatsnxt-nav .navbar .search-box {
   margin-left: 0;
   margin-right: 50px;
 }
-[lang=ar] .skillaro-nav .navbar .search-box .input-search {
+[lang=ar] .whatsnxt-nav .navbar .search-box .input-search {
   padding-right: 15px;
 }
-[lang=ar] .skillaro-nav .navbar .search-box button {
+[lang=ar] .whatsnxt-nav .navbar .search-box button {
   right: auto;
   left: 0;
 }
-[lang=ar] .skillaro-nav .navbar .others-option {
+[lang=ar] .whatsnxt-nav .navbar .others-option {
   margin-left: 0;
   margin-right: 25px;
 }
-[lang=ar] .skillaro-nav .navbar .others-option .option-item {
+[lang=ar] .whatsnxt-nav .navbar .others-option .option-item {
   margin-left: 0;
   margin-right: 30px;
 }
-[lang=ar] .skillaro-nav .navbar .others-option .option-item:first-child {
+[lang=ar] .whatsnxt-nav .navbar .others-option .option-item:first-child {
   margin-right: 0;
 }
 [lang=ar] .single-courses-box .courses-image .fav {
@@ -336,7 +336,7 @@
   left: 5px;
   right: auto;
 }
-[lang=ar] .widget-area .widget_skillaro_posts_thumb .item .thumb {
+[lang=ar] .widget-area .widget_whatsnxt_posts_thumb .item .thumb {
   float: right;
   margin-right: 0;
   margin-left: 15px;
@@ -682,11 +682,11 @@
   }
 }
 @media only screen and (max-width: 575px) {
-  [lang=ar] .skillaro-nav .navbar .others-option {
+  [lang=ar] .whatsnxt-nav .navbar .others-option {
     right: auto !important;
     left: 65px !important;
   }
-  [lang=ar] .skillaro-nav .navbar .others-option .option-item {
+  [lang=ar] .whatsnxt-nav .navbar .others-option .option-item {
     margin-left: 0;
     margin-right: 15px;
   }
@@ -715,27 +715,27 @@
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  [lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item a {
+  [lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item a {
     font-size: 15px;
     margin-left: 7px !important;
     margin-right: 7px !important;
     padding-top: 15px;
     padding-bottom: 15px;
   }
-  [lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item .dropdown-menu {
+  [lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu {
     width: 230px;
   }
-  [lang=ar] .skillaro-nav .navbar .search-box {
+  [lang=ar] .whatsnxt-nav .navbar .search-box {
     margin-right: 30px;
     width: 160px;
   }
-  [lang=ar] .skillaro-nav .navbar .others-option {
+  [lang=ar] .whatsnxt-nav .navbar .others-option {
     margin-right: 15px;
   }
-  [lang=ar] .skillaro-nav .navbar .others-option .option-item {
+  [lang=ar] .whatsnxt-nav .navbar .others-option .option-item {
     margin-right: 25px;
   }
-  [lang=ar] .skillaro-nav .navbar .others-option .option-item:first-child {
+  [lang=ar] .whatsnxt-nav .navbar .others-option .option-item:first-child {
     margin-right: 0;
   }
   [lang=ar] .single-banner-box h3 {
@@ -750,40 +750,40 @@
   }
 }
 @media only screen and (min-width: 1200px) and (max-width: 1355px) {
-  [lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item > a {
+  [lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item > a {
     margin-left: 10px !important;
     margin-right: 10px !important;
   }
-  [lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
+  [lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
     left: 100%;
   }
 }
 @media only screen and (max-width: 991px) {
-  [lang=ar] .skillaro-nav .navbar .navbar-collapse {
+  [lang=ar] .whatsnxt-nav .navbar .navbar-collapse {
     padding-right: 0;
     padding-left: 20px;
   }
-  [lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item > a {
+  [lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item > a {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
-  [lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item .dropdown-menu {
+  [lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu {
     border-right: 1px solid #eee;
   }
-  [lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
+  [lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
     left: auto;
     right: 20px;
   }
-  [lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item .col {
+  [lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item .col {
     margin: 0;
   }
-  [lang=ar] .skillaro-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu {
+  [lang=ar] .whatsnxt-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu {
     border-right: 1px solid #eee;
   }
-  [lang=ar] .skillaro-nav .navbar .search-box {
+  [lang=ar] .whatsnxt-nav .navbar .search-box {
     margin-right: 0;
   }
-  [lang=ar] .skillaro-nav .navbar .others-option {
+  [lang=ar] .whatsnxt-nav .navbar .others-option {
     right: auto;
     left: 70px;
   }

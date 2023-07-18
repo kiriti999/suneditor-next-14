@@ -16,7 +16,7 @@ const mailAboutPayment = async (data) => {
   const { name, email, course } = data;
   const mailData = {
     to: email,
-    from: "support@skillaro.in",
+    from: "support@whatsnxt.in",
     subject: "Payment confirmation",
     html: `<h1>Course Purchase Confirmation</h1>
     <br/>
@@ -24,7 +24,7 @@ const mailAboutPayment = async (data) => {
       <p>Thank you for purchasing the course "<strong>${course.title}</strong>". We hope you enjoy it!</p>
       <p>If you have any questions or need assistance, please don't hesitate to contact us.</p>
       <p>Best regards,</p>
-      <p>skillaro</p>
+      <p>whatsnxt</p>
     `,
   };
 

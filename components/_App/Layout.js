@@ -36,12 +36,12 @@ const Layout = ({ children, user }) => {
     return (
         <>
             <Head>
-                <title>skillaro -  React Next.js LMS Education & Online Courses Theme</title>
+                <title>whatsnxt -  React Next.js LMS Education & Online Courses Theme</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                <meta name="description" content="skillaro -  React Next.js LMS Education & Online Courses Theme" />
-                <meta name="og:title" property="og:title" content="skillaro -  React Next.js LMS Education & Online Courses Theme"></meta>
-                <meta name="twitter:card" content="skillaro -  React Next.js LMS Education & Online Courses Theme"></meta>
-                <link rel="canonical" href="https://skillaro-react.envytheme.com/"></link>
+                <meta name="description" content="whatsnxt -  React Next.js LMS Education & Online Courses Theme" />
+                <meta name="og:title" property="og:title" content="whatsnxt -  React Next.js LMS Education & Online Courses Theme"></meta>
+                <meta name="twitter:card" content="whatsnxt -  React Next.js LMS Education & Online Courses Theme"></meta>
+                <link rel="canonical" href="https://whatsnxt-react.envytheme.com/"></link>
             </Head>
 
             {loader && <Preloader />}
