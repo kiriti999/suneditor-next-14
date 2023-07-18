@@ -118,7 +118,7 @@ const Edit = (data) => {
 
             console.log('pages:: course/[id].js:: response.data: ', response.data)
             setLoading(false)
-            alert(response.data)
+            alert(response.data);
             toast.success(response.data);
         } catch (err) {
             catchErrors(err, setError)
