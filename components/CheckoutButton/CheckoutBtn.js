@@ -7,10 +7,9 @@ import saveTransaction from "../SaveToDB/SaveTransaction";
 import { calculateCartTotal } from '@/utils/cart/calculateCartTotal';
 
 const CheckoutBtn = ({ user, cartItems, onClearCart }) => {
-    console.log('CheckoutBtn.js:: user: ', user);
     const Razorpay = useRazorpay();
     const router = useRouter();
-    const [userInfo, setUserInfo] = useState({ id: "", name: "", email: "", phone: "" });
+    const [userInfo, setUserInfo] = useState({ _id: "", name: "", email: "", phone: "" });
 
     const { cartTotal } = calculateCartTotal(cartItems);
 
@@ -22,7 +21,7 @@ const CheckoutBtn = ({ user, cartItems, onClearCart }) => {
 
     const payload = {
         cartItems,
-        userId: userInfo?.id || null,
+        userId: userInfo?._id || null,
         buyer_email: userInfo.email,
         price: parseInt(cartTotal * 100)
     };
@@ -32,10 +31,12 @@ const CheckoutBtn = ({ user, cartItems, onClearCart }) => {
         console.log('CheckoutBtn.js:: handlePayment:: payload: ', payload);
 
         // create order from backend
-        const url = `${baseUrl}/api/v1/courses/checkout-razorpay`;
+        const url = `${baseUrl}/api/v1/courses/checkout`;
         const response = await axios.post(url, payload);
 
         const order = response.data;
+
+        console.log('checkoutBtn.js:: order: ', order);
 
         // prepares model for payment
         const options = {
@@ -47,36 +48,38 @@ const CheckoutBtn = ({ user, cartItems, onClearCart }) => {
             description: "Skillaro course purchase",
             image: "https://sid86-dashboard.s3-ap-south-1.amazonaws.com/project-ss/gfaUwc4SQrKduehfbsq9jJ.png",
             order_id: order.id,
-            handler: async (res) => {
+            handler: async (res, error) => {
+                console.log('checkoutBtn.js:: payment handler res:', res)
                 if (res.razorpay_payment_id && res.razorpay_order_id && res.razorpay_signature) {
-
+                    
                     onClearCart();
-
+                    
                     const toSave = {
                         name: user.name,
                         email: userInfo.email,
                         cartItems: cartItems,
-                        userId: userInfo?.id,
+                        userId: userInfo?._id,
                         amount: cartTotal,
                         paymentId: res.razorpay_payment_id,
                         orderId: res.razorpay_order_id,
                     }
-
+                    
                     console.log('CheckoutBtn.js:: handlePayment:: toSave: ', toSave);
-
+                    
                     // save into db
                     const savedOrder = await axios.post(`${baseUrl}/api/v1/payment/save-payment`, toSave);
-
+                    
                     // send email
-                     await axios.post(`${baseUrl}/api/v1/payment/purchase`, toSave);
-
+                    await axios.post(`${baseUrl}/api/v1/mail/sendMail`, toSave);
+                    
                     console.log('CheckoutBtn.js:: handlePayment:: savedOrder: ', savedOrder);
-
+                    
                     router.replace('/checkout/success')
-
+                    
                 } else {
-                    setError("Payment Failed");
-                    router.replace('/')
+                    console.log('checkoutBtn.js:: payment handler error:', error)
+                    // setError("Payment Failed");
+                    // router.replace('/')
                 }
 
                 console.log('CheckoutBtn.js:: handlePayment:: handler res: ', res);

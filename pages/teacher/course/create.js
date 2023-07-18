@@ -84,7 +84,7 @@ const Create = () => {
                 profile = profile.replace(/^http:\/\//i, 'https://');
             }
 
-            const url = `${baseUrl}/api/v1/course/new`
+            const url = `${baseUrl}/api/v1/courses/course/new`
             const {
                 title,
                 overview,
@@ -116,7 +116,7 @@ const Create = () => {
             setCourse(INIT_COURSE)
             setProfilePreview('')
             toast.success(response.data);
-            router.replace('/teacher/course/upload-course-video')
+            // router.replace('/teacher/course/upload-course-video')
         } catch (err) {
             catchErrors(err, setError)
             toast.error(error);

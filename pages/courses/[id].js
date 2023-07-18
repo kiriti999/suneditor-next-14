@@ -6,7 +6,8 @@ import baseUrl from "@/utils/baseUrl";
 import CoursesCurriculum from "@/components/Courses/CoursesCurriculum";
 
 const Details = ({ course, user }) => {
-	console.log('pages/courses/[id].js:: course, user: ', course, user);
+	console.log('pages/courses/[id].js:: course: ', course);
+	console.log('pages/courses/[id].js:: user: ', user);
 	return (
 		<>
 			<div className="courses-details-area pb-100">
@@ -331,7 +332,6 @@ Details.getInitialProps = async (ctx) => {
 	const { id } = ctx.query;
 	const url = `${baseUrl}/api/v1/courses/course/${id}`;
 	const response = await axios.get(url);
-	console.log('pages/courses/[id].js:: getInitialProps:: course/${id}:', response.data?.course);
 	return response.data;
 };
 

@@ -5,7 +5,7 @@ import PageBanner from "../../components/Common/PageBanner";
 import { calculateCartTotal } from "@/utils/cart/calculateCartTotal";
 
 const Checkout = ({ user }) => {
-	console.log('Checkout.js:: user: ', user)
+	console.log('Checkout.js:: user: ', user);
 	const cartItems = useSelector((state) => state.cart.cartItems);
 	const [cartAmount, setCartAmount] = useState(0);
 	const dispatch = useDispatch();

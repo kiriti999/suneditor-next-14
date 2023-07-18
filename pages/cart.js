@@ -67,7 +67,7 @@ const Cart = ({ user }) => {
 								</li>
 							</ul>
 
-							<Link href={user?.id ? "/checkout" : "/checkout/guest-checkout"}>
+							<Link href={user?._id ? "/checkout" : "/checkout/guest-checkout"}>
 								<a className="default-btn">
 									<i className="flaticon-shopping-cart"></i>{" "}
 									Proceed to Checkout <span></span>

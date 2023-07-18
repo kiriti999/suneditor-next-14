@@ -10,13 +10,14 @@ import { kConverter } from '../../utils/cart/currencyHelper';
 const CoursesDetailsSidebar = ({
 	_id,
 	price,
-	user,
+	userId,
 	profilePhoto,
 	lessons,
 	duration,
 	title,
 	loggedInUser,
 }) => {
+	console.log('@@@@@@@@userId ', userId);
 	const cartItems = useSelector((state) => state.cart.cartItems);
 	const [display, setDisplay] = useState(false);
 	const dispatch = useDispatch();
@@ -48,9 +49,9 @@ const CoursesDetailsSidebar = ({
 				params: { userId: loggedInUser.id, courseId: _id },
 			};
 			const url = `${baseUrl}/api/v1/course/exist`;
-			axios.get(url, payload).then((result) => {
-				setAlreadyBuy(result.data.enroll);
-			});
+			// axios.get(url, payload).then((result) => {
+			// 	setAlreadyBuy(result.data.enroll);
+			// });
 		}
 	}, [cartItems, _id]);
 
@@ -126,14 +127,14 @@ const CoursesDetailsSidebar = ({
 							&#8377;{kConverter(price)}
 						</div>
 					</li>
-					{/* <li>
+					<li>
 						<div className="d-flex justify-content-between align-items-center">
 							<span>
 								<i className="flaticon-teacher"></i> Instructor
 							</span>
-							{user.name}
+							{userId.name}
 						</div>
-					</li> */}
+					</li>
 					<li>
 						<div className="d-flex justify-content-between align-items-center">
 							<span>
