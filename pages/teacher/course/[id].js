@@ -9,12 +9,14 @@ import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
 import * as imageHelper from '@/utils/image-upload'
 
-const Edit = ({ existingData }) => {
+const Edit = (data) => {
+    console.log('pages:: course/[id].js:: existingData: ', data);
+    const {course: existingData, user} = data;
     const { token } = parseCookies()
     // console.log(existingData)
 
     const INIT_COURSE = {
-        id: existingData.id,
+        id: existingData._id,
         title: existingData.title,
         overview: existingData.overview,
         price: existingData.price,
@@ -40,7 +42,7 @@ const Edit = ({ existingData }) => {
     // }, [course])
 
     const handleChange = e => {
-        const { name, value, files } = e.target
+        const { name, value, files } = e.target;
 
         if (name === 'profilePhoto') {
             const profilePhotoSize = files[0].size / 1024 / 1024
@@ -86,7 +88,7 @@ const Edit = ({ existingData }) => {
 
             const url = `${baseUrl}/api/v1/courses/course/update`
             const {
-                id,
+                _id,
                 title,
                 overview,
                 price,
@@ -98,7 +100,7 @@ const Edit = ({ existingData }) => {
             } = course
 
             const payload = {
-                id,
+                _id,
                 title,
                 overview,
                 price,
@@ -114,8 +116,9 @@ const Edit = ({ existingData }) => {
                 headers: { Authorization: token }
             })
 
-            console.log(response.data)
+            console.log('pages:: course/[id].js:: response.data: ', response.data)
             setLoading(false)
+            alert(response.data)
             toast.success(response.data);
         } catch (err) {
             catchErrors(err, setError)
@@ -313,9 +316,9 @@ Edit.getInitialProps = async ctx => {
         headers: { Authorization: token }
     }
 
-    const url = `${baseUrl}/api/v1/courses/${id}`
+    const url = `${baseUrl}/api/v1/courses/course/${id}`
     const response = await axios.get(url, payload)
-    // console.log(response.data)
+    console.log('pages:: course/[id].js response.data', response.data);
     return response.data
 }
 
