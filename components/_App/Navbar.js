@@ -44,7 +44,7 @@ const Navbar = ({ user }) => {
 									onClick={toggleNavbar}
 									className="navbar-brand"
 								>
-									<img src="/images/logo.png" alt="logo" />
+									<img src="/images/logo.png" alt="logo" style={{ width: '200px', height: '100px' }} />
 								</a>
 							</Link>
 
@@ -84,7 +84,7 @@ const Navbar = ({ user }) => {
 											<a
 												className="nav-link"
 											>
-												Training{" "}
+												Courses{" "}
 											</a>
 										</Link>
 
