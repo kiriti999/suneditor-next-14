@@ -24,7 +24,7 @@ export default async (req, res) => {
     const { name, email, number, subject, text } = req.body;
     console.log(name, email, number, subject, text);
     const data = {
-        to: 'support@whatsnxt.in',
+        to: 'info@whatsnxt.in',
         from: email,
         subject: 'Hi there',
         text: text,

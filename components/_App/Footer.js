@@ -123,7 +123,7 @@ const Footer = () => {
                                 </li>
                                 <li>
                                     <i className='bx bx-envelope'></i>
-                                    <a href="mailto:support@whatsnxt.in">support@whatsnxt.in</a>
+                                    <a href="mailto:info@whatsnxt.in">info@whatsnxt.in</a>
                                 </li>
                             </ul>
                         </div>
