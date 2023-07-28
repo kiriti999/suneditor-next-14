@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "@/utils/ActiveLink";
 import { useSelector } from "react-redux";
-import { handleLogout } from "@/utils/auth";
+import { handleLogout } from "../../utils/auth";
 import SearchForm from "./SearchForm";
 
 const Navbar = ({ user }) => {

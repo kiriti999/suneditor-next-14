@@ -2,7 +2,7 @@ import React from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
 import { axiosApi } from "@/utils/baseUrl";
-import { redirectUser } from '@/utils/auth'
+import { redirectUser } from '../../../utils/auth'
 import { Spinner } from 'reactstrap'
 import toast from 'react-hot-toast'
 import catchErrors from '@/utils/catchErrors'

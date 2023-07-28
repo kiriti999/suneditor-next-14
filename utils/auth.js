@@ -3,7 +3,7 @@ import Router from 'next/router'
 
 export const handleLogin = (token) => {
     console.log('login called');
-    cookie.set('token', token, {sameSite: 'None'});
+    cookie.set('token', token, { sameSite:'strict' });
     Router.push('/');
 }
 
