@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { CategoryAPI } from '../../pages/api/v1/';
+import { CategoryAPI } from '../../pages/api/v1';
 
 const initialState = {
     categories: [],
@@ -17,12 +17,12 @@ const categorySlice = createSlice({
     name: 'category',
     initialState,
     reducers: {},
-    extraReducers: (builder: any) => {
+    extraReducers: (builder) => {
         builder
-            .addCase(getCategories.pending, (state: { loading: boolean; }) => {
+            .addCase(getCategories.pending, (state) => {
                 state.loading = true;
             })
-            .addCase(getCategories.fulfilled, (state: { categories: any; loading: boolean; error: string; }, action: { payload: any; }) => {
+            .addCase(getCategories.fulfilled, (state, action) => {
                 state.categories = action.payload;
                 state.loading = false;
                 state.error = '';
@@ -32,15 +32,15 @@ const categorySlice = createSlice({
                 state.categories = [];
                 state.error = action.error.message
             })
-            .addCase(getArticleCountByCategory.pending, (state: { loading: boolean; }) => {
+            .addCase(getArticleCountByCategory.pending, (state) => {
                 state.loading = true;
             })
-            .addCase(getArticleCountByCategory.fulfilled, (state: { categories: any; loading: boolean; error: string; }, action: { payload: any; }) => {
+            .addCase(getArticleCountByCategory.fulfilled, (state, action) => {
                 state.categories = action.payload;
                 state.loading = false;
                 state.error = '';
             })
-            .addCase(getArticleCountByCategory.rejected, (state: { loading: boolean; categories: never[]; error: any; }, action: { error: { message: any; }; }) => {
+            .addCase(getArticleCountByCategory.rejected, (state, action) => {
                 state.loading = false;
                 state.categories = [];
                 state.error = action.error.message
