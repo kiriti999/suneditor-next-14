@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
-import baseUrl from "@/utils/baseUrl";
+import { axiosApi } from "@/utils/baseUrl";
 import axios from "axios";
 import useRazorpay from "react-razorpay";
 import saveTransaction from "../SaveToDB/SaveTransaction";

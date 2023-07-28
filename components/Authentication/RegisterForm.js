@@ -2,7 +2,7 @@ import React from "react";
 import { Alert } from "reactstrap";
 import api from "../../axiosConfig"
 import catchErrors from "../../utils/catchErrors";
-import baseUrl from "../../utils/baseUrl";
+import { axiosApi } from "../../utils/baseUrl";
 import { handleLogin } from "../../utils/auth";
 import LoadingSpinner from "@/utils/LoadingSpinner";
 
@@ -31,7 +31,6 @@ const RegisterForm = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// console.log(user)
 		try {
 			setLoading(true);
 			setError("");

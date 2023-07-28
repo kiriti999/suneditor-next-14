@@ -706,613 +706,129 @@ Navbar Area CSS
   color: #221638;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a:hover,
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a:focus,
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a.active {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a:hover,
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a:focus,
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a.active {
   color: #fe4a55;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu {
   top: 0;
   display: none;
   left: 100%;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
   color: #221638;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a:hover,
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a:focus,
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a.active {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover,
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus,
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
   color: #fe4a55;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
   top: 0;
   display: none;
   left: -100%;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
   color: #221638;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a:hover,
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a:focus,
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a.active {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover,
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus,
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
   color: #fe4a55;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
   top: 0;
   display: none;
   left: 100%;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
   color: #221638;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a:hover,
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a:focus,
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a.active {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover,
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus,
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
   color: #fe4a55;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
   top: 0;
   display: none;
   left: -100%;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
   color: #221638;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a:hover,
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a:focus,
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a.active {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover,
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus,
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
   color: #fe4a55;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
   top: 0;
   display: none;
   left: 100%;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
   color: #221638;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a:hover,
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a:focus,
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  a.active {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover,
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus,
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
   color: #fe4a55;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li.active
-  a {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
   color: #fe4a55;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li:hover
-  .dropdown-menu {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
   display: block;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li.active
-  a {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
   color: #fe4a55;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li:hover
-  .dropdown-menu {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
   display: block;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li.active
-  a {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
   color: #fe4a55;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li:hover
-  .dropdown-menu {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
   display: block;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li.active
-  a {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
   color: #fe4a55;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li:hover
-  .dropdown-menu {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
   display: block;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li.active
-  a {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li.active a {
   color: #fe4a55;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li
-  .dropdown-menu
-  li:hover
-  .dropdown-menu {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
   display: block;
 }
 
@@ -1320,13 +836,7 @@ Navbar Area CSS
   color: #fe4a55;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item
-  .dropdown-menu
-  li:hover
-  .dropdown-menu {
+.whatsnxt-nav .navbar .navbar-nav .nav-item .dropdown-menu li:hover .dropdown-menu {
   display: block;
 }
 
@@ -1355,14 +865,7 @@ Navbar Area CSS
   transform: unset !important;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item.megamenu
-  .dropdown-menu
-  .megamenu-submenu
-  li
-  a {
+.whatsnxt-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .megamenu-submenu li a {
   margin-top: 14px;
   color: #221638;
   padding: 0;
@@ -1371,55 +874,23 @@ Navbar Area CSS
   font-weight: 700;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item.megamenu
-  .dropdown-menu
-  .megamenu-submenu
-  li
-  a:hover,
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item.megamenu
-  .dropdown-menu
-  .megamenu-submenu
-  li
-  a.active {
+.whatsnxt-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .megamenu-submenu li a:hover,
+.whatsnxt-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .megamenu-submenu li a.active {
   color: #fe4a55;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item.megamenu
-  .dropdown-menu
-  .megamenu-submenu
-  li:first-child
-  a {
+.whatsnxt-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .megamenu-submenu li:first-child a {
   margin-top: 0;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item.megamenu
-  .dropdown-menu
-  .single-category-widget {
+.whatsnxt-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .single-category-widget {
   position: relative;
   border-top: 1px solid #eeeeee;
   padding-top: 30px;
   margin-top: 30px;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item.megamenu
-  .dropdown-menu
-  .single-category-widget
-  .icon {
+.whatsnxt-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .single-category-widget .icon {
   width: 70px;
   height: 70px;
   position: relative;
@@ -1435,14 +906,7 @@ Navbar Area CSS
   border-radius: 50%;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item.megamenu
-  .dropdown-menu
-  .single-category-widget
-  .icon
-  i {
+.whatsnxt-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .single-category-widget .icon i {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1450,25 +914,13 @@ Navbar Area CSS
   right: 0;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item.megamenu
-  .dropdown-menu
-  .single-category-widget
-  h3 {
+.whatsnxt-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .single-category-widget h3 {
   margin-bottom: 0;
   font-size: 20px;
   font-weight: 800;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item.megamenu
-  .dropdown-menu
-  .single-category-widget
-  .sub-title {
+.whatsnxt-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .single-category-widget .sub-title {
   display: block;
   margin-top: 5px;
   color: #fe4a55;
@@ -1476,13 +928,7 @@ Navbar Area CSS
   font-size: 15px;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item.megamenu
-  .dropdown-menu
-  .single-category-widget
-  .link-btn {
+.whatsnxt-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .single-category-widget .link-btn {
   position: absolute;
   display: block;
   left: 0;
@@ -1492,13 +938,7 @@ Navbar Area CSS
   z-index: 2;
 }
 
-.whatsnxt-nav
-  .navbar
-  .navbar-nav
-  .nav-item.megamenu
-  .dropdown-menu
-  .single-category-widget:hover
-  .icon {
+.whatsnxt-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .single-category-widget:hover .icon {
   background-color: #fe4a55;
   border-color: #ffffff;
   color: #ffffff;
@@ -4302,11 +3742,7 @@ Courses Area CSS
   top: 0;
 }
 
-.single-courses-item
-  .courses-content
-  .courses-content-footer
-  li
-  i.flaticon-people {
+.single-courses-item .courses-content .courses-content-footer li i.flaticon-people {
   font-size: 18px;
   left: 3px;
 }
@@ -4491,16 +3927,12 @@ Courses Area CSS
 }
 
 .courses-slides .swiper-pagination .swiper-pagination-bullet:hover,
-.courses-slides
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+.courses-slides .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
   border-color: #fe4a55;
 }
 
 .courses-slides .swiper-pagination .swiper-pagination-bullet:hover::before,
-.courses-slides
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
+.courses-slides .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
   background-color: #fe4a55;
 }
 
@@ -4764,16 +4196,12 @@ Courses Details Area CSS
 }
 
 .courses-details-desc .react-tabs__tab-list .react-tabs__tab:hover,
-.courses-details-desc
-  .react-tabs__tab-list
-  .react-tabs__tab.react-tabs__tab--selected {
+.courses-details-desc .react-tabs__tab-list .react-tabs__tab.react-tabs__tab--selected {
   color: #221638;
 }
 
 .courses-details-desc .react-tabs__tab-list .react-tabs__tab:hover::before,
-.courses-details-desc
-  .react-tabs__tab-list
-  .react-tabs__tab.react-tabs__tab--selected::before {
+.courses-details-desc .react-tabs__tab-list .react-tabs__tab.react-tabs__tab--selected::before {
   transform: scaleX(1);
 }
 
@@ -4793,10 +4221,7 @@ Courses Details Area CSS
   font-weight: 800;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-overview
-  h3:not(:first-child) {
+.courses-details-desc .react-tabs__tab-panel .courses-overview h3:not(:first-child) {
   margin-top: 30px;
 }
 
@@ -4814,10 +4239,7 @@ Courses Details Area CSS
   font-weight: 800;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  h3:not(:first-child) {
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum h3:not(:first-child) {
   margin-top: 30px;
 }
 
@@ -4843,12 +4265,7 @@ Courses Details Area CSS
   margin-right: -30px;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li
-  a::before {
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li a::before {
   content: "\f104";
   position: absolute;
   left: 30px;
@@ -4858,35 +4275,16 @@ Courses Details Area CSS
   font-family: Flaticon;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li
-  a
-  .courses-name {
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li a .courses-name {
   font-size: 14.5px;
   font-weight: 700;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li
-  a
-  .courses-meta {
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li a .courses-meta {
   text-align: right;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li
-  a
-  .courses-meta
-  .questions {
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li a .courses-meta .questions {
   display: inline-block;
   background: #e3f1f2;
   color: #2dbbc4;
@@ -4898,14 +4296,7 @@ Courses Details Area CSS
   font-weight: 700;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li
-  a
-  .courses-meta
-  .duration {
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li a .courses-meta .duration {
   display: inline-block;
   background: #f7e7e8;
   color: #fe4a55;
@@ -4916,14 +4307,7 @@ Courses Details Area CSS
   font-weight: 700;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li
-  a
-  .courses-meta
-  .status {
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li a .courses-meta .status {
   display: inline-block;
   background: #221638;
   color: #ffffff;
@@ -4934,14 +4318,7 @@ Courses Details Area CSS
   font-weight: 700;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li
-  a
-  .courses-meta
-  .status.locked {
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li a .courses-meta .status.locked {
   color: #221638;
   background-color: transparent;
   padding: 0;
@@ -4957,330 +4334,69 @@ Courses Details Area CSS
   color: #fe4a55;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(2)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(4)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(6)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(8)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(10)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(12)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(14)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(16)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(18)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(20)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(22)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(24)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(26)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(28)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(30)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(32)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(34)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(36)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(38)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(40)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(42)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(44)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(46)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(48)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(50)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(52)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(54)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(56)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(58)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(60)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(62)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(64)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(66)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(68)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(70)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(72)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(74)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(76)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(78)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(80)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(82)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(84)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(86)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(88)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(90)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(92)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(94)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(96)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(98)
-  a,
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-curriculum
-  ul
-  li:nth-child(100)
-  a {
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(2) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(4) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(6) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(8) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(10) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(12) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(14) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(16) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(18) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(20) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(22) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(24) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(26) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(28) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(30) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(32) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(34) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(36) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(38) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(40) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(42) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(44) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(46) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(48) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(50) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(52) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(54) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(56) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(58) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(60) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(62) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(64) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(66) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(68) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(70) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(72) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(74) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(76) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(78) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(80) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(82) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(84) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(86) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(88) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(90) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(92) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(94) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(96) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(98) a,
+.courses-details-desc .react-tabs__tab-panel .courses-curriculum ul li:nth-child(100) a {
   background-color: #ffffff;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-instructor
-  .single-advisor-box {
+.courses-details-desc .react-tabs__tab-panel .courses-instructor .single-advisor-box {
   margin-bottom: 0;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-instructor
-  .single-advisor-box
-  .advisor-image {
+.courses-details-desc .react-tabs__tab-panel .courses-instructor .single-advisor-box .advisor-image {
   top: 0;
   margin-bottom: 0;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-instructor
-  .single-advisor-box
-  .advisor-content {
+.courses-details-desc .react-tabs__tab-panel .courses-instructor .single-advisor-box .advisor-content {
   padding: 0 0 0 20px;
 }
 
@@ -5304,11 +4420,7 @@ Courses Details Area CSS
   margin-right: 2px;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-reviews
-  .rating
-  span.checked {
+.courses-details-desc .react-tabs__tab-panel .courses-reviews .rating span.checked {
   color: orange;
 }
 
@@ -5317,11 +4429,7 @@ Courses Details Area CSS
   margin-bottom: 20px;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-reviews
-  .rating-count
-  span {
+.courses-details-desc .react-tabs__tab-panel .courses-reviews .rating-count span {
   display: block;
   font-size: 16px;
   color: #606060;
@@ -5410,20 +4518,13 @@ Courses Details Area CSS
   font-weight: 800;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-review-comments
-  .user-review {
+.courses-details-desc .react-tabs__tab-panel .courses-review-comments .user-review {
   border-bottom: 1px solid #f3f3f3;
   padding: 20px 0 20px 110px;
   position: relative;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-review-comments
-  .user-review
-  img {
+.courses-details-desc .react-tabs__tab-panel .courses-review-comments .user-review img {
   position: absolute;
   left: 0;
   top: 20px;
@@ -5432,62 +4533,32 @@ Courses Details Area CSS
   border-radius: 5px;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-review-comments
-  .user-review
-  .sub-comment {
+.courses-details-desc .react-tabs__tab-panel .courses-review-comments .user-review .sub-comment {
   margin-bottom: 8px;
   font-weight: 700;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-review-comments
-  .user-review
-  .review-rating {
+.courses-details-desc .react-tabs__tab-panel .courses-review-comments .user-review .review-rating {
   display: block;
   margin-bottom: 8px;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-review-comments
-  .user-review
-  .review-rating
-  .review-stars {
+.courses-details-desc .react-tabs__tab-panel .courses-review-comments .user-review .review-rating .review-stars {
   display: inline-block;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-review-comments
-  .user-review
-  .review-rating
-  .review-stars
-  i {
+.courses-details-desc .react-tabs__tab-panel .courses-review-comments .user-review .review-rating .review-stars i {
   color: #cecfd2;
   font-size: 18px;
   display: inline-block;
   margin-right: 2px;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-review-comments
-  .user-review
-  .review-rating
-  .review-stars
-  i.checked {
+.courses-details-desc .react-tabs__tab-panel .courses-review-comments .user-review .review-rating .review-stars i.checked {
   color: orange;
 }
 
-.courses-details-desc
-  .react-tabs__tab-panel
-  .courses-review-comments
-  .user-review
-  .review-rating
-  span {
+.courses-details-desc .react-tabs__tab-panel .courses-review-comments .user-review .review-rating span {
   color: #221638;
   position: relative;
   top: -2px;
@@ -5950,13 +5021,7 @@ Courses Details Area CSS
   text-align: right;
 }
 
-.courses-details-desc-style-two
-  .courses-curriculum
-  ul
-  li
-  a
-  .courses-meta
-  .questions {
+.courses-details-desc-style-two .courses-curriculum ul li a .courses-meta .questions {
   display: inline-block;
   background: #e3f1f2;
   color: #2dbbc4;
@@ -5968,13 +5033,7 @@ Courses Details Area CSS
   font-weight: 700;
 }
 
-.courses-details-desc-style-two
-  .courses-curriculum
-  ul
-  li
-  a
-  .courses-meta
-  .duration {
+.courses-details-desc-style-two .courses-curriculum ul li a .courses-meta .duration {
   display: inline-block;
   background: #f7e7e8;
   color: #fe4a55;
@@ -5985,13 +5044,7 @@ Courses Details Area CSS
   font-weight: 700;
 }
 
-.courses-details-desc-style-two
-  .courses-curriculum
-  ul
-  li
-  a
-  .courses-meta
-  .status {
+.courses-details-desc-style-two .courses-curriculum ul li a .courses-meta .status {
   display: inline-block;
   background: #221638;
   color: #ffffff;
@@ -6002,13 +5055,7 @@ Courses Details Area CSS
   font-weight: 700;
 }
 
-.courses-details-desc-style-two
-  .courses-curriculum
-  ul
-  li
-  a
-  .courses-meta
-  .status.locked {
+.courses-details-desc-style-two .courses-curriculum ul li a .courses-meta .status.locked {
   color: #221638;
   background-color: transparent;
   padding: 0;
@@ -6195,54 +5242,31 @@ Courses Details Area CSS
   padding: 0 25px 25px;
 }
 
-.courses-details-desc-style-two
-  .courses-author
-  .author-profile
-  .author-profile-title {
+.courses-details-desc-style-two .courses-author .author-profile .author-profile-title {
   position: relative;
   z-index: 1;
   margin-bottom: 15px;
   margin-top: -45px;
 }
 
-.courses-details-desc-style-two
-  .courses-author
-  .author-profile
-  .author-profile-title
-  img {
+.courses-details-desc-style-two .courses-author .author-profile .author-profile-title img {
   display: inline-block;
   border: 3px solid #ffffff;
   width: 100px;
   height: 100px;
 }
 
-.courses-details-desc-style-two
-  .courses-author
-  .author-profile
-  .author-profile-title
-  .author-profile-title-details {
+.courses-details-desc-style-two .courses-author .author-profile .author-profile-title .author-profile-title-details {
   margin-top: 15px;
 }
 
-.courses-details-desc-style-two
-  .courses-author
-  .author-profile
-  .author-profile-title
-  .author-profile-title-details
-  .author-profile-details
-  h4 {
+.courses-details-desc-style-two .courses-author .author-profile .author-profile-title .author-profile-title-details .author-profile-details h4 {
   margin-bottom: 5px;
   font-size: 22px;
   font-weight: 800;
 }
 
-.courses-details-desc-style-two
-  .courses-author
-  .author-profile
-  .author-profile-title
-  .author-profile-title-details
-  .author-profile-details
-  span {
+.courses-details-desc-style-two .courses-author .author-profile .author-profile-title .author-profile-title-details .author-profile-details span {
   color: #606060;
 }
 
@@ -6544,11 +5568,7 @@ Courses Details Area CSS
   margin-right: 3px;
 }
 
-.courses-sidebar-information
-  .courses-share
-  .share-info
-  .social-link
-  li:last-child {
+.courses-sidebar-information .courses-share .share-info .social-link li:last-child {
   margin-right: 0;
 }
 
@@ -6571,12 +5591,7 @@ Courses Details Area CSS
   transform: translateY(-48%);
 }
 
-.courses-sidebar-information
-  .courses-share
-  .share-info
-  .social-link
-  li
-  a:hover {
+.courses-sidebar-information .courses-share .share-info .social-link li a:hover {
   background-color: #fe4a55;
   color: #ffffff;
 }
@@ -6882,16 +5897,12 @@ Advisor Area CSS
 }
 
 .advisor-slides .swiper-pagination .swiper-pagination-bullet:hover,
-.advisor-slides
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+.advisor-slides .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
   border-color: #fe4a55;
 }
 
 .advisor-slides .swiper-pagination .swiper-pagination-bullet:hover::before,
-.advisor-slides
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
+.advisor-slides .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
   background-color: #fe4a55;
 }
 
@@ -7033,16 +6044,12 @@ Advisor Area CSS
 }
 
 .advisor-slides-two .swiper-pagination .swiper-pagination-bullet:hover,
-.advisor-slides-two
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+.advisor-slides-two .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
   border-color: #fe4a55;
 }
 
 .advisor-slides-two .swiper-pagination .swiper-pagination-bullet:hover::before,
-.advisor-slides-two
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
+.advisor-slides-two .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
   background-color: #fe4a55;
 }
 
@@ -7492,16 +6499,12 @@ Feedback Area CSS
 }
 
 .feedback-slides .swiper-pagination .swiper-pagination-bullet:hover,
-.feedback-slides
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+.feedback-slides .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
   border-color: #fe4a55;
 }
 
 .feedback-slides .swiper-pagination .swiper-pagination-bullet:hover::before,
-.feedback-slides
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
+.feedback-slides .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
   background-color: #fe4a55;
 }
 
@@ -7542,16 +6545,12 @@ Feedback Area CSS
 }
 
 .testimonials-slides .swiper-pagination .swiper-pagination-bullet:hover,
-.testimonials-slides
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+.testimonials-slides .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
   border-color: #fe4a55;
 }
 
 .testimonials-slides .swiper-pagination .swiper-pagination-bullet:hover::before,
-.testimonials-slides
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
+.testimonials-slides .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
   background-color: #fe4a55;
 }
 
@@ -7745,16 +6744,12 @@ Feedback Area CSS
 }
 
 .feedback-slides-two .swiper-pagination .swiper-pagination-bullet:hover,
-.feedback-slides-two
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+.feedback-slides-two .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
   border-color: #fe4a55;
 }
 
 .feedback-slides-two .swiper-pagination .swiper-pagination-bullet:hover::before,
-.feedback-slides-two
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
+.feedback-slides-two .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
   background-color: #fe4a55;
 }
 
@@ -7952,9 +6947,7 @@ Feedback Area CSS
   left: 50px;
 }
 
-.feedback-slides-style-two.feedback-slides
-  .swiper-pagination
-  .swiper-pagination-bullet {
+.feedback-slides-style-two.feedback-slides .swiper-pagination .swiper-pagination-bullet {
   margin: 0 3px;
   width: 15px;
   height: 15px;
@@ -7966,9 +6959,7 @@ Feedback Area CSS
   opacity: 1;
 }
 
-.feedback-slides-style-two.feedback-slides
-  .swiper-pagination
-  .swiper-pagination-bullet::before {
+.feedback-slides-style-two.feedback-slides .swiper-pagination .swiper-pagination-bullet::before {
   content: "";
   position: absolute;
   left: 0;
@@ -7981,21 +6972,13 @@ Feedback Area CSS
   transition: 0.5s;
 }
 
-.feedback-slides-style-two.feedback-slides
-  .swiper-pagination
-  .swiper-pagination-bullet:hover,
-.feedback-slides-style-two.feedback-slides
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+.feedback-slides-style-two.feedback-slides .swiper-pagination .swiper-pagination-bullet:hover,
+.feedback-slides-style-two.feedback-slides .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
   border-color: #fff;
 }
 
-.feedback-slides-style-two.feedback-slides
-  .swiper-pagination
-  .swiper-pagination-bullet:hover::before,
-.feedback-slides-style-two.feedback-slides
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
+.feedback-slides-style-two.feedback-slides .swiper-pagination .swiper-pagination-bullet:hover::before,
+.feedback-slides-style-two.feedback-slides .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active::before {
   background-color: #fff;
 }
 
@@ -8445,42 +7428,17 @@ Profile Area CSS
   margin-right: 10px;
 }
 
-.profile-courses-quizzes
-  .tab-content
-  .tab-content
-  .nav
-  .nav-item
-  .nav-link::before {
+.profile-courses-quizzes .tab-content .tab-content .nav .nav-item .nav-link::before {
   display: block;
 }
 
-.profile-courses-quizzes
-  .tab-content
-  .tab-content
-  .nav
-  .nav-item
-  .nav-link:hover,
-.profile-courses-quizzes
-  .tab-content
-  .tab-content
-  .nav
-  .nav-item
-  .nav-link.active {
+.profile-courses-quizzes .tab-content .tab-content .nav .nav-item .nav-link:hover,
+.profile-courses-quizzes .tab-content .tab-content .nav .nav-item .nav-link.active {
   color: #221638;
 }
 
-.profile-courses-quizzes
-  .tab-content
-  .tab-content
-  .nav
-  .nav-item
-  .nav-link:hover::before,
-.profile-courses-quizzes
-  .tab-content
-  .tab-content
-  .nav
-  .nav-item
-  .nav-link.active::before {
+.profile-courses-quizzes .tab-content .tab-content .nav .nav-item .nav-link:hover::before,
+.profile-courses-quizzes .tab-content .tab-content .nav .nav-item .nav-link.active::before {
   transform: scaleX(1);
 }
 
@@ -9718,6 +8676,7 @@ Health Services Area CSS
 }
 
 @keyframes border-transform {
+
   0%,
   100% {
     border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
@@ -9771,7 +8730,7 @@ Blog Area CSS
 
 .single-blog-post .post-image a img {
   border-radius: 5px 5px 0 0;
-  transition: 0.5s;
+  /* transition: 0.5s; */
   width: 100%;
 }
 
@@ -9844,7 +8803,7 @@ Blog Area CSS
 }
 
 .single-blog-post:hover .post-image a img {
-  transform: rotate(5deg) scale(1.3);
+  /* transform: rotate(5deg) scale(1.3); */
 }
 
 .single-blog-post-item {
@@ -10055,7 +9014,7 @@ Blog Area CSS
 }
 
 .single-blog-post-box:hover .post-image a img {
-  transform: rotate(5deg) scale(1.3);
+  /* transform: rotate(5deg) scale(1.3); */
 }
 
 .blog-items {
@@ -10470,33 +9429,17 @@ Blog Details Area CSS
   height: 100px;
 }
 
-.blog-details-desc
-  .article-author
-  .author-profile
-  .author-profile-title
-  .author-profile-title-details {
+.blog-details-desc .article-author .author-profile .author-profile-title .author-profile-title-details {
   margin-top: 15px;
 }
 
-.blog-details-desc
-  .article-author
-  .author-profile
-  .author-profile-title
-  .author-profile-title-details
-  .author-profile-details
-  h4 {
+.blog-details-desc .article-author .author-profile .author-profile-title .author-profile-title-details .author-profile-details h4 {
   margin-bottom: 5px;
   font-size: 22px;
   font-weight: 800;
 }
 
-.blog-details-desc
-  .article-author
-  .author-profile
-  .author-profile-title
-  .author-profile-title-details
-  .author-profile-details
-  span {
+.blog-details-desc .article-author .author-profile .author-profile-title .author-profile-title-details .author-profile-details span {
   color: #606060;
 }
 
@@ -10860,10 +9803,7 @@ blockquote::after,
   font-weight: 800;
 }
 
-.comments-area
-  .comment-respond
-  .comment-reply-title
-  #cancel-comment-reply-link {
+.comments-area .comment-respond .comment-reply-title #cancel-comment-reply-link {
   display: inline-block;
 }
 
@@ -10952,9 +9892,7 @@ blockquote::after,
 
 .comments-area .comment-respond input[type="date"]:focus::-moz-placeholder,
 .comments-area .comment-respond input[type="time"]:focus::-moz-placeholder,
-.comments-area
-  .comment-respond
-  input[type="datetime-local"]:focus::-moz-placeholder,
+.comments-area .comment-respond input[type="datetime-local"]:focus::-moz-placeholder,
 .comments-area .comment-respond input[type="week"]:focus::-moz-placeholder,
 .comments-area .comment-respond input[type="month"]:focus::-moz-placeholder,
 .comments-area .comment-respond input[type="text"]:focus::-moz-placeholder,
@@ -11449,11 +10387,7 @@ Newsletter Modal CSS
   margin-bottom: 22px;
 }
 
-.newsletter-modal
-  .newsletter-modal-content
-  .modal-inner-content
-  form
-  .input-newsletter {
+.newsletter-modal .newsletter-modal-content .modal-inner-content form .input-newsletter {
   display: block;
   width: 100%;
   height: 50px;
@@ -11466,38 +10400,22 @@ Newsletter Modal CSS
   font-weight: 600;
 }
 
-.newsletter-modal
-  .newsletter-modal-content
-  .modal-inner-content
-  form
-  .input-newsletter::-moz-placeholder {
+.newsletter-modal .newsletter-modal-content .modal-inner-content form .input-newsletter::-moz-placeholder {
   color: #606060;
   -moz-transition: 0.5s;
   transition: 0.5s;
 }
 
-.newsletter-modal
-  .newsletter-modal-content
-  .modal-inner-content
-  form
-  .input-newsletter::placeholder {
+.newsletter-modal .newsletter-modal-content .modal-inner-content form .input-newsletter::placeholder {
   color: #606060;
   transition: 0.5s;
 }
 
-.newsletter-modal
-  .newsletter-modal-content
-  .modal-inner-content
-  form
-  .input-newsletter:focus::-moz-placeholder {
+.newsletter-modal .newsletter-modal-content .modal-inner-content form .input-newsletter:focus::-moz-placeholder {
   color: transparent;
 }
 
-.newsletter-modal
-  .newsletter-modal-content
-  .modal-inner-content
-  form
-  .input-newsletter:focus::placeholder {
+.newsletter-modal .newsletter-modal-content .modal-inner-content form .input-newsletter:focus::placeholder {
   color: transparent;
 }
 
@@ -11521,11 +10439,7 @@ Newsletter Modal CSS
   padding-bottom: 12px;
 }
 
-.newsletter-modal
-  .newsletter-modal-content
-  .modal-inner-content
-  form
-  button:hover {
+.newsletter-modal .newsletter-modal-content .modal-inner-content form button:hover {
   color: #ffffff;
   background-color: #221638;
 }
@@ -12238,22 +11152,12 @@ Download Syllabus Area CSS
   color: #ffffff;
 }
 
-.download-syllabus-form
-  form
-  .form-group
-  .nice-select
-  .list
-  .option:hover::before {
+.download-syllabus-form form .form-group .nice-select .list .option:hover::before {
   color: #ffffff;
 }
 
 .download-syllabus-form form .form-group .nice-select .list .option.focus,
-.download-syllabus-form
-  form
-  .form-group
-  .nice-select
-  .list
-  .option.selected.focus {
+.download-syllabus-form form .form-group .nice-select .list .option.selected.focus {
   background-color: transparent !important;
   color: #221638;
 }
@@ -12271,32 +11175,17 @@ Download Syllabus Area CSS
   font-size: 11px;
 }
 
-.download-syllabus-form
-  form
-  .form-group
-  .nice-select
-  .list
-  .option.selected::before {
+.download-syllabus-form form .form-group .nice-select .list .option.selected::before {
   opacity: 1;
   visibility: visible;
 }
 
-.download-syllabus-form
-  form
-  .form-group
-  .nice-select
-  .list
-  .option.selected:hover {
+.download-syllabus-form form .form-group .nice-select .list .option.selected:hover {
   background-color: #fe4a55 !important;
   color: #ffffff;
 }
 
-.download-syllabus-form
-  form
-  .form-group
-  .nice-select
-  .list
-  .option.selected:hover::before {
+.download-syllabus-form form .form-group .nice-select .list .option.selected:hover::before {
   color: #ffffff;
 }
 
@@ -12443,16 +11332,12 @@ Apply Instructor Area CSS
 }
 
 .apply-instructor-content .react-tabs__tab-list .react-tabs__tab:hover,
-.apply-instructor-content
-  .react-tabs__tab-list
-  .react-tabs__tab.react-tabs__tab--selected {
+.apply-instructor-content .react-tabs__tab-list .react-tabs__tab.react-tabs__tab--selected {
   color: #221638;
 }
 
 .apply-instructor-content .react-tabs__tab-list .react-tabs__tab:hover::before,
-.apply-instructor-content
-  .react-tabs__tab-list
-  .react-tabs__tab.react-tabs__tab--selected::before {
+.apply-instructor-content .react-tabs__tab-list .react-tabs__tab.react-tabs__tab--selected::before {
   width: 40%;
 }
 
@@ -12726,10 +11611,7 @@ Subscribe Area CSS
   background-color: #ffffff;
 }
 
-.subscribe-area.bg-eee8df
-  .subscribe-content
-  .newsletter-form
-  .input-newsletter {
+.subscribe-area.bg-eee8df .subscribe-content .newsletter-form .input-newsletter {
   background-color: #ffffff;
 }
 
@@ -12953,13 +11835,7 @@ Products Area CSS
   font-weight: 800;
 }
 
-.single-products-box
-  .products-image
-  .products-button
-  ul
-  li
-  a
-  .tooltip-label::before {
+.single-products-box .products-image .products-button ul li a .tooltip-label::before {
   content: "";
   background-color: #fe4a55;
   top: 50%;
@@ -12976,13 +11852,7 @@ Products Area CSS
   color: #ffffff;
 }
 
-.single-products-box
-  .products-image
-  .products-button
-  ul
-  li
-  a:hover
-  .tooltip-label {
+.single-products-box .products-image .products-button ul li a:hover .tooltip-label {
   visibility: visible;
   opacity: 1;
   right: 135%;
@@ -13279,10 +12149,7 @@ Products Details Area CSS
   font-weight: 600;
 }
 
-.products-details-desc
-  .products-add-to-cart
-  .input-counter
-  input::-moz-placeholder {
+.products-details-desc .products-add-to-cart .input-counter input::-moz-placeholder {
   color: #221638;
 }
 
@@ -13425,16 +12292,12 @@ Products Details Area CSS
 }
 
 .products-details-tabs .react-tabs__tab-list .react-tabs__tab:hover,
-.products-details-tabs
-  .react-tabs__tab-list
-  .react-tabs__tab.react-tabs__tab--selected {
+.products-details-tabs .react-tabs__tab-list .react-tabs__tab.react-tabs__tab--selected {
   color: #221638;
 }
 
 .products-details-tabs .react-tabs__tab-list .react-tabs__tab:hover::before,
-.products-details-tabs
-  .react-tabs__tab-list
-  .react-tabs__tab.react-tabs__tab--selected::before {
+.products-details-tabs .react-tabs__tab-list .react-tabs__tab.react-tabs__tab--selected::before {
   width: 100%;
 }
 
@@ -13495,11 +12358,7 @@ Products Details Area CSS
   margin-right: 2px;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .products-reviews
-  .rating
-  span.checked {
+.products-details-tabs .react-tabs__tab-panel .products-reviews .rating span.checked {
   color: orange;
 }
 
@@ -13508,11 +12367,7 @@ Products Details Area CSS
   margin-bottom: 20px;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .products-reviews
-  .rating-count
-  span {
+.products-details-tabs .react-tabs__tab-panel .products-reviews .rating-count span {
   display: block;
   font-size: 16px;
   color: #606060;
@@ -13602,20 +12457,13 @@ Products Details Area CSS
   font-weight: 800;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .products-review-comments
-  .user-review {
+.products-details-tabs .react-tabs__tab-panel .products-review-comments .user-review {
   border-bottom: 1px solid #f3f3f3;
   padding: 20px 0 20px 110px;
   position: relative;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .products-review-comments
-  .user-review
-  img {
+.products-details-tabs .react-tabs__tab-panel .products-review-comments .user-review img {
   position: absolute;
   left: 0;
   top: 20px;
@@ -13624,62 +12472,32 @@ Products Details Area CSS
   border-radius: 5px;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .products-review-comments
-  .user-review
-  .sub-comment {
+.products-details-tabs .react-tabs__tab-panel .products-review-comments .user-review .sub-comment {
   margin-bottom: 8px;
   font-weight: 700;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .products-review-comments
-  .user-review
-  .review-rating {
+.products-details-tabs .react-tabs__tab-panel .products-review-comments .user-review .review-rating {
   display: block;
   margin-bottom: 8px;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .products-review-comments
-  .user-review
-  .review-rating
-  .review-stars {
+.products-details-tabs .react-tabs__tab-panel .products-review-comments .user-review .review-rating .review-stars {
   display: inline-block;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .products-review-comments
-  .user-review
-  .review-rating
-  .review-stars
-  i {
+.products-details-tabs .react-tabs__tab-panel .products-review-comments .user-review .review-rating .review-stars i {
   color: #cecfd2;
   font-size: 18px;
   display: inline-block;
   margin-right: 2px;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .products-review-comments
-  .user-review
-  .review-rating
-  .review-stars
-  i.checked {
+.products-details-tabs .react-tabs__tab-panel .products-review-comments .user-review .review-rating .review-stars i.checked {
   color: orange;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .products-review-comments
-  .user-review
-  .review-rating
-  span {
+.products-details-tabs .react-tabs__tab-panel .products-review-comments .user-review .review-rating span {
   color: #221638;
   position: relative;
   top: -2px;
@@ -13697,11 +12515,7 @@ Products Details Area CSS
   font-weight: 800;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  .comment-notes
-  span {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper .comment-notes span {
   color: red;
 }
 
@@ -13710,20 +12524,12 @@ Products Details Area CSS
   text-align: center;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .form-group {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .form-group {
   margin-bottom: 25px;
   text-align: left;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .rating {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .rating {
   text-align: left;
   overflow: hidden;
   max-width: 115px;
@@ -13731,12 +12537,7 @@ Products Details Area CSS
   margin-bottom: 20px;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .rating
-  label {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .rating label {
   float: right;
   position: relative;
   width: 23px;
@@ -13744,21 +12545,11 @@ Products Details Area CSS
   cursor: pointer;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .rating
-  label:not(:first-of-type) {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .rating label:not(:first-of-type) {
   padding-right: 5px;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .rating
-  label:before {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .rating label:before {
   content: "★";
   transition: 0.5s;
   font-size: 27px;
@@ -13766,76 +12557,28 @@ Products Details Area CSS
   line-height: 1;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .rating
-  input {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .rating input {
   display: none;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .rating
-  input:checked
-  ~ label:before,
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .rating:not(:checked)
-  > label:hover:before,
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .rating:not(:checked)
-  > label:hover
-  ~ label:before {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .rating input:checked~label:before,
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .rating:not(:checked)>label:hover:before,
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .rating:not(:checked)>label:hover~label:before {
   color: #f6b500;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .comment-form-cookies-consent {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .comment-form-cookies-consent {
   text-align: left;
   margin-bottom: 0;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .comment-form-cookies-consent
-  [type="checkbox"]:checked,
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .comment-form-cookies-consent
-  [type="checkbox"]:not(:checked) {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .comment-form-cookies-consent [type="checkbox"]:checked,
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .comment-form-cookies-consent [type="checkbox"]:not(:checked) {
   display: none;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .comment-form-cookies-consent
-  [type="checkbox"]:checked
-  + label,
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .comment-form-cookies-consent
-  [type="checkbox"]:not(:checked)
-  + label {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .comment-form-cookies-consent [type="checkbox"]:checked+label,
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .comment-form-cookies-consent [type="checkbox"]:not(:checked)+label {
   position: relative;
   padding-left: 28px;
   cursor: pointer;
@@ -13846,20 +12589,8 @@ Products Details Area CSS
   font-weight: 600;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .comment-form-cookies-consent
-  [type="checkbox"]:checked
-  + label:before,
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .comment-form-cookies-consent
-  [type="checkbox"]:not(:checked)
-  + label:before {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .comment-form-cookies-consent [type="checkbox"]:checked+label:before,
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .comment-form-cookies-consent [type="checkbox"]:not(:checked)+label:before {
   content: "";
   position: absolute;
   left: 0;
@@ -13872,20 +12603,8 @@ Products Details Area CSS
   background: #f5f5f5;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .comment-form-cookies-consent
-  [type="checkbox"]:checked
-  + label:after,
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .comment-form-cookies-consent
-  [type="checkbox"]:not(:checked)
-  + label:after {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .comment-form-cookies-consent [type="checkbox"]:checked+label:after,
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .comment-form-cookies-consent [type="checkbox"]:not(:checked)+label:after {
   content: "";
   width: 8px;
   height: 8px;
@@ -13896,45 +12615,21 @@ Products Details Area CSS
   transition: all 0.2s ease;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .comment-form-cookies-consent
-  [type="checkbox"]:not(:checked)
-  + label:after {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .comment-form-cookies-consent [type="checkbox"]:not(:checked)+label:after {
   opacity: 0;
   transform: scale(0);
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .comment-form-cookies-consent
-  [type="checkbox"]:checked
-  + label:after {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .comment-form-cookies-consent [type="checkbox"]:checked+label:after {
   opacity: 1;
   transform: scale(1);
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .comment-form-cookies-consent
-  [type="checkbox"]:hover
-  + label:before {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .comment-form-cookies-consent [type="checkbox"]:hover+label:before {
   border-color: #fe4a55;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  .comment-form-cookies-consent
-  [type="checkbox"]:checked
-  + label:before {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form .comment-form-cookies-consent [type="checkbox"]:checked+label:before {
   border-color: #fe4a55;
 }
 
@@ -13953,11 +12648,7 @@ Products Details Area CSS
   font-size: 16px;
 }
 
-.products-details-tabs
-  .react-tabs__tab-panel
-  .review-form-wrapper
-  form
-  button:hover {
+.products-details-tabs .react-tabs__tab-panel .review-form-wrapper form button:hover {
   background-color: #221638;
   color: #ffffff;
 }
@@ -14060,23 +12751,11 @@ Cart Area CSS
   font-weight: 600;
 }
 
-.cart-table
-  table
-  tbody
-  tr
-  td.product-quantity
-  .input-counter
-  input::-moz-placeholder {
+.cart-table table tbody tr td.product-quantity .input-counter input::-moz-placeholder {
   color: #221638;
 }
 
-.cart-table
-  table
-  tbody
-  tr
-  td.product-quantity
-  .input-counter
-  input::placeholder {
+.cart-table table tbody tr td.product-quantity .input-counter input::placeholder {
   color: #221638;
 }
 
@@ -14424,13 +13103,8 @@ Checkout Area CSS
   display: none;
 }
 
-.order-details .payment-box .payment-method p [type="radio"]:checked + label,
-.order-details
-  .payment-box
-  .payment-method
-  p
-  [type="radio"]:not(:checked)
-  + label {
+.order-details .payment-box .payment-method p [type="radio"]:checked+label,
+.order-details .payment-box .payment-method p [type="radio"]:not(:checked)+label {
   padding-left: 27px;
   cursor: pointer;
   display: block;
@@ -14440,18 +13114,8 @@ Checkout Area CSS
   font-weight: 800;
 }
 
-.order-details
-  .payment-box
-  .payment-method
-  p
-  [type="radio"]:checked
-  + label::before,
-.order-details
-  .payment-box
-  .payment-method
-  p
-  [type="radio"]:not(:checked)
-  + label::before {
+.order-details .payment-box .payment-method p [type="radio"]:checked+label::before,
+.order-details .payment-box .payment-method p [type="radio"]:not(:checked)+label::before {
   content: "";
   position: absolute;
   left: 0;
@@ -14463,18 +13127,8 @@ Checkout Area CSS
   background: #ffffff;
 }
 
-.order-details
-  .payment-box
-  .payment-method
-  p
-  [type="radio"]:checked
-  + label::after,
-.order-details
-  .payment-box
-  .payment-method
-  p
-  [type="radio"]:not(:checked)
-  + label::after {
+.order-details .payment-box .payment-method p [type="radio"]:checked+label::after,
+.order-details .payment-box .payment-method p [type="radio"]:not(:checked)+label::after {
   content: "";
   width: 12px;
   height: 12px;
@@ -14486,23 +13140,13 @@ Checkout Area CSS
   transition: 0.5s;
 }
 
-.order-details
-  .payment-box
-  .payment-method
-  p
-  [type="radio"]:not(:checked)
-  + label::after {
+.order-details .payment-box .payment-method p [type="radio"]:not(:checked)+label::after {
   opacity: 0;
   visibility: hidden;
   transform: scale(0);
 }
 
-.order-details
-  .payment-box
-  .payment-method
-  p
-  [type="radio"]:checked
-  + label::after {
+.order-details .payment-box .payment-method p [type="radio"]:checked+label::after {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
@@ -14972,7 +13616,7 @@ Widget Sidebar CSS
   background-color: #fe4a55;
 }
 
-.widget-area .filter_by_price .irs--flat .irs-handle > i:first-child {
+.widget-area .filter_by_price .irs--flat .irs-handle>i:first-child {
   background-color: #fe4a55;
 }
 
@@ -15481,9 +14125,7 @@ FAQ Area CSS
   color: #ffffff;
 }
 
-.faq-accordion-tab
-  .react-tabs__tab-list
-  .react-tabs__tab.react-tabs__tab--selected {
+.faq-accordion-tab .react-tabs__tab-list .react-tabs__tab.react-tabs__tab--selected {
   background-color: #fe4a55;
   color: #ffffff;
 }
@@ -15685,10 +14327,7 @@ Coming Soon Area CSS
   transition: 0.5s;
 }
 
-.coming-soon-content
-  form
-  .form-group
-  .input-newsletter:focus::-moz-placeholder {
+.coming-soon-content form .form-group .input-newsletter:focus::-moz-placeholder {
   color: transparent;
 }
 
@@ -15751,8 +14390,8 @@ Profile Authentication Area CSS
   display: none;
 }
 
-.login-form form .remember-me-wrap [type="checkbox"]:checked + label,
-.login-form form .remember-me-wrap [type="checkbox"]:not(:checked) + label {
+.login-form form .remember-me-wrap [type="checkbox"]:checked+label,
+.login-form form .remember-me-wrap [type="checkbox"]:not(:checked)+label {
   position: relative;
   padding-left: 28px;
   cursor: pointer;
@@ -15763,12 +14402,8 @@ Profile Authentication Area CSS
   font-weight: 600;
 }
 
-.login-form form .remember-me-wrap [type="checkbox"]:checked + label:before,
-.login-form
-  form
-  .remember-me-wrap
-  [type="checkbox"]:not(:checked)
-  + label:before {
+.login-form form .remember-me-wrap [type="checkbox"]:checked+label:before,
+.login-form form .remember-me-wrap [type="checkbox"]:not(:checked)+label:before {
   content: "";
   position: absolute;
   left: 0;
@@ -15781,12 +14416,8 @@ Profile Authentication Area CSS
   background: #f5f5f5;
 }
 
-.login-form form .remember-me-wrap [type="checkbox"]:checked + label:after,
-.login-form
-  form
-  .remember-me-wrap
-  [type="checkbox"]:not(:checked)
-  + label:after {
+.login-form form .remember-me-wrap [type="checkbox"]:checked+label:after,
+.login-form form .remember-me-wrap [type="checkbox"]:not(:checked)+label:after {
   content: "";
   width: 8px;
   height: 8px;
@@ -15797,25 +14428,21 @@ Profile Authentication Area CSS
   transition: all 0.2s ease;
 }
 
-.login-form
-  form
-  .remember-me-wrap
-  [type="checkbox"]:not(:checked)
-  + label:after {
+.login-form form .remember-me-wrap [type="checkbox"]:not(:checked)+label:after {
   opacity: 0;
   transform: scale(0);
 }
 
-.login-form form .remember-me-wrap [type="checkbox"]:checked + label:after {
+.login-form form .remember-me-wrap [type="checkbox"]:checked+label:after {
   opacity: 1;
   transform: scale(1);
 }
 
-.login-form form .remember-me-wrap [type="checkbox"]:hover + label:before {
+.login-form form .remember-me-wrap [type="checkbox"]:hover+label:before {
   border-color: #fe4a55;
 }
 
-.login-form form .remember-me-wrap [type="checkbox"]:checked + label:before {
+.login-form form .remember-me-wrap [type="checkbox"]:checked+label:before {
   border-color: #fe4a55;
 }
 
@@ -16340,12 +14967,10 @@ Footer Area CSS
   width: 100%;
   top: -50%;
   left: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0%,
-    #ffffff 75%,
-    #ffffff 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      #ffffff 75%,
+      #ffffff 100%);
   animation: run 7s 0s infinite;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
@@ -17127,4 +15752,17 @@ Funfacts Area CSS
 marquee {
   font-size: x-large;
   font-weight: bold;
+}
+
+.blog-area {
+  position: relative;
+  z-index: 1;
+}
+
+.pb-100 {
+  padding-bottom: 100px;
+}
+
+.pt-25 {
+  padding-top: 25px;
 }

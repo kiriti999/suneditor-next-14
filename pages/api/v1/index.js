@@ -1,7 +1,7 @@
 export { BlogAPI } from "./blogApi";
-// export { CategoryAPI } from './categoryApi';
+export { CategoryAPI } from './categoryApi';
 // export { FormAPI } from './formApi';
 // export { HistoryAPI } from './historyApi';
-// export { SidebarAPI } from './sidebarApi';
+export { SidebarAPI } from './sidebarApi';
 // export { ElasticSearchAPI } from './searchApi';
 export { CloudinaryAPI } from './cloudinaryApi';

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 const ModalVideo = dynamic(import("react-modal-video"));
 import axios from "axios";
-import baseUrl from "@/utils/baseUrl";
+import { axiosApi } from "@/utils/baseUrl";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { kConverter } from '../../utils/cart/currencyHelper';

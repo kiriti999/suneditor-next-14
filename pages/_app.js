@@ -1,10 +1,9 @@
 import axios from "axios";
 import { parseCookies, destroyCookie } from "nookies";
 import { Provider } from "react-redux";
-import { useStore } from "../store";
 import Layout from "../components/_App/Layout";
 import { redirectUser } from "../utils/auth";
-import baseUrl from "../utils/baseUrl";
+import { axiosApi } from "../utils/baseUrl";
 import "../styles/bootstrap.min.css";
 import "../styles/animate.min.css";
 import "../styles/boxicons.min.css";
@@ -16,6 +15,7 @@ import "react-tabs/style/react-tabs.css";
 import 'react-18-image-lightbox/style.css';
 import "swiper/css";
 import "swiper/css/bundle";
+import { wrapper } from '../store/store';
 
 // Global Styles
 import "../styles/style.css";
@@ -25,8 +25,10 @@ import "../styles/responsive.css";
 import '../styles/rtl.css'
 import FilterStore from "context/filterStore";
 
-const MyApp = ({ Component, pageProps }) => {
-	const store = useStore(pageProps.initialReduxState);
+const MyApp = ({ Component, ...rest }) => {
+	const { store, props } = wrapper.useWrappedStore(rest);
+	const { pageProps } = props;
+	// const store = useStore(pageProps.initialReduxState);
 	return (
 		<Provider store={store}>
 			<FilterStore >
@@ -95,4 +97,5 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
 	};
 };
 
-export default MyApp;
+// export default CustomApp;
+export default wrapper.withRedux(MyApp);

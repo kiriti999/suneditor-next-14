@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import baseUrl from "../../utils/baseUrl";
+import { axiosApi } from "../../utils/baseUrl";
 
 // Form initial state
 const INITIAL_STATE = {

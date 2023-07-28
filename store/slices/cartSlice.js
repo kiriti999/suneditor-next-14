@@ -1,6 +1,4 @@
 /* eslint-disable default-param-last */
-import { combineReducers } from "redux";
-import * as types from "./types";
 
 const initialState = {
 	cartItems: [],
@@ -8,9 +6,9 @@ const initialState = {
 };
 
 // COUNTER REDUCER
-const cartReducer = (state = initialState, action) => {
+export const cartReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case types.ADD_TO_CART:
+		case "ADD_TO_CART":
 			let existingItem = state.cartItems.find(
 				(course) => action.data.id === course._id
 			);
@@ -26,13 +24,13 @@ const cartReducer = (state = initialState, action) => {
 				};
 			}
 
-		case types.GET_DISCOUNT:
+		case "GET_DISCOUNT":
 			return {
 				...state,
 				discount: action.data,
 			};
 
-		case types.REMOVE_CART:
+		case "REMOVE_CART":
 			let new_items = state.cartItems.filter(
 				(item) => action.id !== item.id
 			);
@@ -40,7 +38,7 @@ const cartReducer = (state = initialState, action) => {
 				...state,
 				cartItems: new_items,
 			};
-		case types.RESET_CART:
+		case "RESET_CART":
 			return {
 				...state,
 				cartItems: [],
@@ -49,10 +47,3 @@ const cartReducer = (state = initialState, action) => {
 			return state;
 	}
 };
-
-// COMBINED REDUCERS
-const reducers = {
-	cart: cartReducer,
-};
-
-export default combineReducers(reducers);

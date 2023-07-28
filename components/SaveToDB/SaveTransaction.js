@@ -1,5 +1,5 @@
 const { default: axios } = require("axios");
-import baseUrl from "@/utils/baseUrl";
+import { axiosApi } from "@/utils/baseUrl";
 
 
 const saveTransaction =  async (data) => {
