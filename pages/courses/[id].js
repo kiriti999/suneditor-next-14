@@ -330,7 +330,7 @@ const Details = ({ course, user }) => {
 
 Details.getInitialProps = async (ctx) => {
 	const { id } = ctx.query;
-	const url = `${baseUrl}/api/v1/courses/course/${id}`;
+	const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
 	const response = await axios.get(url);
 	return response.data;
 };

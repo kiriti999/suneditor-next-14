@@ -1,7 +1,7 @@
 import React from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
-import baseUrl from '@/utils/baseUrl'
+import { axiosApi } from "@/utils/baseUrl";
 import PageBanner from '@/components/Common/PageBanner'
 import Link from '@/utils/ActiveLink'
 
@@ -90,7 +90,7 @@ courseEdit.getInitialProps = async ctx => {
         headers: {Authorization: token}
     }
 
-    const url = `${baseUrl}/api/v1/courses/teacher/my-courses`
+    const url = `${axiosApi.baseUrl}/api/v1/courses/teacher/my-courses`
     const response = await axios.get(url, payload)
     // console.log(response.data)
     return response.data

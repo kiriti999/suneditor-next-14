@@ -1,10 +1,10 @@
 import axios from 'axios';
-import baseUrl from './utils/baseUrl'
+import { axiosApi } from '../../../utils/baseUrl';
 
 // initializing the axios instance with custom configs
 export const api = axios.create({
     // withCredentials: true,
-    baseURL: baseUrl,
+    baseURL: axiosApi.blogApiBaseUrl,
 });
 
 
@@ -20,10 +20,6 @@ const errorHandler = async (error) => {
 
         if (statusCode === 401 || statusCode === 404) {
             console.error(`axiosConfig.ts:: 401-404-errorHandler:: message: ${error.response.statusText} code: ${statusCode}`);
-            if (error.response.statusText === 'Unauthorized') {
-                // TODO: uncomment below line fixing session issue
-                // await signOut(); // Needs testing
-            }
             throw new Error('unauthorized');
         }
 

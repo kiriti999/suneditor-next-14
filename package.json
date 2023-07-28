@@ -51,7 +51,8 @@
 		"swiper": "^9.1.0",
 		"uuid": "^8.3.1",
 		"uuid-validate": "0.0.3",
-		"validator": "^13.1.17"
+		"validator": "^13.1.17",
+		"@reduxjs/toolkit": "^1.9.3"
 	},
 	"devDependencies": {
 		"eslint": "8.42.0",

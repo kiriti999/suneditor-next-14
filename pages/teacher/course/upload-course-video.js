@@ -2,7 +2,7 @@ import React from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
 import { Alert } from 'reactstrap'
-import baseUrl from '@/utils/baseUrl'
+import { axiosApi } from "@/utils/baseUrl";
 import { Spinner } from 'reactstrap'
 import toast from 'react-hot-toast'
 import catchErrors from '@/utils/catchErrors'
@@ -77,7 +77,7 @@ const UploadCourseVideo = ({ courses }) => {
 
             // console.log(videoUrl)
 
-            const url = `${baseUrl}/api/v1/course/video-upload`
+            const url = `${axiosApi.baseUrl}/api/v1/course/video-upload`
             const { order, name, description, courseId } = video
             const payload = { 
                 order,
@@ -247,7 +247,7 @@ UploadCourseVideo.getInitialProps = async ctx => {
         headers: {Authorization: token}
     }
 
-    const url = `${baseUrl}/api/v1/courses/teacher/my-courses`
+    const url = `${axiosApi.baseUrl}/api/v1/courses/teacher/my-courses`
     const response = await axios.get(url, payload)
     // console.log(response.data)
     return response.data

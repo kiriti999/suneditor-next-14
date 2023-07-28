@@ -4,7 +4,7 @@ import { parseCookies } from 'nookies'
 import axios from 'axios'
 import { useToasts } from 'react-toast-notifications'
 import { useRouter } from 'next/router'
-import baseUrl from '@/utils/baseUrl'
+import { axiosApi } from "@/utils/baseUrl";
 import catchErrors from '@/utils/catchErrors'
 import PageBanner from '@/components/Common/PageBanner'
 import Link from '@/utils/ActiveLink'
@@ -16,7 +16,7 @@ const pendingRequests = ({pendingRequests}) => {
 
     const approveReq = async id => {
         try {
-            const url = `${baseUrl}/api/v1/apply/approve-requests`
+            const url = `${axiosApi.baseUrl}/api/v1/apply/approve-requests`
             const payload = { userId: id }
             const response = await axios.post(url, payload)
             // console.log(response.data)
@@ -31,7 +31,7 @@ const pendingRequests = ({pendingRequests}) => {
 
     const declineReq = async id => {
         try {
-            const url = `${baseUrl}/api/v1/apply/decline-requests`
+            const url = `${axiosApi.baseUrl}/api/v1/apply/decline-requests`
             const payload = { userId: id }
             const response = await axios.post(url, payload)
             // console.log(response.data)
@@ -177,7 +177,7 @@ pendingRequests.getInitialProps = async (ctx) => {
     if(!token){
         redirectUser(ctx, '/authentication')
     }
-    const url = `${baseUrl}/api/v1/apply/pending-requests`
+    const url = `${axiosApi.baseUrl}/api/v1/apply/pending-requests`
     const payload = { headers: {Authorization: token} }
     const response = await axios.get(url, payload)
     // console.log(response.data)

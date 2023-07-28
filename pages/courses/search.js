@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import PageBanner from '@/components/Common/PageBanner'
 import axios from 'axios'
-import baseUrl from '@/utils/baseUrl'
+import { axiosApi } from "@/utils/baseUrl";
 import CourseCard from '@/components/Courses/CourseCard'
 import { Context } from 'context/filterStore'
 import { useMemo } from 'react'
@@ -100,12 +100,12 @@ export const getServerSideProps = async ({ query }) => {
     let queryText = query.q || '';
 
     // get courses data from api
-    url = `${baseUrl}/api/v1/courses/search`
+    url = `${axiosApi.baseUrl}/api/v1/courses/search`
     const response = await axios.get(url);
     courses = response.data.data;
 
     // get data for courses popularity
-    url = `${baseUrl}/api/v1/popularity`
+    url = `${axiosApi.baseUrl}/api/v1/popularity`
     const popularResponse = await axios.get(url)
     coursesPopularity = popularResponse.data.enrolled;
 

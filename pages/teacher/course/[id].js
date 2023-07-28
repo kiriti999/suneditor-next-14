@@ -1,7 +1,7 @@
 import React from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
-import baseUrl from '@/utils/baseUrl'
+import { axiosApi } from "@/utils/baseUrl";
 import { redirectUser } from '@/utils/auth'
 import { Spinner } from 'reactstrap'
 import toast from 'react-hot-toast'
@@ -86,7 +86,7 @@ const Edit = (data) => {
                 profile = await handleProfilePhotoUpload()
             }
 
-            const url = `${baseUrl}/api/v1/courses/course/update`
+            const url = `${axiosApi.baseUrl}/api/v1/courses/course/update`
             const {
                 _id,
                 title,
@@ -316,7 +316,7 @@ Edit.getInitialProps = async ctx => {
         headers: { Authorization: token }
     }
 
-    const url = `${baseUrl}/api/v1/courses/course/${id}`
+    const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`
     const response = await axios.get(url, payload)
     console.log('pages:: course/[id].js response.data', response.data);
     return response.data

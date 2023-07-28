@@ -12,7 +12,7 @@ import Ad from "@/components/Index/Ad";
 import Funfacts from "@/components/Index/Funfacts";
 import Blog from "@/components/Index/Blog";
 import axios from "axios";
-import baseUrl from "@/utils/baseUrl";
+import { axiosApi } from "@/utils/baseUrl";
 import SEO from "@/components/SEO";
 
 const index = ({ courses }) => {
@@ -34,7 +34,8 @@ const index = ({ courses }) => {
 };
 
 index.getInitialProps = async () => {
-	const url = `${baseUrl}/api/v1/courses/course`;
+	console.log('axiosApi ', axiosApi);
+	const url = `${axiosApi.baseUrl}/api/v1/courses/course`;
 	const response = await axios.get(url);
 	console.log('pages/index.js:: homepage-courses ', response.data)
 	return response.data;

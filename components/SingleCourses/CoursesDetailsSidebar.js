@@ -48,7 +48,7 @@ const CoursesDetailsSidebar = ({
 			const payload = {
 				params: { userId: loggedInUser.id, courseId: _id },
 			};
-			const url = `${baseUrl}/api/v1/course/exist`;
+			const url = `${axiosApi.baseUrl}/api/v1/course/exist`;
 			// axios.get(url, payload).then((result) => {
 			// 	setAlreadyBuy(result.data.enroll);
 			// });
@@ -70,7 +70,7 @@ const CoursesDetailsSidebar = ({
 
 	useEffect(() => {
 		const countEnrolled = async () => {
-			const url = `${baseUrl}/api/v1/courses/enrolled/${_id}`;
+			const url = `${axiosApi.baseUrl}/api/v1/courses/enrolled/${_id}`;
 			const response = await axios.get(url);
 			setEnrolled(response.data?.count || 0);
 		};

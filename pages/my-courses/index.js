@@ -3,7 +3,7 @@ import PageBanner from '@/components/Common/PageBanner'
 import Link from 'next/link'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
-import baseUrl from '@/utils/baseUrl'
+import { axiosApi } from "@/utils/baseUrl";
 
 const MyCourses = ({ enrolled }) => {
     console.log(enrolled)
@@ -83,7 +83,7 @@ MyCourses.getInitialProps = async ctx => {
         headers: { Authorization: token }
     }
 
-    const url = `${baseUrl}/api/v1/courses/enrolled`
+    const url = `${axiosApi.baseUrl}/api/v1/courses/enrolled`
     const response = await axios.get(url, payload)
     // console.log(response.data)
     return response.data

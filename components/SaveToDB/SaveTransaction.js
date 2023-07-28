@@ -3,7 +3,7 @@ import baseUrl from "@/utils/baseUrl";
 
 
 const saveTransaction =  async (data) => {
-  await axios.post(`${baseUrl}/api/v1/payment/save-payment`, { data });
+  await axios.post(`${axiosApi.baseUrl}/api/v1/payment/save-payment`, { data });
 };
 
 export default saveTransaction;

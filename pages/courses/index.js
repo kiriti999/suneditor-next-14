@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import PageBanner from '../../components/Common/PageBanner';
 import Link from 'next/link';
 import axios from 'axios'
-import baseUrl from '@/utils/baseUrl';
+import { axiosApi } from "@/utils/baseUrl";;
 import CoursesSidebar from '../../components/Courses/CoursesSidebar';
 import { kConverter } from '../../utils/cart/currencyHelper';
 import { Context } from 'context/filterStore';
@@ -158,13 +158,13 @@ HomePageCourses.getInitialProps = async () => {
     let courses;
     let coursesPopularity;
 
-    let url = `${baseUrl}/api/v1/courses/course?limit=10`
+    let url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=10`
     const response = await axios.get(url);
     console.log('pages/courses/index.js:: response:' , response.data);
     courses = response.data.courses;
 
     // get data for courses popularity
-    url = `${baseUrl}/api/v1/courses/popularity`
+    url = `${axiosApi.baseUrl}/api/v1/courses/popularity`
     const popularResponse = await axios.get(url)
     coursesPopularity = popularResponse.data.enrolled
 

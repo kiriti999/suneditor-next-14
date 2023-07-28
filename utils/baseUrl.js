@@ -1,7 +1,4 @@
-const version = 'api/v1/'
-const baseUrl = process.env.NODE_ENV === "production"
-? 'https://api.whatsnxt.in'
-// ? 'http://13.127.90.41:3000'
-: `http://localhost:3001`;
-
-export default baseUrl;
+export const axiosApi = {
+    baseUrl: process.env.NODE_ENV === "production" ? 'https://api.whatsnxt.in' : `http://localhost:3001`,
+    blogApiBaseUrl: process.env.NODE_ENV === "production" ? 'https://blogapi.whatsnxt.in' : `http://localhost:3333/api/blog`
+}

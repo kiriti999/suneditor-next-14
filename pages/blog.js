@@ -1,179 +1,80 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PageBanner from '../components/Common/PageBanner';
 import Link from 'next/link';
 import BlogSidebar from '../components/Blog/BlogSidebar';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPosts } from '../store/slices/blogSlice';
+import Pagination from '../components/pagination/pagination';
 
 const Blog = () => {
+    const blog = useSelector((store) => store.blog);
+    const dispatch = useDispatch();
+    const [recordsPerPage] = useState(9);
+    const [currentPage, setCurrentPage] = useState(1);
+    const indexOfLastRecord = currentPage * recordsPerPage;
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+    const currentRecords = blog.articles.slice(indexOfFirstRecord, indexOfLastRecord);
+    const nPages = Math.ceil(blog.articles.length / recordsPerPage);
+
+    useEffect(() => {
+        dispatch(getPosts({ start: 1, limit: 10 }))
+    }, [])
+
+    console.log('blog ', blog)
+
     return (
         <>
-            <PageBanner 
-                pageTitle="Blog Right Sidebar" 
-                homePageUrl="/" 
-                homePageText="Home" 
-                activePageText="Blog Right Sidebar" 
-            />  
+            <PageBanner
+                pageTitle="Blog Page"
+                homePageUrl="/"
+                homePageText="Home"
+                activePageText="Blog Page"
+            />
 
-            <div className="blog-area ptb-100">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-8 col-md-12">
-                            <div className="row">
-                                <div className="col-lg-12 col-md-6">
-                                    <div className="single-blog-post">
+            <div className="row" >
+                {blog.loading && <div>Loading...</div>}
+                {!blog.loading && blog.error === '' && blog.articles.length === 0 && <div>No data in this category...</div>}
+                {!blog.loading && blog.error ? <div>Error: {blog.error}</div> : null}
+                {!blog.loading && blog.error === '' && blog.articles.length > 0 ? (
+                    <>
+                        {currentRecords.map((item) => {
+                            return (
+                                <div className="col-lg-4 col-md-6" key={item._id}>
+                                    <div className="single-blog-post-box">
                                         <div className="post-image">
-                                            <Link href="/single-blog-1">
+                                            <Link legacyBehavior href={`/blog/${item._id}`}>
                                                 <a className="d-block">
-                                                    <img src="/images/blog/blog1.jpg" alt="image" />
+                                                    <img src={item.categoryImage} alt="image" />
                                                 </a>
                                             </Link>
                                         </div>
                                         <div className="post-content">
-                                            <Link href="#">
-                                                <a className="category">Education</a>
+                                            <Link legacyBehavior href="#">
+                                                <a className="category">{item.categoryName}</a>
                                             </Link>
                                             <h3>
-                                                <Link href="/single-blog-1">
-                                                    <a>The Beat Goes On: High School Choirs Improvise In The Age Of Coronavirus</a>
+                                                <Link legacyBehavior href={`/blog/${item._id}`}>
+                                                    <a>{item.title}</a>
                                                 </Link>
                                             </h3>
                                             <ul className="post-content-footer d-flex justify-content-between align-items-center">
-                                                <li>
-                                                    <div className="post-author d-flex align-items-center">
-                                                        <img src="/images/user1.jpg" className="rounded-circle" alt="image" />
-                                                        <span>Alex Morgan</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <i className='flaticon-calendar'></i> April 30, 2020
-                                                </li>
+                                                {item.updatedAt && <li>
+                                                    <i className='bx bx-calendar'></i> {item.updatedAt}
+                                                </li>}
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div className="col-lg-12 col-md-6">
-                                    <div className="single-blog-post">
-                                        <div className="post-image">
-                                            <Link href="/single-blog-1">
-                                                <a className="d-block">
-                                                    <img src="/images/blog/blog2.jpg" alt="image" />
-                                                </a>
-                                            </Link>
-                                        </div>
-                                        <div className="post-content">
-                                            <Link href="#">
-                                                <a className="category">Online</a>
-                                            </Link>
-                                            <h3>
-                                                <Link href="/single-blog-1">
-                                                    <a>How Online Book Read-Alouds Can Help Students' Literacy and Connection During Social Distancing</a>
-                                                </Link>
-                                            </h3>
-                                            <ul className="post-content-footer d-flex justify-content-between align-items-center">
-                                                <li>
-                                                    <div className="post-author d-flex align-items-center">
-                                                        <img src="/images/user2.jpg" className="rounded-circle" alt="image" />
-                                                        <span>Sarah Taylor</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <i className='flaticon-calendar'></i> April 29, 2020
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-lg-12 col-md-6">
-                                    <div className="single-blog-post">
-                                        <div className="post-image">
-                                            <Link href="/single-blog-1">
-                                                <a className="d-block">
-                                                    <img src="/images/blog/blog3.jpg" alt="image" />
-                                                </a>
-                                            </Link>
-                                        </div>
-                                        <div className="post-content">
-                                            <Link href="#">
-                                                <a className="category">Learning</a>
-                                            </Link>
-                                            <h3>
-                                                <Link href="/single-blog-1">
-                                                    <a>How To Secure Remote Workers During The COVID-19 Outbreak</a>
-                                                </Link>
-                                            </h3>
-                                            <ul className="post-content-footer d-flex justify-content-between align-items-center">
-                                                <li>
-                                                    <div className="post-author d-flex align-items-center">
-                                                        <img src="/images/user3.jpg" className="rounded-circle" alt="image" />
-                                                        <span>David Warner</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <i className='flaticon-calendar'></i> April 28, 2020
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-        
-                                <div className="col-lg-12 col-md-6">
-                                    <div className="single-blog-post">
-                                        <div className="post-image">
-                                            <Link href="/single-blog-1">
-                                                <a className="d-block">
-                                                    <img src="/images/blog/blog7.jpg" alt="image" />
-                                                </a>
-                                            </Link>
-                                        </div>
-                                        <div className="post-content">
-                                            <Link href="#">
-                                                <a className="category">Learning</a>
-                                            </Link>
-                                            <h3>
-                                                <Link href="/single-blog-1">
-                                                    <a>What A Company Needs To Provide Employees For Effective Remote Work</a>
-                                                </Link>
-                                            </h3>
-                                            <ul className="post-content-footer d-flex justify-content-between align-items-center">
-                                                <li>
-                                                    <div className="post-author d-flex align-items-center">
-                                                        <img src="/images/user1.jpg" className="rounded-circle" alt="image" />
-                                                        <span>Alex Morgan</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <i className='flaticon-calendar'></i> April 30, 2020
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
- 
-                                {/* Pagination */}
-                                <div className="col-lg-12 col-md-12">
-                                    <div className="pagination-area text-center">
-                                        <a href="#" className="prev page-numbers">
-                                            <i className='bx bx-chevrons-left'></i>
-                                        </a>
-                                        <span className="page-numbers current" aria-current="page">1</span>
-                                        <a href="#" className="page-numbers">2</a>
-                                        <a href="#" className="page-numbers">3</a>
-                                        <a href="#" className="page-numbers">4</a>
-                                        <a href="#" className="next page-numbers">
-                                            <i className='bx bx-chevrons-right'></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div className="col-lg-4 col-md-12">
-                            <BlogSidebar />
-                        </div>
-                    </div>
-                </div>
+                            )
+                        })}
+                    </>
+                ) : null}
             </div>
+
+            <div className="col-lg-12 col-md-12">
+                <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            </div>
+
         </>
     )
 }

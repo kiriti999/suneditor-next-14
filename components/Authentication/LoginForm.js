@@ -3,7 +3,7 @@ import { Alert } from "reactstrap";
 import Link from "next/link";
 import axios from "axios";
 import catchErrors from "../../utils/catchErrors";
-import baseUrl from "../../utils/baseUrl";
+import { axiosApi } from "../../utils/baseUrl";
 import { handleLogin } from "../../utils/auth";
 import LoadingSpinner from "@/utils/LoadingSpinner";
 
@@ -33,7 +33,7 @@ const LoginForm = () => {
 		try {
 			setLoading(true);
 			setError("");
-			const url = `${baseUrl}/api/v1/auth/login`;
+			const url = `${axiosApi.baseUrl}/api/v1/auth/login`;
 			const payload = { ...user };
 			const response = await axios.post(url, payload);
 			handleLogin(response.data);

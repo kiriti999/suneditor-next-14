@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import api from '../../../../axiosConfigs'
+import api from '../../../../axiosConfig'
 
 export default async (req, res) => {
     const { userId } = req.body

@@ -31,7 +31,7 @@ const CheckoutBtn = ({ user, cartItems, onClearCart }) => {
         console.log('CheckoutBtn.js:: handlePayment:: payload: ', payload);
 
         // create order from backend
-        const url = `${baseUrl}/api/v1/courses/checkout`;
+        const url = `${axiosApi.baseUrl}/api/v1/courses/checkout`;
         const response = await axios.post(url, payload);
 
         const order = response.data;
@@ -67,10 +67,10 @@ const CheckoutBtn = ({ user, cartItems, onClearCart }) => {
                     console.log('CheckoutBtn.js:: handlePayment:: toSave: ', toSave);
                     
                     // save into db
-                    const savedOrder = await axios.post(`${baseUrl}/api/v1/payment/save-payment`, toSave);
+                    const savedOrder = await axios.post(`${axiosApi.baseUrl}/api/v1/payment/save-payment`, toSave);
                     
                     // send email
-                    await axios.post(`${baseUrl}/api/v1/mail/sendMail`, toSave);
+                    await axios.post(`${axiosApi.baseUrl}/api/v1/mail/sendMail`, toSave);
                     
                     console.log('CheckoutBtn.js:: handlePayment:: savedOrder: ', savedOrder);
                     

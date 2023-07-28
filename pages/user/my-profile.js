@@ -22,7 +22,7 @@ const MyProfile = ({ user }) => {
 }
 
 // MyProfile.getInitialProps = async () => {
-//     const url = `${baseUrl}/api/v1/users?id=${id}`
+//     const url = `${axiosApi.baseUrl}/api/v1/users?id=${id}`
 //     const response = await axios.get(url)
 //     // console.log(response)
 //     return response.data

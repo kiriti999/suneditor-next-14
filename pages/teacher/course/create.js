@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Spinner } from 'reactstrap'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/router'
-import baseUrl from '@/utils/baseUrl'
+import { axiosApi } from "@/utils/baseUrl";
 import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
 import * as imageHelper from '@/utils/image-upload'
@@ -84,7 +84,7 @@ const Create = () => {
                 profile = profile.replace(/^http:\/\//i, 'https://');
             }
 
-            const url = `${baseUrl}/api/v1/courses/course/new`
+            const url = `${axiosApi.baseUrl}/api/v1/courses/course/new`
             const {
                 title,
                 overview,

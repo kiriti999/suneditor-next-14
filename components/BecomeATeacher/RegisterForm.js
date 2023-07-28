@@ -5,7 +5,7 @@ import { Spinner, Alert } from 'reactstrap'
 import axios from 'axios'
 import { useToasts } from 'react-toast-notifications'
 import catchErrors from '@/utils/catchErrors'
-import baseUrl from '@/utils/baseUrl'
+import { axiosApi } from "@/utils/baseUrl";
 
 const RegisterForm = ({ user }) => {
     const { token } = parseCookies()
@@ -44,7 +44,7 @@ const RegisterForm = ({ user }) => {
         try {
             setLoading(true)
             setError('')
-            const url = `${baseUrl}/api/v1/user/apply`
+            const url = `${axiosApi.baseUrl}/api/v1/user/apply`
             const payload = {...apply}
             const response = await axios.post(url, payload, {
                 headers: {Authorization: token}

@@ -1,4 +1,4 @@
-import api from "../../../axiosConfigs";
+import api from "../../../axiosConfig";
 
 export const CloudinaryAPI = {
     upload: async function (formData) {

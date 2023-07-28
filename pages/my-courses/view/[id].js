@@ -3,7 +3,7 @@ import PageBanner from '@/components/Common/PageBanner'
 import Link from 'next/link'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
-import baseUrl from '@/utils/baseUrl'
+import { axiosApi } from "@/utils/baseUrl";
 
 const SingleCourses = ({ videos }) => {
     const [videoId, setVideoId] = React.useState(videos.length ? videos[0].video_url : '')
@@ -73,7 +73,7 @@ SingleCourses.getInitialProps = async ctx => {
         params: {courseId: id},
     }
 
-    const url = `${baseUrl}/api/v1/courses/enrolled/videos`
+    const url = `${axiosApi.baseUrl}/api/v1/courses/enrolled/videos`
     const response = await axios.get(url, payload)
     // console.log(response.data)
     return response.data
