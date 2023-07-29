@@ -1,9 +1,10 @@
 import { DiscussionEmbed } from "disqus-react"
 const DisqusComments = ({ post }) => {
+  console.log('DisqusComments.js:: post: ', post);
+  console.log('DisqusComments.js:: url: ', window.location.href);
   const disqusShortname = post.title
   const disqusConfig = {
-    url: "https://iprep-1.disqus.com/post-slug",
-    // url: "https://your-site-url/post-slug",
+    url: window.location.href,
     identifier: post._id, // Single post id
     title: post.title // Single post title
   }
