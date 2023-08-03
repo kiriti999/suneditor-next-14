@@ -76,6 +76,4 @@ export default async (req, res) => {
         .then(({ hits }) => console.log(hits[0]))
 
     res.send('success')
-
-
 }
