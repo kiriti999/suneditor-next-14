@@ -15,8 +15,10 @@ const cors = initMiddleware(
 export default async (req, res) => {
     await cors(req, res)
 
+    console.log('req.body ', req.body)
+
     // Connect and authenticate with your Algolia app
-    const client = algoliasearch('TL06Y8XHFY', process.env.ALGOLIA_ADMIN_KEY)
+    const client = algoliasearch('9SA5PPC1N4', '183f7ddb740690df8b6fe7cd82008198')
 
     // Create a new index and add a record
     const index = client.initIndex('courses')
