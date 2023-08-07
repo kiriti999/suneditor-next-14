@@ -1,5 +1,6 @@
 import Cors from 'cors'
-import initMiddleware from '@/lib/init-middleware'
+import initMiddleware from '@/lib/init-middleware';
+import api from "../../@/axios/axiosConfig";
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -14,6 +15,7 @@ const cors = initMiddleware(
 export default async (req, res) => {
     await cors(req, res)
     const { id } = req.query
+    console.log('pages:: course/[id].js:: req.query: ', req.query);
     try {
         const response = await api.request({
             url: `/courses/course?id=${id}`,

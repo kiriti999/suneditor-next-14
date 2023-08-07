@@ -9,7 +9,7 @@ const Details = ({ course, user }) => {
 	console.log('pages/courses/[id].js:: course: ', course);
 	console.log('pages/courses/[id].js:: user: ', user);
 	return (
-		<>
+		<div>
 			<div className="courses-details-area pb-100">
 
 				<div className="container">
@@ -324,15 +324,16 @@ const Details = ({ course, user }) => {
 			</div>
 
 			{/* <YouMightLikeTheCourses /> */}
-		</>
+		</div>
 	);
 };
 
-Details.getInitialProps = async (ctx) => {
-	const { id } = ctx.query;
-	const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
-	const response = await axios.get(url);
-	return response.data;
-};
+// Details.getInitialProps = async (ctx) => {
+// 	const { id } = ctx.query;
+// 	console.log('Details:: pages:: courses/[id].js:: id: ', id);
+// 	const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
+// 	const response = await axios.get(url);
+// 	return response.data;
+// };
 
 export default Details;

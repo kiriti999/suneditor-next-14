@@ -1,5 +1,6 @@
 import Cors from 'cors'
-import initMiddleware from '@/lib/init-middleware'
+import initMiddleware from '@/lib/init-middleware';
+import api from "../../@/axios/axiosConfig";
 
 // Initialize the cors middleware
 const cors = initMiddleware(

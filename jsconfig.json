@@ -6,6 +6,7 @@
             "@/utils/*": ["utils/*"],
             "@/models/*": ["models/*"],
             "@/lib/*": ["lib/*"],
+            "@/axios/*": ["axios/*"],
         }
     }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import SidebarCategory from '../sidebar-category/sidebar-category';
+import SidebarPopularTags from '../sidebar-category/sidebar-category';
 import SidebarPost from '../sidebar-post/sidebar-post';
 
 export function Sidebar(props) {
@@ -11,7 +11,7 @@ export function Sidebar(props) {
 
       <SidebarPost></SidebarPost>
 
-      <SidebarCategory></SidebarCategory>
+      <SidebarPopularTags></SidebarPopularTags>
 
     </div>
   );

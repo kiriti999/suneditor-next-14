@@ -1,4 +1,4 @@
-import api from "./axiosBlogApiConfig";
+import api from "@/axios/axiosBlogApiConfig";
 
 export const CategoryAPI = {
     getCategories: async function () {

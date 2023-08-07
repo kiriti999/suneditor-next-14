@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import Cors from 'cors'
-import initMiddleware from '@/lib/init-middleware'
+import initMiddleware from '@/lib/init-middleware';
+import api from "../@/axios/axiosConfig";
 
 // Initialize the cors middleware
 const cors = initMiddleware(

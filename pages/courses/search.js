@@ -40,14 +40,11 @@ const Index = ({ data, q, filteredCourses }) => {
     }, [data]);
 
     const setparam = (param) => {
-        router.push({
-            pathname: '/courses/search',
-            query: param
-        })
+        router.push({ pathname: '/courses/search', query: param })
     }
 
     return (
-        <>
+        <div>
             <PageBanner
                 pageTitle="Search"
                 homePageUrl="/"
@@ -87,81 +84,90 @@ const Index = ({ data, q, filteredCourses }) => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
 export const getServerSideProps = async ({ query }) => {
 
-    let url;
-    let coursesPopularity = [];
-    let courses = [];
-    let filteredCourses = [];
-    let queryText = query.q || '';
+    try {
+        console.log('pages/courses/search.js:: initiating search with query: ', query)
 
-    // get courses data from api
-    url = `${axiosApi.baseUrl}/api/v1/courses/search`
-    const response = await axios.get(url);
-    courses = response.data.data;
+        let url;
+        let coursesPopularity = [];
+        let courses = [];
+        let filteredCourses = [];
+        let queryText = query.q || '';
 
-    // get data for courses popularity
-    url = `${axiosApi.baseUrl}/api/v1/popularity`
-    const popularResponse = await axios.get(url)
-    coursesPopularity = popularResponse.data.enrolled;
+        // get courses data from api
+        url = `${axiosApi.baseUrl}/api/v1/courses/search?keyword=${queryText}`
+        
+        const response = await axios.get(url);    
+        courses = response?.data?.data || [];
 
-    // add popularity to courses
-    courses.forEach(course => {
-        const popularity = coursesPopularity.find(popular => popular.courseId === course._id)
-        course.popularity = popularity ? popularity.count : 0
-    });
+        // get data for courses popularity
+        url = `${axiosApi.baseUrl}/api/v1/popularity`
+        const popularResponse = await axios.get(url)
+        coursesPopularity = popularResponse.data.enrolled || [];
 
-    // prepares fuzzy search
-    const options = {
-        includeScore: true,
-        keys: [
-            {
-                name: "title",
-                weight: 0.3,
-            },
-            {
-                name: "description",
-                weight: 0.7,
-            },
-        ],
-    };
+        // add popularity to courses
+        courses.forEach(course => {
+            const popularity = coursesPopularity.find(popular => popular.courseId === course._id)
+            course.popularity = popularity ? popularity.count : 0
+        });
 
-    const fuse = new Fuse(courses, options);
+        // prepares fuzzy search
+        const options = {
+            includeScore: true,
+            keys: [
+                {
+                    name: "title",
+                    weight: 0.3,
+                },
+                {
+                    name: "description",
+                    weight: 0.7,
+                },
+            ],
+        };
 
-    // sort data
-    if (queryText) {
-        filteredCourses = fuse.search(queryText).map(({ item }) => item);
-    } else {
-        filteredCourses = courses;
-    }
+        const fuse = new Fuse(courses, options);
 
-    // sort data
-    if (query.sort) {
-        switch (query.sort) {
-            case 'low-high':
-                filteredCourses = filteredCourses.sort((a, b) => a.price - b.price);
-                break;
-            case 'high-low':
-                filteredCourses = filteredCourses.sort((a, b) => b.price - a.price);
-                break;
-            case 'latest':
-                filteredCourses = filteredCourses.sort((a, b) => a.createdAt - b.createdAt);
-                break;
-            case 'popularity':
-                filteredCourses = filteredCourses.sort((a, b) => {
-                    // parse popularity to int
-                    let aCount = parseInt(a.popularity);
-                    let bCount = parseInt(b.popularity);
-                    return bCount - aCount;
-                });
-                break;
+        // sort data
+        if (queryText) {
+            filteredCourses = fuse.search(queryText).map(({ item }) => item);
+        } else {
+            filteredCourses = courses || [];
         }
+
+        // sort data
+        if (query.sort) {
+            switch (query.sort) {
+                case 'low-high':
+                    filteredCourses = filteredCourses.sort((a, b) => a.price - b.price);
+                    break;
+                case 'high-low':
+                    filteredCourses = filteredCourses.sort((a, b) => b.price - a.price);
+                    break;
+                case 'latest':
+                    filteredCourses = filteredCourses.sort((a, b) => a.createdAt - b.createdAt);
+                    break;
+                case 'popularity':
+                    filteredCourses = filteredCourses.sort((a, b) => {
+                        // parse popularity to int
+                        let aCount = parseInt(a.popularity);
+                        let bCount = parseInt(b.popularity);
+                        return bCount - aCount;
+                    });
+                    break;
+            }
+        }
+        return { props: { data: courses, q: queryText || '', filteredCourses: filteredCourses } };
+    } catch (error) {
+        console.log('search.js:: error occurred ');
     }
-    return { props: { data: courses, q: queryText || '', filteredCourses: filteredCourses } };
+
+
 };
 
 export default Index;

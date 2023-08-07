@@ -1,6 +1,6 @@
 import React from "react";
 import { Alert } from "reactstrap";
-import api from "../../axiosConfig"
+import api from "@/axios/axiosConfig"
 import catchErrors from "../../utils/catchErrors";
 import { axiosApi } from "../../utils/baseUrl";
 import { handleLogin } from "../../utils/auth";
@@ -42,7 +42,6 @@ const RegisterForm = () => {
 				data: payload
 			});
 			handleLogin(response.data);
-			// console.log(response.data)
 		} catch (error) {
 			catchErrors(error, setError);
 		} finally {

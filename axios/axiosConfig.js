@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { axiosApi } from './utils/baseUrl'
+import { axiosApi } from '../utils/baseUrl'
 
 // initializing the axios instance with custom configs
 export const api = axios.create({
@@ -15,11 +15,11 @@ const errorHandler = async (error) => {
     try {
         // logging only errors that are not 401
         if (statusCode && statusCode !== 401) {
-            console.error(`axiosConfig.ts:: errorHandler:: message: ${JSON.stringify(error.response?.data?.message)} code: ${statusCode}`);
+            // console.error(`axiosConfig.ts:: errorHandler:: message: ${JSON.stringify(error.response?.data?.message)} code: ${statusCode}`);
         }
 
         if (statusCode === 401 || statusCode === 404) {
-            console.error(`axiosConfig.ts:: 401-404-errorHandler:: message: ${error.response.statusText} code: ${statusCode}`);
+            // console.error(`axiosConfig.ts:: 401-404-errorHandler:: message: ${error.response.statusText} code: ${statusCode}`);
             throw new Error('unauthorized');
         }
 
@@ -29,7 +29,7 @@ const errorHandler = async (error) => {
 
         return Promise.reject(error)
     } catch (error) {
-        console.log(`axiosConfig.ts:: errorHandler:: message: ${error}`);
+        // console.log(`axiosConfig.ts:: errorHandler:: message: ${error}`);
     }
 
 }

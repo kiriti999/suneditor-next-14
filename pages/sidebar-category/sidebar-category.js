@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getArticleCountByCategory } from '../../store/slices/categorySlice';
 import { getPostsByCategory } from '../../store/slices/blogSlice';
 
-export function SidebarCategory(props) {
+export function SidebarPopularTags(props) {
   const store = useSelector((store) => store.category);
   const dispatch = useDispatch();
 
@@ -13,7 +13,7 @@ export function SidebarCategory(props) {
   }, [dispatch])
 
   return (
-    <>
+    <div>
       <div className="widget widget_tag_cloud">
         <h3 className="widget-title">Popular Tags</h3>
 
@@ -30,8 +30,8 @@ export function SidebarCategory(props) {
         </div>
 
       </div>
-    </>
+    </div>
   );
 }
 
-export default SidebarCategory;
+export default SidebarPopularTags;

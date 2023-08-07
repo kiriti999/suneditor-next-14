@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import api from '../../../../axiosConfig';
+import api from '../@/axios/axiosConfig';
 import Cors from 'cors';
 import initMiddleware from '@/lib/init-middleware';
 

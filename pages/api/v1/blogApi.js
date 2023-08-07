@@ -1,4 +1,4 @@
-import api from "../v1/axiosBlogApiConfig";
+import api from "@/axios/axiosBlogApiConfig";
 
 export const BlogAPI = {
     getPosts: async function (start, limit) {

@@ -1,6 +1,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 import Cors from 'cors'
-import initMiddleware from '@/lib/init-middleware'
+import initMiddleware from '@/lib/init-middleware';
+import api from "../../@/axios/axiosConfig";
+import { indexPost } from '../search/addToAlgolia';
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -29,6 +31,7 @@ export default async (req, res) => {
     } = req.body
 
     try {
+
         const response = await api.request({
             url: `/courses/course/new`,
             method: 'POST',
@@ -46,6 +49,10 @@ export default async (req, res) => {
                 course_preview_video
             }
         });
+
+        if (response?.data) {
+            await indexPost(response.data);
+        }
         console.log('new.js:: response: ', response?.data);
         res.status(200).json(response?.data);
     } catch (error) {

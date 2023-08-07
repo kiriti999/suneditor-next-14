@@ -16,7 +16,6 @@ export function SidebarPost(props) {
   return (
     <div className="widget widget_blog_posts_thumb">
       <h3 className="widget-title">Popular Posts</h3>
-      <>
         {
           sidebar.articles.map((item, index) => {
             return (
@@ -40,7 +39,6 @@ export function SidebarPost(props) {
             )
           })
         }
-      </>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware'
-const algoliasearch = require('algoliasearch')
+const algoliasearch = require('algoliasearch');
 
 
 // Initialize the cors middleware
@@ -18,7 +18,7 @@ export default async (req, res) => {
     console.log('req.body ', req.body)
 
     // Connect and authenticate with your Algolia app
-    const client = algoliasearch('9SA5PPC1N4', '183f7ddb740690df8b6fe7cd82008198')
+    const client = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_ADMIN_KEY)
 
     // Create a new index and add a record
     const index = client.initIndex('courses')
@@ -42,7 +42,7 @@ export default async (req, res) => {
         "createdAt": "2021-01-26T16:02:39.510Z",
         "updatedAt": "2021-01-26T16:02:39.510Z",
         "user": {
-            "name": "WhatsnxtTheme",
+            "name": "kiriti",
             "profilePhoto": null
         },
         "enrolled_courses": [
