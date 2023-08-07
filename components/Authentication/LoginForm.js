@@ -36,9 +36,11 @@ const LoginForm = () => {
 			const url = `${axiosApi.baseUrl}/api/v1/auth/login`;
 			const payload = { ...user };
 			const response = await axios.post(url, payload);
+			console.log('login response ', response.data)
 			handleLogin(response.data);
 		} catch (error) {
-			console.log('error ', error);
+			console.log('error ', error.message);
+			alert('Unable to login')
 			catchErrors(error, setError);
 		} finally {
 			setLoading(false);

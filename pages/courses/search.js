@@ -6,7 +6,8 @@ import CourseCard from '@/components/Courses/CourseCard'
 import { Context } from 'context/filterStore'
 import { useMemo } from 'react'
 import Fuse from 'fuse.js'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+const algoliasearch = require('algoliasearch');
 
 export const checkString = (keyword, course) => {
     let string =
@@ -91,23 +92,19 @@ const Index = ({ data, q, filteredCourses }) => {
 export const getServerSideProps = async ({ query }) => {
 
     try {
-        console.log('pages/courses/search.js:: initiating search with query: ', query)
+        console.log('pages/courses/search.js:: initiating search with query: ', query);
+        const hits = searchIndexedPost(query);
 
         let url;
         let coursesPopularity = [];
-        let courses = [];
+        let courses = hits;
         let filteredCourses = [];
         let queryText = query.q || '';
-
-        // get courses data from api
-        url = `${axiosApi.baseUrl}/api/v1/courses/search?keyword=${queryText}`
         
-        const response = await axios.get(url);    
-        courses = response?.data?.data || [];
-
         // get data for courses popularity
-        url = `${axiosApi.baseUrl}/api/v1/popularity`
-        const popularResponse = await axios.get(url)
+        url = `${axiosApi.baseUrl}/api/v1/courses/popularity`;
+        const popularResponse = await axios.get(url);
+        console.log('popularResponse ', popularResponse);
         coursesPopularity = popularResponse.data.enrolled || [];
 
         // add popularity to courses
@@ -166,8 +163,16 @@ export const getServerSideProps = async ({ query }) => {
     } catch (error) {
         console.log('search.js:: error occurred ');
     }
-
-
 };
+
+async function searchIndexedPost(title) {
+    const client = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_ADMIN_KEY)
+    const index = client.initIndex('courses');
+    if (title.length > 3) {
+        // Search the index and print the results
+        const hits = await index.search(title);
+        return hits;
+    }
+}
 
 export default Index;

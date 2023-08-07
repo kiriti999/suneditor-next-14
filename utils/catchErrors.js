@@ -9,7 +9,7 @@ const catchErrors = (error, displayError) => {
             errorMsg = error.response.data.error.message;
         }
     } else if (error.request) {
-        // Request made but no response recieved
+        // Request made but no response received
         errorMsg = error.request;
         // console.error("Error request", errorMsg);
     } else  {

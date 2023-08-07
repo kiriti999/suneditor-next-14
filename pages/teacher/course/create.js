@@ -7,7 +7,8 @@ import { useRouter } from 'next/router'
 import { axiosApi } from "@/utils/baseUrl";
 import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
-import * as imageHelper from '@/utils/image-upload'
+import * as imageHelper from '@/utils/image-upload';
+import { indexPost } from '../../api/v1/courses/search/addToAlgolia';
 
 const INIT_COURSE = {
     title: '',
@@ -110,12 +111,18 @@ const Create = () => {
 
             const response = await axios.post(url, payload, {
                 headers: { Authorization: token }
-            })
+            });
+
+            console.log('pages/teacher/course/create.js:: response: ', response);
+
+            if (response.status === 200) {
+                await indexPost(response.data);
+            }
 
             setLoading(false)
             setCourse(INIT_COURSE)
             setProfilePreview('')
-            toast.success(response.data);
+            // toast.success(response.data);
             // router.replace('/teacher/course/upload-course-video')
         } catch (err) {
             catchErrors(err, setError)
