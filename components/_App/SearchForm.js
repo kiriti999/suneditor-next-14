@@ -1,6 +1,7 @@
 import React, { startTransition, useContext, useState } from 'react'
 import { Context } from 'context/filterStore'
 import { useRouter } from 'next/router';
+import search from 'pages/api/v1/courses/search';
 
 const SearchForm = ({ }) => {
 
@@ -8,8 +9,13 @@ const SearchForm = ({ }) => {
     const router = useRouter();
 
 
-    const handleSearch = (e) => {
-        router.push(`/courses/search?q=${state.searchParam}`);
+    const handleSearch = async (e) => {
+        let hits = await search(state.searchParam);
+        setState({
+            ...state,
+            filteredCourses: hits
+        })
+        router.push(`/algolia_search?q=${state.searchParam}`);
     };
 
 
@@ -23,8 +29,8 @@ const SearchForm = ({ }) => {
                 value={state.searchParam}
                 onChange={(e) => {
                     setState({ ...state, searchParam: e.target.value });
-                    // handleSearch(e);
                 }}
+                // onKeyDown={(e) => handleSearch(e)}
             />
             <button type="submit" onClick={handleSearch}>
                 <i className="flaticon-search"></i>

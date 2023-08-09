@@ -1,6 +1,6 @@
 import Cors from 'cors'
 import initMiddleware from '@/lib/init-middleware';
-import api from "@/axios/axiosConfig";
+
 const algoliasearch = require('algoliasearch');
 
 // Initialize the cors middleware
@@ -13,27 +13,24 @@ const cors = initMiddleware(
 )
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default async (req, res) => {
-    await cors(req, res)
-    const { q } = req.query;
+export default async (req) => {
+    const query = req;
+    console.log("query: ", query)
 
     try {
-        const hits = await searchIndexedPost(q);
-        console.log('hits ', hits[0]);
-        res.status(200).json(hits[0]);
+        const results = await searchIndexedPost(query);
+        results && console.log(results.hits);
+        return results.hits;
     } catch (error) {
-        console.error(error)
-        res.status(403).json({ message: "error" });
+        console.error(error);
     }
 }
 
 async function searchIndexedPost(title) {
-    console.log('pages/courses/search:: searchIndexedPost:: title: ', title);
-    const client = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_ADMIN_KEY)
+    const client = algoliasearch("9SA5PPC1N4", "183f7ddb740690df8b6fe7cd82008198")
     const index = client.initIndex('courses');
     if (title.length > 3) {
-        // Search the index and print the results
-        const hits = await index.search(title);
-        return hits;
+        const results = await index.search(title);
+        return results;
     }
 }
