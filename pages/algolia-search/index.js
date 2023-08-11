@@ -1,36 +1,50 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
+import { useRouter } from 'next/router';
 import PageBanner from "@/components/Common/PageBanner";
 import Link from "next/link";
 import CoursesSidebar from "@/components/Courses/CoursesSidebar";
 import { Context } from "context/filterStore";
 import { kConverter } from "@/utils/cart/currencyHelper";
+import algoliasearch from 'algoliasearch'
+import axios from 'axios'
+import { axiosApi } from "@/utils/baseUrl";
 
-const AlgoliaSearch = () => {
+const sortOption = [
+    {
+        value: 'popularity',
+        text: 'Popularity'
+    },
+    {
+        value: 'latest',
+        text: 'Latest'
+    },
+    {
+        value: 'low-high',
+        text: 'Price: low to high'
+    },
+    {
+        value: 'high-low',
+        text: 'Price: high to low'
+    }
+]
+
+
+const AlgoliaSearch = ({ data }) => {
     const [state, setState] = useContext(Context);
-    const [courses, setCourses] = useState(state.filteredCourses);
+    const { push, query } = useRouter();
+
+    const courses = state?.filteredCourses ?? [];
+
+    useEffect(() => {
+        setState({ ...state, courses: data, filteredCourses: data, searchParam: query.q || '' })
+    }, [data])
 
     /**
-     * @desc This function is used to sort the courses....
+     * @desc This function is used to update url sort param
      * @param {*} type 
      */
     const sortCourses = type => {
-        let result = state.filteredCourses.sort((a, b) => {
-            switch (type) {
-                case 'popularity':
-                    let aCount = parseInt(a.popularity);
-                    let bCount = parseInt(b.popularity);
-                    return bCount - aCount;
-                case 'latest':
-                    return a.createdAt - b.createdAt;
-                case 'low-high':
-                    return a.price - b.price;
-                case 'high-low':
-                    return b.price - a.price;
-            }
-        })
-
-        setState({ ...state, filteredCourses: result });
-        setCourses(state.filteredCourses);
+        push({ query: { ...query, sort: type } });
     }
 
     return (
@@ -55,23 +69,22 @@ const AlgoliaSearch = () => {
                                     <div className="select-box">
                                         <select onChange={(e) => sortCourses(e.target.value)} className="form-control">
                                             <option>Sort By</option>
-                                            <option value='popularity'>Popularity</option>
-                                            <option value='latest'>Latest</option>
-                                            <option value='low-high'>Price: low to high</option>
-                                            <option value='high-low'>Price: high to low</option>
+                                            {sortOption.map(({value, text}) => <option key={value} value={value} defaultValue={value === query.sort}>{text}</option>)}
                                         </select>
                                     </div>
                                 </div >
                             </div >
 
                             <div className="row">
-                                {courses ? courses.map(course => (
+                                {courses?.length === 0 ? (
+                                    <h6>Empty</h6>
+                                ) : courses?.map(course => (
                                     <div className="col-lg-6 col-md-6" key={course.title}>
                                         <div className="single-courses-box">
                                             <div className="courses-image">
                                                 <Link href="/courses/[id]" as={`/courses/${course._id}`}>
                                                     <a className="d-block image">
-                                                        <img src={course.profilePhoto} alt={course.title} />
+                                                        <img src={course?.profilePhoto || '/images/courses/courses1.jpg'} alt={course.title} />
                                                     </a>
                                                 </Link>
                                                 <div className="price shadow">&#8377;{kConverter(course.price)}</div>
@@ -101,9 +114,7 @@ const AlgoliaSearch = () => {
                                         </div>
                                     </div>
 
-                                )) : (
-                                    <h6>Empty</h6>
-                                )}
+                                ))  }
 
                             </div>
                         </div >
@@ -116,6 +127,66 @@ const AlgoliaSearch = () => {
             </div >
         </div>
     )
+}
+
+export const getServerSideProps = async ({ query }) => {
+    
+
+    try {
+        let filteredCourses = []
+        const searchQuery = query.q || '';
+        const sortQuery = query.sort || ''
+        
+        // algolia search
+        const searchResult = await algoliaCourseSearch(searchQuery);
+
+        // get data for courses popularity
+        const url = `${axiosApi.baseUrl}/api/v1/courses/popularity`;
+        const popularResponse = await axios.get(url);
+        const coursesPopularity = popularResponse.data.enrolled || [];
+
+        // add popularity to courses
+        const courses = searchResult.map(course => {
+            const popularity = coursesPopularity.find(popular => popular.courseId === course.objectID)
+            course.popularity = popularity ? popularity.count : 0
+            return course
+        })
+
+        // sort course data or pass the same data
+        if (sortQuery) {
+            filteredCourses = courses.sort((a, b) => {
+                switch (sortQuery) {
+                    case 'popularity':
+                        let aCount = parseInt(a.popularity);
+                        let bCount = parseInt(b.popularity);
+                        return bCount - aCount;
+                    case 'latest':
+                        return a.createdAt - b.createdAt;
+                    case 'low-high':
+                        return a.price - b.price;
+                    case 'high-low':
+                        return b.price - a.price;
+                }
+            })
+        } else {
+            filteredCourses = courses
+        }
+
+        return { props: { data: filteredCourses } };
+    } catch (error) {
+        return { props: { data: [] } }
+    }
+};
+
+async function algoliaCourseSearch(title) {
+    const client = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_ADMIN_KEY)
+    const index = client.initIndex('courses');
+    if (title.length > 3) {
+        const { hits } = await index.search(title);
+        return hits;
+    }
+    
+    return []
 }
 
 export default AlgoliaSearch;
