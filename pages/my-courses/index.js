@@ -1,14 +1,13 @@
 import React from 'react'
 import PageBanner from '@/components/Common/PageBanner'
 import Link from 'next/link'
-import { parseCookies } from 'nookies'
+import { parseCookies } from 'nookies';
 import axios from 'axios'
 import { axiosApi } from "@/utils/baseUrl";
 
 const MyCourses = ({ enrolled }) => {
-    console.log(enrolled)
     return (
-        <>
+        <div>
             <PageBanner
                 pageTitle="My Courses"
                 homePageUrl="/"
@@ -69,7 +68,7 @@ const MyCourses = ({ enrolled }) => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

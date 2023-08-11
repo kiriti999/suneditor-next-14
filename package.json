@@ -27,8 +27,6 @@
 		"next-translate-plugin": "^2.0.5",
 		"nodemailer": "^6.6.3",
 		"nookies": "^2.5.0",
-		"pg": "^8.7.1",
-		"pg-hstore": "^2.3.3",
 		"razorpay": "^2.8.6",
 		"react": "17.0.2",
 		"react-18-image-lightbox": "^5.1.4",
@@ -38,19 +36,18 @@
 		"react-highlight-words": "^0.20.0",
 		"react-hook-form": "^6.12.0",
 		"react-hot-toast": "^1.0.1",
+		"react-toast-notifications": "^2.5.1",
 		"react-instantsearch-dom": "^6.40.0",
 		"react-modal-video": "^2.0.0",
 		"react-razorpay": "^1.2.0",
 		"react-redux": "^8.0.4",
 		"react-select": "^5.7.0",
 		"react-tabs": "^4.3.0",
-		"react-toast-notifications": "^2.5.1",
 		"reactstrap": "^8.10.0",
 		"redux": "^4.2.0",
 		"redux-devtools-extension": "^2.13.9",
 		"redux-thunk": "^2.4.1",
 		"sass": "^1.41.1",
-		"sequelize": "^6.6.5",
 		"shortid": "^2.2.16",
 		"swiper": "^9.1.0",
 		"uuid": "^8.3.1",
@@ -59,7 +56,6 @@
 	},
 	"devDependencies": {
 		"eslint": "8.42.0",
-		"eslint-config-next": "13.4.5",
-		"sequelize-cli": "^6.2.0"
+		"eslint-config-next": "13.4.5"
 	}
 }
