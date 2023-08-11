@@ -1,21 +1,11 @@
-import Cors from 'cors'
-import initMiddleware from '@/lib/init-middleware';
+import algoliasearch from "algoliasearch/lite";
 
-const algoliasearch = require('algoliasearch');
-
-// Initialize the cors middleware
-const cors = initMiddleware(
-    // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
-    Cors({
-        // Only allow requests with GET, POST and OPTIONS
-        methods: ['GET', 'POST', 'OPTIONS', 'DELETE', 'PUT'],
-    })
-)
-
-// eslint-disable-next-line import/no-anonymous-default-export
+/**
+ * @desc This function is used to add algolia search to SearchForm component.
+ * @param {*} req
+ */
 export default async (req) => {
     const query = req;
-    console.log("query: ", query)
 
     try {
         const results = await searchIndexedPost(query);
@@ -26,11 +16,14 @@ export default async (req) => {
     }
 }
 
+/**
+ * @desc This function is used to send request to Algolia API and get response...
+ * @param {*} title 
+ * @returns 
+ */
 async function searchIndexedPost(title) {
     const client = algoliasearch("9SA5PPC1N4", "183f7ddb740690df8b6fe7cd82008198")
     const index = client.initIndex('courses');
-    if (title.length > 3) {
-        const results = await index.search(title);
-        return results;
-    }
+    const results = await index.search(title);
+    return results;
 }

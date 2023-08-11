@@ -4,18 +4,23 @@ import { useRouter } from 'next/router';
 import search from 'pages/api/v1/courses/search';
 
 const SearchForm = ({ }) => {
-
     const [state, setState] = useContext(Context);
     const router = useRouter();
 
-
+    /**
+     * @desc This function is used to run algolia search method and route to search page with results...
+     * @param {*} e 
+     */
     const handleSearch = async (e) => {
-        let hits = await search(state.searchParam);
-        setState({
-            ...state,
-            filteredCourses: hits
-        })
-        router.push(`/algolia_search?q=${state.searchParam}`);
+        // Search must have 4 letter at least
+        if(state.searchParam.length > 3) {
+            let hits = await search(state.searchParam);
+            setState({
+                ...state,
+                filteredCourses: hits
+            })
+            router.push(`/algolia_search?q=${state.searchParam}`);
+        }
     };
 
 

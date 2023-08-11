@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useMemo } from "react";
+import React, { useContext, useState } from "react";
 import PageBanner from "@/components/Common/PageBanner";
 import Link from "next/link";
 import CoursesSidebar from "@/components/Courses/CoursesSidebar";
@@ -7,10 +7,31 @@ import { kConverter } from "@/utils/cart/currencyHelper";
 
 const AlgoliaSearch = () => {
     const [state, setState] = useContext(Context);
-
     const [courses, setCourses] = useState(state.filteredCourses);
 
-    console.log("courses: ", state.filteredCourses, "query: ", state.searchParam)
+    /**
+     * @desc This function is used to sort the courses....
+     * @param {*} type 
+     */
+    const sortCourses = type => {
+        let result = state.filteredCourses.sort((a, b) => {
+            switch (type) {
+                case 'popularity':
+                    let aCount = parseInt(a.popularity);
+                    let bCount = parseInt(b.popularity);
+                    return bCount - aCount;
+                case 'latest':
+                    return a.createdAt - b.createdAt;
+                case 'low-high':
+                    return a.price - b.price;
+                case 'high-low':
+                    return b.price - a.price;
+            }
+        })
+
+        setState({ ...state, filteredCourses: result });
+        setCourses(state.filteredCourses);
+    }
 
     return (
         <>
@@ -75,9 +96,6 @@ const AlgoliaSearch = () => {
                                                             <a>More details</a>
                                                         </Link>
                                                     </li>
-                                                    {/* <li>
-                                                        <i className='flaticon-people'></i> 145 Students
-                                                    </li> */}
                                                 </ul>
                                             </div>
                                         </div>
@@ -91,7 +109,7 @@ const AlgoliaSearch = () => {
                         </div >
 
                         <div className="col-lg-4 col-md-12">
-                            
+                            <CoursesSidebar />
                         </div>
                     </div >
                 </div >
