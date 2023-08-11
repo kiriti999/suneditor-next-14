@@ -18,7 +18,7 @@ import SEO from "@/components/SEO";
 const index = ({ courses }) => {
 	const { t } = useTranslation("distance-learning");
 	return (
-		<>
+		<div>
 			<SEO title={t("pagetitle")} description={t("bannersubtitle")} />
 			<MainBanner />
 			<TopCourses courses={courses} />
@@ -29,7 +29,7 @@ const index = ({ courses }) => {
 			{/* <Ad /> */}
 			{/* <Funfacts /> */}
 			{/* <Blog /> */}
-		</>
+		</div>
 	);
 };
 
@@ -37,7 +37,6 @@ index.getInitialProps = async () => {
 	console.log('axiosApi ', axiosApi);
 	const url = `${axiosApi.baseUrl}/api/v1/courses/course`;
 	const response = await axios.get(url);
-	console.log('pages/index.js:: homepage-courses ', response.data)
 	return response.data;
 };
 

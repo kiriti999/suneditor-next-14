@@ -1,39 +1,29 @@
-import Cors from 'cors'
-import initMiddleware from '@/lib/init-middleware';
-import api from "@/axios/axiosConfig";
-const algoliasearch = require('algoliasearch');
+import algoliasearch from "algoliasearch/lite";
 
-// Initialize the cors middleware
-const cors = initMiddleware(
-    // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
-    Cors({
-        // Only allow requests with GET, POST and OPTIONS
-        methods: ['GET', 'POST', 'OPTIONS', 'DELETE', 'PUT'],
-    })
-)
-
-// eslint-disable-next-line import/no-anonymous-default-export
-export default async (req, res) => {
-    await cors(req, res)
-    const { q } = req.query;
+/**
+ * @desc This function is used to add algolia search to SearchForm component.
+ * @param {*} req
+ */
+export default async (req) => {
+    const query = req;
 
     try {
-        const hits = await searchIndexedPost(q);
-        console.log('hits ', hits[0]);
-        res.status(200).json(hits[0]);
+        const results = await searchIndexedPost(query);
+        results && console.log(results.hits);
+        return results.hits;
     } catch (error) {
-        console.error(error)
-        res.status(403).json({ message: "error" });
+        console.error(error);
     }
 }
 
+/**
+ * @desc This function is used to send request to Algolia API and get response...
+ * @param {*} title 
+ * @returns 
+ */
 async function searchIndexedPost(title) {
-    console.log('pages/courses/search:: searchIndexedPost:: title: ', title);
     const client = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_ADMIN_KEY)
     const index = client.initIndex('courses');
-    if (title.length > 3) {
-        // Search the index and print the results
-        const hits = await index.search(title);
-        return hits;
-    }
+    const results = await index.search(title);
+    return results;
 }
