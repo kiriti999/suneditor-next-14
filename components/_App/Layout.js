@@ -36,11 +36,11 @@ const Layout = ({ children, user }) => {
     return (
         <>
             <Head>
-                <title>whatsnxt -  Online skill development and learning provider</title>
+                <title>whatsnxt edu- Online skill development and learning provider</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                <meta name="description" content="whatsnxt -  Online skill development and learning provider" />
-                <meta name="og:title" property="og:title" content="whatsnxt -  Online skill development and learning provider"></meta>
-                <meta name="twitter:card" content="whatsnxt -  Online skill development and learning provider"></meta>
+                <meta name="description" content="whatsnxt edu - Online skill development and learning provider" />
+                <meta name="og:title" property="og:title" content="whatsnxt edu - Online skill development and learning provider"></meta>
+                <meta name="twitter:card" content="whatsnxt edu - Online skill development and learning provider"></meta>
                 <link rel="canonical" href="https://whatsnxt-react.envytheme.com/"></link>
             </Head>
 
