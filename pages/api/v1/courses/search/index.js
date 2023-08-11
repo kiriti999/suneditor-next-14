@@ -22,7 +22,7 @@ export default async (req) => {
  * @returns 
  */
 async function searchIndexedPost(title) {
-    const client = algoliasearch("9SA5PPC1N4", "183f7ddb740690df8b6fe7cd82008198")
+    const client = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_ADMIN_KEY)
     const index = client.initIndex('courses');
     const results = await index.search(title);
     return results;
