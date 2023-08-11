@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import algoliasearch from "algoliasearch/lite";
 
 /**
@@ -6,11 +7,10 @@ import algoliasearch from "algoliasearch/lite";
  */
 export default async (req) => {
     const query = req;
-
     try {
         const results = await searchIndexedPost(query);
-        results && console.log(results.hits);
-        return results.hits;
+        results && console.log(results?.hits);
+        return results?.hits;
     } catch (error) {
         console.error(error);
     }

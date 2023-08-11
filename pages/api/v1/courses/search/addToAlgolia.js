@@ -1,7 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 const algoliasearch = require('algoliasearch');
 
-
 export async function indexPost(post) {
     try {
         console.log('addToAlgolia.js:: indexPost:: post:', post);
@@ -30,33 +29,6 @@ export async function indexPost(post) {
             "userId": post.userId,
             "createdAt": post.createdAt,
             "updatedAt": post.updatedAt
-            // "user": {
-            //     "name": "kiriti",
-            //     "profilePhoto": null
-            // },
-            // "enrolled_courses": [
-            //     {
-            //         "courseId": "9839b20b-d45c-4c93-ba52-81d53839feb2"
-            //     },
-            //     {
-            //         "courseId": "9839b20b-d45c-4c93-ba52-81d53839feb2"
-            //     },
-            //     {
-            //         "courseId": "9839b20b-d45c-4c93-ba52-81d53839feb2"
-            //     },
-            //     {
-            //         "courseId": "9839b20b-d45c-4c93-ba52-81d53839feb2"
-            //     },
-            //     {
-            //         "courseId": "9839b20b-d45c-4c93-ba52-81d53839feb2"
-            //     },
-            //     {
-            //         "courseId": "9839b20b-d45c-4c93-ba52-81d53839feb2"
-            //     },
-            //     {
-            //         "courseId": "9839b20b-d45c-4c93-ba52-81d53839feb2"
-            //     }
-            // ]
         };
 
         const algoliaResponse = await index.saveObject(record);
@@ -64,14 +36,6 @@ export async function indexPost(post) {
     } catch (error) {
         console.log('addToAlgolia.js:: error: ', error);
     }
-
-}
-
-function searchIndexedPost() {
-    // Search the index and print the results
-    // index
-    //     .search('The Complete Digital Marketing')
-    //     .then(({ hits }) => console.log(hits[0]))
 
 }
 

@@ -34,12 +34,12 @@ const AlgoliaSearch = () => {
     }
 
     return (
-        <>
+        <div>
             <PageBanner
-                pageTitle="Agolia Search"
+                pageTitle="Algolia Search"
                 homePageUrl="/"
                 homePageText="Home"
-                activePageText="algolia_search"
+                activePageText="algolia-search"
             />
 
             <div className="courses-area ptb-70">
@@ -114,7 +114,7 @@ const AlgoliaSearch = () => {
                     </div >
                 </div >
             </div >
-        </>
+        </div>
     )
 }
 
