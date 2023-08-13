@@ -57,7 +57,7 @@ const AlgoliaSearch = ({ data }) => {
 				pageTitle="Algolia Search"
 				homePageUrl="/"
 				homePageText="Home"
-				activePageText="algolia-search"
+				activePageText="Search"
 			/>
 
 			<div className="courses-area ptb-70">
