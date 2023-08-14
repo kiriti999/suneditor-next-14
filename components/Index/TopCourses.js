@@ -42,30 +42,32 @@ const TopCourses = ({ courses }) => {
 									</div>
 
 									<div className="courses-content">
-										<h3 title={course.title}>
+										<b title={course.title}>
 											<Link
 												href="/courses/[id]"
 												as={`/courses/${course._id}`}>
 												<a>
-													{course.title.slice(0, 20)}
+													{course.title.slice(0, 50)}
 													...
 												</a>
 											</Link>
-										</h3>
+										</b>
 
-										<p>
-											{course.overview.slice(0, 100)}...
-										</p>
+										<br></br>
+										<small style={{color: 'grey'}}>Led by experts</small>
+										
 
 										<ul className="courses-box-footer d-flex justify-content-between align-items-center">
 											<li>
-												<i className="flaticon-agenda"></i>{" "}
+												<i className="flaticon-fi-sr-indian-rupee-sign"></i>{" "}
 												{/* {parseInt(course.lessons)}{" "} */}
-
+												<b>₹ {course.price}</b>
+												{/* 
 												<Link
 													href="/courses/[id]" as={`/courses/${course._id}`}>
 													<a>More details</a>
 												</Link>
+												*/}
 											</li>
 											{/* <li>
 												<i className="flaticon-people"></i>{" "}

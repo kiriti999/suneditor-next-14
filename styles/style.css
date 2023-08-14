@@ -3566,8 +3566,8 @@ Courses Area CSS
   list-style-type: none;
   padding-left: 0;
   margin-bottom: 0;
-  margin-left: -7px;
-  margin-right: -7px;
+  /* margin-left: -7px; */
+  /* margin-right: -7px; */
   margin-top: 20px;
 }
 
@@ -3575,7 +3575,7 @@ Courses Area CSS
   color: #606060;
   font-size: 15px;
   position: relative;
-  padding-left: 25px;
+  /* padding-left: 25px; */
   padding-right: 7px;
 }
 
