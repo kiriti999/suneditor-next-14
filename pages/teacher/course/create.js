@@ -4,11 +4,17 @@ import axios from 'axios'
 import { Spinner } from 'reactstrap'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
 import { axiosApi } from "@/utils/baseUrl";
 import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
 import * as imageHelper from '@/utils/image-upload';
 import { indexPost } from '../../api/v1/courses/search/addToAlgolia';
+import 'suneditor/dist/css/suneditor.min.css';
+
+const SunEditor = dynamic(() => import('suneditor-react'), {
+    ssr: false
+})
 
 const INIT_COURSE = {
     title: '',
@@ -58,6 +64,10 @@ const Create = () => {
             setCourse(prevState => ({ ...prevState, [name]: value }))
         }
         // console.log(course);
+    }
+
+    const handleSunEditor = value => {
+        setCourse(prevState => ({ ...prevState, overview: value }))
     }
 
     const handleProfilePhotoUpload = async () => {
@@ -200,14 +210,12 @@ const Create = () => {
 
                                     <div className="form-group">
                                         <label>Course Overview</label>
-                                        <textarea
-                                            type="text"
+                                        <SunEditor
                                             placeholder="Enter course overview"
-                                            className="form-control"
                                             name="overview"
-                                            rows="10"
                                             value={course.overview}
-                                            onChange={handleChange}
+                                            height="257px"
+                                            onChange={handleSunEditor}
                                         />
                                     </div>
 

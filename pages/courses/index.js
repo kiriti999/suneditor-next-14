@@ -8,6 +8,13 @@ import { kConverter } from '../../utils/cart/currencyHelper';
 import { Context } from 'context/filterStore';
 import { useMemo } from 'react';
 
+const overviewStyle = {
+	display: '-webkit-box',
+	maxWidth: '200px',
+	WebkitLineClamp: '4',
+	WebkitBoxOrient: 'vertical',
+	overflow: 'hidden'
+}
 
 const HomePageCourses = ({ data }) => {
     const [state, setState] = useContext(Context);
@@ -105,7 +112,8 @@ const HomePageCourses = ({ data }) => {
                                                     </Link>
                                                 </h3>
 
-                                                <p>{course.overview.slice(0, 100)}...</p>
+                                                <div style={overviewStyle} dangerouslySetInnerHTML={{ __html: course.overview }}></div>
+
                                                 <ul className="courses-box-footer d-flex justify-content-between align-items-center">
                                                     <li>
                                                         <i className='flaticon-agenda'></i>

@@ -2,6 +2,14 @@ import React from "react";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 
+const overviewStyle = {
+	display: '-webkit-box',
+	maxWidth: '200px',
+	WebkitLineClamp: '4',
+	WebkitBoxOrient: 'vertical',
+	overflow: 'hidden'
+}
+
 const TopCourses = ({ courses }) => {
 	const { t } = useTranslation("distance-learning");
 	return (
@@ -53,6 +61,9 @@ const TopCourses = ({ courses }) => {
 											</Link>
 										</b>
 
+										<div style={overviewStyle} dangerouslySetInnerHTML={{ __html: course.overview }}>
+											{/* {course.overview.slice(0, 100)}... */}
+										</div>
 										<br></br>
 										<small style={{color: 'grey'}}>Led by experts</small>
 										
