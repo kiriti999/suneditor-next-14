@@ -27,7 +27,7 @@ const CourseCard = ({
                 </div>
                 <div className="courses-content">
                     <div className="course-author d-flex align-items-center">
-                        <img src={`${userId?.profilePhoto ? userId.profilePhoto : "/images/user1.jpg"}`} className="rounded-circle" alt={userId.name} />
+                        <img src={`${userId?.profilePhoto ? userId.profilePhoto : '/images/user1.jpg'}`} className="rounded-circle" alt={userId.name} />
                         <span>{userId.name}</span>
                     </div>
 

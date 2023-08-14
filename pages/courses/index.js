@@ -48,7 +48,7 @@ const HomePageCourses = ({ data }) => {
     }
 
     return (
-        <>
+        <div>
             <PageBanner
                 pageTitle="Courses"
                 homePageUrl="/"
@@ -75,8 +75,8 @@ const HomePageCourses = ({ data }) => {
                                             <option value='high-low'>Price: high to low</option>
                                         </select>
                                     </div>
-                                </div >
-                            </div >
+                                </div>
+                            </div>
 
                             <div className="row">
                                 {courses ? courses.map(course => (
@@ -141,15 +141,15 @@ const HomePageCourses = ({ data }) => {
                                 </div> */}
 
                             </div>
-                        </div >
+                        </div>
 
                         <div className="col-lg-4 col-md-12">
                             <CoursesSidebar />
                         </div>
-                    </div >
-                </div >
-            </div >
-        </>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 

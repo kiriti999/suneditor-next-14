@@ -24,9 +24,9 @@ const TopCourses = ({ courses }) => {
 											as={`/courses/${course._id}`}
 										>
 											<a className="d-block image">
-												<img src={course.profilePhoto}
+												{/* <img src={course.profilePhoto}
 													alt={course.title}
-												/>
+												/> */}
 											</a>
 										</Link>
 
@@ -63,11 +63,8 @@ const TopCourses = ({ courses }) => {
 												{/* {parseInt(course.lessons)}{" "} */}
 
 												<Link
-													href="/courses/[id]"
-													as={`/courses/${course._id}`}>
-													<a>
-														More details
-													</a>
+													href="/courses/[id]" as={`/courses/${course._id}`}>
+													<a>More details</a>
 												</Link>
 											</li>
 											{/* <li>
