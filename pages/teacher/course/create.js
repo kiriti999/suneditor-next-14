@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
 import { Spinner } from 'reactstrap'
@@ -33,17 +33,28 @@ const Create = () => {
     const { token } = parseCookies()
     const router = useRouter()
 
-    const [course, setCourse] = React.useState(INIT_COURSE)
-    const [profilePreview, setProfilePreview] = React.useState('')
-    const [imageUploading, setImageUploading] = React.useState(false)
-    const [loading, setLoading] = React.useState(false)
-    const [disabled, setDisabled] = React.useState(false)
-    const [error, setError] = React.useState();
+    const [course, setCourse] = useState(INIT_COURSE)
+    const [profilePreview, setProfilePreview] = useState('')
+    const [imageUploading, setImageUploading] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [disabled, setDisabled] = useState(false)
+    const [error, setError] = useState();
+    const [categories, setCategories] = useState([]);
 
-    // React.useEffect(() => {
+    // useEffect(() => {
     //     const isCourse = Object.values(course).every(el => Boolean(el))
     //     isCourse ? setDisabled(false) : setDisabled(true)
     // }, [course])
+
+    useEffect(() => {
+        const url = `${axiosApi.baseUrl}/api/v1/courses/categories`;
+        (async () => {
+            const response = await axios.get(url)
+            console.log('pages/create.js:: useEffect: categories:', response.data?.categories);
+            setCategories(response.data?.categories);
+        })()
+    }, [])
+
 
     const handleChange = e => {
         // console.log(d.value)
@@ -81,7 +92,7 @@ const Create = () => {
             public_id = cloudinary?.public_id;
             course.postImageAttributes = { public_id };
         }
-        
+
         return secure_url;
     }
 
@@ -257,17 +268,16 @@ const Create = () => {
 
                                     <div className="form-group">
                                         <label>Categories</label>
-                                        <input
-                                            type="text"
-                                            placeholder="React, Ruby, Rails"
-                                            className="form-control"
+                                        <select className="form-control"
+                                            placeholder="Category name"
                                             name="category"
                                             value={course.category}
-                                            onChange={handleChange}
-                                        />
+                                            onChange={handleChange}>
+                                            {categories.map((item) => <option key={item._id} data-id={item._id}>{item.category}</option>)}
+                                        </select>
                                     </div>
 
-                                    <div className="form-group">
+                                    { /*<div className="form-group">
                                         <label>Course Profile (<i>Image less than 2 MB & size 750x500</i>)</label>
 
                                         <br />
@@ -283,6 +293,7 @@ const Create = () => {
 
                                         <img src={profilePreview} className="mxw-200 mt-20" />
                                     </div>
+                                */ }
 
                                     <div className="form-group">
                                         <label>Course Preview Video URL</label>

@@ -4,7 +4,8 @@ import useTranslation from "next-translate/useTranslation";
 
 const overviewStyle = {
 	display: '-webkit-box',
-	maxWidth: '200px',
+	// maxWidth: '200px',
+	'margin-top': '10px',
 	WebkitLineClamp: '4',
 	WebkitBoxOrient: 'vertical',
 	overflow: 'hidden'
@@ -24,17 +25,14 @@ const TopCourses = ({ courses }) => {
 				<div className="row justify-content-center">
 					{courses ? (
 						courses.map((course) => (
-							<div className="col-lg-4 col-md-6" key={course._id}>
-								<div className="single-courses-box">
+							<div className="col-lg-3 col-md-6" key={course._id}>
+								<div className="single-courses-box course-box-border">
 									<div className="courses-image">
 										<Link
 											href="/courses/[id]"
-											as={`/courses/${course._id}`}
-										>
+											as={`/courses/${course._id}`}>
 											<a className="d-block image">
-												{/* <img src={course.profilePhoto}
-													alt={course.title}
-												/> */}
+												<img src={course.profilePhoto} alt={course.title} />
 											</a>
 										</Link>
 
@@ -49,24 +47,22 @@ const TopCourses = ({ courses }) => {
 										</div> */}
 									</div>
 
-									<div className="courses-content">
+									<div className="courses-content pt-20">
 										<b title={course.title}>
 											<Link
 												href="/courses/[id]"
 												as={`/courses/${course._id}`}>
 												<a>
-													{course.title.slice(0, 50)}
+													{course.title.slice(0, 47)}
 													...
 												</a>
 											</Link>
 										</b>
 
-										<div style={overviewStyle} dangerouslySetInnerHTML={{ __html: course.overview }}>
-											{/* {course.overview.slice(0, 100)}... */}
+
+										<div style={{ 'margin-top': '5px' }}>
+											<small style={{ color: 'grey' }}>Led by experts</small>
 										</div>
-										<br></br>
-										<small style={{color: 'grey'}}>Led by experts</small>
-										
 
 										<ul className="courses-box-footer d-flex justify-content-between align-items-center">
 											<li>
