@@ -60,7 +60,7 @@ const TopCourses = ({ courses }) => {
 										</b>
 
 
-										<div style={{ 'margin-top': '5px' }}>
+										<div>
 											<small style={{ color: 'grey' }}>Led by experts</small>
 										</div>
 
