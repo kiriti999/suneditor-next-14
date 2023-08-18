@@ -108,26 +108,11 @@ const Create = () => {
 
             const url = `${axiosApi.baseUrl}/api/v1/courses/course/new`
             const {
-                title,
-                overview,
-                price,
-                published,
-                duration,
-                lessons,
-                category,
-                course_preview_video
+                title, overview, topics, price, lessons, duration, category, course_preview_video, published
             } = course
 
             const payload = {
-                title,
-                overview,
-                price,
-                published,
-                duration,
-                lessons,
-                category,
-                profile,
-                course_preview_video
+                title, overview, topics, price, lessons, duration, category, profile, course_preview_video, published
             }
 
             const response = await axios.post(url, payload, {
@@ -225,7 +210,18 @@ const Create = () => {
                                             placeholder="Enter course overview"
                                             name="overview"
                                             value={course.overview}
-                                            height="257px"
+                                            height="200px"
+                                            onChange={handleSunEditor}
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>Course topics</label>
+                                        <SunEditor
+                                            placeholder="Enter course topics"
+                                            name="topics"
+                                            value={course.topics}
+                                            height="200px"
                                             onChange={handleSunEditor}
                                         />
                                     </div>

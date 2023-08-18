@@ -47,7 +47,7 @@ const TopCourses = ({ courses }) => {
 										</div> */}
 									</div>
 
-									<div className="courses-content pt-20">
+									<div className="courses-content pt-20 mb-2 ml-5">
 										<b title={course.title}>
 											<Link
 												href="/courses/[id]"

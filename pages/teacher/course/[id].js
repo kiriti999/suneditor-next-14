@@ -101,6 +101,7 @@ const Edit = (data) => {
                 _id,
                 title,
                 overview,
+                topics,
                 price,
                 published,
                 duration,
@@ -113,6 +114,7 @@ const Edit = (data) => {
                 _id,
                 title,
                 overview,
+                topics,
                 price,
                 published,
                 duration,
@@ -211,7 +213,18 @@ const Edit = (data) => {
                                             placeholder="Enter course overview"
                                             name="overview"
                                             defaultValue={course.overview}
-                                            height="257px"
+                                            height="200px"
+                                            onChange={handleSunEditor}
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>Course topics</label>
+                                        <SunEditor
+                                            placeholder="Enter course topics"
+                                            name="overview"
+                                            defaultValue={course.topics}
+                                            height="200px"
                                             onChange={handleSunEditor}
                                         />
                                     </div>

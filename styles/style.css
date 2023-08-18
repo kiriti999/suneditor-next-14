@@ -15784,6 +15784,10 @@ marquee {
   padding-top: 20px
 }
 
+.pb-10 {
+  padding-bottom: 10px;
+}
+
 .pt-25 {
   padding-top: 25px;
 }
@@ -15792,4 +15796,10 @@ marquee {
   padding-bottom: 100px;
 }
 
+.mt-5 {
+  margin-top: 5px;
+}
 
+.ml-5 {
+  margin-left: 5px;
+}

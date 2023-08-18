@@ -9,12 +9,12 @@ import { Context } from 'context/filterStore';
 import { useMemo } from 'react';
 
 const overviewStyle = {
-	display: '-webkit-box',
-	// maxWidth: '200px',
+    display: '-webkit-box',
+    // maxWidth: '200px',
     'font-size': '15px',
-	WebkitLineClamp: '4',
-	WebkitBoxOrient: 'vertical',
-	overflow: 'hidden'
+    WebkitLineClamp: '4',
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden'
 }
 
 const HomePageCourses = ({ data }) => {
@@ -93,33 +93,40 @@ const HomePageCourses = ({ data }) => {
                                             <div className="courses-image">
                                                 <Link href="/courses/[id]" as={`/courses/${course._id}`}>
                                                     <a className="d-block image">
+                                                        <img src={course.profilePhoto} alt={course.title} />
                                                     </a>
                                                 </Link>
                                                 {/* <a href="#" className="fav">
                                                     <i className="flaticon-heart"></i>
                                                 </a> */}
-                                                </div>
+                                            </div>
                                             <div className="courses-content">
-                                                
+
                                                 <b title={course.title}>
                                                     <Link href="/courses/[id]" as={`/courses/${course._id}`}>
                                                         <a>{course.title.slice(0, 45)}...</a>
                                                     </Link>
                                                 </b>
 
-                                                <div className="course-author d-flex align-items-center">
-                                                     <img src="/images/user1.svg" className="rounded-circle" alt="image" />
+                                                <div className="course-author d-flex align-items-center mt-2">
+                                                    <img src="/images/user1.svg" className="rounded-circle" alt="image" />
                                                     <span><small>Led by experts</small></span>
                                                 </div>
 
                                                 <div style={overviewStyle} dangerouslySetInnerHTML={{ __html: course.overview }}></div>
 
-                                                <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+
+                                                <ul className="courses-box-footer d-flex justify-content-between align-items-center pb-10">
                                                     <li>
-                                                        {/* <i className='flaticon-agenda'></i> */}
-                                                        <Link href="/courses/[id]" as={`/courses/${course._id}`}>
-                                                            <a>More details</a>
-                                                        </Link>
+                                                        <i className="flaticon-fi-sr-indian-rupee-sign"></i>{" "}
+                                                        {/* {parseInt(course.lessons)}{" "} */}
+                                                        <b>₹ {course.price}</b>
+                                                        {/* 
+                                                            <Link
+                                                                href="/courses/[id]" as={`/courses/${course._id}`}>
+                                                                <a>More details</a>
+                                                            </Link>
+                                                        */}
                                                     </li>
                                                     {/* <li>
                                                         <i className='flaticon-people'></i> 145 Students
@@ -168,7 +175,7 @@ HomePageCourses.getInitialProps = async () => {
 
     let url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=10`
     const response = await axios.get(url);
-    console.log('pages/courses/index.js:: response:' , response.data);
+    console.log('pages/courses/index.js:: response:', response.data);
     courses = response.data.courses;
 
     // get data for courses popularity

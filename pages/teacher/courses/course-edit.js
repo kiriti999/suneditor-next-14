@@ -1,13 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
 import { axiosApi } from "@/utils/baseUrl";
-import PageBanner from '@/components/Common/PageBanner'
-import Link from '@/utils/ActiveLink'
+import Link from '@/utils/ActiveLink';
 
 const courseEdit = ({ courses }) => {
+
+    async function deleteCourse(id) {
+        const { token } = parseCookies();
+        const url = `${axiosApi.baseUrl}/api/v1/courses/course/delete?id=${id}`
+        const response = await axios.get(url, {
+            headers: { Authorization: token }
+        });
+        console.log('pages/course-edit.js:: deleteCourse:: response.data: ', response.data);
+        // setCourses((current) => courses.filter((course) => course.id !== id));
+    }
+
+    // useEffect(() => {
+        
+      
+    // }, [courses])
+    
+    
     return (
-        <>
+
+        <div>
             <div className="ptb-100">
                 <div className="container">
                     <div className="row">
@@ -45,7 +62,7 @@ const courseEdit = ({ courses }) => {
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Courses</th>
-                                            <th scope="col" className="text-right">Action</th> 
+                                            <th scope="col" className="text-right">Action</th>
                                         </tr>
                                     </thead>
 
@@ -62,32 +79,43 @@ const courseEdit = ({ courses }) => {
                                                             <i className='bx bxs-edit'></i> Edit
                                                         </a>
                                                     </Link>
-                                                </td> 
+
+                                                    <Link href="">
+                                                        <a className="btn btn-success"
+                                                            onClick={(e) => {
+                                                                e.preventDefault();
+                                                                deleteCourse(course._id)
+                                                            }}>
+                                                            <i className='bx bxs-delete'></i> Delete
+                                                        </a>
+                                                    </Link>
+
+                                                </td>
                                             </tr>
-                                        )): (
+                                        )) : (
                                             <tr className="text-center">
                                                 <td colSpan="3">Empty</td>
                                             </tr>
                                         )}
                                     </tbody>
-                                </table> 
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
 courseEdit.getInitialProps = async ctx => {
     const { token } = parseCookies(ctx)
-    if(!token){
-        return {courses: []}
+    if (!token) {
+        return { courses: [] }
     }
 
     const payload = {
-        headers: {Authorization: token}
+        headers: { Authorization: token }
     }
 
     const url = `${axiosApi.baseUrl}/api/v1/courses/teacher/my-courses`
