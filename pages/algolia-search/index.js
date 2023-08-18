@@ -60,7 +60,7 @@ const AlgoliaSearch = ({ data }) => {
 				activePageText="Search"
 			/>
 
-			<div className="courses-area ptb-70">
+			<div className="courses-area pt-40 pb-70">
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-8 col-md-12">
@@ -104,18 +104,10 @@ const AlgoliaSearch = ({ data }) => {
 										<div className="col-lg-6 col-md-6" key={course.title}>
 											<div className="single-courses-box">
 												<div className="courses-image">
-													<Link
-														href="/courses/[id]"
-														as={`/courses/${course._id}`}
-													>
+													<Link href="/courses/[id]" as={`/courses/${course._id}`}>
 														<a className="d-block image">
-															<img
-																src={
-																	course?.profilePhoto ||
-																	'/images/courses/courses1.jpg'
-																}
-																alt={course.title}
-															/>
+															<img src={course?.profilePhoto || '/images/courses/courses1.jpg'}
+																alt={course.title} />
 														</a>
 													</Link>
 													<div className="price shadow">
@@ -123,28 +115,21 @@ const AlgoliaSearch = ({ data }) => {
 													</div>
 												</div>
 												<div className="courses-content">
-													<div className="course-author d-flex align-items-center">
-														<img
-															src="/images/user1.jpg"
-															className="rounded-circle"
-															alt="image"
-														/>
-														<span>Alex Morgan</span>
+													<div className="course-author d-flex align-items-center mt-2">
+														<img src="/images/user1.svg" className="rounded-circle" alt="image" />
+														<span><small>Led by experts</small></span>
 													</div>
 
-													<h3 title={course.title}>
+													<b title={course.title}>
 														<Link
 															href="/courses/[id]"
-															as={`/courses/${course._id}`}
-														>
+															as={`/courses/${course._id}`}>
 															<a>{course.title.slice(0, 20)}...</a>
 														</Link>
-													</h3>
+													</b>
 
-													<p>{course.overview.slice(0, 100)}...</p>
 													<ul className="courses-box-footer d-flex justify-content-between align-items-center">
-														<li>
-															<i className="flaticon-agenda"></i>
+														<li className='mb-3'>
 															<Link
 																href="/courses/[id]"
 																as={`/courses/${course._id}`}

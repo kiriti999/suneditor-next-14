@@ -12,25 +12,19 @@ const CourseCard = ({
     const [state, setState] = useContext(Context);
 
     return (
-        <div className="col-lg-6 col-md-12">
+        <div className="col-lg-12 col-md-12">
             <div className="single-courses-box">
                 <div className="courses-image">
                     <Link href="/courses/[id]" as={`/courses/${id}`}>
                         <a className="d-block image">
-                            <img src={profilePhoto} alt={title} />
+                            {/* <img src={profilePhoto} alt={title} /> */}
                         </a>
                     </Link>
                     {/* <a href="#" className="fav">
                         <i className="flaticon-heart"></i>
                     </a> */}
-                    <div className="price shadow">&#8377;{kConverter(price)}</div>
                 </div>
                 <div className="courses-content">
-                    <div className="course-author d-flex align-items-center">
-                        <img src={`${userId?.profilePhoto ? userId.profilePhoto : '/images/user1.jpg'}`} className="rounded-circle" alt={userId.name} />
-                        <span>{userId.name}</span>
-                    </div>
-
                     <h3>
                         <Link href="/courses/[id]" as={`/courses/${id}`}>
 
@@ -50,14 +44,13 @@ const CourseCard = ({
                             highlightClassName='search-highlight'
                             searchWords={[highlight]}
                             autoEscape={true}
-                            textToHighlight={overview.slice(0, 100)}
                         /></p>
                     <ul className="courses-box-footer d-flex justify-content-between align-items-center">
                         <li>
-                            <i className='flaticon-agenda'></i> {parseInt(lessons)} Lessons
+                            {parseInt(lessons)} Lessons
                         </li>
                         <li>
-                            <i className='flaticon-people'></i> {enrolled.length} Students
+                            {enrolled.length} Students
                         </li>
                     </ul>
                 </div>

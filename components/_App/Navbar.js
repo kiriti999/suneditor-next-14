@@ -115,16 +115,17 @@ const Navbar = ({ user }) => {
 
 									</li>
 
-									<li className="nav-item">
-										<Link href="/become-a-teacher">
-											<a
-												className="nav-link"
-												onClick={toggleNavbar}
-											>
-												Become A Teacher
-											</a>
-										</Link>
-									</li>
+									{user && isAdmin && (
+										<li className="nav-item">
+											<Link href="/become-a-teacher">
+												<a
+													className="nav-link"
+													onClick={toggleNavbar}>
+													Become A Teacher
+												</a>
+											</Link>
+										</li>
+									)}
 
 									{((user && isTeacher) ||
 										(user && isAdmin)) && (
@@ -142,10 +143,8 @@ const Navbar = ({ user }) => {
 									{user && isAdmin && (
 										<li className="nav-item">
 											<Link href="/admin/pending-requests">
-												<a
-													className="nav-link"
-													onClick={toggleNavbar}
-												>
+												<a className="nav-link"
+													onClick={toggleNavbar}>
 													Dashboard
 												</a>
 											</Link>
@@ -172,11 +171,8 @@ const Navbar = ({ user }) => {
 											<div className="user-dropdown">
 												<Link href="/">
 													<a
-														onClick={(e) =>
-															e.preventDefault()
-														}
-														className="default-btn"
-													>
+														onClick={(e) => e.preventDefault()}
+														className="default-btn">
 														<i className="flaticon-user"></i>{" "}
 														{user.name}{" "}
 														<span></span>
@@ -187,14 +183,9 @@ const Navbar = ({ user }) => {
 													<li className="nav-item">
 														<Link
 															href="/my-courses"
-															activeClassName="active"
-														>
-															<a
-																onClick={
-																	toggleNavbar
-																}
-																className="nav-link"
-															>
+															activeClassName="active">
+															<a onClick={toggleNavbar}
+																className="nav-link">
 																My Courses
 															</a>
 														</Link>
@@ -203,14 +194,10 @@ const Navbar = ({ user }) => {
 													<li className="nav-item">
 														<Link
 															href="/user/my-profile"
-															activeClassName="active"
-														>
+															activeClassName="active">
 															<a
-																onClick={
-																	toggleNavbar
-																}
-																className="nav-link"
-															>
+																onClick={toggleNavbar}
+																className="nav-link">
 																My Profile
 															</a>
 														</Link>
@@ -219,14 +206,10 @@ const Navbar = ({ user }) => {
 													<li className="nav-item">
 														<Link
 															href="/user/edit-profile"
-															activeClassName="active"
-														>
+															activeClassName="active">
 															<a
-																onClick={
-																	toggleNavbar
-																}
-																className="nav-link"
-															>
+																onClick={toggleNavbar}
+																className="nav-link">
 																Edit Profile
 															</a>
 														</Link>
@@ -235,14 +218,10 @@ const Navbar = ({ user }) => {
 													<li className="nav-item">
 														<Link
 															href="/user/edit-password"
-															activeClassName="active"
-														>
+															activeClassName="active">
 															<a
-																onClick={
-																	toggleNavbar
-																}
-																className="nav-link"
-															>
+																onClick={toggleNavbar}
+																className="nav-link">
 																Edit Password
 															</a>
 														</Link>
@@ -255,8 +234,7 @@ const Navbar = ({ user }) => {
 																onClick={(e) => {
 																	e.preventDefault();
 																	handleLogout();
-																}}
-															>
+																}}>
 																Logout
 															</a>
 														</Link>
