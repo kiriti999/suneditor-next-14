@@ -21,12 +21,9 @@ const TopCourses = ({ courses }) => {
 									<div className="courses-image">
 										<Link
 											href="/courses/[id]"
-											as={`/courses/${course._id}`}
-										>
+											as={`/courses/${course._id}`}>
 											<a className="d-block image">
-												{/* <img src={course.profilePhoto}
-													alt={course.title}
-												/> */}
+												<img src={course.profilePhoto} alt={course.title} />
 											</a>
 										</Link>
 
@@ -54,8 +51,8 @@ const TopCourses = ({ courses }) => {
 										</b>
 
 										<br></br>
-										<small style={{color: 'grey'}}>Led by experts</small>
-										
+										<small style={{ color: 'grey' }}>Led by experts</small>
+
 
 										<ul className="courses-box-footer d-flex justify-content-between align-items-center">
 											<li>
