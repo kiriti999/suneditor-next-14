@@ -1,127 +1,223 @@
-import React, { useState, useEffect } from 'react'
-import { parseCookies } from 'nookies'
-import axios from 'axios'
-import { axiosApi } from "@/utils/baseUrl";
+import { useState } from 'react';
+import { parseCookies } from 'nookies';
+import axios from 'axios';
+import { axiosApi } from '@/utils/baseUrl';
 import Link from '@/utils/ActiveLink';
+import Modal from '@/components/Modal/Modal';
+import { toast } from 'react-toastify';
 
-const courseEdit = ({ courses }) => {
+const CourseEdit = ({ courses: data }) => {
+	const [courses, setCourses] = useState(data);
+	const [showModal, setShowModal] = useState(false);
+	const [deleteCourseIds, setDeleteCourseIds] = useState([]);
 
-    async function deleteCourse(id) {
-        const { token } = parseCookies();
-        const url = `${axiosApi.baseUrl}/api/v1/courses/course/delete?id=${id}`
-        const response = await axios.get(url, {
-            headers: { Authorization: token }
-        });
-        console.log('pages/course-edit.js:: deleteCourse:: response.data: ', response.data);
-        // setCourses((current) => courses.filter((course) => course.id !== id));
-    }
+	const { token } = parseCookies();
 
-    // useEffect(() => {
-        
-      
-    // }, [courses])
-    
-    
-    return (
+	const deleteCourseHandler = async () => {
+		try {
+			const deleteRequest = deleteCourseIds.map((id) =>
+				axios.delete(
+					`${axiosApi.baseUrl}/api/v1/courses/course/delete?id=${id}`,
+					{
+						headers: { Authorization: token }
+					}
+				)
+			);
 
-        <div>
-            <div className="ptb-100">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-4 col-lg-4">
-                            <div className="td-sidebar">
-                                <ul>
-                                    <li>
-                                        <Link href="/teacher/courses" activeClassName="active">
-                                            <a>My Courses</a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/teacher/course/create" activeClassName="active">
-                                            <a>Create A Course</a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/teacher/courses/course-edit" activeClassName="active">
-                                            <a>Edit My Course</a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/teacher/course/upload-course-video" activeClassName="active">
-                                            <a>Upload Course Video</a>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+			const result = await Promise.allSettled(deleteRequest);
 
-                        <div className="col-md-8 col-lg-8">
-                            <div className="table-responsive">
-                                <table className="table vertical-align-top">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Courses</th>
-                                            <th scope="col" className="text-right">Action</th>
-                                        </tr>
-                                    </thead>
+			const successIds = result.map(({ status, value }) => {
+				if (status === 'fulfilled' && value.status === 200) {
+					return value.config.url.replace(
+						`${axiosApi.baseUrl}/api/v1/courses/course/delete?id=`,
+						''
+					);
+				}
+			});
 
-                                    <tbody>
-                                        {courses.length ? courses.map(course => (
-                                            <tr key={course._id}>
-                                                <th scope="row">1</th>
-                                                <td>
-                                                    {course.title}
-                                                </td>
-                                                <td className="text-right">
-                                                    <Link href="/teacher/course/[id]" as={`/teacher/course/${course._id}`}>
-                                                        <a className="btn btn-success">
-                                                            <i className='bx bxs-edit'></i> Edit
-                                                        </a>
-                                                    </Link>
+			setCourses((preCourse) =>
+				preCourse.filter(
+					(course) =>
+						!(
+							deleteCourseIds.includes(course._id) &&
+							successIds.includes(course._id)
+						)
+				)
+			);
 
-                                                    <Link href="">
-                                                        <a className="btn btn-success"
-                                                            onClick={(e) => {
-                                                                e.preventDefault();
-                                                                deleteCourse(course._id)
-                                                            }}>
-                                                            <i className='bx bxs-delete'></i> Delete
-                                                        </a>
-                                                    </Link>
+			toast.success('Successfully delete courses.');
+		} catch (error) {
+			toast.error('Not able to delete courses. Please try again.');
+		} finally {
+			setDeleteCourseIds([]);
+			setShowModal(false);
+		}
+	};
 
-                                                </td>
-                                            </tr>
-                                        )) : (
-                                            <tr className="text-center">
-                                                <td colSpan="3">Empty</td>
-                                            </tr>
-                                        )}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
+	const modalCloseHandler = () => {
+		setShowModal(false);
+		setDeleteCourseIds([]);
+	};
 
-courseEdit.getInitialProps = async ctx => {
-    const { token } = parseCookies(ctx)
-    if (!token) {
-        return { courses: [] }
-    }
+	const deleteHandler = (id) => {
+		setShowModal(true);
+		setDeleteCourseIds([id]);
+	};
 
-    const payload = {
-        headers: { Authorization: token }
-    }
+	const deleteBulkHandler = () => {
+		setShowModal(true);
+	};
 
-    const url = `${axiosApi.baseUrl}/api/v1/courses/teacher/my-courses`
-    const response = await axios.get(url, payload)
-    // console.log(response.data)
-    return response.data
-}
+	const bulkSelection = (id) => {
+		setDeleteCourseIds((preData) => {
+			const isExist = preData.includes(id);
 
-export default courseEdit
+			if (isExist) {
+				return preData.filter((courseId) => courseId !== id);
+			} else {
+				return [...preData, id];
+			}
+		});
+	};
+
+	return (
+		<>
+			<div className="ptb-100">
+				<div className="container">
+					<div className="row">
+						<div className="col-md-4 col-lg-4">
+							<div className="td-sidebar">
+								<ul>
+									<li>
+										<Link href="/teacher/courses" activeClassName="active">
+											<a>My Courses</a>
+										</Link>
+									</li>
+									<li>
+										<Link
+											href="/teacher/course/create"
+											activeClassName="active"
+										>
+											<a>Create A Course</a>
+										</Link>
+									</li>
+									<li>
+										<Link
+											href="/teacher/courses/course-edit"
+											activeClassName="active"
+										>
+											<a>Edit My Course</a>
+										</Link>
+									</li>
+									<li>
+										<Link
+											href="/teacher/course/upload-course-video"
+											activeClassName="active"
+										>
+											<a>Upload Course Video</a>
+										</Link>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div className="col-md-8 col-lg-8">
+							<div className="mb-4 d-flex justify-content-end">
+								<button
+									className="btn btn-sm btn-danger"
+									disabled={deleteCourseIds.length < 2}
+									onClick={deleteBulkHandler}
+								>
+									Delete All
+								</button>
+							</div>
+							<div className="table-responsive">
+								<table className="table vertical-align-top">
+									<thead>
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">Courses</th>
+											<th scope="col" className="text-right">
+												Action
+											</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										{courses.length ? (
+											courses.map((course) => (
+												<tr key={course._id}>
+													<th scope="row">
+														<input
+															type="checkbox"
+															className="form-check-input"
+															checked={deleteCourseIds.includes(course._id)}
+															onChange={() => bulkSelection(course._id)}
+														/>
+													</th>
+													<td>{course.title}</td>
+													<td className="text-right">
+														<button
+															type="button"
+															className="btn btn-danger me-2"
+															onClick={() => deleteHandler(course._id)}
+														>
+															<i className="bx bxs-trash"></i> Delete
+														</button>
+
+														<Link
+															href="/teacher/course/[id]"
+															as={`/teacher/course/${course._id}`}
+														>
+															<a className="btn btn-success">
+																<i className="bx bxs-edit"></i> Edit
+															</a>
+														</Link>
+													</td>
+												</tr>
+											))
+										) : (
+											<tr className="text-center">
+												<td colSpan="3">Empty</td>
+											</tr>
+										)}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<Modal
+				title="Delete Course"
+				description="Do you want to really delete the course?"
+				showModal={showModal}
+				buttonOneText="Close"
+				buttonOneHandler={modalCloseHandler}
+				buttonTwoText="Delete"
+				buttonTwoType="danger"
+				buttonTwoHandler={deleteCourseHandler}
+				closeHandler={modalCloseHandler}
+			/>
+		</>
+	);
+};
+
+CourseEdit.getInitialProps = async (ctx) => {
+	const { token } = parseCookies(ctx);
+	if (!token) {
+		return { courses: [] };
+	}
+
+	const payload = {
+		headers: { Authorization: token }
+	};
+
+	const url = `${axiosApi.baseUrl}/api/v1/courses/teacher/my-courses`;
+	const response = await axios.get(url, payload);
+
+	return response.data;
+};
+
+export default CourseEdit;

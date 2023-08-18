@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Alert } from 'reactstrap'
 import { axiosApi } from "@/utils/baseUrl";
 import { Spinner } from 'reactstrap'
-import toast from 'react-hot-toast'
+import { toast } from 'react-toastify';
 import catchErrors from '@/utils/catchErrors'
 import PageBanner from '@/components/Common/PageBanner'
 import Link from '@/utils/ActiveLink'
@@ -151,7 +151,7 @@ const UploadCourseVideo = ({ courses }) => {
                                         <h3 className="loading-spinner">
                                             <div className="d-table">
                                                 <div className="d-table-cell"> 
-                                                    <Spinner color="danger" /> Vide uploading...
+                                                    <Spinner color="success"> </Spinner>
                                                 </div>
                                             </div>
                                         </h3>

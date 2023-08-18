@@ -8,6 +8,7 @@ import { kConverter } from '@/utils/cart/currencyHelper';
 import axios from 'axios';
 import { axiosApi } from '@/utils/baseUrl';
 import { algoliaSearchByKeyword } from '@/lib/algolia';
+import QueryPagination from '@/components/QueryPagination/QueryPagination';
 
 const sortOption = [
 	{
@@ -28,7 +29,7 @@ const sortOption = [
 	}
 ];
 
-const AlgoliaSearch = ({ data }) => {
+const AlgoliaSearch = ({ data, pages }) => {
 	const [state, setState] = useContext(Context);
 	const { push, query } = useRouter();
 
@@ -51,6 +52,10 @@ const AlgoliaSearch = ({ data }) => {
 		push({ query: { ...query, sort: type } });
 	};
 
+	const handlePagination = (pageNumber) => {
+		push({ query: { ...query, page: pageNumber } });
+	};
+
 	return (
 		<div>
 			<PageBanner
@@ -60,7 +65,7 @@ const AlgoliaSearch = ({ data }) => {
 				activePageText="Search"
 			/>
 
-			<div className="courses-area pt-40 pb-70">
+			<div className="courses-area ptb-70">
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-8 col-md-12">
@@ -104,10 +109,18 @@ const AlgoliaSearch = ({ data }) => {
 										<div className="col-lg-6 col-md-6" key={course.title}>
 											<div className="single-courses-box">
 												<div className="courses-image">
-													<Link href="/courses/[id]" as={`/courses/${course._id}`}>
+													<Link
+														href="/courses/[id]"
+														as={`/courses/${course._id}`}
+													>
 														<a className="d-block image">
-															<img src={course?.profilePhoto || '/images/courses/courses1.jpg'}
-																alt={course.title} />
+															<img
+																src={
+																	course?.profilePhoto ||
+																	'/images/courses/courses1.jpg'
+																}
+																alt={course.title}
+															/>
 														</a>
 													</Link>
 													<div className="price shadow">
@@ -115,21 +128,28 @@ const AlgoliaSearch = ({ data }) => {
 													</div>
 												</div>
 												<div className="courses-content">
-													<div className="course-author d-flex align-items-center mt-2">
-														<img src="/images/user1.svg" className="rounded-circle" alt="image" />
-														<span><small>Led by experts</small></span>
+													<div className="course-author d-flex align-items-center">
+														<img
+															src="/images/user1.jpg"
+															className="rounded-circle"
+															alt="image"
+														/>
+														<span>Alex Morgan</span>
 													</div>
 
-													<b title={course.title}>
+													<h3 title={course.title}>
 														<Link
 															href="/courses/[id]"
-															as={`/courses/${course._id}`}>
+															as={`/courses/${course._id}`}
+														>
 															<a>{course.title.slice(0, 20)}...</a>
 														</Link>
-													</b>
+													</h3>
 
+													<p>{course.overview.slice(0, 100)}...</p>
 													<ul className="courses-box-footer d-flex justify-content-between align-items-center">
-														<li className='mb-3'>
+														<li>
+															<i className="flaticon-agenda"></i>
 															<Link
 																href="/courses/[id]"
 																as={`/courses/${course._id}`}
@@ -143,6 +163,16 @@ const AlgoliaSearch = ({ data }) => {
 										</div>
 									))
 								)}
+							</div>
+
+							<div className="row">
+								<QueryPagination
+									totalPage={pages}
+									currentPage={query.page}
+									previousPageClickHandler={handlePagination}
+									nextPageClickHandler={handlePagination}
+									pageNumberClickHandler={handlePagination}
+								/>
 							</div>
 						</div>
 
@@ -161,11 +191,14 @@ export const getServerSideProps = async ({ query }) => {
 		let filteredCourses = [];
 		const searchQuery = query.q || '';
 		const sortQuery = query.sort || '';
+		let page = query?.page || 1;
 
 		// algolia search
-		const { hits: searchResult } = await algoliaSearchByKeyword(
+		const { hits: searchResult, nbPages } = await algoliaSearchByKeyword(
 			'courses',
-			searchQuery
+			searchQuery,
+			page - 1,
+			20
 		);
 
 		// get data for courses popularity
@@ -202,9 +235,9 @@ export const getServerSideProps = async ({ query }) => {
 			filteredCourses = courses;
 		}
 
-		return { props: { data: filteredCourses } };
+		return { props: { data: filteredCourses, pages: nbPages } };
 	} catch (error) {
-		return { props: { data: [] } };
+		return { props: { data: [], pages: 0 } };
 	}
 };
 

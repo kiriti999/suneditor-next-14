@@ -2,7 +2,7 @@
 import React from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
-import { useToasts } from 'react-toast-notifications'
+import { toast } from 'react-toastify';
 import { useRouter } from 'next/router'
 import { axiosApi } from "@/utils/baseUrl";
 import catchErrors from '@/utils/catchErrors'
@@ -10,8 +10,6 @@ import PageBanner from '@/components/Common/PageBanner'
 import Link from '@/utils/ActiveLink'
 
 const pendingRequests = ({pendingRequests}) => {
-    console.log('pendingRequests ', pendingRequests)
-    const { addToast } = useToasts()
     const router = useRouter()
 
     const approveReq = async id => {
@@ -20,9 +18,7 @@ const pendingRequests = ({pendingRequests}) => {
             const payload = { userId: id }
             const response = await axios.post(url, payload)
             // console.log(response.data)
-            addToast(response.data, { 
-                appearance: 'success'
-            })
+            toast.success(response.data)
             router.push('/admin/pending-requests')
         } catch (error) {
             catchErrors(error, setError)
@@ -35,9 +31,7 @@ const pendingRequests = ({pendingRequests}) => {
             const payload = { userId: id }
             const response = await axios.post(url, payload)
             // console.log(response.data)
-            addToast(response.data, { 
-                appearance: 'success'
-            })
+            toast.success(response.data)
             router.push('/admin/pending-requests')
         } catch (error) {
             catchErrors(error, setError)

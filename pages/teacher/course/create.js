@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
 import { Spinner } from 'reactstrap'
-import toast from 'react-hot-toast'
+import { toast } from 'react-toastify';
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import { axiosApi } from "@/utils/baseUrl";
@@ -98,6 +98,7 @@ const Create = () => {
 
     const handleCourseSubmit = async e => {
         e.preventDefault()
+        setLoading(true);
         try {
             console.log('create.js:: handleCourseSubmit:: data: ', course);
             let profile = ''
@@ -122,6 +123,7 @@ const Create = () => {
             console.log('pages/teacher/course/create.js:: response: ', response);
 
             if (response.status === 200) {
+                toast.success('New course successfully created.');
                 await indexPost(response.data);
             }
 
@@ -185,7 +187,7 @@ const Create = () => {
                                     <h3 className="loading-spinner">
                                         <div className="d-table">
                                             <div className="d-table-cell">
-                                                <Spinner color="success" /> Wait....
+                                                <Spinner color="success"> </Spinner>
                                             </div>
                                         </div>
                                     </h3>
@@ -310,7 +312,7 @@ const Create = () => {
                                     >
                                         <i className='flaticon-right-chevron'></i>
                                         Create
-                                        {(imageUploading || loading) ? <Spinner color="success" /> : ''}
+                                        {(imageUploading) ? <Spinner color="success" /> : ''}
 
                                         <span></span>
                                     </button>
