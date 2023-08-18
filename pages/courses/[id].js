@@ -8,6 +8,7 @@ import CoursesCurriculum from "@/components/Courses/CoursesCurriculum";
 const Details = ({ course, user }) => {
 	console.log('pages/courses/[id].js:: course: ', course);
 	console.log('pages/courses/[id].js:: user: ', user);
+
 	return (
 		<div>
 			<div className="courses-details-area pb-100">
@@ -27,7 +28,7 @@ const Details = ({ course, user }) => {
 									<TabPanel>
 										<div className="courses-overview">
 											<h3>{course.title}</h3>
-											<p>{course.overview}</p>
+											<div style={{ display: 'contents' }} dangerouslySetInnerHTML={{ __html: course.overview }} />
 										</div>
 									</TabPanel>
 

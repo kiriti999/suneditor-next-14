@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
 import { Spinner } from 'reactstrap'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
 import { axiosApi } from "@/utils/baseUrl";
 import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
 import * as imageHelper from '@/utils/image-upload';
 import { indexPost } from '../../api/v1/courses/search/addToAlgolia';
+import 'suneditor/dist/css/suneditor.min.css';
+
+const SunEditor = dynamic(() => import('suneditor-react'), {
+    ssr: false
+})
 
 const INIT_COURSE = {
     title: '',
@@ -27,17 +33,28 @@ const Create = () => {
     const { token } = parseCookies()
     const router = useRouter()
 
-    const [course, setCourse] = React.useState(INIT_COURSE)
-    const [profilePreview, setProfilePreview] = React.useState('')
-    const [imageUploading, setImageUploading] = React.useState(false)
-    const [loading, setLoading] = React.useState(false)
-    const [disabled, setDisabled] = React.useState(false)
-    const [error, setError] = React.useState();
+    const [course, setCourse] = useState(INIT_COURSE)
+    const [profilePreview, setProfilePreview] = useState('')
+    const [imageUploading, setImageUploading] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [disabled, setDisabled] = useState(false)
+    const [error, setError] = useState();
+    const [categories, setCategories] = useState([]);
 
-    // React.useEffect(() => {
+    // useEffect(() => {
     //     const isCourse = Object.values(course).every(el => Boolean(el))
     //     isCourse ? setDisabled(false) : setDisabled(true)
     // }, [course])
+
+    useEffect(() => {
+        const url = `${axiosApi.baseUrl}/api/v1/courses/categories`;
+        (async () => {
+            const response = await axios.get(url)
+            console.log('pages/create.js:: useEffect: categories:', response.data?.categories);
+            setCategories(response.data?.categories);
+        })()
+    }, [])
+
 
     const handleChange = e => {
         // console.log(d.value)
@@ -58,6 +75,10 @@ const Create = () => {
             setCourse(prevState => ({ ...prevState, [name]: value }))
         }
         // console.log(course);
+    }
+
+    const handleSunEditor = value => {
+        setCourse(prevState => ({ ...prevState, overview: value }))
     }
 
     const handleProfilePhotoUpload = async () => {
@@ -87,12 +108,11 @@ const Create = () => {
 
             const url = `${axiosApi.baseUrl}/api/v1/courses/course/new`
             const {
-                title, overview, price, published, duration, lessons,
-                category, course_preview_video } = course
+                title, overview, topics, price, lessons, duration, category, course_preview_video, published
+            } = course
 
             const payload = {
-                title, overview, price, published, duration, lessons,
-                category, profile, course_preview_video
+                title, overview, topics, price, lessons, duration, category, profile, course_preview_video, published
             }
 
             const response = await axios.post(url, payload, {
@@ -186,14 +206,23 @@ const Create = () => {
 
                                     <div className="form-group">
                                         <label>Course Overview</label>
-                                        <textarea
-                                            type="text"
+                                        <SunEditor
                                             placeholder="Enter course overview"
-                                            className="form-control"
                                             name="overview"
-                                            rows="10"
                                             value={course.overview}
-                                            onChange={handleChange}
+                                            height="200px"
+                                            onChange={handleSunEditor}
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>Course topics</label>
+                                        <SunEditor
+                                            placeholder="Enter course topics"
+                                            name="topics"
+                                            value={course.topics}
+                                            height="200px"
+                                            onChange={handleSunEditor}
                                         />
                                     </div>
 
@@ -235,17 +264,16 @@ const Create = () => {
 
                                     <div className="form-group">
                                         <label>Categories</label>
-                                        <input
-                                            type="text"
-                                            placeholder="React, Ruby, Rails"
-                                            className="form-control"
+                                        <select className="form-control"
+                                            placeholder="Category name"
                                             name="category"
                                             value={course.category}
-                                            onChange={handleChange}
-                                        />
+                                            onChange={handleChange}>
+                                            {categories.map((item) => <option key={item._id} data-id={item._id}>{item.category}</option>)}
+                                        </select>
                                     </div>
 
-                                    <div className="form-group">
+                                    { /*<div className="form-group">
                                         <label>Course Profile (<i>Image less than 2 MB & size 750x500</i>)</label>
 
                                         <br />
@@ -261,6 +289,7 @@ const Create = () => {
 
                                         <img src={profilePreview} className="mxw-200 mt-20" />
                                     </div>
+                                */ }
 
                                     <div className="form-group">
                                         <label>Course Preview Video URL</label>

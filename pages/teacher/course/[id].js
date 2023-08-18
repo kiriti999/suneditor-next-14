@@ -1,6 +1,7 @@
 import React from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
+import dynamic from 'next/dynamic'
 import { axiosApi } from "@/utils/baseUrl";
 import { redirectUser } from '../../../utils/auth'
 import { Spinner } from 'reactstrap'
@@ -8,6 +9,11 @@ import toast from 'react-hot-toast'
 import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
 import * as imageHelper from '@/utils/image-upload'
+import 'suneditor/dist/css/suneditor.min.css';
+
+const SunEditor = dynamic(() => import('suneditor-react'), {
+    ssr: false
+})
 
 const Edit = (data) => {
     console.log('pages:: course/[id].js:: existingData: ', data);
@@ -60,6 +66,10 @@ const Edit = (data) => {
         }
     }
 
+    const handleSunEditor = value => {
+        setCourse(prevState => ({ ...prevState, overview: value }))
+    }
+
     const handleProfilePhotoUpload = async () => {
         setImageUploading(true);
         let secure_url;
@@ -88,12 +98,12 @@ const Edit = (data) => {
 
             const url = `${axiosApi.baseUrl}/api/v1/courses/course/update`
             const {
-                _id, title, overview, price, published, duration,
+                _id, title, overview, topics, price, published, duration,
                 lessons, category, course_preview_video
             } = course
 
             const payload = {
-                _id, title, overview, price, published, duration,
+                _id, title, overview, topics, price, published, duration,
                 lessons, category, profile, course_preview_video
             }
 
@@ -182,14 +192,23 @@ const Edit = (data) => {
 
                                     <div className="form-group">
                                         <label>Course Overview</label>
-                                        <textarea
-                                            type="text"
+                                        <SunEditor
                                             placeholder="Enter course overview"
-                                            className="form-control"
                                             name="overview"
-                                            rows="10"
-                                            value={course.overview}
-                                            onChange={handleChange}
+                                            defaultValue={course.overview}
+                                            height="200px"
+                                            onChange={handleSunEditor}
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>Course topics</label>
+                                        <SunEditor
+                                            placeholder="Enter course topics"
+                                            name="overview"
+                                            defaultValue={course.topics}
+                                            height="200px"
+                                            onChange={handleSunEditor}
                                         />
                                     </div>
 

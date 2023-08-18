@@ -7,7 +7,6 @@ import PageBanner from '@/components/Common/PageBanner'
 import Link from '@/utils/ActiveLink'
 
 const index = ({ courses }) => {
-    // console.log(courses)
     return (
         <>
             <div className="courses-area courses-section pt-100 pb-70">

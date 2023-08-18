@@ -2,6 +2,15 @@ import React from "react";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 
+const overviewStyle = {
+	display: '-webkit-box',
+	// maxWidth: '200px',
+	'margin-top': '10px',
+	WebkitLineClamp: '4',
+	WebkitBoxOrient: 'vertical',
+	overflow: 'hidden'
+}
+
 const TopCourses = ({ courses }) => {
 	const { t } = useTranslation("distance-learning");
 	return (
@@ -16,8 +25,8 @@ const TopCourses = ({ courses }) => {
 				<div className="row justify-content-center">
 					{courses ? (
 						courses.map((course) => (
-							<div className="col-lg-4 col-md-6" key={course._id}>
-								<div className="single-courses-box">
+							<div className="col-lg-3 col-md-6" key={course._id}>
+								<div className="single-courses-box course-box-border">
 									<div className="courses-image">
 										<Link
 											href="/courses/[id]"
@@ -38,13 +47,13 @@ const TopCourses = ({ courses }) => {
 										</div> */}
 									</div>
 
-									<div className="courses-content">
+									<div className="courses-content pt-20 mb-2 ml-5">
 										<b title={course.title}>
 											<Link
 												href="/courses/[id]"
 												as={`/courses/${course._id}`}>
 												<a>
-													{course.title.slice(0, 50)}
+													{course.title.slice(0, 47)}
 													...
 												</a>
 											</Link>

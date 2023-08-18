@@ -218,6 +218,19 @@ h6 {
   padding-bottom: 100px;
 }
 
+.pt-40 {
+  padding-top: 40px;
+}
+
+.pt-50 {
+  padding-top: 50px;
+
+}
+
+.pb-50 {
+  padding-bottom: 70px;
+}
+
 .ptb-70 {
   padding-top: 70px;
   padding-bottom: 70px;
@@ -524,7 +537,7 @@ Navbar Area CSS
 .whatsnxt-nav .navbar .search-box {
   margin-left: 50px;
   position: relative;
-  width: 260px;
+  width: 215px;
   border-radius: 5px;
 }
 
@@ -3486,6 +3499,10 @@ Courses Area CSS
   box-shadow: 0px 8px 16px 0px rgba(146, 184, 255, 0.2);
 }
 
+.course-box-border {
+  border: 0.5px solid lightgrey;
+}
+
 .single-courses-box .courses-image {
   border-radius: 5px 5px 0 0;
   position: relative;
@@ -3532,7 +3549,7 @@ Courses Area CSS
 
 .single-courses-box .courses-content {
   border-radius: 0 0 5px 5px;
-  padding: 30px;
+  /* padding: 30px; */
 }
 
 .single-courses-box .courses-content .course-author {
@@ -3568,7 +3585,7 @@ Courses Area CSS
   margin-bottom: 0;
   /* margin-left: -7px; */
   /* margin-right: -7px; */
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .single-courses-box .courses-content .courses-box-footer li {
@@ -15759,10 +15776,30 @@ marquee {
   z-index: 1;
 }
 
-.pb-100 {
-  padding-bottom: 100px;
+.pt-10 {
+  padding-top: 10px
+}
+
+.pt-20 {
+  padding-top: 20px
+}
+
+.pb-10 {
+  padding-bottom: 10px;
 }
 
 .pt-25 {
   padding-top: 25px;
+}
+
+.pb-100 {
+  padding-bottom: 100px;
+}
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+.ml-5 {
+  margin-left: 5px;
 }
