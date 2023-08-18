@@ -71,7 +71,7 @@ const Create = () => {
             public_id = cloudinary?.public_id;
             course.postImageAttributes = { public_id };
         }
-        
+
         return secure_url;
     }
 
@@ -87,26 +87,12 @@ const Create = () => {
 
             const url = `${axiosApi.baseUrl}/api/v1/courses/course/new`
             const {
-                title,
-                overview,
-                price,
-                published,
-                duration,
-                lessons,
-                category,
-                course_preview_video
-            } = course
+                title, overview, price, published, duration, lessons,
+                category, course_preview_video } = course
 
             const payload = {
-                title,
-                overview,
-                price,
-                published,
-                duration,
-                lessons,
-                category,
-                profile,
-                course_preview_video
+                title, overview, price, published, duration, lessons,
+                category, profile, course_preview_video
             }
 
             const response = await axios.post(url, payload, {

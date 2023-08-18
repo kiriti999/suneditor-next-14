@@ -15,18 +15,8 @@ const cors = initMiddleware(
 export default async (req, res) => {
     await cors(req, res)
     const {
-        id,
-        title,
-        overview,
-        price,
-        published,
-        duration,
-        lessons,
-        category,
-        profile,
-        cover,
-        preview,
-        course_preview_video
+        id, title, overview, price, published, duration, lessons, category, profile,
+        cover, preview, course_preview_video
     } = req.body
 
     try {
@@ -34,18 +24,8 @@ export default async (req, res) => {
             url: `/courses/course/update`,
             method: 'POST',
             data: {
-                id,
-                title,
-                overview,
-                price,
-                published,
-                duration,
-                lessons,
-                category,
-                profile,
-                cover,
-                preview,
-                course_preview_video
+                id, title, overview, price, published, duration,
+                lessons, category, profile, cover, preview, course_preview_video
             }
         });
         console.log('update.js:: response: ', response?.data);

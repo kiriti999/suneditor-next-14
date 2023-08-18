@@ -11,7 +11,7 @@ import * as imageHelper from '@/utils/image-upload'
 
 const Edit = (data) => {
     console.log('pages:: course/[id].js:: existingData: ', data);
-    const {course: existingData, user} = data;
+    const { course: existingData, user } = data;
     const { token } = parseCookies()
     // console.log(existingData)
 
@@ -88,28 +88,13 @@ const Edit = (data) => {
 
             const url = `${axiosApi.baseUrl}/api/v1/courses/course/update`
             const {
-                _id,
-                title,
-                overview,
-                price,
-                published,
-                duration,
-                lessons,
-                category,
-                course_preview_video
+                _id, title, overview, price, published, duration,
+                lessons, category, course_preview_video
             } = course
 
             const payload = {
-                _id,
-                title,
-                overview,
-                price,
-                published,
-                duration,
-                lessons,
-                category,
-                profile,
-                course_preview_video
+                _id, title, overview, price, published, duration,
+                lessons, category, profile, course_preview_video
             }
 
             const response = await axios.post(url, payload, {
