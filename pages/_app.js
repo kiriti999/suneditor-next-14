@@ -15,6 +15,7 @@ import "react-tabs/style/react-tabs.css";
 import 'react-18-image-lightbox/style.css';
 import "swiper/css";
 import "swiper/css/bundle";
+import 'react-toastify/dist/ReactToastify.css';
 import { wrapper } from '../store/store';
 
 // Global Styles

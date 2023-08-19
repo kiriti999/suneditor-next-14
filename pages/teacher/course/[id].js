@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import { axiosApi } from "@/utils/baseUrl";
 import { redirectUser } from '../../../utils/auth'
 import { Spinner } from 'reactstrap'
-import toast from 'react-hot-toast'
+import { toast } from 'react-toastify';
 import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
 import * as imageHelper from '@/utils/image-upload'
@@ -88,6 +88,7 @@ const Edit = (data) => {
 
     const handleCourseUpdate = async e => {
         e.preventDefault()
+        setLoading(true);
         try {
             let profile = ''
             let cover = ''
@@ -113,7 +114,7 @@ const Edit = (data) => {
 
             console.log('pages:: course/[id].js:: response.data: ', response.data)
             setLoading(false)
-            alert(response.data);
+            
             toast.success(response.data);
         } catch (err) {
             catchErrors(err, setError)
@@ -171,7 +172,7 @@ const Edit = (data) => {
                                     <h3 className="loading-spinner">
                                         <div className="d-table">
                                             <div className="d-table-cell">
-                                                <Spinner color="success" /> Wait....
+                                                <Spinner color="success"> </Spinner>
                                             </div>
                                         </div>
                                     </h3>
@@ -296,7 +297,7 @@ const Edit = (data) => {
                                     >
                                         <i className='flaticon-right-chevron'></i>
                                         Update
-                                        {(imageUploading || loading) ? <Spinner color="success" /> : ''}
+                                        {(imageUploading) ? <Spinner color="success" /> : ''}
 
                                         <span></span>
                                     </button>

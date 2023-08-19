@@ -3,13 +3,12 @@ import { useForm } from 'react-hook-form';
 import { parseCookies } from 'nookies'
 import { Spinner, Alert } from 'reactstrap'
 import axios from 'axios'
-import { useToasts } from 'react-toast-notifications'
+import { toast } from 'react-toastify';
 import catchErrors from '@/utils/catchErrors'
 import { axiosApi } from "@/utils/baseUrl";
 
 const RegisterForm = ({ user }) => {
     const { token } = parseCookies()
-    const { addToast } = useToasts()
 
     const INIT_APPLY = {
         name: user.name,
@@ -50,9 +49,7 @@ const RegisterForm = ({ user }) => {
                 headers: {Authorization: token}
             })
 
-            addToast(response.data, { 
-                appearance: 'success'
-            })
+            toast.success(response.data)
 
             setApply(INIT_APPLY)
             setInitApply(true)
