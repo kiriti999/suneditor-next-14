@@ -52,27 +52,26 @@ const CoursesSidebar = () => {
 
 			<div className="widget widget_tag_cloud">
 				<h3 className="widget-title">Popular Tags</h3>
-				{categories?.length === 0 ? (
-					<h6>Empty</h6>
-				) : (
-					categories.map(({ name, count }) => (
-						<div className="tagcloud" key={name}>
-							<Link
+				<div className="tagcloud">
+					{categories?.length === 0 ? (
+						<h6>Empty</h6>
+					) : (
+						categories.map(({ name, count }) => (
+							<Link key={name}
 								href="/algolia-search?q=[id]"
-								as={`/algolia-search?q=${name}`}
-							>
+								as={`/algolia-search?q=${name}`}>
 								<a>
 									{name} <span className="tag-link-count">({count})</span>
 								</a>
 							</Link>
-						</div>
-					))
-				)}
+						))
+					)}
+				</div>
 			</div>
 		</div>
 	);
 };
 
-CoursesSidebar.getInitialProps = async () => {};
+CoursesSidebar.getInitialProps = async () => { };
 
 export default CoursesSidebar;
