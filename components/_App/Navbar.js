@@ -115,7 +115,7 @@ const Navbar = ({ user }) => {
 
 									</li>
 
-									{user && !isTeacher && (
+									{(user && !isTeacher && !isAdmin) && (
 										<li className="nav-item">
 											<Link href="/become-a-teacher">
 												<a
