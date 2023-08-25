@@ -5,8 +5,10 @@ import { axiosApi } from '@/utils/baseUrl';
 import Link from '@/utils/ActiveLink';
 import Modal from '@/components/Modal/Modal';
 import { toast } from 'react-toastify';
+const algoliasearch = require('algoliasearch');
 
 const CourseEdit = ({ courses: data }) => {
+	const client = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_ADMIN_KEY)
 	const [courses, setCourses] = useState(data);
 	const [showModal, setShowModal] = useState(false);
 	const [deleteCourseIds, setDeleteCourseIds] = useState([]);
@@ -25,9 +27,12 @@ const CourseEdit = ({ courses: data }) => {
 			);
 
 			const result = await Promise.allSettled(deleteRequest);
+			console.log('course-edit.js:: result: ', result);
 
 			const successIds = result.map(({ status, value }) => {
 				if (status === 'fulfilled' && value.status === 200) {
+					const index = client.initIndex('courses');
+					index.deleteObject(value.data.id)
 					return value.config.url.replace(
 						`${axiosApi.baseUrl}/api/v1/courses/course/delete?id=`,
 						''
@@ -47,6 +52,7 @@ const CourseEdit = ({ courses: data }) => {
 
 			toast.success('Successfully delete courses.');
 		} catch (error) {
+			console.log('error delete:', error)
 			toast.error('Not able to delete courses. Please try again.');
 		} finally {
 			setDeleteCourseIds([]);
@@ -162,7 +168,7 @@ const CourseEdit = ({ courses: data }) => {
 															className="btn btn-danger me-2"
 															onClick={() => deleteHandler(course._id)}
 														>
-															<i className="bx bxs-trash"></i> Delete
+															<i className="bx bxs-trash"></i>
 														</button>
 
 														<Link
@@ -170,7 +176,7 @@ const CourseEdit = ({ courses: data }) => {
 															as={`/teacher/course/${course._id}`}
 														>
 															<a className="btn btn-success">
-																<i className="bx bxs-edit"></i> Edit
+																<i className="bx bxs-edit"></i>
 															</a>
 														</Link>
 													</td>

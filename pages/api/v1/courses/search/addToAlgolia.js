@@ -12,7 +12,7 @@ export async function indexPost(post) {
         const index = client.initIndex('courses')
 
         const record = {
-            "objectID": post.title,
+            "objectID": post._id,
             "title": post.title,
             "overview": post.overview,
             "price": post.price,

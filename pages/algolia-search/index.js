@@ -84,15 +84,13 @@ const AlgoliaSearch = ({ data, pages }) => {
 									<div className="select-box">
 										<select
 											onChange={(e) => sortCourses(e.target.value)}
-											className="form-control"
-										>
+											className="form-control">
 											<option>Sort By</option>
 											{sortOption.map(({ value, text }) => (
 												<option
 													key={value}
 													value={value}
-													defaultValue={value === query.sort}
-												>
+													defaultValue={value === query.sort}>
 													{text}
 												</option>
 											))}
@@ -111,16 +109,10 @@ const AlgoliaSearch = ({ data, pages }) => {
 												<div className="courses-image">
 													<Link
 														href="/courses/[id]"
-														as={`/courses/${course._id}`}
-													>
+														as={`/courses/${course._id}`}>
 														<a className="d-block image">
-															<img
-																src={
-																	course?.profilePhoto ||
-																	'/images/courses/courses1.jpg'
-																}
-																alt={course.title}
-															/>
+															<img src={course?.profilePhoto || '/images/courses/courses1.jpg'}
+																alt={course.title} />
 														</a>
 													</Link>
 													<div className="price shadow">
@@ -129,19 +121,16 @@ const AlgoliaSearch = ({ data, pages }) => {
 												</div>
 												<div className="courses-content">
 													<div className="course-author d-flex align-items-center">
-														<img
-															src="/images/user1.jpg"
+														<img src="/images/user1.jpg"
 															className="rounded-circle"
-															alt="image"
-														/>
+															alt="image" />
 														<span>Alex Morgan</span>
 													</div>
 
 													<h3 title={course.title}>
 														<Link
 															href="/courses/[id]"
-															as={`/courses/${course._id}`}
-														>
+															as={`/courses/${course._id}`}>
 															<a>{course.title.slice(0, 20)}...</a>
 														</Link>
 													</h3>
@@ -152,8 +141,7 @@ const AlgoliaSearch = ({ data, pages }) => {
 															<i className="flaticon-agenda"></i>
 															<Link
 																href="/courses/[id]"
-																as={`/courses/${course._id}`}
-															>
+																as={`/courses/${course._id}`}>
 																<a>More details</a>
 															</Link>
 														</li>
