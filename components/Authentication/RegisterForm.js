@@ -41,6 +41,7 @@ const RegisterForm = () => {
 				method: 'POST',
 				data: payload
 			});
+			console.log('RegisterForm.js:: response.data: ', response.data);
 			handleLogin(response.data);
 		} catch (error) {
 			catchErrors(error, setError);

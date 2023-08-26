@@ -2,13 +2,12 @@ import cookie from 'js-cookie'
 import Router from 'next/router'
 
 export const handleLogin = (token) => {
-    console.log('login called');
-    cookie.set('token', token, { sameSite:'strict' });
+    cookie.set('token', token, { sameSite: 'strict' });
     Router.push('/');
 }
 
 export const redirectUser = (ctx, location) => {
-    if(ctx.req){
+    if (ctx.req) {
         ctx.res.writeHead(302, { Location: location });
         ctx.res.end()
     } else {
