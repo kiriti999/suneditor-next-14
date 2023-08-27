@@ -330,11 +330,10 @@ const Details = () => {
 							</div>
 						</div>
 
-						{/* TODO */ }
 						<div className="col-lg-4 col-md-12">
 							<CoursesDetailsSidebar
 								{...course}
-								loggedInUser={user}
+								loggedInUser={course.userId}
 							/>
 						</div>
 					</div>
