@@ -107,7 +107,7 @@ const Create = () => {
                 profile = profile.replace(/^http:\/\//i, 'https://');
             }
 
-            const url = `${axiosApi.baseUrl}/api/v1/courses/course/new`
+            const url = `${axiosApi.baseUrl}/api/v1/courses/course/new`;
             const {
                 title, overview, topics, price, lessons, duration, category, course_preview_video, published
             } = course
@@ -116,6 +116,8 @@ const Create = () => {
                 title, overview, topics, price, lessons, duration, category, profile, course_preview_video, published
             }
 
+            console.log('create.js:: payload: ', payload);
+            
             const response = await axios.post(url, payload, {
                 headers: { Authorization: token }
             });
@@ -271,7 +273,7 @@ const Create = () => {
                                             name="category"
                                             value={course.category}
                                             onChange={handleChange}>
-                                            {categories.map((item) => <option key={item._id} data-id={item._id}>{item.category}</option>)}
+                                            {categories.map((category) => <option key={category._id} data-id={category._id}>{category.categoryName}</option>)}
                                         </select>
                                     </div>
 
