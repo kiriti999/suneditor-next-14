@@ -5,7 +5,7 @@ import Highlighter from 'react-highlight-words';
 import { Context } from 'context/filterStore';
 
 const CourseCard = ({
-    id, title, price, overview, profilePhoto, lessons, userId, enrolled_courses, highlight
+    _id, title, price, overview, profilePhoto, lessons, userId, enrolled_courses, highlight
 }) => {
     const enrolled = enrolled_courses ? enrolled_courses : []
 
@@ -15,7 +15,7 @@ const CourseCard = ({
         <div className="col-lg-12 col-md-12">
             <div className="single-courses-box">
                 <div className="courses-image">
-                    <Link href="/courses/[id]" as={`/courses/${id}`}>
+                    <Link href="/courses/[id]" as={`/courses/${_id}`}>
                         <a className="d-block image">
                             {/* <img src={profilePhoto} alt={title} /> */}
                         </a>
@@ -26,7 +26,7 @@ const CourseCard = ({
                 </div>
                 <div className="courses-content">
                     <h3>
-                        <Link href="/courses/[id]" as={`/courses/${id}`}>
+                        <Link href="/courses/[_id]" as={`/courses/${_id}`}>
 
                             <a>
                                 <Highlighter

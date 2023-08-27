@@ -69,7 +69,7 @@ index.getInitialProps = async ctx => {
 
     const url = `${axiosApi.baseUrl}/api/v1/courses/teacher/my-courses`
     const response = await axios.get(url, payload)
-    // console.log(response.data)
+    console.log('pages/teacher/courses/index:: getInitialProps:: response.data: ', response.data);
     return response.data
 }
 

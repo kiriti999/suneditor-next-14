@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CoursesDetailsSidebar from "@/components/SingleCourses/CoursesDetailsSidebar";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import axios from "axios";
 import { axiosApi } from "@/utils/baseUrl";
 import CoursesCurriculum from "@/components/Courses/CoursesCurriculum";
+import { useState } from 'react';
 
-const Details = ({ course, user }) => {
-	console.log('pages/courses/[id].js:: course: ', course);
-	console.log('pages/courses/[id].js:: user: ', user);
+const Details = () => {
+	const [course, setCourse] = useState([])
+
+	const getCourseById = async (id) => {
+		const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
+		const response = await axios.get(url);
+		return response.data;
+	}
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			const courseId = window.location.pathname.split('/')[2];
+			(async () => {
+				const course = await getCourseById(courseId);
+				console.log('pages/courses/[id].js:: useEffect:: course: ', course);
+				setCourse(course?.course);
+			})()
+		}
+	}, [])
+
 
 	return (
 		<div>
@@ -33,9 +51,7 @@ const Details = ({ course, user }) => {
 									</TabPanel>
 
 									<TabPanel>
-										<CoursesCurriculum
-											videos={course.videos}
-										/>
+										<CoursesCurriculum videos={course?.videos} />
 									</TabPanel>
 
 									<TabPanel>
@@ -45,8 +61,8 @@ const Details = ({ course, user }) => {
 													<div className="col-lg-4 col-md-4">
 														<div className="advisor-image">
 															<img
-																src={`${course.userId.profilePhoto ? course.userId.profilePhoto : "/images/advisor/advisor2.jpg"}`}
-																alt={course.userId.name}
+																src={`${course?.userId?.profilePhoto ? course?.userId?.profilePhoto : "/images/advisor/advisor2.jpg"}`}
+																alt={course?.userId?.name}
 															/>
 														</div>
 													</div>
@@ -54,19 +70,19 @@ const Details = ({ course, user }) => {
 													<div className="col-lg-8 col-md-8">
 														<div className="advisor-content">
 															<h3>
-																{course.userId.name}
+																{course?.userId?.name}
 															</h3>
 															<span className="sub-title">
-																{course.userId.designation || "Empty"}
+																{course?.userId?.designation || "Empty"}
 															</span>
 															<p>
-																{course.userId.about || "Empty"}
+																{course?.userId?.about || "Empty"}
 															</p>
 
 															<ul className="social-link">
 																<li>
 																	<a
-																		href={course.userId.fb_url || "#"}
+																		href={course?.userId?.fb_url || "#"}
 																		className="d-block"
 																		target="_blank"
 																	>
@@ -75,7 +91,7 @@ const Details = ({ course, user }) => {
 																</li>
 																<li>
 																	<a
-																		href={course.userId.tw_url || "#"}
+																		href={course?.userId?.tw_url || "#"}
 																		className="d-block"
 																		target="_blank"
 																	>
@@ -84,7 +100,7 @@ const Details = ({ course, user }) => {
 																</li>
 																<li>
 																	<a
-																		href={course.userId.insta_url || "#"}
+																		href={course?.userId?.insta_url || "#"}
 																		className="d-block"
 																		target="_blank"
 																	>
@@ -93,7 +109,7 @@ const Details = ({ course, user }) => {
 																</li>
 																<li>
 																	<a
-																		href={course.userId.in_url || "#"}
+																		href={course?.userId?.in_url || "#"}
 																		className="d-block"
 																		target="_blank"
 																	>
@@ -314,6 +330,7 @@ const Details = ({ course, user }) => {
 							</div>
 						</div>
 
+						{/* TODO */ }
 						<div className="col-lg-4 col-md-12">
 							<CoursesDetailsSidebar
 								{...course}
@@ -329,12 +346,13 @@ const Details = ({ course, user }) => {
 	);
 };
 
-Details.getInitialProps = async (ctx) => {
-	const { id } = ctx.query;
-	console.log('Details:: pages:: courses/[id].js:: id: ', id);
-	const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
-	const response = await axios.get(url);
-	return response.data;
-};
+// Details.getInitialProps = async (ctx) => {
+// 	console.log('ctx:: getInitialProps:: ctx: ', ctx.query);
+// 	const { id } = ctx.query;
+// 	console.log('Pages:: Details:: getInitialProps:: courses/[id].js:: id: ', id);
+// 	const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
+// 	const response = await axios.get(url);
+// 	return response.data;
+// };
 
 export default Details;
