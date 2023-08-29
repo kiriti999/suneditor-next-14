@@ -34,8 +34,8 @@ const Create = () => {
     const [editData, setEditData] = useState({});
     const [course, setCourse] = useState(INIT_COURSE)
     const [profilePreview, setProfilePreview] = useState('');
-    const [overview, setOverview] = useState({ content: '', image: '', video: '' });
-    const [topics, setTopics] = useState({ content: '', image: '', video: '' });
+    const [description, setDescription] = useState({ content: '', image: '', video: '' });
+    const [courseTopics, setCourseTopics] = useState({ content: '', image: '', video: '' });
     const [imageUploading, setImageUploading] = useState(false)
     const [loading, setLoading] = useState(false)
     const [disabled, setDisabled] = useState(false)
@@ -70,14 +70,14 @@ const Create = () => {
 
     const getOverview = (newData) => {
         console.log('getOverview:: ', newData);
-        setOverview((prevData) => ({
+        setDescription((prevData) => ({
             ...prevData,
             ...newData
         }));
     }
 
     const getTopics = (newData) => {
-        setTopics((prevData) => ({
+        setCourseTopics((prevData) => ({
             ...prevData,
             ...newData
         }));
@@ -95,7 +95,6 @@ const Create = () => {
     useEffect(() => {
         console.log('create.js:: Updated category: ', course.category);
     }, [course.category]);
-
 
     const handleChange = e => {
         const { name, value, files } = e.target
@@ -115,7 +114,6 @@ const Create = () => {
             setCourse(prevState => ({ ...prevState, [name]: value }))
         }
     }
-
     const handleProfilePhotoUpload = async () => {
         let secure_url;
         setImageUploading(true);
@@ -140,13 +138,12 @@ const Create = () => {
         e.preventDefault()
         setLoading(true);
         try {
-            console.log('create.js:: handleCourseSubmit:: course: ', course);
-            console.log('create.js:: handleCourseSubmit:: overview: ', overview);
-            console.log('create.js:: handleCourseSubmit:: topics: ', topics);
-            // if (overview) {
-            // }
-            // if (topics) {
-            // }
+            if (description) {
+                console.log('create.js:: handleCourseSubmit:: description: ', description);
+            }
+            if (courseTopics) {
+                console.log('create.js:: handleCourseSubmit:: courseTopics: ', courseTopics);
+            }
             let profile = ''
             if (course.profilePhoto) {
                 profile = await handleProfilePhotoUpload()
@@ -156,11 +153,13 @@ const Create = () => {
             const url = `${axiosApi.baseUrl}/api/v1/courses/course/new`;
 
             const {
-                title, overview, topics, price, lessons, duration, category, course_preview_video, published
+                title, price, lessons, duration, category, course_preview_video, published
             } = course
             const payload = {
-                title, overview, topics, price, lessons, duration, category, profile, course_preview_video, published
+                title, overview: description.content, topics: courseTopics.content, price, lessons, duration, category, profile, course_preview_video, published
             }
+            
+            console.log('create.js:: handleCourseSubmit:: payload: ', payload);
 
             const response = await axios.post(url, payload, {
                 headers: { Authorization: token }
@@ -259,7 +258,6 @@ const Create = () => {
                                         />
                                     </div>
 
-                                    {/*
                                     <div className="form-group">
                                         <label>Course topics</label>
                                         <Controller name="topics" control={control} render={({ field }) => {
@@ -269,8 +267,6 @@ const Create = () => {
                                         }}
                                         />
                                     </div>
-                                    */}
-
 
                                     <div className="form-group">
                                         <label>Course Price</label>

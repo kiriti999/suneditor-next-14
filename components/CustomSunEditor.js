@@ -11,7 +11,7 @@ const editorData = {
 const CustomSunEditor = (props) => {
 
     function handleChange(content) {
-        console.log('handleChange', content); //Get Content Inside Editor
+        console.log('handleChange', content);
         editorData.content = content;
         props.toParent({ content: editorData.content });
     }
