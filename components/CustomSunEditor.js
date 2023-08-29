@@ -8,14 +8,10 @@ const editorData = {
     video: ''
 };
 
-// const SunEditor = dynamic(() => import("suneditor-react"), {
-//     ssr: false,
-// });
-
 const CustomSunEditor = (props) => {
 
     function handleChange(content) {
-        // console.log('handleChange', content); //Get Content Inside Editor
+        console.log('handleChange', content); //Get Content Inside Editor
         editorData.content = content;
         props.toParent({ content: editorData.content });
     }
