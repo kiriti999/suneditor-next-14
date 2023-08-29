@@ -6,15 +6,14 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import { axiosApi } from "@/utils/baseUrl";
+import { useForm, Controller } from "react-hook-form";
 import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
 import * as imageHelper from '@/utils/image-upload';
 import { indexPost } from '../../api/v1/courses/search/addToAlgolia';
 import 'suneditor/dist/css/suneditor.min.css';
+import WYSIWYGEditor from "../../../components/rich-text-editor";
 
-const SunEditor = dynamic(() => import('suneditor-react'), {
-    ssr: false
-})
 
 const INIT_COURSE = {
     title: '',
@@ -30,16 +29,44 @@ const INIT_COURSE = {
 }
 
 const Create = () => {
-    const { token } = parseCookies()
-    const router = useRouter()
-
+    const { token } = parseCookies();
+    const [editData, setEditData] = useState({});
     const [course, setCourse] = useState(INIT_COURSE)
-    const [profilePreview, setProfilePreview] = useState('')
+    const [profilePreview, setProfilePreview] = useState('');
+    const [childData, setChildData] = useState(null);
     const [imageUploading, setImageUploading] = useState(false)
     const [loading, setLoading] = useState(false)
     const [disabled, setDisabled] = useState(false)
     const [error, setError] = useState();
     const [categories, setCategories] = useState([]);
+
+    const { register, handleSubmit, reset, control, formState: { errors } } = useForm(
+        {
+            mode: "onBlur",
+            defaultValues: {
+                category: "misc",
+                course_preview_video: "",
+                coverPhoto: "",
+                duration: "",
+                lessons: "",
+                overview: "",
+                price: 0,
+                profilePhoto: "",
+                published: false,
+                title: ""
+            },
+            resetOptions: {
+                keepDirtyValues: true, // user-interacted input will be retained
+                keepErrors: true, // input errors will be retained with value update
+            }
+        });
+
+    const getEditorData = (editorData) => {
+        setChildData((prevData) => ({
+            ...prevData,
+            ...editorData
+        }));
+    }
 
     // useEffect(() => {
     //     const isCourse = Object.values(course).every(el => Boolean(el))
@@ -54,6 +81,10 @@ const Create = () => {
             setCategories(response.data?.categories);
         })()
     }, [])
+
+    useEffect(() => {
+        console.log('create.js:: Updated category: ', course.category);
+    }, [course.category]);
 
 
     const handleChange = e => {
@@ -96,50 +127,58 @@ const Create = () => {
         return secure_url;
     }
 
-    const handleCourseSubmit = async e => {
+    const validationOptions = {
+        title: { required: "Title is required" },
+        price: { required: "Price is required" },
+    };
+
+    const handleCourseSubmit = async (formData, e) => {
         e.preventDefault()
         setLoading(true);
-        try {
-            console.log('create.js:: handleCourseSubmit:: data: ', course);
-            let profile = ''
-            if (course.profilePhoto) {
-                profile = await handleProfilePhotoUpload()
-                profile = profile.replace(/^http:\/\//i, 'https://');
-            }
+        console.log('handleCourseSubmit ', formData)
+        // try {
+        //     setCourse((prevState) => {
+        //         return { ...prevState, category: categories[0].categoryName }
+        //     })
+        //     console.log('create.js:: handleCourseSubmit:: data: ', course);
+        //     let profile = ''
+        //     if (course.profilePhoto) {
+        //         profile = await handleProfilePhotoUpload()
+        //         profile = profile.replace(/^http:\/\//i, 'https://');
+        //     }
 
-            const url = `${axiosApi.baseUrl}/api/v1/courses/course/new`;
-            const {
-                title, overview, topics, price, lessons, duration, category, course_preview_video, published
-            } = course
+        //     const url = `${axiosApi.baseUrl}/api/v1/courses/course/new`;
+        //     const {
+        //         title, overview, topics, price, lessons, duration, category, course_preview_video, published
+        //     } = course
 
-            const payload = {
-                title, overview, topics, price, lessons, duration, category, profile, course_preview_video, published
-            }
+        //     const payload = {
+        //         title, overview, topics, price, lessons, duration, category, profile, course_preview_video, published
+        //     }
 
-            console.log('create.js:: payload: ', payload);
-            
-            const response = await axios.post(url, payload, {
-                headers: { Authorization: token }
-            });
+        //     console.log('create.js:: payload: ', payload);
 
-            console.log('pages/teacher/course/create.js:: response: ', response);
+        //     const response = await axios.post(url, payload, {
+        //         headers: { Authorization: token }
+        //     });
 
-            if (response.status === 200) {
-                toast.success('New course successfully created.');
-                await indexPost(response.data);
-            }
+        //     console.log('pages/teacher/course/create.js:: response: ', response);
 
-            setLoading(false)
-            setCourse(INIT_COURSE)
-            setProfilePreview('')
-            // toast.success(response.data);
-            // router.replace('/teacher/course/upload-course-video')
-        } catch (err) {
-            catchErrors(err, setError)
-            toast.error(error);
-        } finally {
-            setLoading(false)
-        }
+        //     if (response.status === 200) {
+        //         toast.success('New course successfully created.');
+        //         await indexPost(response.data);
+        //     }
+
+        //     setLoading(false)
+        //     setCourse(INIT_COURSE)
+        //     setProfilePreview('')
+        //     // router.replace('/teacher/course/upload-course-video')
+        // } catch (err) {
+        //     catchErrors(err, setError)
+        //     toast.error(error);
+        // } finally {
+        //     setLoading(false)
+        // }
     }
 
     return (
@@ -195,38 +234,34 @@ const Create = () => {
                                     </h3>
                                 )}
 
-                                <form onSubmit={handleCourseSubmit}>
+                                <form onSubmit={handleSubmit(handleCourseSubmit)}>
                                     <div className="form-group">
                                         <label>Course Title</label>
                                         <input
                                             type="text"
                                             placeholder="Enter course title"
                                             className="form-control"
-                                            name="title"
-                                            value={course.title}
-                                            onChange={handleChange}
+                                            {...register('title', validationOptions.title)}
                                         />
                                     </div>
 
                                     <div className="form-group">
                                         <label>Course Overview</label>
-                                        <SunEditor
-                                            placeholder="Enter course overview"
-                                            name="overview"
-                                            value={course.overview}
-                                            height="200px"
-                                            onChange={handleSunEditor}
+                                        <Controller name="overview" control={control} render={({ field }) => {
+                                            return (
+                                                <WYSIWYGEditor props={editData} toParent={getEditorData} value={field.value} onChange={field.onChange} />
+                                            );
+                                        }}
                                         />
                                     </div>
 
                                     <div className="form-group">
                                         <label>Course topics</label>
-                                        <SunEditor
-                                            placeholder="Enter course topics"
-                                            name="topics"
-                                            value={course.topics}
-                                            height="200px"
-                                            onChange={handleSunEditor}
+                                        <Controller name="topics" control={control} render={({ field }) => {
+                                            return (
+                                                <WYSIWYGEditor props={editData} toParent={getEditorData} value={field.value} onChange={field.onChange} />
+                                            );
+                                        }}
                                         />
                                     </div>
 
@@ -236,9 +271,7 @@ const Create = () => {
                                             type="number"
                                             placeholder="Enter course price"
                                             className="form-control"
-                                            name="price"
-                                            value={course.price}
-                                            onChange={handleChange}
+                                            {...register('price')}
                                         />
                                     </div>
 
@@ -248,9 +281,7 @@ const Create = () => {
                                             type="text"
                                             placeholder="30 Lessons"
                                             className="form-control"
-                                            name="lessons"
-                                            value={course.lessons}
-                                            onChange={handleChange}
+                                            {...register('lessons')}
                                         />
                                     </div>
 
@@ -260,9 +291,7 @@ const Create = () => {
                                             type="text"
                                             placeholder="10 hours 30 minutes"
                                             className="form-control"
-                                            name="duration"
-                                            value={course.duration}
-                                            onChange={handleChange}
+                                            {...register('duration')}
                                         />
                                     </div>
 
@@ -272,7 +301,9 @@ const Create = () => {
                                             placeholder="Category name"
                                             name="category"
                                             value={course.category}
-                                            onChange={handleChange}>
+                                            onChange={handleChange}
+                                            {...register('category')}
+                                        >
                                             {categories.map((category) => <option key={category._id} data-id={category._id}>{category.categoryName}</option>)}
                                         </select>
                                     </div>

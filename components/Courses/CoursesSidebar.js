@@ -21,10 +21,12 @@ const CoursesSidebar = () => {
 		})();
 	}, []);
 
+	console.log('categories ', categories)
+
 	return (
 		<div className="widget-area">
 			<div className="widget widget_recent_courses">
-				<h3 className="widget-title">Recent Courses</h3>
+				<h3 className="widget-title">New Courses</h3>
 
 				{courses?.length === 0 ? (
 					<h6>Empty</h6>

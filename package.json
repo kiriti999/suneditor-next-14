@@ -34,7 +34,7 @@
 		"react-cookie-consent": "^7.4.1",
 		"react-dom": "17.0.2",
 		"react-highlight-words": "^0.20.0",
-		"react-hook-form": "^6.12.0",
+		"react-hook-form": "^7.43.9",
 		"react-instantsearch-dom": "^6.40.0",
 		"react-modal-video": "^2.0.0",
 		"react-razorpay": "^1.2.0",

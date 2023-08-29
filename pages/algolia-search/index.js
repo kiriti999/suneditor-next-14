@@ -131,11 +131,11 @@ const AlgoliaSearch = ({ data, pages }) => {
 														<Link
 															href="/courses/[id]"
 															as={`/courses/${course._id}`}>
-															<a>{course.title.slice(0, 20)}...</a>
+															<a>{course?.title?.slice(0, 20)}...</a>
 														</Link>
 													</h3>
 
-													<p>{course.overview.slice(0, 100)}...</p>
+													<p>{course?.overview?.slice(0, 100)}...</p>
 													<ul className="courses-box-footer d-flex justify-content-between align-items-center">
 														<li>
 															<i className="flaticon-agenda"></i>
