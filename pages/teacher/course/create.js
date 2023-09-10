@@ -63,8 +63,8 @@ const Create = () => {
                 title: ""
             },
             resetOptions: {
-                keepDirtyValues: true, // user-interacted input will be retained
-                keepErrors: true, // input errors will be retained with value update
+                keepDirtyValues: true,
+                keepErrors: true,
             }
         });
 
@@ -158,7 +158,7 @@ const Create = () => {
             const payload = {
                 title, overview: description.content, topics: courseTopics.content, price, lessons, duration, category, profile, course_preview_video, published
             }
-            
+
             console.log('create.js:: handleCourseSubmit:: payload: ', payload);
 
             const response = await axios.post(url, payload, {
@@ -305,23 +305,20 @@ const Create = () => {
                                         </select>
                                     </div>
 
-                                    { /*<div className="form-group">
-                                        <label>Course Profile (<i>Image less than 2 MB & size 750x500</i>)</label>
-
-                                        <br />
-
-                                        <input
-                                            type="file"
-                                            name="profilePhoto"
-                                            accept="image/*"
-                                            onChange={handleChange}
-                                        />
-
-                                        <br />
-
-                                        <img src={profilePreview} className="mxw-200 mt-20" />
-                                    </div>
-                                */ }
+                                    { /*
+                                        <div className="form-group">
+                                            <label>Course Profile (<i>Image less than 2 MB & size 750x500</i>)</label>
+                                            <br />
+                                            <input
+                                                type="file"
+                                                name="profilePhoto"
+                                                accept="image/*"
+                                                onChange={handleChange}
+                                            />
+                                            <br />
+                                            <img src={profilePreview} className="mxw-200 mt-20" />
+                                        </div>
+                                    */ }
 
                                     <div className="form-group">
                                         <label>Course Preview Video URL</label>
@@ -338,8 +335,7 @@ const Create = () => {
                                     <button
                                         className="default-btn"
                                         disabled={imageUploading || disabled || loading}
-                                        type="submit"
-                                    >
+                                        type="submit">
                                         <i className='flaticon-right-chevron'></i>
                                         Create
                                         {(imageUploading) ? <Spinner color="success" /> : ''}
