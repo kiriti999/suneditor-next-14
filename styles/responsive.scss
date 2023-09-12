@@ -7729,7 +7729,6 @@ $value_nine: 1550px;
             }
             .navbar-collapse {
                 max-height: 70vh;
-                overflow-y: scroll;
                 margin-top: 20px;
                 padding-right: 15px;
 
@@ -7828,9 +7827,6 @@ $value_nine: 1550px;
             }
             .others-option {
                 margin-left: 0;
-                position: absolute;
-                top: 15px;
-                right: 60px;
 
                 .option-item {
                     margin-left: 20px;
@@ -7840,6 +7836,12 @@ $value_nine: 1550px;
                         i {
                             display: none;
                         }
+                    }
+                }
+
+                .user-dropdown {
+                    .dropdown-menu {
+                        right: auto;
                     }
                 }
             }

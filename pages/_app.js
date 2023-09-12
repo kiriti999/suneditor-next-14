@@ -21,7 +21,7 @@ import { wrapper } from '../store/store';
 // Global Styles
 import "../styles/style.css";
 // Global Responsive Styles
-import "../styles/responsive.css";
+import "../styles/responsive.scss";
 // Global RTL Styles
 import '../styles/rtl.css'
 import FilterStore from "context/filterStore";
