@@ -41,7 +41,7 @@ const CoursesSidebar = () => {
 							<div className="info">
 								<span>&#8377;{kConverter(course.price)}</span>
 								<h4 className="title usmall">
-									<Link href="/courses/[id]" as={`/courses/${course._id}`}>
+									<Link href="/courses/[id]" as={`/courses/${course.objectID}`}>
 										<a>{course.title}</a>
 									</Link>
 								</h4>
