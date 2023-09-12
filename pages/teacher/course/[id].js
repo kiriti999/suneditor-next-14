@@ -99,12 +99,12 @@ const Edit = (data) => {
 
             const url = `${axiosApi.baseUrl}/api/v1/courses/course/update`
             const {
-                _id, title, overview, topics, price, published, duration,
+                id, title, overview, topics, price, published, duration,
                 lessons, category, course_preview_video
             } = course
 
             const payload = {
-                _id, title, overview, topics, price, published, duration,
+                id, title, overview, topics, price, published, duration,
                 lessons, category, profile, course_preview_video
             }
 

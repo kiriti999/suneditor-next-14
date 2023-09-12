@@ -33,7 +33,7 @@ const CoursesSidebar = () => {
 				) : (
 					courses.map((course, i) => (
 						<div className="item" key={i}>
-							<Link href="/courses/[id]" as={`/courses/${course._id}`}>
+							<Link href="/courses/[id]" as={`/courses/${course.objectID}`}>
 								<a className="thumb">
 									<span className="fullimage cover bg1" role="img"></span>
 								</a>
@@ -60,8 +60,10 @@ const CoursesSidebar = () => {
 					) : (
 						categories.map(({ name, count }) => (
 							<Link key={name}
-								href="/algolia-search?q=[id]"
-								as={`/algolia-search?q=${name}`}>
+								href={{
+									pathname: '/algolia-search',
+									query: { q: name }
+								}}>
 								<a>
 									{name} <span className="tag-link-count">({count})</span>
 								</a>
