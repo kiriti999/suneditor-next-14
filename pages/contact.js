@@ -3,7 +3,7 @@ import ContactForm from '../components/Contact/ContactForm';
 
 const Contact = () => {
     return (
-        <React.Fragment>
+        <>
             <div className="contact-area ptb-100">
                 <div className="container">
                     <div className="row align-items-center">
@@ -46,7 +46,7 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
-        </React.Fragment>
+        </>
     )
 }
 
