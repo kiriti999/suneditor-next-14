@@ -12,12 +12,11 @@ const TermsOfService = () => {
                 activePageText="Terms Of Service"
             />
 
-            <div className="terms-of-service-area ptb-100">
+            <div className="terms-of-service-area pb-100 pt-20">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 col-md-12">
                             <div className="terms-of-service-content">
-                                <img src="/images/courses/courses2.jpg" alt="image" />
                                 <p><i>This Terms of Service was last updated on January 1, 2020.</i></p>
                                 <h3>1. Our website</h3>
                                 <p>Our website address is: http://whatsnxt.com</p>

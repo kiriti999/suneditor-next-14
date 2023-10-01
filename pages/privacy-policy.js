@@ -12,12 +12,11 @@ const PrivacyPolicy = () => {
                 activePageText="Privacy Privacy"
             />
 
-            <div className="privacy-policy-area ptb-100">
+            <div className="privacy-policy-area pb-100 pt-20">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 col-md-12">
                             <div className="privacy-policy-content">
-                                <img src="/images/courses/courses1.jpg" alt="image" />
                                 <p><i>This Privacy Policy was last updated on January 1, 2020.</i></p>
                                 <h3>1. What Data We Get</h3>
 
@@ -46,10 +45,6 @@ const PrivacyPolicy = () => {
                                 <h3>6. Our Policy Concerning Children</h3>
                                 <p>We recognize the privacy interests of children and encourage parents and guardians to take an active role in their children’s online activities and interests. Children under 13 (or under 16 in the European Economic Area) should not use the Services. If we learn that we’ve collected personal data from a child under those ages, we will take reasonable steps to delete it.</p>
                             </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-12">
-                            <Sidebar />
                         </div>
                     </div>
                 </div>
