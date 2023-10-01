@@ -47,9 +47,6 @@ const TermsOfService = () => {
                             </div>
                         </div>
 
-                        <div className="col-lg-4 col-md-12">
-                            <Sidebar />
-                        </div>
                     </div>
                 </div>
             </div>
