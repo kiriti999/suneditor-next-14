@@ -7,7 +7,7 @@ import CourseAdvisor from '../components/Common/CourseAdvisor';
 import Partner from '../components/Common/Partner';
 import PremiumAccess from '../components/Common/PremiumAccess';
 
-const About1 = () => {
+const About = () => {
     return (
         <>
             <PageBanner 
@@ -17,13 +17,9 @@ const About1 = () => {
                 activePageText="About Us" 
             />  
             <AboutUs />
-            <FeedbackSliderWithFunFacts />
             <Features />
-            <CourseAdvisor />
-            <PremiumAccess />
-            <Partner />
         </>
     )
 }
 
-export default About1;
+export default About;
