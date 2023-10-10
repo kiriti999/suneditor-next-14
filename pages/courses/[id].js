@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CoursesDetailsSidebar from "@/components/SingleCourses/CoursesDetailsSidebar";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import axios from "axios";
 import { axiosApi } from "@/utils/baseUrl";
 import CoursesCurriculum from "@/components/Courses/CoursesCurriculum";
-import { useState } from 'react';
 
 const Details = () => {
 	const [course, setCourse] = useState([])

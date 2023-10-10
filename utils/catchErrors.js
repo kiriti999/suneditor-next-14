@@ -1,23 +1,25 @@
 const catchErrors = (error, displayError) => {
+    const { request, response } = error;
     let errorMsg;
-    if (error.response) {
-        errorMsg = error.response.data;
-        // console.error("Error response", errorMsg.description);
+    if (response) {
+        console.error("Error response", response);
+        errorMsg = response.data;
 
-        // for image upload
-        if(error.response.data.error){
-            errorMsg = error.response.data.error.message;
+        if(response.data.error){
+            errorMsg = response.data.error.message;
+        } else if (response.status && response.statusText) {
+            errorMsg = response.status + response.statusText;
         }
-    } else if (error.request) {
+    } else if (request) {
         // Request made but no response received
-        errorMsg = error.request;
-        // console.error("Error request", errorMsg);
+        console.error("Error request", request);
+        errorMsg = request;
     } else  {
-        // console.error("Error message", errorMsg);
+        console.error("Error message", error);
+        errorMsg = error;
     }
 
     displayError(errorMsg);
 }
 
 export default catchErrors;
-//

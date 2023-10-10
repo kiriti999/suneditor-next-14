@@ -1,12 +1,10 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
-import { Alert } from 'reactstrap'
+import { Alert, Spinner } from 'reactstrap'
 import { axiosApi } from "@/utils/baseUrl";
-import { Spinner } from 'reactstrap'
 import { toast } from 'react-toastify';
 import catchErrors from '@/utils/catchErrors'
-import PageBanner from '@/components/Common/PageBanner'
 import Link from '@/utils/ActiveLink'
 
 const INIT_VIDEO = {
@@ -25,6 +23,8 @@ const UploadCourseVideo = ({ courses }) => {
     const [loading, setLoading] = React.useState(false)
     const [disabled, setDisabled] = React.useState(true)
 
+    const fileInputRef = useRef(null);
+
     React.useEffect(() => {
         const {order, video_url, name} = video
         const isVideo = Object.values({
@@ -36,25 +36,28 @@ const UploadCourseVideo = ({ courses }) => {
     }, [video])
 
     const handleVideoUpload = async () => {
-        // console.log(post.file_url)
-        const data = new FormData()
-        data.append('file', video.video_url)
-        data.append('upload_preset', 'vikingsvideo')
-        data.append('cloud_name', 'cloudinary999')
+        const data = new FormData();
+        data.append('file', video.video_url);
+        data.append('upload_preset', 'vikingsvideo');
+        data.append('cloud_name', 'cloudinary999');
+
         const response = await axios.post(process.env.CLOUDINARY_VIDEO_URL, data);
-        const mediaUrl = response.data.url
-        return mediaUrl
+        const cloudinaryData = response.data;
+
+        console.log("cloudinaryData.duration", cloudinaryData.duration);
+
+        const videoUrl = cloudinaryData.secure_url;
+        const videoDuration = cloudinaryData.duration;
+
+        return { videoUrl, videoDuration };
     }
 
     const handleChange = e => {
-        // console.log(d.value)
         const { name, value, files } = e.target
-        if(name === 'video_url'){
+        if(name === 'video_url' && files[0]){
             const videoSize = files[0].size / 1024 / 1024
             if(videoSize > 20){
-                addToast('The video size greater than 20 MB. Make sure less than 20 MB.', { 
-                    appearance: 'error'
-                })
+                toast.error('The video size greater than 20 MB. Make sure less than 20 MB.');
                 e.target.value = null
                 return
             }
@@ -62,29 +65,28 @@ const UploadCourseVideo = ({ courses }) => {
         } else {
             setVideo(prevState => ({ ...prevState, [name]: value }))
         }
-        // console.log(video);
     }
 
     const handleSubmit = async e => {
         e.preventDefault()
         setLoading(true)
         try {
-            let videoUrl = ''
-            if(video.video_url){
-                const videoUpload = await handleVideoUpload()
-                videoUrl = videoUpload.replace(/^http:\/\//i, 'https://');
+            if(!video.video_url){
+                toast.error('No video available. Please upload a video to continue.');
+                e.target.value = null
+                return
             }
-
-            // console.log(videoUrl)
-
-            const url = `${axiosApi.baseUrl}/api/v1/course/video-upload`
+            const { videoUrl, videoDuration } = await handleVideoUpload();
+            console.log(videoUrl, videoDuration, video)
+            const url = `${axiosApi.baseUrl}/api/v1/courses/course/video-upload`
             const { order, name, description, courseId } = video
-            const payload = { 
+            const payload = {
                 order,
                 name,
-                description, 
-                courseId, 
-                videoUrl
+                description,
+                courseId,
+                videoUrl,
+                videoDuration
             }
 
             const response = await axios.post(url, payload, {
@@ -95,11 +97,11 @@ const UploadCourseVideo = ({ courses }) => {
 
             setLoading(false);
             toast.success(response.data);
-            setVideo(INIT_VIDEO)
+            setVideo(INIT_VIDEO);
+            fileInputRef.current.value = '';
         } catch (err) {
-            catchErrors(err, setError)
-            toast.error(error);
-            console.log(err)
+            console.log(err);
+            catchErrors(err, toast.error);
         } finally {
             setLoading(false)
         }
@@ -107,10 +109,9 @@ const UploadCourseVideo = ({ courses }) => {
 
     return (
         <>
- 
             <div className="ptb-100">
                 <div className="container">
-                    {courses.length == 0 && (
+                    {courses.length === 0 && (
                         <Alert color="danger" className="text-center">
                             You have to create course first here <Link href="/teacher/course/create"><a>Create Course</a></Link>
                         </Alert>
@@ -185,7 +186,7 @@ const UploadCourseVideo = ({ courses }) => {
                                         <label>Name</label>
                                         <input 
                                             type="text" 
-                                            placeholder="Enter course title" 
+                                            placeholder="Enter video name"
                                             className="form-control" 
                                             name="name"
                                             value={video.name}
@@ -194,10 +195,10 @@ const UploadCourseVideo = ({ courses }) => {
                                     </div>
 
                                     <div className="form-group">
-                                        <label>Deescription</label>
+                                        <label>Description</label>
                                         <input 
                                             type="text" 
-                                            placeholder="Enter course title" 
+                                            placeholder="Enter video description"
                                             className="form-control" 
                                             name="description"
                                             value={video.description}
@@ -207,13 +208,12 @@ const UploadCourseVideo = ({ courses }) => {
 
                                     <div className="form-group">
                                         <label>Video</label>
-
                                         <br />
-
                                         <input 
                                             type="file" 
                                             name="video_url" 
                                             accept="video/*"
+                                            ref={fileInputRef}
                                             onChange={handleChange}
                                         />
                                     </div>
