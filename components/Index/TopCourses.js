@@ -125,8 +125,8 @@ const TopCourses = ({ courses }) => {
 										<ReactStars
 											key={course._id}
 											onChange={(e) => ratingChanged(e, course._id)}
-											count={Number(5)}
-											size={Number(24)}
+											count={5}
+											size={24}
 											activeColor="#ffd700"
 											value={getRating(course?.course_meta_data)}
 										/>
