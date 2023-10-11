@@ -1,6 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
+import ReactStars from "react-rating-stars-component";
+import axios from "axios";
+import { axiosApi } from "../../utils/baseUrl";
+import { parseCookies } from 'nookies'
 
 const overviewStyle = {
 	display: '-webkit-box',
@@ -12,7 +16,43 @@ const overviewStyle = {
 }
 
 const TopCourses = ({ courses }) => {
+	const { token } = parseCookies();
 	const { t } = useTranslation("distance-learning");
+	const maxRating = 5;
+	const getRating = courseMeta => {
+		var count = 0
+		var sum = 0;
+		console.log("Course meta", courseMeta);
+		courseMeta.forEach((a, index) => {
+			if (a.fieldName == 'rating') {
+				//rating = rating + a.fieldValue;
+				//	count += parseInt(a.fieldValue);
+				//	sum += parseInt(a.fieldValue) * (parseInt(index) + 1);
+				count += 1;
+				sum += parseInt(a.fieldValue);
+				console.log("sum", sum, count);
+
+			}
+		})
+		console.log("total rating", parseFloat(sum / count).toFixed(2));
+		return parseFloat(sum / count).toFixed(2);
+
+	}
+
+	const ratingChanged = async (rating, courseId) => {
+		try {
+			console.log('rating ', rating);
+			console.log('courseId', courseId);
+			const url = `${axiosApi.baseUrl}/api/v1/courses/course/rating`;
+			const response = await axios.post(url, { rating, courseId }, {
+				headers: { Authorization: token }
+			});
+			console.log('response ', response);
+		} catch (error) {
+			console.log('ratingChanged:: error: ', error);
+		}
+	};
+
 	return (
 		<div className="courses-area pt-50 pb-100">
 			<div className="container">
@@ -75,12 +115,26 @@ const TopCourses = ({ courses }) => {
 												</Link>
 												*/}
 											</li>
+
+											{course?.purchaseCount > 2 && <li>
+												<span className="badge  text-dark bg-yellow-badge" >Best Seller</span>
+
+											</li>}
 											{/* <li>
 												<i className="flaticon-people"></i>{" "}
 												{course.enrolled_courses.length}{" "}
 												Students
 											</li> */}
 										</ul>
+
+										<ReactStars
+											key={course._id}
+											onChange={(e) => ratingChanged(e, course._id)}
+											count={5}
+											size={24}
+											activeColor="#ffd700"
+											value={getRating(course?.course_meta_data)}
+										/>
 									</div>
 								</div>
 							</div>

@@ -15807,3 +15807,7 @@ marquee {
 .modal-backdrop {
   opacity: 0.5;
 }
+
+.bg-yellow-badge {
+  background-color: #ECEB98;
+}

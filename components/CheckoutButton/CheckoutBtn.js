@@ -40,7 +40,7 @@ const CheckoutBtn = ({ user, cartItems, onClearCart }) => {
 
         // prepares model for payment
         const options = {
-            key: "rzp_test_TzmRUbStt5mrDV",
+            key: process.env.RAZORPAY_KEY,
             // amount: price,
             amount: cartTotal,
             currency: "INR",
