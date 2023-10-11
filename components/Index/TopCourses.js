@@ -18,16 +18,12 @@ const overviewStyle = {
 const TopCourses = ({ courses }) => {
 	const { token } = parseCookies();
 	const { t } = useTranslation("distance-learning");
-	const maxRating = 5;
 	const getRating = courseMeta => {
 		var count = 0
 		var sum = 0;
-		console.log("Course meta", courseMeta);
+		console.log("TopCourses.js:: courseMeta:", courseMeta);
 		courseMeta.forEach((a, index) => {
 			if (a.fieldName == 'rating') {
-				//rating = rating + a.fieldValue;
-				//	count += parseInt(a.fieldValue);
-				//	sum += parseInt(a.fieldValue) * (parseInt(index) + 1);
 				count += 1;
 				sum += parseInt(a.fieldValue);
 				console.log("sum", sum, count);
@@ -41,8 +37,7 @@ const TopCourses = ({ courses }) => {
 
 	const ratingChanged = async (rating, courseId) => {
 		try {
-			console.log('rating ', rating);
-			console.log('courseId', courseId);
+			console.log('ratingChanged:: rating: ', rating);
 			const url = `${axiosApi.baseUrl}/api/v1/courses/course/rating`;
 			const response = await axios.post(url, { rating, courseId }, {
 				headers: { Authorization: token }
@@ -130,8 +125,8 @@ const TopCourses = ({ courses }) => {
 										<ReactStars
 											key={course._id}
 											onChange={(e) => ratingChanged(e, course._id)}
-											count={5}
-											size={24}
+											count={Number(5)}
+											size={Number(24)}
 											activeColor="#ffd700"
 											value={getRating(course?.course_meta_data)}
 										/>
