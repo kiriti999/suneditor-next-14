@@ -20,7 +20,7 @@ const INIT_VIDEO = {
 const UploadCourseVideo = ({ courses }) => {
     // console.log(courses)
     const { token } = parseCookies()
-
+    const [error, setError] = React.useState(false);
     const [video, setVideo] = React.useState(INIT_VIDEO)
     const [loading, setLoading] = React.useState(false)
     const [disabled, setDisabled] = React.useState(true)
@@ -39,7 +39,7 @@ const UploadCourseVideo = ({ courses }) => {
         // console.log(post.file_url)
         const data = new FormData()
         data.append('file', video.video_url)
-        data.append('upload_preset', 'vikingsvideo')
+        data.append('upload_preset', 'whatsnxt')
         data.append('cloud_name', 'cloudinary999')
         const response = await axios.post(process.env.CLOUDINARY_VIDEO_URL, data);
         const mediaUrl = response.data.url
@@ -51,7 +51,7 @@ const UploadCourseVideo = ({ courses }) => {
         const { name, value, files } = e.target
         if(name === 'video_url'){
             const videoSize = files[0].size / 1024 / 1024
-            if(videoSize > 20){
+            if(videoSize > 99){
                 addToast('The video size greater than 20 MB. Make sure less than 20 MB.', { 
                     appearance: 'error'
                 })
@@ -77,7 +77,7 @@ const UploadCourseVideo = ({ courses }) => {
 
             // console.log(videoUrl)
 
-            const url = `${axiosApi.baseUrl}/api/v1/course/video-upload`
+            const url = `${axiosApi.baseUrl}/api/v1/courses/course/video-upload`
             const { order, name, description, courseId } = video
             const payload = { 
                 order,
@@ -91,7 +91,7 @@ const UploadCourseVideo = ({ courses }) => {
                 headers: {Authorization: token}
             })
 
-            console.log(response.data)
+            console.log('upload-course-video.js:: handleSubmit:: response.data:', response.data)
 
             setLoading(false);
             toast.success(response.data);
@@ -99,7 +99,7 @@ const UploadCourseVideo = ({ courses }) => {
         } catch (err) {
             catchErrors(err, setError)
             toast.error(error);
-            console.log(err)
+            console.log('upload-course-video.js:: handleSubmit:: error:', err);
         } finally {
             setLoading(false)
         }

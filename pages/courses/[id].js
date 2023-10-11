@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import CoursesDetailsSidebar from "@/components/SingleCourses/CoursesDetailsSidebar";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import axios from "axios";
 import { axiosApi } from "@/utils/baseUrl";
 import CoursesCurriculum from "@/components/Courses/CoursesCurriculum";
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
+const Tabs = dynamic(import('react-tabs').then(mod => mod.Tabs), { ssr: false }) // disable ssr
+import { Tab, TabList, TabPanel } from 'react-tabs'
 
 const Details = () => {
 	const [course, setCourse] = useState([])
@@ -39,8 +41,8 @@ const Details = () => {
 									<TabList>
 										<Tab>Overview</Tab>
 										<Tab>Curriculum</Tab>
-										{/* <Tab>Instructor</Tab> */}
-										{/* <Tab>Reviews</Tab> */}
+										<Tab>Instructor</Tab>
+										<Tab>Reviews</Tab>
 									</TabList>
 
 									<TabPanel>
@@ -61,7 +63,8 @@ const Details = () => {
 													<div className="col-lg-4 col-md-4">
 														<div className="advisor-image">
 															<img
-																src={`${course?.userId?.profilePhoto ? course?.userId?.profilePhoto : "/images/advisor/advisor2.jpg"}`}
+																src={`${course?.userId?.profilePhoto ?
+																	course?.userId?.profilePhoto : "/images/advisor/advisor6.jpg"}`}
 																alt={course?.userId?.name}
 															/>
 														</div>
@@ -69,14 +72,13 @@ const Details = () => {
 
 													<div className="col-lg-8 col-md-8">
 														<div className="advisor-content">
-															<h3>
-																{course?.userId?.name}
-															</h3>
+															{/*<h3> {course?.userId?.name} </h3>*/}
+															<h3> Arjun </h3>
 															<span className="sub-title">
-																{course?.userId?.designation || "Empty"}
+																{course?.userId?.designation || "Technical Lead and Certified AWS Architect"}
 															</span>
 															<p>
-																{course?.userId?.about || "Empty"}
+																{course?.userId?.about || "Expert trainer on full stack applications and software programming languages"}
 															</p>
 
 															<ul className="social-link">
@@ -199,6 +201,7 @@ const Details = () => {
 											</div>
 										</div>
 
+										{ /* 
 										<div className="courses-review-comments">
 											<h3>3 Reviews</h3>
 											<div className="user-review">
@@ -324,7 +327,7 @@ const Details = () => {
 													customers, nice support.
 												</p>
 											</div>
-										</div>
+	</div> */ }
 									</TabPanel>
 								</Tabs>
 							</div>
@@ -347,7 +350,7 @@ const Details = () => {
 
 // Details.getInitialProps = async (ctx) => {
 // 	console.log('ctx:: getInitialProps:: ctx: ', ctx.query);
-// 	const { id } = ctx.query;
+// 	const {id} = ctx.query;
 // 	console.log('Pages:: Details:: getInitialProps:: courses/[id].js:: id: ', id);
 // 	const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
 // 	const response = await axios.get(url);

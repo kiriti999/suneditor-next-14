@@ -7,10 +7,10 @@ const CoursesCurriculum = ({ videos }) => {
             <h3>Course Videos</h3>
             {videos ? (
                 <ul>
-                    {videos.map(video => (
-                        <li key={video.id}>
+                    {videos.map((video, i) => (
+                        <li key={i}>
                             <Link href="/courses">
-                                <a 
+                                <a
                                     className="d-flex justify-content-between align-items-center"
                                     onClick={e => e.preventDefault()}
                                 >
@@ -26,7 +26,7 @@ const CoursesCurriculum = ({ videos }) => {
             ) : (
                 <h3>No Videos</h3>
             )}
-            
+
         </div>
     )
 }
