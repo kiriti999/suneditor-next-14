@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CoursesDetailsSidebar from "@/components/SingleCourses/CoursesDetailsSidebar";
 import axios from "axios";
 import { axiosApi } from "@/utils/baseUrl";
 import CoursesCurriculum from "@/components/Courses/CoursesCurriculum";
+<<<<<<< HEAD
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 const Tabs = dynamic(import('react-tabs').then(mod => mod.Tabs), { ssr: false }) // disable ssr
 import { Tab, TabList, TabPanel } from 'react-tabs'
+=======
+>>>>>>> feature/course_videos
 
 const Details = () => {
 	const [course, setCourse] = useState([])
