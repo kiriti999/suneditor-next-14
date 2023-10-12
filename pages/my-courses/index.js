@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import PageBanner from '@/components/Common/PageBanner'
 import Link from 'next/link'
@@ -18,8 +19,8 @@ const MyCourses = ({ enrolled }) => {
             <div className="pt-100 pb-70">
                 <div className="container">
                     <div className="row">
-                        {enrolled.length > 0 ? enrolled.map(enrolledCourse => (
-                            <div className="col-lg-4 col-md-6" key={enrolledcourse._id}>
+                        {enrolled.length > 0 ? enrolled.map((enrolledCourse) => (
+                            <div className="col-lg-4 col-md-6" key={enrolledCourse._id}>
                                 <div className="single-courses-box">
                                     <div className="courses-image">
                                         <Link href="/single-courses-1">
@@ -37,17 +38,18 @@ const MyCourses = ({ enrolled }) => {
 
                                     <div className="courses-content">
                                         <div className="course-author d-flex align-items-center">
-                                            <img src={`${enrolledcourse.userId.profilePhoto ? enrolledcourse.userId.profilePhoto : "/images/user1.jpg"}`} className="rounded-circle" alt={enrolledcourse.userId.name} />
-                                            <span>{enrolledcourse.userId.name}</span>
+                                            <img src={`${enrolledCourse.user.profilePhoto ? enrolledCourse.user.profilePhoto : "/images/user1.jpg"}`} className="rounded-circle" alt={enrolledCourse.user.name} />
+                                            <span>{enrolledCourse.user.name}</span>
                                         </div>
 
                                         <h3>
-                                            <Link href="/my-courses/view/[id]" as={`/my-courses/view/${enrolledCourse.course._id}`}>
+                                            <Link href="/courses/[id]" as={`/courses/${enrolledCourse.course._id}`}>
                                                 <a>{enrolledCourse.course.title}</a>
                                             </Link>
                                         </h3>
 
                                         <p>{enrolledCourse.course.overview.slice(0, 100)}</p>
+                                        { /*<p dangerouslySetInnerHTML={{html: (enrolledCourse.course.overview.slice(0, 100))}}></p> */}
 
                                         <ul className="courses-box-footer d-flex justify-content-between align-items-center">
                                             <li>
