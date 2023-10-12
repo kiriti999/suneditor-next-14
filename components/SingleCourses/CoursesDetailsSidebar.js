@@ -25,8 +25,9 @@ const CoursesDetailsSidebar = ({
 	const dispatch = useDispatch();
 	const [add, setAdd] = useState(false);
 	const [alreadyBuy, setAlreadyBuy] = useState(false);
+	const [purchaseType, setPurchaseType] = useState(null);
 
-	const addToCart = (courseId, title, price, lessons, duration, image) => {
+	const addToCart = (courseId, title, price, lessons, duration, image, purchaseType) => {
 		let courseObj = {};
 		courseObj["id"] = courseId;
 		courseObj["title"] = title;
@@ -35,6 +36,7 @@ const CoursesDetailsSidebar = ({
 		courseObj["duration"] = duration;
 		courseObj["image"] = image;
 		courseObj["quantity"] = 1;
+		courseObj["purchaseType"] = purchaseType
 		dispatch({
 			type: "ADD_TO_CART",
 			data: courseObj,
@@ -88,6 +90,16 @@ const CoursesDetailsSidebar = ({
 			}).length > 0
 		);
 	};
+
+	const checkHandler = (e) => {
+		const { value, checked } = e.target;
+		if (checked) {
+			setPurchaseType(value)
+		} else {
+			setPurchaseType(null)
+		}
+		console.log('purchase type ', purchaseType);
+	}
 
 	return (
 		<>
@@ -150,11 +162,11 @@ const CoursesDetailsSidebar = ({
 						<div className="mt-2" style={{ textAlign: 'center' }}>
 							<h6 className="mb-4" style={{ fontWeight: 'bold' }}>Select purchase type</h6>
 							<div class="flex items-center mb-2">
-								<input id="default-checkbox" type="checkbox" value="" />
+								<input id="liveType" type="checkbox" value="liveType" onChange={checkHandler} />
 								<label for="default-checkbox" style={{ marginLeft: '15px' }}>Purchase live training</label>
 							</div>
 							<div class="flex items-center mb-2">
-								<input id="default-checkbox" type="checkbox" value="" />
+								<input id="courseType" type="checkbox" value="courseType" onChange={checkHandler} />
 								<label for="default-checkbox" style={{ marginLeft: '15px' }}>Purchase online course</label>
 							</div>
 						</div>
