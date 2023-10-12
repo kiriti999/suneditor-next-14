@@ -86,7 +86,6 @@ MyCourses.getInitialProps = async ctx => {
 
     const url = `${axiosApi.baseUrl}/api/v1/courses/enrolled`
     const response = await axios.get(url, payload)
-    // console.log(response.data)
     return response.data
 }
 
