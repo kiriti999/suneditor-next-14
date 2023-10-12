@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { parseCookies } from 'nookies';
 import dynamic from "next/dynamic";
 const ModalVideo = dynamic(import("react-modal-video"));
 import axios from "axios";
@@ -17,6 +18,7 @@ const CoursesDetailsSidebar = ({
 	lessons,
 	loggedInUser,
 }) => {
+	const { token } = parseCookies();
 	console.log('CoursesDetailsSidebar.js:: userId:', userId);
 	const cartItems = useSelector((state) => state.cart.cartItems);
 	const [display, setDisplay] = useState(false);
@@ -44,21 +46,21 @@ const CoursesDetailsSidebar = ({
 			return _id === cart.id;
 		});
 		courseExist && setAdd(true);
-		if (loggedInUser && _id) {
-			const payload = {
-				params: { userId: loggedInUser._id.toString(), courseId: _id },
-			};
-			const url = `${axiosApi.baseUrl}/api/v1/course/exist`;
-			// axios.get(url, payload).then((result) => {
-			// 	setAlreadyBuy(result.data.enroll);
-			// });
+
+		if (token && _id) {
+			const payload = { params: { courseId: _id }, headers: { Authorization: token } };
+			const url = `${axiosApi.baseUrl}/api/v1/courses/enrolled/exist`;
+			axios.get(url, payload).then((result) => {
+				console.log('is course purchased:: result:', result);
+				setAlreadyBuy(result.data === true);
+			});
 		}
+
 	}, [cartItems, _id]);
 
 	useEffect(() => {
 		setDisplay(true);
 	}, []);
-	// console.log(loggedInUser)
 	const { enrolled_courses } = loggedInUser ? loggedInUser : "";
 	const router = useRouter();
 	// Popup Video
@@ -71,10 +73,11 @@ const CoursesDetailsSidebar = ({
 	useEffect(() => {
 		const countEnrolled = async () => {
 			const url = `${axiosApi.baseUrl}/api/v1/courses/enrolled/${_id}`;
-			const response = await axios.get(url);
+			const response = await axios.get(url, {
+				headers: { Authorization: token }
+			});
 			setEnrolled(response.data?.count || 0);
 		};
-		// setEnrolled(response.data.enrolled)
 		countEnrolled();
 	}, []);
 

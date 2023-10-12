@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CoursesDetailsSidebar from "@/components/SingleCourses/CoursesDetailsSidebar";
 import axios from "axios";
+import { parseCookies } from 'nookies'
 import { axiosApi } from "@/utils/baseUrl";
 import CoursesCurriculum from "@/components/Courses/CoursesCurriculum";
 import dynamic from 'next/dynamic';
@@ -8,11 +9,14 @@ const Tabs = dynamic(import('react-tabs').then(mod => mod.Tabs), { ssr: false })
 import { Tab, TabList, TabPanel } from 'react-tabs'
 
 const Details = () => {
+	const { token } = parseCookies();
 	const [course, setCourse] = useState([])
 
 	const getCourseById = async (id) => {
 		const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
-		const response = await axios.get(url);
+		const response = await axios.get(url, {
+			headers: { Authorization: token }
+		});
 		return response.data;
 	}
 
@@ -332,12 +336,15 @@ const Details = () => {
 							</div>
 						</div>
 
-						<div className="col-lg-4 col-md-12">
-							<CoursesDetailsSidebar
-								{...course}
-								loggedInUser={course.userId}
-							/>
-						</div>
+						{course?.userId &&
+							<div className="col-lg-4 col-md-12">
+								<CoursesDetailsSidebar
+									{...course}
+									loggedInUser={course.userId}
+								/>
+							</div>
+						}
+
 					</div>
 				</div>
 			</div>

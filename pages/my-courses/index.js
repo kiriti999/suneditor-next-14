@@ -23,7 +23,7 @@ const MyCourses = ({ enrolled }) => {
                             <div className="col-lg-4 col-md-6" key={enrolledCourse._id}>
                                 <div className="single-courses-box">
                                     <div className="courses-image">
-                                        <Link href="/single-courses-1">
+                                        <Link href="/courses/[id]" as={`/courses/${enrolledCourse.course._id}`}>
                                             <a className="d-block image">
                                                 <img src={enrolledCourse.course.profilePhoto} alt={enrolledCourse.course.title} />
                                             </a>
@@ -33,13 +33,10 @@ const MyCourses = ({ enrolled }) => {
                                             <a className="fav"><i className="flaticon-heart"></i></a>
                                         </Link>
 
-                                        <div className="price shadow">${enrolledCourse.course.price}</div>
                                     </div>
 
                                     <div className="courses-content">
                                         <div className="course-author d-flex align-items-center">
-                                            <img src={`${enrolledCourse.user.profilePhoto ? enrolledCourse.user.profilePhoto : "/images/user1.jpg"}`} className="rounded-circle" alt={enrolledCourse.user.name} />
-                                            <span>{enrolledCourse.user.name}</span>
                                         </div>
 
                                         <h3>
@@ -53,10 +50,10 @@ const MyCourses = ({ enrolled }) => {
 
                                         <ul className="courses-box-footer d-flex justify-content-between align-items-center">
                                             <li>
-                                                <i className='flaticon-agenda'></i> {parseInt(enrolledCourse.course.lessons)} Lessons
+                                                <i className=''></i> {parseInt(enrolledCourse.course.lessons)} Lessons
                                             </li>
                                             <li>
-                                                <i className='flaticon-people'></i> {enrolledCourse.course.duration}
+                                                 {enrolledCourse.course.duration}
                                             </li>
                                         </ul>
                                     </div>
