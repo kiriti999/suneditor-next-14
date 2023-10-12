@@ -146,6 +146,19 @@ const CoursesDetailsSidebar = ({
 							{duration}
 						</div>
 					</li>
+					<li>
+						<div className="mt-2" style={{ textAlign: 'center' }}>
+							<h6 className="mb-4" style={{ fontWeight: 'bold' }}>Select purchase type</h6>
+							<div class="flex items-center mb-2">
+								<input id="default-checkbox" type="checkbox" value="" />
+								<label for="default-checkbox" style={{ marginLeft: '15px' }}>Purchase live training</label>
+							</div>
+							<div class="flex items-center mb-2">
+								<input id="default-checkbox" type="checkbox" value="" />
+								<label for="default-checkbox" style={{ marginLeft: '15px' }}>Purchase online course</label>
+							</div>
+						</div>
+					</li>
 					{/* <li>
 						<div className="d-flex justify-content-between align-items-center">
 							<span>
