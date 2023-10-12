@@ -340,6 +340,7 @@ const Details = () => {
 							<div className="col-lg-4 col-md-12">
 								<CoursesDetailsSidebar
 									{...course}
+									setCourse={setCourse}
 									loggedInUser={course.userId}
 								/>
 							</div>

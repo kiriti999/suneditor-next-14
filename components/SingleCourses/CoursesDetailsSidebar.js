@@ -17,6 +17,7 @@ const CoursesDetailsSidebar = ({
 	duration,
 	lessons,
 	loggedInUser,
+	setCourse
 }) => {
 	const { token } = parseCookies();
 	console.log('CoursesDetailsSidebar.js:: userId:', userId);
@@ -26,8 +27,9 @@ const CoursesDetailsSidebar = ({
 	const [add, setAdd] = useState(false);
 	const [alreadyBuy, setAlreadyBuy] = useState(false);
 	const [purchaseType, setPurchaseType] = useState(null);
+	const [purchaseTypeError, setPurchaseTypeError] = useState(false);
 
-	const addToCart = (courseId, title, price, lessons, duration, image, purchaseType) => {
+	const addToCart = (courseId, title, price, lessons, duration, image) => {
 		let courseObj = {};
 		courseObj["id"] = courseId;
 		courseObj["title"] = title;
@@ -37,11 +39,25 @@ const CoursesDetailsSidebar = ({
 		courseObj["image"] = image;
 		courseObj["quantity"] = 1;
 		courseObj["purchaseType"] = purchaseType
-		dispatch({
-			type: "ADD_TO_CART",
-			data: courseObj,
-		});
+		if (purchaseType === null) {
+			setPurchaseTypeError(true);
+		} else {
+			setPurchaseTypeError(false);
+			dispatch({
+				type: "ADD_TO_CART",
+				data: courseObj,
+			});
+		}
 	};
+
+	useEffect(() => {
+		let timeout = setTimeout(() => {
+			setPurchaseTypeError(false);
+		}, 5000)
+		return (() => {
+			clearTimeout(timeout)
+		})
+	})
 
 	useEffect(() => {
 		const courseExist = cartItems.find((cart) => {
@@ -169,6 +185,7 @@ const CoursesDetailsSidebar = ({
 								<input id="courseType" type="checkbox" value="courseType" onChange={checkHandler} />
 								<label for="default-checkbox" style={{ marginLeft: '15px' }}>Purchase online course</label>
 							</div>
+							{purchaseTypeError && <h6 style={{color: 'red'}}>Please select purchase type</h6>}
 						</div>
 					</li>
 					{/* <li>
