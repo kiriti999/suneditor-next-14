@@ -12861,6 +12861,10 @@ Cart Area CSS
   font-weight: normal;
 }
 
+.cart-highlight-border {
+  border: red 1px solid !important;
+}
+
 /*================================================
 Checkout Area CSS
 =================================================*/
@@ -15811,4 +15815,8 @@ marquee {
 
 .bg-yellow-badge {
   background-color: #ECEB98;
+}
+
+.flex-direction-col {
+  flex-direction: column;
 }

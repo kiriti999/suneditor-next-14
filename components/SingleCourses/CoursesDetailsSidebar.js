@@ -17,43 +17,48 @@ const CoursesDetailsSidebar = ({
 	duration,
 	lessons,
 	loggedInUser,
-	setCourse
+	courseData,
 }) => {
 	const { token } = parseCookies();
-	console.log('CoursesDetailsSidebar.js:: userId:', userId);
 	const cartItems = useSelector((state) => state.cart.cartItems);
 	const [display, setDisplay] = useState(false);
 	const dispatch = useDispatch();
 	const [add, setAdd] = useState(false);
 	const [alreadyBuy, setAlreadyBuy] = useState(false);
-	const [purchaseType, setPurchaseType] = useState(null);
+	const [totalCost, setTotalCost] = useState(price);
+	const [checks, setChecks] = useState(0);
+
+	const purchaseInitData = [
+		{ id: 1, name: 'liveType', purchaseType: 'liveType', label: 'purchase live training', checked: false },
+		{ id: 2, name: 'courseType', purchaseType: 'courseType', label: 'purchase course videos', checked: false }];
+
+	const [purchaseTypes, setPurchaseTypes] = useState([]);
+	const [purchaseData, setPurchaseData] = useState(purchaseInitData);
 	const [purchaseTypeError, setPurchaseTypeError] = useState(false);
 
-	const addToCart = (courseId, title, price, lessons, duration, image) => {
+	const addToCart = (courseId, title, cost, lessons, duration, image) => {
 		let courseObj = {};
 		courseObj["id"] = courseId;
 		courseObj["title"] = title;
-		courseObj["price"] = price;
+		courseObj["price"] = cost;
 		courseObj["lessons"] = lessons;
 		courseObj["duration"] = duration;
 		courseObj["image"] = image;
 		courseObj["quantity"] = 1;
-		courseObj["purchaseType"] = purchaseType
-		if (purchaseType === null) {
-			setPurchaseTypeError(true);
-		} else {
-			setPurchaseTypeError(false);
+		if (purchaseTypes.length > 0) {
 			dispatch({
 				type: "ADD_TO_CART",
 				data: courseObj,
 			});
+		} else {
+			setPurchaseTypeError(true)
 		}
 	};
 
 	useEffect(() => {
 		let timeout = setTimeout(() => {
 			setPurchaseTypeError(false);
-		}, 5000)
+		}, 3000)
 		return (() => {
 			clearTimeout(timeout)
 		})
@@ -107,14 +112,23 @@ const CoursesDetailsSidebar = ({
 		);
 	};
 
-	const checkHandler = (e) => {
-		const { value, checked } = e.target;
+	const handleOnChange = (e, i) => {
+		const { checked, id } = e.target;
+		let count;
 		if (checked) {
-			setPurchaseType(value)
+			count = checks + 1;
+			setChecks(count);
+			if (count === purchaseData.length) {
+				setTotalCost((total) => (total + parseInt(courseData.price)));
+				setPurchaseTypes([...purchaseTypes, purchaseData[i]]);
+			}
 		} else {
-			setPurchaseType(null)
+			setChecks(checks - 1);
+			if (checks === purchaseData.length) {
+				setTotalCost((total) => total - parseInt(courseData.price));
+				setPurchaseTypes((prev) => prev.filter((item) => item.id !== parseInt(id)));
+			}
 		}
-		console.log('purchase type ', purchaseType);
 	}
 
 	return (
@@ -149,13 +163,14 @@ const CoursesDetailsSidebar = ({
 					</div>
 				</div> */}
 
-				<ul className="info">
+				<ul className={purchaseTypeError ? 'cart-highlight-border info' : 'info'}>
 					<li className="price">
 						<div className="d-flex justify-content-between align-items-center">
 							<span>
 								<i className="flaticon-tag"></i> Price
 							</span>
-							&#8377;{kConverter(price)}
+							{/*&#8377;{kConverter(price)}*/}
+							&#8377;{(totalCost)}
 						</div>
 					</li>
 					<li>
@@ -175,17 +190,19 @@ const CoursesDetailsSidebar = ({
 						</div>
 					</li>
 					<li>
-						<div className="mt-2" style={{ textAlign: 'center' }}>
+						<div className='mt-2' >
 							<h6 className="mb-4" style={{ fontWeight: 'bold' }}>Select purchase type</h6>
-							<div class="flex items-center mb-2">
-								<input id="liveType" type="checkbox" value="liveType" onChange={checkHandler} />
-								<label for="default-checkbox" style={{ marginLeft: '15px' }}>Purchase live training</label>
+							<div className='d-flex flex-direction-col'>
+								{purchaseData.map((item, index) => {
+									return (
+										<div className="items-center mb-2" key={index}>
+											<input type="checkbox" id={item.id} name={item.name} onChange={(e) => handleOnChange(e, index)} />
+											<label htmlFor={`custom-checkbox-${index}`} style={{ marginLeft: '15px' }}>{item.label}</label>
+										</div>
+									)
+								})}
 							</div>
-							<div class="flex items-center mb-2">
-								<input id="courseType" type="checkbox" value="courseType" onChange={checkHandler} />
-								<label for="default-checkbox" style={{ marginLeft: '15px' }}>Purchase online course</label>
-							</div>
-							{purchaseTypeError && <h6 style={{color: 'red'}}>Please select purchase type</h6>}
+							{purchaseTypeError && <h6 style={{ color: 'red', marginTop: '10px' }}>Please select purchase type</h6>}
 						</div>
 					</li>
 					{/* <li>
@@ -242,7 +259,7 @@ const CoursesDetailsSidebar = ({
 										addToCart(
 											_id,
 											title,
-											price,
+											totalCost,
 											lessons,
 											duration,
 											profilePhoto

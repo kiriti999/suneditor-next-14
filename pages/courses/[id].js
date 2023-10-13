@@ -10,7 +10,8 @@ import { Tab, TabList, TabPanel } from 'react-tabs'
 
 const Details = () => {
 	const { token } = parseCookies();
-	const [course, setCourse] = useState([])
+	const [course, setCourse] = useState([]);
+	const [price, setPrice] = useState([]);
 
 	const getCourseById = async (id) => {
 		const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
@@ -29,8 +30,7 @@ const Details = () => {
 				setCourse(course?.course);
 			})()
 		}
-	}, [])
-
+	}, []);
 
 	return (
 		<div>
@@ -340,7 +340,7 @@ const Details = () => {
 							<div className="col-lg-4 col-md-12">
 								<CoursesDetailsSidebar
 									{...course}
-									setCourse={setCourse}
+									courseData={course}
 									loggedInUser={course.userId}
 								/>
 							</div>
