@@ -11,7 +11,8 @@ import { kConverter } from '../../utils/cart/currencyHelper';
 const CoursesDetailsSidebar = ({
 	_id,
 	title,
-	price,
+	video_course_price,
+	live_training_price,
 	userId,
 	profilePhoto,
 	duration,
@@ -25,33 +26,37 @@ const CoursesDetailsSidebar = ({
 	const dispatch = useDispatch();
 	const [add, setAdd] = useState(false);
 	const [alreadyBuy, setAlreadyBuy] = useState(false);
-	const [totalCost, setTotalCost] = useState(price);
-	const [checks, setChecks] = useState(0);
+	const [totalCost, setTotalCost] = useState(0);
+	const [displayVideoPrice, setDisplayVideoPrice] = useState(false);
+	const [displayLivePrice, setDisplayLivePrice] = useState(false);
 
 	const purchaseInitData = [
-		{ id: 1, name: 'liveType', purchaseType: 'liveType', label: 'purchase live training', checked: false },
-		{ id: 2, name: 'courseType', purchaseType: 'courseType', label: 'purchase course videos', checked: false }];
+		{ id: 1, name: 'liveType', purchaseType: 'liveType', label: 'Live training', checked: false },
+		{ id: 2, name: 'courseType', purchaseType: 'courseType', label: 'Course videos', checked: false }];
 
-	const [purchaseTypes, setPurchaseTypes] = useState([]);
+	const [selectedItem, setSelectedItem] = useState([]);
 	const [purchaseData, setPurchaseData] = useState(purchaseInitData);
 	const [purchaseTypeError, setPurchaseTypeError] = useState(false);
 
-	const addToCart = (courseId, title, cost, lessons, duration, image) => {
+	const addToCart = (courseId, title, live_training_price, video_course_price, total_cost, lessons, duration, image) => {
+		console.log('selectedItem ', selectedItem);
 		let courseObj = {};
 		courseObj["id"] = courseId;
 		courseObj["title"] = title;
-		courseObj["price"] = cost;
+		courseObj["live_training_price"] = live_training_price;
+		courseObj["video_course_price"] = video_course_price;
+		courseObj["total_cost"] = total_cost;
 		courseObj["lessons"] = lessons;
 		courseObj["duration"] = duration;
 		courseObj["image"] = image;
 		courseObj["quantity"] = 1;
-		if (purchaseTypes.length > 0) {
+		if (selectedItem.length) {
 			dispatch({
 				type: "ADD_TO_CART",
 				data: courseObj,
 			});
 		} else {
-			setPurchaseTypeError(true)
+			setPurchaseTypeError(true);
 		}
 	};
 
@@ -104,6 +109,11 @@ const CoursesDetailsSidebar = ({
 		countEnrolled();
 	}, []);
 
+	useEffect(() => {
+		console.log('selectedItem ', selectedItem);
+		if(selectedItem.length < 1) setAdd(false)
+	}, [selectedItem])
+
 	const checkBoughtAlready = () => {
 		return (
 			enrolled_courses.filter(function (val) {
@@ -114,20 +124,33 @@ const CoursesDetailsSidebar = ({
 
 	const handleOnChange = (e, i) => {
 		const { checked, id } = e.target;
-		let count;
+		console.log(`checked: ${checked}, id: ${id}`);
 		if (checked) {
-			count = checks + 1;
-			setChecks(count);
-			if (count === purchaseData.length) {
-				setTotalCost((total) => (total + parseInt(courseData.price)));
-				setPurchaseTypes([...purchaseTypes, purchaseData[i]]);
+			if (id == 1) {
+				courseData.live_training_price = 100;
+				if (courseData.live_training_price) {
+					setDisplayLivePrice(true)
+					setTotalCost((total) => (total + parseInt(courseData.live_training_price)));
+				}
 			}
+			if (id == 2) {
+				setDisplayVideoPrice(true)
+				setTotalCost((total) => (total + parseInt(courseData.video_course_price)));
+			}
+			setSelectedItem((prev) => [...prev, id]);
+			setPurchaseTypeError(false);
 		} else {
-			setChecks(checks - 1);
-			if (checks === purchaseData.length) {
-				setTotalCost((total) => total - parseInt(courseData.price));
-				setPurchaseTypes((prev) => prev.filter((item) => item.id !== parseInt(id)));
+			if (id == 1) {
+				setDisplayLivePrice(false)
+				if (courseData.live_training_price) {
+					setTotalCost((total) => total - parseInt(courseData.live_training_price));
+				}
 			}
+			if (id == 2) {
+				setDisplayVideoPrice(false)
+				setTotalCost((total) => total - parseInt(courseData.video_course_price));
+			}
+			setSelectedItem((prev) => prev.filter((eid) => eid !== id))
 		}
 	}
 
@@ -164,15 +187,6 @@ const CoursesDetailsSidebar = ({
 				</div> */}
 
 				<ul className={purchaseTypeError ? 'cart-highlight-border info' : 'info'}>
-					<li className="price">
-						<div className="d-flex justify-content-between align-items-center">
-							<span>
-								<i className="flaticon-tag"></i> Price
-							</span>
-							{/*&#8377;{kConverter(price)}*/}
-							&#8377;{(totalCost)}
-						</div>
-					</li>
 					<li>
 						<div className="d-flex justify-content-between align-items-center">
 							<span>
@@ -190,19 +204,43 @@ const CoursesDetailsSidebar = ({
 						</div>
 					</li>
 					<li>
-						<div className='mt-2' >
-							<h6 className="mb-4" style={{ fontWeight: 'bold' }}>Select purchase type</h6>
-							<div className='d-flex flex-direction-col'>
-								{purchaseData.map((item, index) => {
-									return (
-										<div className="items-center mb-2" key={index}>
-											<input type="checkbox" id={item.id} name={item.name} onChange={(e) => handleOnChange(e, index)} />
-											<label htmlFor={`custom-checkbox-${index}`} style={{ marginLeft: '15px' }}>{item.label}</label>
+						<li>
+							<span className="mb-4" style={{ fontWeight: 'bold' }}><i className="flaticon-agenda"></i> Select purchase type</span>
+						</li>
+						<div className='mt-2 d-flex'>
+							<div className='d-flex flex-direction-col col-12'>
+
+								<div className="mb-2">
+									<div className='row'>
+										{live_training_price && <div className='col-9'>
+											<input type="checkbox" id={purchaseData[0].id} name={purchaseData[0].name} onChange={(e) => handleOnChange(e)} />
+											<label htmlFor={`${purchaseData[0].id}`} style={{ marginLeft: '15px' }}>{purchaseData[0].label}</label>
+										</div>}
+										{displayLivePrice && <div className='mb-2 col-3' style={{ color: 'red' }}>{live_training_price}</div>}
+									</div>
+								</div>
+
+								<div className="mb-2">
+									<div className='row'>
+										<div className='col-9'>
+											<input type="checkbox" id={purchaseData[1].id} name={purchaseData[1].name} onChange={(e) => handleOnChange(e)} />
+											<label htmlFor={`${purchaseData[1].id}`} style={{ marginLeft: '15px' }}>{purchaseData[1].label}</label>
 										</div>
-									)
-								})}
+										{displayVideoPrice && <div className='col-3' style={{ color: 'red' }}>{video_course_price}</div>}
+									</div>
+								</div>
 							</div>
-							{purchaseTypeError && <h6 style={{ color: 'red', marginTop: '10px' }}>Please select purchase type</h6>}
+
+							{purchaseTypeError === true && <h6 style={{ color: 'red', marginTop: '10px' }}>Please select purchase type</h6>}
+						</div>
+					</li>
+					<li className="price">
+						<div className="d-flex justify-content-between align-items-center">
+							<span>
+								<i className="flaticon-tag"></i> Price
+							</span>
+							{/*&#8377;{kConverter(video_course_price)}*/}
+							&#8377;{(totalCost)}
 						</div>
 					</li>
 					{/* <li>
@@ -259,6 +297,8 @@ const CoursesDetailsSidebar = ({
 										addToCart(
 											_id,
 											title,
+											live_training_price,
+											video_course_price,
 											totalCost,
 											lessons,
 											duration,

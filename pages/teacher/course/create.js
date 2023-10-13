@@ -51,16 +51,17 @@ const Create = () => {
             mode: "onBlur",
             defaultValues: {
                 category: "misc",
-                course_preview_video: "",
-                coverPhoto: "",
-                duration: "",
-                lessons: "",
-                overview: "",
-                topics: "",
-                price: 0,
-                profilePhoto: "",
+                course_preview_video: '',
+                coverPhoto: '',
+                duration: '30 days approx',
+                lessons: '30 lessons more or less',
+                overview: '',
+                topics: '',
+                video_course_price: '',
+                live_training_price: '',
+                profilePhoto: '',
                 published: false,
-                title: ""
+                title: ''
             },
             resetOptions: {
                 keepDirtyValues: true,
@@ -131,7 +132,7 @@ const Create = () => {
 
     const validationOptions = {
         title: { required: "Title is required" },
-        price: { required: "Price is required" },
+        video_course_price: { required: "Price is required" },
     };
 
     const handleCourseSubmit = async (course, e) => {
@@ -153,12 +154,16 @@ const Create = () => {
             const url = `${axiosApi.baseUrl}/api/v1/courses/course/new`;
 
             const {
-                title, price, lessons, duration, category, course_preview_video, published
+                title, video_course_price, live_training_price, lessons, duration, category, course_preview_video, published
             } = course
             const payload = {
-                title, overview: description.content, topics: courseTopics.content, price, lessons, duration, category, profile, course_preview_video, published
+                title, overview: description.content, topics: courseTopics.content, video_course_price, lessons, duration, category, profile, course_preview_video, published
             }
 
+            if (live_training_price > 0) {
+                payload['live_training_price'] = live_training_price
+            }
+            
             console.log('create.js:: handleCourseSubmit:: payload: ', payload);
 
             const response = await axios.post(url, payload, {
@@ -268,17 +273,29 @@ const Create = () => {
                                         />
                                     </div>
 
-                                    <div className="form-group">
-                                        <label>Course Price</label>
-                                        <input
-                                            type="number"
-                                            placeholder="Enter course price"
-                                            className="form-control"
-                                            {...register('price')}
-                                        />
+                                    <div className='d-flex justify-content-between'>
+                                        <div className="col-5">
+                                            <label>Video course price</label>
+                                            <input
+                                                type="number"
+                                                placeholder="Enter video course price"
+                                                className="form-control"
+                                                {...register('video_course_price', validationOptions.video_course_price)}
+                                            />
+                                        </div>
+
+                                        <div className="col-5">
+                                            <label>Live course price</label>
+                                            <input
+                                                type="number"
+                                                placeholder="Enter live training price"
+                                                className="form-control"
+                                                {...register('live_training_price')}
+                                            />
+                                        </div>
                                     </div>
 
-                                    <div className="form-group">
+                                    <div className="form-group mt-3">
                                         <label>Course Lessons</label>
                                         <input
                                             type="text"
