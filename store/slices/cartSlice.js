@@ -7,6 +7,8 @@ const initialState = {
 
 // COUNTER REDUCER
 export const cartReducer = (state = initialState, action) => {
+	let liveData = {};
+	let courseData = {};
 	switch (action.type) {
 		case "ADD_TO_CART":
 			let existingItem = state.cartItems.find(
@@ -18,9 +20,21 @@ export const cartReducer = (state = initialState, action) => {
 					...state,
 				};
 			} else {
+				if (action.data.live_training_price) {
+					liveData = {...action.data};
+					liveData.id = `live_${liveData.id}`
+					liveData.purchaseType = 'Live training'
+					liveData.price = action.data.live_training_price;
+				}
+				if (action.data.video_course_price) {
+					courseData = {...action.data}
+					courseData.id = `course_${courseData.id}`;
+					courseData.purchaseType = 'Course videos'
+					courseData.price = action.data.video_course_price;
+				}
 				return {
 					...state,
-					cartItems: [...state.cartItems, action.data],
+					cartItems: [...state.cartItems, courseData, liveData],
 				};
 			}
 

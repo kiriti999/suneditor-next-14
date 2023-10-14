@@ -139,12 +139,6 @@ const Create = () => {
         e.preventDefault()
         setLoading(true);
         try {
-            if (description) {
-                console.log('create.js:: handleCourseSubmit:: description: ', description);
-            }
-            if (courseTopics) {
-                console.log('create.js:: handleCourseSubmit:: courseTopics: ', courseTopics);
-            }
             let profile = ''
             if (course.profilePhoto) {
                 profile = await handleProfilePhotoUpload()
@@ -156,6 +150,7 @@ const Create = () => {
             const {
                 title, video_course_price, live_training_price, lessons, duration, category, course_preview_video, published
             } = course
+            
             const payload = {
                 title, overview: description.content, topics: courseTopics.content, video_course_price, lessons, duration, category, profile, course_preview_video, published
             }
@@ -285,7 +280,7 @@ const Create = () => {
                                         </div>
 
                                         <div className="col-5">
-                                            <label>Live course price</label>
+                                            <label>Live training price</label>
                                             <input
                                                 type="number"
                                                 placeholder="Enter live training price"

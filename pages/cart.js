@@ -34,6 +34,7 @@ const Cart = ({ user }) => {
 										<th scope="col">Product</th>
 										<th scope="col">Name</th>
 										<th scope="col">Price</th>
+										<th scope="col">Purchase Type</th>
 										<th scope="col">Action</th>
 									</tr>
 								</thead>

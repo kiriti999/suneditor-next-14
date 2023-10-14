@@ -38,18 +38,14 @@ const CoursesDetailsSidebar = ({
 	const [purchaseData, setPurchaseData] = useState(purchaseInitData);
 	const [purchaseTypeError, setPurchaseTypeError] = useState(false);
 
-	const addToCart = (courseId, title, live_training_price, video_course_price, total_cost, lessons, duration, image) => {
-		console.log('selectedItem ', selectedItem);
-		let courseObj = {};
-		courseObj["id"] = courseId;
-		courseObj["title"] = title;
-		courseObj["live_training_price"] = live_training_price;
-		courseObj["video_course_price"] = video_course_price;
-		courseObj["total_cost"] = total_cost;
-		courseObj["lessons"] = lessons;
-		courseObj["duration"] = duration;
-		courseObj["image"] = image;
-		courseObj["quantity"] = 1;
+	const addToCart = (id, title, live_training_price, video_course_price, total_cost, lessons, duration, image) => {
+
+		let courseObj = {
+			id, title, live_training_price, video_course_price, total_cost, lessons, duration, image
+		};
+
+		courseObj['quantity'] = 1;
+
 		if (selectedItem.length) {
 			dispatch({
 				type: "ADD_TO_CART",
@@ -67,11 +63,11 @@ const CoursesDetailsSidebar = ({
 		return (() => {
 			clearTimeout(timeout)
 		})
-	})
+	}, [purchaseTypeError])
 
 	useEffect(() => {
 		const courseExist = cartItems.find((cart) => {
-			return _id === cart.id;
+			return _id === cart.id.split('_')[1];
 		});
 		courseExist && setAdd(true);
 
@@ -89,6 +85,7 @@ const CoursesDetailsSidebar = ({
 	useEffect(() => {
 		setDisplay(true);
 	}, []);
+
 	const { enrolled_courses } = loggedInUser ? loggedInUser : "";
 	const router = useRouter();
 	// Popup Video
@@ -111,7 +108,9 @@ const CoursesDetailsSidebar = ({
 
 	useEffect(() => {
 		console.log('selectedItem ', selectedItem);
-		if(selectedItem.length < 1) setAdd(false)
+		if (selectedItem.length < 1) {
+			setAdd(false)
+		}
 	}, [selectedItem])
 
 	const checkBoughtAlready = () => {
@@ -122,23 +121,21 @@ const CoursesDetailsSidebar = ({
 		);
 	};
 
-	const handleOnChange = (e, i) => {
-		const { checked, id } = e.target;
-		console.log(`checked: ${checked}, id: ${id}`);
+	const getTotalCost = (checked, id) => {
 		if (checked) {
+			setPurchaseTypeError(false);
 			if (id == 1) {
-				courseData.live_training_price = 100;
 				if (courseData.live_training_price) {
 					setDisplayLivePrice(true)
 					setTotalCost((total) => (total + parseInt(courseData.live_training_price)));
+					setSelectedItem((prev) => [...prev, id]);
 				}
 			}
 			if (id == 2) {
 				setDisplayVideoPrice(true)
 				setTotalCost((total) => (total + parseInt(courseData.video_course_price)));
+				setSelectedItem((prev) => [...prev, id]);
 			}
-			setSelectedItem((prev) => [...prev, id]);
-			setPurchaseTypeError(false);
 		} else {
 			if (id == 1) {
 				setDisplayLivePrice(false)
@@ -152,6 +149,12 @@ const CoursesDetailsSidebar = ({
 			}
 			setSelectedItem((prev) => prev.filter((eid) => eid !== id))
 		}
+	}
+
+	const handleOnChange = (e, i) => {
+		const { checked, id } = e.target;
+		console.log(`checked: ${checked}, id: ${id}`);
+		getTotalCost(checked, id)
 	}
 
 	return (
@@ -204,36 +207,33 @@ const CoursesDetailsSidebar = ({
 						</div>
 					</li>
 					<li>
-						<li>
-							<span className="mb-4" style={{ fontWeight: 'bold' }}><i className="flaticon-agenda"></i> Select purchase type</span>
-						</li>
-						<div className='mt-2 d-flex'>
-							<div className='d-flex flex-direction-col col-12'>
+						<span className="mb-4" style={{ fontWeight: 'bold' }}><i className="flaticon-agenda"></i> Select purchase type</span>
+					</li>
+					<div className='mt-2 d-flex'>
+						<div className='d-flex flex-direction-col col-12'>
 
-								<div className="mb-2">
-									<div className='row'>
-										{live_training_price && <div className='col-9'>
-											<input type="checkbox" id={purchaseData[0].id} name={purchaseData[0].name} onChange={(e) => handleOnChange(e)} />
-											<label htmlFor={`${purchaseData[0].id}`} style={{ marginLeft: '15px' }}>{purchaseData[0].label}</label>
-										</div>}
-										{displayLivePrice && <div className='mb-2 col-3' style={{ color: 'red' }}>{live_training_price}</div>}
-									</div>
-								</div>
-
-								<div className="mb-2">
-									<div className='row'>
-										<div className='col-9'>
-											<input type="checkbox" id={purchaseData[1].id} name={purchaseData[1].name} onChange={(e) => handleOnChange(e)} />
-											<label htmlFor={`${purchaseData[1].id}`} style={{ marginLeft: '15px' }}>{purchaseData[1].label}</label>
-										</div>
-										{displayVideoPrice && <div className='col-3' style={{ color: 'red' }}>{video_course_price}</div>}
-									</div>
+							<div className="mb-2">
+								<div className='row'>
+									{live_training_price && <div className='col-9'>
+										<input type="checkbox" id={purchaseData[0].id} name={purchaseData[0].name} onChange={(e) => handleOnChange(e)} />
+										<label htmlFor={`${purchaseData[0].id}`} style={{ marginLeft: '15px' }}>{purchaseData[0].label}</label>
+									</div>}
+									{displayLivePrice && <div className='mb-2 col-3' style={{ color: 'red' }}>{live_training_price}</div>}
 								</div>
 							</div>
 
+							<div className="mb-2">
+								<div className='row'>
+									<div className='col-9'>
+										<input type="checkbox" id={purchaseData[1].id} name={purchaseData[1].name} onChange={(e) => handleOnChange(e)} />
+										<label htmlFor={`${purchaseData[1].id}`} style={{ marginLeft: '15px' }}>{purchaseData[1].label}</label>
+									</div>
+									{displayVideoPrice && <div className='col-3' style={{ color: 'red' }}>{video_course_price}</div>}
+								</div>
+							</div>
 							{purchaseTypeError === true && <h6 style={{ color: 'red', marginTop: '10px' }}>Please select purchase type</h6>}
 						</div>
-					</li>
+					</div>
 					<li className="price">
 						<div className="d-flex justify-content-between align-items-center">
 							<span>

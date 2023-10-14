@@ -11,7 +11,7 @@ import { useMemo } from 'react';
 const overviewStyle = {
     display: '-webkit-box',
     // maxWidth: '200px',
-    'font-size': '15px',
+    'fontSize': '15px',
     WebkitLineClamp: '4',
     WebkitBoxOrient: 'vertical',
     overflow: 'hidden'

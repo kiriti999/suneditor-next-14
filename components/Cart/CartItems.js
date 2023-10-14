@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { kConverter } from '../../utils/cart/currencyHelper';
 
-const CartItems = ({ id, title, price, image, onRemove }) => {
+const CartItems = ({ id, title, price, purchaseType, image, onRemove }) => {
 	return (
 		<tr>
 			<td className="product-thumbnail">
@@ -23,7 +23,11 @@ const CartItems = ({ id, title, price, image, onRemove }) => {
 				<span className="unit-amount">&#8377;{kConverter(price)}</span>
 			</td>
 
-			<td className="product-subtotal text">
+			<td className="product-name">
+				<span className="">{purchaseType}</span>
+			</td>
+
+			<td className="product-subtotal text" id={id}>
 				<button onClick={() => onRemove(id)} className="remove">
 					<i className="bx bx-trash"></i>
 				</button>
