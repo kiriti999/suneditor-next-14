@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ModalVideo from 'react-modal-video';
 import Link from 'next/link';
+import { parseCookies } from 'nookies'
 
 const CoursesCurriculum = ({ videos }) => {
+    const { token } = parseCookies();
     const [display, setDisplay] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [currentVideo, setCurrentVideo] = useState(null);
@@ -43,8 +45,9 @@ const CoursesCurriculum = ({ videos }) => {
                                     >
                                         <span className="courses-name">{video.order} - {video.name}</span>
                                         <div className="courses-meta">
-                                            <span className="duration">{Math.floor(video.video_duration / 60) || "< 1" } Min(s)</span>
+                                            <span className="duration">{Math.floor(video.video_duration / 60) || "< 1"} Min(s)</span>
                                             <span className="status"><i className="flaticon-play"></i></span>
+                                            {video.isPreview && <span className="status">preview</span>}
                                         </div>
                                     </a>
                                 </Link>

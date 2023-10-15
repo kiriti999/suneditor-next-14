@@ -115,7 +115,6 @@ const HomePageCourses = ({ data }) => {
 
                                                 <div style={overviewStyle} dangerouslySetInnerHTML={{ __html: course.overview }}></div>
 
-
                                                 <ul className="courses-box-footer d-flex justify-content-between align-items-center pb-10">
                                                     <li>
                                                         <i className="flaticon-fi-sr-indian-rupee-sign"></i>{" "}

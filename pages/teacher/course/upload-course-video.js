@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, { useRef } from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
 import { Alert, Spinner } from 'reactstrap'
@@ -26,7 +26,7 @@ const UploadCourseVideo = ({ courses }) => {
     const fileInputRef = useRef(null);
 
     React.useEffect(() => {
-        const {order, video_url, name} = video
+        const { order, video_url, name } = video
         const isVideo = Object.values({
             video_url,
             name,
@@ -54,16 +54,16 @@ const UploadCourseVideo = ({ courses }) => {
 
     const handleChange = e => {
         const { name, value, files } = e.target
-        if(name === 'video_url' && files[0]){
+        if (name === 'video_url' && files[0]) {
             const videoSize = files[0].size / 1024 / 1024
-            if(videoSize > 99){
-                addToast('The video size greater than 99 MB. Make sure less than 99 MB.', { 
+            if (videoSize > 99) {
+                addToast('The video size greater than 99 MB. Make sure less than 99 MB.', {
                     appearance: 'error'
                 })
                 e.target.value = null
                 return
             }
-            setVideo(prevState => ({ ...prevState, video_url: files[0]}))
+            setVideo(prevState => ({ ...prevState, video_url: files[0] }))
         } else {
             setVideo(prevState => ({ ...prevState, [name]: value }))
         }
@@ -73,7 +73,7 @@ const UploadCourseVideo = ({ courses }) => {
         e.preventDefault()
         setLoading(true)
         try {
-            if(!video.video_url){
+            if (!video.video_url) {
                 toast.error('No video available. Please upload a video to continue.');
                 e.target.value = null
                 return
@@ -81,18 +81,19 @@ const UploadCourseVideo = ({ courses }) => {
             const { videoUrl, videoDuration } = await handleVideoUpload();
             console.log(videoUrl, videoDuration, video)
             const url = `${axiosApi.baseUrl}/api/v1/courses/course/video-upload`
-            const { order, name, description, courseId } = video
+            const { order, name, description, courseId, isPreview } = video
             const payload = {
                 order,
                 name,
                 description,
                 courseId,
                 videoUrl,
-                videoDuration
+                videoDuration,
+                isPreview
             }
 
             const response = await axios.post(url, payload, {
-                headers: {Authorization: token}
+                headers: { Authorization: token }
             })
 
             console.log('upload-course-video.js:: handleSubmit:: response.data:', response.data)
@@ -154,7 +155,7 @@ const UploadCourseVideo = ({ courses }) => {
                                     {loading && (
                                         <h3 className="loading-spinner">
                                             <div className="d-table">
-                                                <div className="d-table-cell"> 
+                                                <div className="d-table-cell">
                                                     <Spinner color="success"> </Spinner>
                                                 </div>
                                             </div>
@@ -175,10 +176,10 @@ const UploadCourseVideo = ({ courses }) => {
 
                                     <div className="form-group">
                                         <label>Video Order (1 or 2...)</label>
-                                        <input 
-                                            type="number" 
-                                            placeholder="Order Number" 
-                                            className="form-control" 
+                                        <input
+                                            type="number"
+                                            placeholder="Order Number"
+                                            className="form-control"
                                             name="order"
                                             value={video.order}
                                             onChange={handleChange}
@@ -187,10 +188,10 @@ const UploadCourseVideo = ({ courses }) => {
 
                                     <div className="form-group">
                                         <label>Name</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             placeholder="Enter video name"
-                                            className="form-control" 
+                                            className="form-control"
                                             name="name"
                                             value={video.name}
                                             onChange={handleChange}
@@ -199,10 +200,10 @@ const UploadCourseVideo = ({ courses }) => {
 
                                     <div className="form-group">
                                         <label>Description</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             placeholder="Enter video description"
-                                            className="form-control" 
+                                            className="form-control"
                                             name="description"
                                             value={video.description}
                                             onChange={handleChange}
@@ -212,19 +213,27 @@ const UploadCourseVideo = ({ courses }) => {
                                     <div className="form-group">
                                         <label>Video</label>
                                         <br />
-                                        <input 
-                                            type="file" 
-                                            name="video_url" 
+                                        <input
+                                            type="file"
+                                            name="video_url"
                                             accept="video/*"
                                             ref={fileInputRef}
                                             onChange={handleChange}
                                         />
+                                        <input
+                                            type="checkbox"
+                                            name="isPreview"
+                                            value={video.isPreview}
+                                            onChange={handleChange}
+                                        />
+                                        <label style={{ marginLeft: '8px' }}>Mark as preview video</label>
+
                                     </div>
 
                                     <br />
 
-                                    <button 
-                                        className="default-btn" 
+                                    <button
+                                        className="default-btn"
                                         disabled={disabled || loading}
                                     >
                                         <i className='flaticon-right-chevron'></i>
@@ -242,12 +251,12 @@ const UploadCourseVideo = ({ courses }) => {
 
 UploadCourseVideo.getInitialProps = async ctx => {
     const { token } = parseCookies(ctx)
-    if(!token){
-        return {courses: []}
+    if (!token) {
+        return { courses: [] }
     }
 
     const payload = {
-        headers: {Authorization: token}
+        headers: { Authorization: token }
     }
 
     const url = `${axiosApi.baseUrl}/api/v1/courses/teacher/my-courses`
