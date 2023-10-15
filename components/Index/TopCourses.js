@@ -102,7 +102,7 @@ const TopCourses = ({ courses }) => {
 											<li>
 												<i className="flaticon-fi-sr-indian-rupee-sign"></i>{" "}
 												{/* {parseInt(course.lessons)}{" "} */}
-												<b>₹ {course.price}</b>
+												<b>₹ {course.live_training_price}</b>
 												{/* 
 												<Link
 													href="/courses/[id]" as={`/courses/${course._id}`}>

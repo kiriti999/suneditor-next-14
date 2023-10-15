@@ -46,9 +46,9 @@ const HomePageCourses = ({ data }) => {
                 case 'latest':
                     return a.createdAt - b.createdAt;
                 case 'low-high':
-                    return a.price - b.price;
+                    return a.live_training_price - b.live_training_price;
                 case 'high-low':
-                    return b.price - a.price;
+                    return b.live_training_price - a.live_training_price;
             }
         });
 
@@ -79,8 +79,8 @@ const HomePageCourses = ({ data }) => {
                                             <option>Sort By</option>
                                             <option value='popularity'>Popularity</option>
                                             <option value='latest'>Latest</option>
-                                            <option value='low-high'>Price: low to high</option>
-                                            <option value='high-low'>Price: high to low</option>
+                                            <option value='low-high'>live_training_price: low to high</option>
+                                            <option value='high-low'>live_training_price: high to low</option>
                                         </select>
                                     </div>
                                 </div>
@@ -120,7 +120,7 @@ const HomePageCourses = ({ data }) => {
                                                     <li>
                                                         <i className="flaticon-fi-sr-indian-rupee-sign"></i>{" "}
                                                         {/* {parseInt(course.lessons)}{" "} */}
-                                                        <b>₹ {course.price}</b>
+                                                        <b>₹ {course.live_training_price}</b>
                                                         {/* 
                                                             <Link
                                                                 href="/courses/[id]" as={`/courses/${course._id}`}>
