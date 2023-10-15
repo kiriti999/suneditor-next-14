@@ -7,8 +7,17 @@ const initialState = {
 
 // COUNTER REDUCER
 export const cartReducer = (state = initialState, action) => {
+	console.log('action.data: ', action.data);
 	let liveData = {};
 	let courseData = {};
+
+	const isItemExistInCart = (id) => {
+		console.log('isItemExistInCart id: ', id);
+		const result = state.cartItems.some((item) => item.id === id)
+		console.log('result ', result);
+		return result;
+	}
+
 	switch (action.type) {
 		case "ADD_TO_CART":
 			let existingItem = state.cartItems.find(
@@ -20,22 +29,46 @@ export const cartReducer = (state = initialState, action) => {
 					...state,
 				};
 			} else {
-				if (action.data.live_training_price) {
-					liveData = {...action.data};
+
+				const newState = {
+					...state,
+					cartItems: [...state.cartItems],
+				}
+
+				if (action.data.selected === 'liveType' && !(isItemExistInCart(`live_${action.data.id}`))) {
+					liveData = { ...action.data };
 					liveData.id = `live_${liveData.id}`
 					liveData.purchaseType = 'Live training'
 					liveData.price = action.data.live_training_price;
-				}
-				if (action.data.video_course_price) {
-					courseData = {...action.data}
+					newState.cartItems.push(liveData)
+				} else if (action.data.selected === 'courseType' && !(isItemExistInCart(`course_${action.data.id}`))) {
+					courseData = { ...action.data }
 					courseData.id = `course_${courseData.id}`;
 					courseData.purchaseType = 'Course videos'
 					courseData.price = action.data.video_course_price;
+					newState.cartItems.push(courseData)
+				} else {
+					if (!(isItemExistInCart(`live_${action.data.id}`))) {
+						liveData = { ...action.data };
+						liveData.id = `live_${liveData.id}`
+						liveData.purchaseType = 'Live training'
+						liveData.price = action.data.live_training_price;
+						newState.cartItems.push(liveData)
+					}
+
+					if (!(isItemExistInCart(`course_${action.data.id}`))) {
+						courseData = { ...action.data }
+						courseData.id = `course_${courseData.id}`;
+						courseData.purchaseType = 'Course videos'
+						courseData.price = action.data.video_course_price;
+						newState.cartItems.push(courseData)
+					}
 				}
-				return {
-					...state,
-					cartItems: [...state.cartItems, courseData, liveData],
-				};
+
+				console.log('liveData', liveData);
+				console.log('courseData', courseData);
+				console.log('newState ', newState);
+				return newState;
 			}
 
 		case "GET_DISCOUNT":

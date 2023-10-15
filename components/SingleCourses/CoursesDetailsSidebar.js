@@ -31,14 +31,17 @@ const CoursesDetailsSidebar = ({
 	const [displayLivePrice, setDisplayLivePrice] = useState(false);
 
 	const purchaseInitData = [
-		{ id: 1, name: 'liveType', purchaseType: 'liveType', label: 'Live training', checked: false },
-		{ id: 2, name: 'courseType', purchaseType: 'courseType', label: 'Course videos', checked: false }];
+		{ id: '1', name: 'liveType', purchaseType: 'liveType', label: 'Live training', checked: false },
+		{ id: '2', name: 'courseType', purchaseType: 'courseType', label: 'Course videos', checked: false }
+	];
 
-	const [selectedItem, setSelectedItem] = useState([]);
+	const [selectedItems, setSelectedItem] = useState([]);
 	const [purchaseData, setPurchaseData] = useState(purchaseInitData);
 	const [purchaseTypeError, setPurchaseTypeError] = useState(false);
 
 	const addToCart = (id, title, live_training_price, video_course_price, total_cost, lessons, duration, image) => {
+
+		console.log('existing cartItems: ', cartItems);
 
 		let courseObj = {
 			id, title, live_training_price, video_course_price, total_cost, lessons, duration, image
@@ -46,7 +49,11 @@ const CoursesDetailsSidebar = ({
 
 		courseObj['quantity'] = 1;
 
-		if (selectedItem.length) {
+		const filtered = purchaseInitData.filter((item, i) => selectedItems.includes(item.id));
+
+		if (filtered.length) {
+			courseObj['selected'] = filtered.length === 2 ? 'both' : filtered[0].purchaseType
+
 			dispatch({
 				type: "ADD_TO_CART",
 				data: courseObj,
@@ -66,7 +73,9 @@ const CoursesDetailsSidebar = ({
 	}, [purchaseTypeError])
 
 	useEffect(() => {
+		console.log('cartItems ', cartItems);
 		const courseExist = cartItems.find((cart) => {
+			console.log('cart ', cart);
 			return _id === cart.id.split('_')[1];
 		});
 		courseExist && setAdd(true);
@@ -107,11 +116,9 @@ const CoursesDetailsSidebar = ({
 	}, []);
 
 	useEffect(() => {
-		console.log('selectedItem ', selectedItem);
-		if (selectedItem.length < 1) {
-			setAdd(false)
-		}
-	}, [selectedItem])
+		console.log('selectedItems ', selectedItems);
+		setAdd(false)
+	}, [selectedItems])
 
 	const checkBoughtAlready = () => {
 		return (
@@ -121,7 +128,7 @@ const CoursesDetailsSidebar = ({
 		);
 	};
 
-	const getTotalCost = (checked, id) => {
+	const getTotalCost = async (checked, id) => {
 		if (checked) {
 			setPurchaseTypeError(false);
 			if (id == 1) {
@@ -142,14 +149,24 @@ const CoursesDetailsSidebar = ({
 				if (courseData.live_training_price) {
 					setTotalCost((total) => total - parseInt(courseData.live_training_price));
 				}
+				await handleRemove(`live_${courseData.id}`)
 			}
 			if (id == 2) {
 				setDisplayVideoPrice(false)
 				setTotalCost((total) => total - parseInt(courseData.video_course_price));
+				await handleRemove(`course_${courseData.id}`)
 			}
 			setSelectedItem((prev) => prev.filter((eid) => eid !== id))
 		}
 	}
+
+	const handleRemove = async (cartId) => {
+		dispatch({
+			type: "REMOVE_CART",
+			id: cartId,
+		});
+	};
+
 
 	const handleOnChange = (e, i) => {
 		const { checked, id } = e.target;
