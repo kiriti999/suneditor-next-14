@@ -113,6 +113,9 @@ const CoursesDetailsSidebar = ({
 			setEnrolled(response.data?.count || 0);
 		};
 		countEnrolled();
+		if (!live_training_price || !video_course_price) {
+			live_training_price ? setTotalCost(live_training_price) : setTotalCost(video_course_price)
+		}
 	}, []);
 
 	useEffect(() => {
@@ -227,11 +230,11 @@ const CoursesDetailsSidebar = ({
 						<span className="mb-4" style={{ fontWeight: 'bold' }}><i className="flaticon-agenda"></i> Select purchase type</span>
 					</li>
 					<div className='mt-2 d-flex'>
-						<div className='d-flex flex-direction-col col-12'>
+						{!alreadyBuy && <div className='d-flex flex-direction-col col-12'>
 
 							<div className="mb-2">
 								<div className='row'>
-									{live_training_price && <div className='col-9'>
+									{live_training_price && video_course_price && <div className='col-9'>
 										<input type="checkbox" id={purchaseData[0].id} name={purchaseData[0].name} onChange={(e) => handleOnChange(e)} />
 										<label htmlFor={`${purchaseData[0].id}`} style={{ marginLeft: '15px' }}>{purchaseData[0].label}</label>
 									</div>}
@@ -241,24 +244,27 @@ const CoursesDetailsSidebar = ({
 
 							<div className="mb-2">
 								<div className='row'>
-									<div className='col-9'>
+									{live_training_price && video_course_price && <div className='col-9'>
 										<input type="checkbox" id={purchaseData[1].id} name={purchaseData[1].name} onChange={(e) => handleOnChange(e)} />
 										<label htmlFor={`${purchaseData[1].id}`} style={{ marginLeft: '15px' }}>{purchaseData[1].label}</label>
-									</div>
+									</div>}
 									{displayVideoPrice && <div className='col-3' style={{ color: 'red' }}>{video_course_price}</div>}
 								</div>
 							</div>
 							{purchaseTypeError === true && <h6 style={{ color: 'red', marginTop: '10px' }}>Please select purchase type</h6>}
-						</div>
+						</div>}
 					</div>
 					<li className="price">
-						<div className="d-flex justify-content-between align-items-center">
+						{!alreadyBuy && <div className="d-flex justify-content-between align-items-center">
 							<span>
 								<i className="flaticon-tag"></i> Price
 							</span>
 							{/*&#8377;{kConverter(video_course_price)}*/}
 							&#8377;{(totalCost)}
-						</div>
+						</div>}
+						{alreadyBuy && (
+							<p>Already purchased this course</p>
+						)}
 					</li>
 					{/* <li>
 						<div className="d-flex justify-content-between align-items-center">
@@ -293,8 +299,7 @@ const CoursesDetailsSidebar = ({
 							onClick={() => router.push("/my-courses")}
 							className="default-btn"
 						>
-							<i className="flaticon-shopping-cart"></i> View My
-							Courses
+							<i className="flaticon-shopping-cart"></i> View My Courses
 							<span></span>
 						</button>
 					) : (
