@@ -9,6 +9,7 @@ import CookieConsent from "react-cookie-consent";
 import { ToastContainer } from 'react-toastify';
 
 const Layout = ({ children, user }) => {
+    window.localStorage.setItem(role, user.role)
     const [loader, setLoader] = React.useState(true)
     React.useEffect(() => {
         setTimeout(() => {

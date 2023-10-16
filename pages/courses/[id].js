@@ -12,6 +12,7 @@ const Details = () => {
 	const { token } = parseCookies();
 	const [course, setCourse] = useState([]);
 	const [price, setPrice] = useState([]);
+	const role = JSON.parse(localStorage.getItem('role'));
 
 	const getCourseById = async (id) => {
 		const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
@@ -26,6 +27,12 @@ const Details = () => {
 			const courseId = window.location.pathname.split('/')[2];
 			(async () => {
 				const course = await getCourseById(courseId);
+				if (role === 'teacher') {
+					// const course = await getCourseByIdForTeacher(courseId);
+				}
+				if (role !== 'teacher' && role !== 'admin') {
+					// const course = await getCourseByIdForUser(courseId);
+				}
 				console.log('pages/courses/[id].js:: useEffect:: course: ', course);
 				setCourse(course?.course);
 			})()
