@@ -4,6 +4,13 @@ import Link from 'next/link';
 import { useSelector, useDispatch } from "react-redux";
 import { calculateCartTotal } from "@/utils/cart/calculateCartTotal";
 import CheckoutBtn from "@/components/CheckoutButton/CheckoutBtn";
+import LoadingSpinner from "@/utils/LoadingSpinner";
+import api from "@/axios/axiosConfig"
+import catchErrors from "../../utils/catchErrors";
+import { axiosApi } from "../../utils/baseUrl";
+import { useForm } from 'react-hook-form';
+import { Spinner, Alert } from 'reactstrap'
+import { setLoginCookie } from '@/utils/auth';
 
 export const GuestCheckout = () => {
 
@@ -11,18 +18,36 @@ export const GuestCheckout = () => {
     const [cartAmount, setCartAmount] = useState(0);
     const dispatch = useDispatch();
 
+    const [displayAlert, setDisplayAlert] = React.useState(false);
+    const [showAlertMessage, setShowAlertMessage] = React.useState('');
+    const [loading, setLoading] = React.useState(false);
+
     // initial state
-    const [user, setUser] = useState({
-        name: "",
-        email: "",
-        phone: "",
-    });
+    const [user, setUser] = useState({});
+    const [toRegister, setToRegister] = useState(false);
 
     const [error, setError] = React.useState("");
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setUser((prevState) => ({ ...prevState, [name]: value }));
+    const { register, handleSubmit, reset, control, formState: { errors } } = useForm(
+        {
+            mode: "onBlur",
+            defaultValues: {
+                name: '',
+                email: '',
+                password: ''
+            },
+            resetOptions: {
+                keepDirtyValues: true, // user-interacted input will be retained
+                keepErrors: true, // input errors will be retained with value update
+            }
+        });
+
+    const validationOptions = {
+        name: { required: "Name is required" },
+        email: { required: "Email is required" },
+        password: {
+            required: `The password should be at least eight characters long. 
+        To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ &` }
     };
 
     const handleSetCartAmount = () => {
@@ -36,12 +61,48 @@ export const GuestCheckout = () => {
         }
     }, [user, cartItems]);
 
+    useEffect(() => {
+        let timeout = setTimeout(() => {
+            setToRegister(false);
+            setDisplayAlert(false);
+        }, 3000)
+        return (() => {
+            clearTimeout(timeout);
+        })
+
+    }, [toRegister, displayAlert]);
+
 
     const onClearCart = () => {
         dispatch({
             type: "RESET_CART",
         });
     };
+
+    const handleRegister = async (payload, e) => {
+        e.preventDefault();
+        setUser(payload);
+        try {
+            setLoading(true);
+            setError("");
+            const url = `${axiosApi.baseUrl}/api/v1/auth/register`;
+            const response = await api.request({
+                url: url,
+                method: 'POST',
+                data: payload
+            });
+            console.log('guest-checkout.js:: handleSubmit:: response.data: ', response.data);
+            setDisplayAlert(true);
+            setShowAlertMessage('Registration successful!');
+            setLoginCookie(response.data);
+        } catch (error) {
+            setDisplayAlert(true);
+            setShowAlertMessage('Registration failed');
+            catchErrors(error, setError);
+        } finally {
+            setLoading(false);
+        }
+    }
 
     return (
         <React.Fragment>
@@ -59,41 +120,63 @@ export const GuestCheckout = () => {
                         <span>Returning customer? <Link href="/authentication"><a>Click here to login</a></Link></span>
                     </div>
 
-                    <form>
-                        <div className="row">
-                            <div className="col-lg-6 col-md-12">
+                    <form onSubmit={handleSubmit(handleRegister)}>
+                        {displayAlert && <Alert color="danger" className="text-center">
+                            {showAlertMessage}
+                        </Alert>}
+                        <div className="row mtb-20" style={{ marginBottom: '20px' }}>
+                            <div className={toRegister ? 'cart-highlight-border col-lg-6 col-md-12' : 'col-lg-6 col-md-12'} style={{ padding: '20px 10px 0px 10px' }}>
                                 <div className="billing-details">
-                                    <h3 className="title">Billing Details</h3>
+                                    <h3 className="title">Registration</h3>
 
                                     <div className="row">
 
                                         <div className="col-lg-12 col-md-6">
                                             <div className="form-group">
                                                 <label>Full Name <span className="required">*</span></label>
-                                                <input type="text" name="name" value={user.name} onChange={handleChange} className="form-control" />
+                                                <input type="text"{...register('name', validationOptions.name)} className="form-control" />
+                                                {errors.name && <p>{errors.name.message}</p>}
                                             </div>
                                         </div>
 
                                         <div className="col-lg-12 col-md-6">
                                             <div className="form-group">
                                                 <label>Email Address <span className="required">*</span></label>
-                                                <input type="email" name="email" value={user.email} onChange={handleChange} className="form-control" />
+                                                <input type="email" {...register('email', validationOptions.email)} className="form-control" />
+                                                {errors.email && <p>{errors.email.message}</p>}
                                             </div>
                                         </div>
 
                                         <div className="col-lg-12 col-md-6">
                                             <div className="form-group">
-                                                <label>Phone <span className="required">*</span></label>
-                                                <input type="phone" name="phone" value={user.phone} onChange={handleChange} className="form-control" />
+                                                <label>Password <span className="required">*</span></label>
+                                                <input type="password" {...register('password', validationOptions.password)} className="form-control" />
+                                                {errors.password && <p>{errors.password.message}</p>}
                                             </div>
                                         </div>
 
                                         <div className="col-lg-12 col-md-12">
-                                            <div className="form-check">
-                                                <input type="checkbox" className="form-check-input" id="create-an-account" />
-                                                <label className="form-check-label" htmlFor="create-an-account">Create an account?</label>
+                                            <div className="form-group">
+                                                <button type="submit" style={{
+                                                    marginTop: '22px',
+                                                    border: 'none',
+                                                    color: '#ffffff',
+                                                    backgroundColor: '#fe4a55',
+                                                    transition: '0.5s',
+                                                    width: '100%',
+                                                    borderRadius: '5px',
+                                                    padding: '14.5px 30px',
+                                                    fontWeight: '700',
+                                                    fontSize: '16px'
+                                                }}>Create an account {loading ? <LoadingSpinner /> : ""} </button>
                                             </div>
                                         </div>
+
+                                        <div className="col-lg-12 col-md-12">
+                                            <div className="form-group">
+                                            </div>
+                                        </div>
+
 
                                     </div>
                                 </div>
@@ -145,19 +228,12 @@ export const GuestCheckout = () => {
                                     </div>
 
                                     <div className="payment-box">
-                                        {/* <a href="#" className="default-btn">
-                                            <i className="flaticon-shopping-cart"></i> Place Order <span></span>
-                                        </a> */}
-                                        {/* <button className="default-btn" onClick={(e) => {
-                                            e.preventDefault()
-                                            handlePayment()
-                                        }}>
-                                            <i className="flaticon-shopping-cart"></i> Make Payment{" "}
-                                            <span></span>
-                                        </button> */}
                                         <CheckoutBtn
                                             user={user}
                                             cartItems={cartItems}
+                                            setToRegister={setToRegister}
+                                            setDisplayAlert={setDisplayAlert}
+                                            setShowAlertMessage={setShowAlertMessage}
                                             onClearCart={() => onClearCart()}
                                         />
                                     </div>
@@ -166,9 +242,9 @@ export const GuestCheckout = () => {
                         </div>
                     </form>
                 </div>
-            </div>
+            </div >
 
-        </React.Fragment>
+        </React.Fragment >
     )
 }
 

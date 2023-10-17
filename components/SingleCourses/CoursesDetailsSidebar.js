@@ -41,27 +41,39 @@ const CoursesDetailsSidebar = ({
 
 	const addToCart = (id, title, live_training_price, video_course_price, total_cost, lessons, duration, image) => {
 
-		console.log('existing cartItems: ', cartItems);
-
 		let courseObj = {
 			id, title, live_training_price, video_course_price, total_cost, lessons, duration, image
 		};
 
 		courseObj['quantity'] = 1;
 
-		const filtered = purchaseInitData.filter((item, i) => selectedItems.includes(item.id));
-
-		if (filtered.length) {
-			courseObj['selected'] = filtered.length === 2 ? 'both' : filtered[0].purchaseType
-
-			dispatch({
-				type: "ADD_TO_CART",
-				data: courseObj,
-			});
-		} else {
-			setPurchaseTypeError(true);
+		if (!isCourseExist()) {
+			if (live_training_price && video_course_price) {
+				const filtered = purchaseInitData.filter((item, i) => selectedItems.includes(item.id));
+				if (filtered.length) {
+					courseObj['selected'] = filtered.length === 2 ? 'both' : filtered[0].purchaseType
+					dispatchAddToCart(courseObj)
+				} else {
+					setPurchaseTypeError(true);
+				}
+			} else {
+				courseObj.selected = live_training_price ? 'liveType' : 'courseType'
+				dispatchAddToCart(courseObj)
+			}
 		}
 	};
+
+	const dispatchAddToCart = (courseObj) => {
+		dispatch({
+			type: "ADD_TO_CART",
+			data: courseObj,
+		});
+	}
+
+	const isCourseExist = () => {
+		const result = cartItems.find((cart) => _id === cart.id.split('_')[1]);
+		return result;
+	}
 
 	useEffect(() => {
 		let timeout = setTimeout(() => {
@@ -73,9 +85,7 @@ const CoursesDetailsSidebar = ({
 	}, [purchaseTypeError])
 
 	useEffect(() => {
-		console.log('cartItems ', cartItems);
 		const courseExist = cartItems.find((cart) => {
-			console.log('cart ', cart);
 			return _id === cart.id.split('_')[1];
 		});
 		courseExist && setAdd(true);
@@ -84,7 +94,6 @@ const CoursesDetailsSidebar = ({
 			const payload = { params: { courseId: _id }, headers: { Authorization: token } };
 			const url = `${axiosApi.baseUrl}/api/v1/courses/enrolled/exist`;
 			axios.get(url, payload).then((result) => {
-				console.log('is course purchased:: result:', result);
 				setAlreadyBuy(result.data === true);
 			});
 		}
@@ -169,7 +178,6 @@ const CoursesDetailsSidebar = ({
 			id: cartId,
 		});
 	};
-
 
 	const handleOnChange = (e, i) => {
 		const { checked, id } = e.target;

@@ -45,9 +45,9 @@ const CoursesCurriculum = ({ videos }) => {
                                     >
                                         <span className="courses-name">{video.order} - {video.name}</span>
                                         <div className="courses-meta">
-                                            <span className="duration">{Math.floor(video.video_duration / 60) || "< 1"} Min(s)</span>
-                                            <span className="status"><i className="flaticon-play"></i></span>
-                                            {video.isPreview && <span className="status">preview</span>}
+                                        <span className="duration">{Math.floor(video.video_duration / 60) || "< 1"} Min(s)</span>
+                                        <span className="status"><i className="flaticon-play"></i></span>
+                                        {video.isPreview && <span className="status">preview</span>}
                                         </div>
                                     </a>
                                 </Link>
