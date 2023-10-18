@@ -206,7 +206,7 @@ export const GuestCheckout = () => {
 
                                                         <td className="product-total">
                                                             <span className="subtotal-amount">
-                                                                &#8377;{cart.price}
+                                                                &#8377;{cart.total_cost}
                                                             </span>
                                                         </td>
                                                     </tr>

@@ -18,8 +18,15 @@ export const cartReducer = (state = initialState, action) => {
 		const newActionData = { ...action.data };
 		if (price > 0 && !(isItemExistInCart(`${idType}_${action.data.id}`))) {
 			newActionData.id = `${idType}_${newActionData.id}`;
-			newActionData.price = newActionData[price];
 			newActionData['purchaseType'] = idType;
+			if (idType === 'live') {
+				newActionData.price = newActionData[price];
+				delete newActionData.video_course_price;
+			}
+			if (idType === 'course') {
+				newActionData.price = newActionData[price];
+				delete newActionData.live_training_price;
+			}
 		}
 		cartState.cartItems.push(newActionData)
 	}

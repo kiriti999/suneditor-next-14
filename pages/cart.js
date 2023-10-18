@@ -7,6 +7,7 @@ import { kConverter } from '../utils/cart/currencyHelper';
 
 const Cart = ({ user }) => {
 	const cartItems = useSelector((state) => state.cart.cartItems);
+	console.log('cart.js:: cartItems: ', cartItems);
 	const dispatch = useDispatch();
 	const [cartAmount, setCartAmount] = useState(0);
 
