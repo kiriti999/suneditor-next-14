@@ -1,10 +1,8 @@
 export const calculateCartTotal = (courses) => {
-	const total = courses[0] && typeof courses[0].total_cost === 'number'
-		? courses[0].total_cost
-		: courses.reduce((acc, el) => {
-			acc += el.price * el.quantity;
-			return acc;
-		}, 0);
+	const total = courses.reduce((acc, el) => {
+		acc += el.total_cost * el.quantity;
+		return acc;
+	}, 0);
 
 	const cartTotal = ((total * 100) / 100).toFixed(0);
 	const stripeTotal = Number((total * 100).toFixed(0));
