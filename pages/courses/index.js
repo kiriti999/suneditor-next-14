@@ -53,7 +53,7 @@ const HomePageCourses = ({ data }) => {
                     let bCount = parseInt(b.popularity);
                     return bCount - aCount;
                 case 'latest':
-                    return a.createdAt - b.createdAt;
+                    return a.updatedAt - b.updatedAt;
                 case 'low-high':
                     return a.live_training_price - b.live_training_price;
                 case 'high-low':
