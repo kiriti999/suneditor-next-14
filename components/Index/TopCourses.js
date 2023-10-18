@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 import ReactStars from "react-rating-stars-component";
 import axios from "axios";
 import { axiosApi } from "../../utils/baseUrl";
 import { parseCookies } from 'nookies'
+import Pagination from '../../components/pagination/pagination';
 
 const overviewStyle = {
 	display: '-webkit-box',
@@ -18,6 +19,15 @@ const overviewStyle = {
 const TopCourses = ({ courses }) => {
 	const { token } = parseCookies();
 	const { t } = useTranslation("distance-learning");
+
+	const [recordsPerPage] = useState(8);
+	const [currentPage, setCurrentPage] = useState(1);
+	const indexOfLastRecord = currentPage * recordsPerPage;
+	const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+	const currentRecords = courses.slice(indexOfFirstRecord, indexOfLastRecord);
+	const nPages = Math.ceil(courses.length / recordsPerPage);
+
+
 	const getRating = courseMeta => {
 		var count = 0
 		var sum = 0;
@@ -58,8 +68,8 @@ const TopCourses = ({ courses }) => {
 				</div>
 
 				<div className="row justify-content-center">
-					{courses ? (
-						courses.map((course) => (
+					{currentRecords ? (
+						currentRecords.map((course) => (
 							<div className="col-lg-3 col-md-6" key={course._id}>
 								<div className="single-courses-box course-box-border">
 									<div className="courses-image">
@@ -146,6 +156,11 @@ const TopCourses = ({ courses }) => {
 					</div>
 				</div>
 			</div>
+
+			<div className="col-lg-12 col-md-12">
+				<Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+			</div>
+
 		</div>
 	);
 };

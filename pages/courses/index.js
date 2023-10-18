@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PageBanner from '../../components/Common/PageBanner';
 import Link from 'next/link';
 import axios from 'axios'
@@ -7,6 +7,7 @@ import CoursesSidebar from '../../components/Courses/CoursesSidebar';
 import { kConverter } from '../../utils/cart/currencyHelper';
 import { Context } from 'context/filterStore';
 import { useMemo } from 'react';
+import Pagination from '../../components/pagination/pagination';
 
 const overviewStyle = {
     display: '-webkit-box',
@@ -29,9 +30,17 @@ const HomePageCourses = ({ data }) => {
         return state.filteredCourses
     }, [state]);
 
+    console.log('courses ', courses);
     useEffect(() => {
         setInitialData();
     }, [data]);
+
+    const [recordsPerPage] = useState(6);
+    const [currentPage, setCurrentPage] = useState(1);
+    const indexOfLastRecord = currentPage * recordsPerPage;
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+    const currentRecords = courses.slice(indexOfFirstRecord, indexOfLastRecord);
+    const nPages = Math.ceil(courses.length / recordsPerPage);
 
 
     // sort course function
@@ -79,15 +88,15 @@ const HomePageCourses = ({ data }) => {
                                             <option>Sort By</option>
                                             <option value='popularity'>Popularity</option>
                                             <option value='latest'>Latest</option>
-                                            <option value='low-high'>live_training_price: low to high</option>
-                                            <option value='high-low'>live_training_price: high to low</option>
+                                            <option value='low-high'>price: low to high</option>
+                                            <option value='high-low'>price: high to low</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="row">
-                                {courses ? courses.map(course => (
+                                {currentRecords ? currentRecords.map(course => (
                                     <div className="col-lg-4 col-md-6" key={course._id}>
                                         <div className="single-courses-box">
                                             <div className="courses-image">
@@ -139,21 +148,9 @@ const HomePageCourses = ({ data }) => {
                                     <h6>Empty</h6>
                                 )}
 
-                                {/* <div className="col-lg-12 col-md-12 col-sm-12">
-                                    <div className="pagination-area text-center">
-                                        <a href="#" className="prev page-numbers">
-                                            <i className='bx bx-chevrons-left'></i>
-                                        </a>
-                                        <span className="page-numbers current" aria-current="page">1</span>
-                                        <a href="#" className="page-numbers">2</a>
-                                        <a href="#" className="page-numbers">3</a>
-                                        <a href="#" className="page-numbers">4</a>
-                                        <a href="#" className="next page-numbers">
-                                            <i className='bx bx-chevrons-right'></i>
-                                        </a>
-                                    </div>
-                                </div> */}
-
+                            </div>
+                            <div className="col-lg-12 col-md-12">
+                                <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
                             </div>
                         </div>
 
