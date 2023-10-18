@@ -20,6 +20,7 @@ const overviewStyle = {
 
 const HomePageCourses = ({ data }) => {
     const [state, setState] = useContext(Context);
+    const [sidebarFilter, setSidebarFilter] = useState([]);
 
     const setInitialData = () => {
         setState({ ...state, courses: data, filteredCourses: data });
@@ -30,11 +31,19 @@ const HomePageCourses = ({ data }) => {
         return state.filteredCourses
     }, [state]);
 
-    console.log('courses ', courses);
     useEffect(() => {
         setInitialData();
     }, [data]);
-
+    
+    useEffect(() => {
+        if (sidebarFilter.length) {
+            // state.filteredCourses = sidebarFilter
+            setState({courses: sidebarFilter, filteredCourses: sidebarFilter})
+            // setInitialData();
+        }
+    }, [sidebarFilter])
+    
+    console.log('courses ', courses);
     const [recordsPerPage] = useState(6);
     const [currentPage, setCurrentPage] = useState(1);
     const indexOfLastRecord = currentPage * recordsPerPage;
@@ -155,7 +164,7 @@ const HomePageCourses = ({ data }) => {
                         </div>
 
                         <div className="col-lg-3 col-md-12">
-                            <CoursesSidebar />
+                            <CoursesSidebar setSidebarFilter={setSidebarFilter} />
                         </div>
                     </div>
                 </div>
@@ -171,7 +180,6 @@ HomePageCourses.getInitialProps = async () => {
 
     let url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=10`
     const response = await axios.get(url);
-    console.log('pages/courses/index.js:: response:', response.data);
     courses = response.data.courses;
 
     // get data for courses popularity

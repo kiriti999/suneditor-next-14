@@ -6,7 +6,7 @@ import { algoliaGetCategoryList, algoliaGetRecentEntries } from '@/lib/algolia';
 import axios from 'axios'
 import { axiosApi } from "@/utils/baseUrl";;
 
-const CoursesSidebar = ({ sendToParent }) => {
+const CoursesSidebar = ({ setSidebarFilter }) => {
 	const [courses, setCourses] = useState([]);
 	const [categories, setCategories] = useState([]);
 
@@ -32,7 +32,7 @@ const CoursesSidebar = ({ sendToParent }) => {
 		const url = `${axiosApi.baseUrl}/api/v1/courses/course?tagName=${tagName}`;
 		const response = await axios.get(url);
 		console.log('CoursesSidebar.js:: getCoursesByTagName:: response: ', response.data.courses);
-		sendToParent(response.data.courses);
+		setSidebarFilter(response.data.courses);
 	}
 
 
@@ -74,7 +74,7 @@ const CoursesSidebar = ({ sendToParent }) => {
 							<div className="info">
 								<span>&#8377;{kConverter(course.live_training_price)}</span>
 								<h4 className="title usmall">
-									<Link href="/courses/[id]" as={`/courses/${course.objectID}`}>
+									<Link href="/courses/[id]" as={`/courses/${course._id}`}>
 										<a>{course.title}</a>
 									</Link>
 								</h4>
@@ -89,8 +89,8 @@ const CoursesSidebar = ({ sendToParent }) => {
 				<h3 className="widget-title">Popular Tags</h3>
 				<div className="tagcloud">
 					{categories?.length > 0 ? categories.map((item, i) => (
-						<Link href="#" legacyBehavior key={i}>
-							<a onClick={(e) => getCoursesByTagName(item.category)}>{item.categoryName}
+						<Link href="" legacyBehavior key={i}>
+							<a onClick={(e) => getCoursesByTagName(item.categoryId)}>{item.categoryName}
 								<span className="tag-link-count"> ({item.count})</span>
 							</a>
 						</Link>
