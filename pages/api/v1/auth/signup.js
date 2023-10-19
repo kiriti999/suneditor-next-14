@@ -19,7 +19,7 @@ export default async (req, res) => {
         const response = await api.request({
             url: `/register`,
             method: 'POST',
-            data: { name, email, password, confirmPassword }
+            data: { name, email, password }
         });
         console.log('signup.js:: response: ', response?.data);
         res.status(200).json(response?.data.user);

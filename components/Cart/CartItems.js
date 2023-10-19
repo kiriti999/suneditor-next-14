@@ -2,7 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { kConverter } from '../../utils/cart/currencyHelper';
 
-const CartItems = ({ id, title, price, purchaseType, image, onRemove }) => {
+const CartItems = ({ id, title, price, live_training_price, video_course_price, purchaseType, image, onRemove }) => {
+	if (!price) {
+		price = purchaseType === 'live' ? live_training_price : video_course_price;
+	}
+
 	return (
 		<tr>
 			<td className="product-thumbnail">

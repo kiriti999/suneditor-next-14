@@ -4,9 +4,11 @@ import { axiosApi } from "@/utils/baseUrl";
 import axios from "axios";
 import useRazorpay from "react-razorpay";
 import saveTransaction from "../SaveToDB/SaveTransaction";
+import { parseCookies } from 'nookies'
 import { calculateCartTotal } from '@/utils/cart/calculateCartTotal';
 
-const CheckoutBtn = ({ user, cartItems, onClearCart }) => {
+const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlertMessage, setDisplayAlert }) => {
+    const { token } = parseCookies();
     const Razorpay = useRazorpay();
     const router = useRouter();
     const [userInfo, setUserInfo] = useState({ _id: "", name: "", email: "", phone: "" });
@@ -17,8 +19,6 @@ const CheckoutBtn = ({ user, cartItems, onClearCart }) => {
         setUserInfo(user);
     }, [user])
 
-    console.log('CheckoutBtn.js:: userInfo: ', userInfo);
-
     const payload = {
         cartItems,
         userId: userInfo?._id || null,
@@ -27,6 +27,12 @@ const CheckoutBtn = ({ user, cartItems, onClearCart }) => {
     };
 
     const handlePayment = useCallback(async () => {
+        if (!token) {
+            setDisplayAlert(true);
+            setShowAlertMessage('Please register first to complete the payment')
+            setToRegister(true);
+            return;
+        }
 
         console.log('CheckoutBtn.js:: handlePayment:: payload: ', payload);
 
@@ -51,9 +57,9 @@ const CheckoutBtn = ({ user, cartItems, onClearCart }) => {
             handler: async (res, error) => {
                 console.log('checkoutBtn.js:: payment handler res:', res)
                 if (res.razorpay_payment_id && res.razorpay_order_id && res.razorpay_signature) {
-                    
+
                     onClearCart();
-                    
+
                     const toSave = {
                         name: user.name,
                         email: userInfo.email,
@@ -63,19 +69,19 @@ const CheckoutBtn = ({ user, cartItems, onClearCart }) => {
                         paymentId: res.razorpay_payment_id,
                         orderId: res.razorpay_order_id,
                     }
-                    
+
                     console.log('CheckoutBtn.js:: handlePayment:: toSave: ', toSave);
-                    
+
                     // save into db
                     const savedOrder = await axios.post(`${axiosApi.baseUrl}/api/v1/payment/save-payment`, toSave);
-                    
+
                     // send email
                     await axios.post(`${axiosApi.baseUrl}/api/v1/mail/sendMail`, toSave);
-                    
+
                     console.log('CheckoutBtn.js:: handlePayment:: savedOrder: ', savedOrder);
-                    
+
                     router.replace('/checkout/success')
-                    
+
                 } else {
                     console.log('checkoutBtn.js:: payment handler error:', error)
                     // setError("Payment Failed");

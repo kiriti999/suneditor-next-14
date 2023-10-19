@@ -32,12 +32,6 @@ const RegisterForm = ({ user }) => {
             }
         });
 
-    // React.useEffect(() => {
-    //     const isApply = Object.values(apply).every(el => Boolean(el))
-    //     isApply ? setDisabled(false) : setDisabled(true)
-    // }, [apply])
-
-
     const validationOptions = {
         name: { required: "Name is required" },
         email: { required: "Email is required" },

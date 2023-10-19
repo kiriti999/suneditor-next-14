@@ -8,16 +8,46 @@ const initialState = {
 // COUNTER REDUCER
 export const cartReducer = (state = initialState, action) => {
 	console.log('action.data: ', action.data);
-	let liveData = {};
-	let courseData = {};
 
 	const isItemExistInCart = (id) => {
-		console.log('isItemExistInCart id: ', id);
 		const result = state.cartItems.some((item) => item.id === id)
-		console.log('result ', result);
 		return result;
 	}
 
+	const createActionData = (action, price, cartState, idType) => {
+		const newActionData = { ...action.data };
+		if (price > 0 && !(isItemExistInCart(`${idType}_${action.data.id}`))) {
+			newActionData.id = `${idType}_${newActionData.id}`;
+			newActionData['purchaseType'] = idType;
+			if (idType === 'live') {
+				newActionData.price = newActionData[price];
+				delete newActionData.video_course_price;
+			}
+			if (idType === 'course') {
+				newActionData.price = newActionData[price];
+				delete newActionData.live_training_price;
+			}
+		}
+		cartState.cartItems.push(newActionData)
+	}
+
+	const getBothTypesActionData = (action, price, cartState) => {
+		const types = ['live', 'course'];
+		for (let index = 0; index < types.length; index++) {
+			const idType = types[index];
+			createActionData(action, price[index], cartState, idType);
+		}
+	}
+
+	const getCourseType = (action, price, cartState, idType = null, selected = null) => {
+		const selectedType = {
+			liveType: createActionData,
+			courseType: createActionData,
+			both: getBothTypesActionData
+		}
+		selectedType[selected](action, price, cartState, idType);
+
+	}
 	switch (action.type) {
 		case "ADD_TO_CART":
 			let existingItem = state.cartItems.find(
@@ -25,48 +55,23 @@ export const cartReducer = (state = initialState, action) => {
 			);
 			if (existingItem) {
 				existingItem.quantity += 1;
-				return {
-					...state,
-				};
+				return { ...state };
 			} else {
-
 				const newState = {
 					...state,
 					cartItems: [...state.cartItems],
 				}
 
-				if (action.data.selected === 'liveType' && !(isItemExistInCart(`live_${action.data.id}`))) {
-					liveData = { ...action.data };
-					liveData.id = `live_${liveData.id}`
-					liveData.purchaseType = 'Live training'
-					liveData.price = action.data.live_training_price;
-					newState.cartItems.push(liveData)
-				} else if (action.data.selected === 'courseType' && !(isItemExistInCart(`course_${action.data.id}`))) {
-					courseData = { ...action.data }
-					courseData.id = `course_${courseData.id}`;
-					courseData.purchaseType = 'Course videos'
-					courseData.price = action.data.video_course_price;
-					newState.cartItems.push(courseData)
-				} else {
-					if (!(isItemExistInCart(`live_${action.data.id}`))) {
-						liveData = { ...action.data };
-						liveData.id = `live_${liveData.id}`
-						liveData.purchaseType = 'Live training'
-						liveData.price = action.data.live_training_price;
-						newState.cartItems.push(liveData)
-					}
+				let { live_training_price, video_course_price } = action.data;
 
-					if (!(isItemExistInCart(`course_${action.data.id}`))) {
-						courseData = { ...action.data }
-						courseData.id = `course_${courseData.id}`;
-						courseData.purchaseType = 'Course videos'
-						courseData.price = action.data.video_course_price;
-						newState.cartItems.push(courseData)
-					}
+				if (action.data?.selected === 'liveType') {
+					getCourseType(action, live_training_price, newState, 'live', action.data.selected);
+				} else if (action.data?.selected === 'courseType') {
+					getCourseType(action, video_course_price, newState, 'course', action.data.selected);
+				} else if (action.data?.selected === 'both') {
+					getCourseType(action, [live_training_price, video_course_price], newState, null, action.data.selected);
 				}
 
-				console.log('liveData', liveData);
-				console.log('courseData', courseData);
 				console.log('newState ', newState);
 				return newState;
 			}
