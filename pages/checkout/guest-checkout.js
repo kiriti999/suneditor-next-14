@@ -95,6 +95,7 @@ export const GuestCheckout = () => {
             setDisplayAlert(true);
             setShowAlertMessage('Registration successful!');
             setLoginCookie(response.data);
+            // window.location.href = '/checkout/guest-checkout';
         } catch (error) {
             setDisplayAlert(true);
             setShowAlertMessage('Registration failed');

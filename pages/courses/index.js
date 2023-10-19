@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import PageBanner from '../../components/Common/PageBanner';
 import Link from 'next/link';
 import axios from 'axios'
@@ -26,24 +26,29 @@ const HomePageCourses = ({ data }) => {
         setState({ ...state, courses: data, filteredCourses: data });
     }
 
-    // Filter course function
-    const courses = useMemo(() => {
-        return state.filteredCourses
-    }, [state]);
+    // initial courses value is empty array
+    const [courses, setCourse] = useState(data)
 
     useEffect(() => {
         setInitialData();
     }, [data]);
-    
+
     useEffect(() => {
         if (sidebarFilter.length) {
-            // state.filteredCourses = sidebarFilter
-            setState({courses: sidebarFilter, filteredCourses: sidebarFilter})
-            // setInitialData();
+            setState({
+                ...state,
+                courses: sidebarFilter,
+                filteredCourses: sidebarFilter,
+            });
+            setCourse(sidebarFilter)
         }
     }, [sidebarFilter])
-    
-    console.log('courses ', courses);
+
+    useEffect(() => {
+        console.log('courses ', courses);
+    }, [courses])
+
+
     const [recordsPerPage] = useState(6);
     const [currentPage, setCurrentPage] = useState(1);
     const indexOfLastRecord = currentPage * recordsPerPage;
