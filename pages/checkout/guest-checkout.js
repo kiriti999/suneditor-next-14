@@ -10,7 +10,7 @@ import catchErrors from "../../utils/catchErrors";
 import { axiosApi } from "../../utils/baseUrl";
 import { useForm } from 'react-hook-form';
 import { Spinner, Alert } from 'reactstrap'
-import { setLoginCookie } from '@/utils/auth';
+import { fetchUser, setLoginCookie } from '../../utils/auth';
 
 export const GuestCheckout = () => {
 
@@ -92,9 +92,20 @@ export const GuestCheckout = () => {
                 data: payload
             });
             console.log('guest-checkout.js:: handleSubmit:: response.data: ', response.data);
+            const userObject = await fetchUser(response.data);
+
             setDisplayAlert(true);
             setShowAlertMessage('Registration successful!');
             setLoginCookie(response.data);
+            dispatch({
+                type: "UPDATE_USER",
+                data: response.data
+            });
+
+            dispatch({
+                type: 'UPDATE_USEROBJ',
+                data: userObject
+            });
         } catch (error) {
             setDisplayAlert(true);
             setShowAlertMessage('Registration failed');

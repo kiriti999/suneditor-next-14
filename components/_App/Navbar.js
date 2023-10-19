@@ -6,7 +6,10 @@ import SearchForm from "./SearchForm";
 
 const Navbar = ({ user }) => {
 	const cartItems = useSelector((state) => state.cart.cartItems);
+	const { userObject } = useSelector((state) => state.user);
 	const [menu, setMenu] = useState(true);
+
+	user = userObject !== null ? userObject : user;
 
 	const toggleNavbar = () => {
 		setMenu(!menu);

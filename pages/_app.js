@@ -2,7 +2,7 @@ import axios from "axios";
 import { parseCookies, destroyCookie } from "nookies";
 import { Provider } from "react-redux";
 import Layout from "../components/_App/Layout";
-import { redirectUser } from "../utils/auth";
+import { redirectUser, fetchUser } from "../utils/auth";
 import { axiosApi } from "../utils/baseUrl";
 import "../styles/bootstrap.min.css";
 import "../styles/animate.min.css";
@@ -72,10 +72,7 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
 			redirectUser(ctx, "/");
 		}
 		try {
-			const payload = { headers: { Authorization: token } };
-			const url = `${axiosApi.baseUrl}/api/v1/account`;
-			const response = await axios.get(url, payload);
-			const user = response.data;
+			const user = await fetchUser(token);
 			console.log('user ', user)
 
 			// If user status disabled then user automatically logged out
