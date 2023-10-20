@@ -41,7 +41,6 @@ const LoginForm = () => {
 		} catch (error) {
 			console.log('error ', error.message);
 			alert('Unable to login')
-			catchErrors(error, setError);
 		} finally {
 			setLoading(false);
 		}

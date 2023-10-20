@@ -6,13 +6,15 @@ import { axiosApi } from "@/utils/baseUrl";
 import CoursesCurriculum from "@/components/Courses/CoursesCurriculum";
 import dynamic from 'next/dynamic';
 const Tabs = dynamic(import('react-tabs').then(mod => mod.Tabs), { ssr: false }) // disable ssr
-import { Tab, TabList, TabPanel } from 'react-tabs'
+import { Tab, TabList, TabPanel } from 'react-tabs';
+import ReactStars from "react-rating-stars-component";
 
 const Details = () => {
 	const { token } = parseCookies();
 	const [course, setCourse] = useState([]);
 	const [price, setPrice] = useState([]);
-	const role = JSON.parse(localStorage.getItem('role'));
+	const [isRatingProvided, setIsRatingProvided] =useState(false);
+	
 
 	const getCourseById = async (id) => {
 		const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
@@ -27,17 +29,32 @@ const Details = () => {
 			const courseId = window.location.pathname.split('/')[2];
 			(async () => {
 				const course = await getCourseById(courseId);
-				if (role === 'teacher') {
-					// const course = await getCourseByIdForTeacher(courseId);
-				}
-				if (role !== 'teacher' && role !== 'admin') {
-					// const course = await getCourseByIdForUser(courseId);
-				}
+				// if (role === 'teacher') {
+				// 	// const course = await getCourseByIdForTeacher(courseId);
+				// }
+				// if (role !== 'teacher' && role !== 'admin') {
+				// 	// const course = await getCourseByIdForUser(courseId);
+				// }
 				console.log('pages/courses/[id].js:: useEffect:: course: ', course);
 				setCourse(course?.course);
 			})()
 		}
 	}, []);
+
+	const ratingChanged = async (rating, courseId) => {
+		try {
+			console.log('rating token ', token)
+			console.log('ratingChanged:: rating: ', rating);
+			const url = `${axiosApi.baseUrl}/api/v1/courses/course/rating`;
+			const response = await axios.post(url, { rating, courseId }, {
+				headers: { Authorization: token }
+			});
+			console.log('response ', response);
+			setIsRatingProvided(true);
+		} catch (error) {
+			console.log('ratingChanged:: error: ', error);
+		}
+	};
 
 	return (
 		<div>
@@ -53,6 +70,7 @@ const Details = () => {
 										<Tab>Curriculum</Tab>
 										<Tab>Instructor</Tab>
 										<Tab>Reviews</Tab>
+										<Tab>User feedback</Tab>
 									</TabList>
 
 									<TabPanel>
@@ -138,7 +156,7 @@ const Details = () => {
 
 									<TabPanel>
 										<div className="courses-reviews">
-											<h3>Course Rating</h3>
+											{/* <h3>Course Rating</h3> */}
 											<div className="rating">
 												<span className="bx bxs-star checked"></span>
 												<span className="bx bxs-star checked"></span>
@@ -211,8 +229,8 @@ const Details = () => {
 											</div>
 										</div>
 
-										{ /* 
-										<div className="courses-review-comments">
+										
+									{/*	<div className="courses-review-comments">
 											<h3>3 Reviews</h3>
 											<div className="user-review">
 												<img
@@ -337,8 +355,27 @@ const Details = () => {
 													customers, nice support.
 												</p>
 											</div>
-	</div> */ }
+										</div> */}
 									</TabPanel>
+
+									<TabPanel>
+										{!isRatingProvided && 
+										<>
+										<h3>Please provide rating for the course</h3>
+										<ReactStars
+											key={course._id}
+											onChange={(e) => ratingChanged(e, course._id)}
+											count={5}
+											size={24}
+											activeColor="#ffd700"
+											
+										/>
+										</>}
+										{isRatingProvided && <h3>Thank you!</h3>}
+									</TabPanel>
+
+
+
 								</Tabs>
 							</div>
 						</div>
