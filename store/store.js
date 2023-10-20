@@ -4,13 +4,15 @@ import { createWrapper } from 'next-redux-wrapper';
 import { cartReducer } from './slices/cartSlice';
 import { categoryReducer } from './slices/categorySlice';
 import { sidebarReducer } from './slices/sidebarSlice';
+import { userReducer } from './slices/userSlice';
 
 export const store = configureStore({
     reducer: {
         blog: blogReducer,
         cart: cartReducer,
         sidebar: sidebarReducer,
-        category: categoryReducer
+        category: categoryReducer,
+        user: userReducer
     },
     devTools: true
 })

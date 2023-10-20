@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Link from "@/utils/ActiveLink";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { handleLogout } from "../../utils/auth";
 import SearchForm from "./SearchForm";
 
 const Navbar = ({ user }) => {
 	console.log(user, "user>>>>>>>>>>>>>")
 	const cartItems = useSelector((state) => state.cart.cartItems);
+	const { userObject } = useSelector((state) => state.user);
+	const dispatch = useDispatch();
 	const [menu, setMenu] = useState(true);
+
+	user = userObject !== null ? userObject : user;
 
 	const toggleNavbar = () => {
 		setMenu(!menu);
@@ -234,6 +238,10 @@ const Navbar = ({ user }) => {
 																className="nav-link"
 																onClick={(e) => {
 																	e.preventDefault();
+																	dispatch({
+																		type: 'UPDATE_USEROBJ',
+																		data: null
+																	});
 																	handleLogout();
 																}}>
 																Logout

@@ -1,5 +1,7 @@
 import cookie from 'js-cookie'
 import Router from 'next/router'
+import { axiosApi } from "../utils/baseUrl";
+import axios from 'axios'
 
 export const handleLogin = (token) => {
     setLoginCookie(token)
@@ -23,4 +25,11 @@ export const handleLogout = () => {
     console.log('logout called')
     cookie.remove('token')
     Router.push('/')
+}
+
+export const fetchUser = async (token) => {
+    const payload = { headers: { Authorization: token } };
+    const url = `${axiosApi.baseUrl}/api/v1/account`;
+    const response = await axios.get(url, payload);
+    return response.data;
 }
