@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import PageBanner from '@/components/Common/PageBanner';
 import Link from 'next/link';
@@ -32,16 +32,35 @@ const sortOption = [
 const AlgoliaSearch = ({ data, pages }) => {
 	const [state, setState] = useContext(Context);
 	const { push, query } = useRouter();
+	const [sidebarFilter, setSidebarFilter] = useState([]);
 
-	const courses = state?.filteredCourses ?? [];
+	// initial courses value is empty array
+	const [courses, setCourse] = useState(data)
 
 	useEffect(() => {
-		setState({
-			...state,
-			courses: data,
-			filteredCourses: data,
-			searchParam: query.q || ''
-		});
+		console.log('courses ', courses);
+	}, [courses])
+
+	useEffect(() => {
+		if (query.q !== undefined) {
+			setState({
+				...state,
+				courses: data,
+				filteredCourses: data,
+				searchParam: query.q || ''
+			});
+			setCourse(data)
+		}
+		else {
+			if (sidebarFilter.length) {
+				setState({
+					...state,
+					courses: sidebarFilter,
+					filteredCourses: sidebarFilter,
+				});
+				setCourse(sidebarFilter)
+			}
+		}
 	}, [data]);
 
 	/**
@@ -165,7 +184,7 @@ const AlgoliaSearch = ({ data, pages }) => {
 						</div>
 
 						<div className="col-lg-4 col-md-12">
-							<CoursesSidebar />
+							<CoursesSidebar setSidebarFilter={setSidebarFilter} />
 						</div>
 					</div>
 				</div>
