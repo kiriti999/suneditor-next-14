@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 
 const Layout = ({ children, user }) => {
     const [loader, setLoader] = React.useState(true)
+
     React.useEffect(() => {
         setTimeout(() => {
             setLoader(false)

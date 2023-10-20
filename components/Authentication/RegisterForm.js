@@ -47,7 +47,8 @@ const RegisterForm = () => {
 			console.log('RegisterForm.js:: response.data: ', response.data);
 			handleLogin(response.data);
 		} catch (error) {
-			catchErrors(error, setError);
+			console.log('RegisterForm.js:: error: ', error);
+			// catchErrors(error, setError);
 		} finally {
 			setLoading(false);
 		}

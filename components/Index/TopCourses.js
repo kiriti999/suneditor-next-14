@@ -45,19 +45,6 @@ const TopCourses = ({ courses }) => {
 
 	}
 
-	const ratingChanged = async (rating, courseId) => {
-		try {
-			console.log('ratingChanged:: rating: ', rating);
-			const url = `${axiosApi.baseUrl}/api/v1/courses/course/rating`;
-			const response = await axios.post(url, { rating, courseId }, {
-				headers: { Authorization: token }
-			});
-			console.log('response ', response);
-		} catch (error) {
-			console.log('ratingChanged:: error: ', error);
-		}
-	};
-
 	return (
 		<div className="courses-area pt-50 pb-100">
 			<div className="container">
@@ -134,11 +121,10 @@ const TopCourses = ({ courses }) => {
 
 										<ReactStars
 											key={course._id}
-											onChange={(e) => ratingChanged(e, course._id)}
 											count={5}
 											size={24}
 											activeColor="#ffd700"
-											value={getRating(course?.course_meta_data)}
+											
 										/>
 									</div>
 								</div>
