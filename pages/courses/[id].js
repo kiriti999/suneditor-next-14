@@ -43,7 +43,9 @@ const Details = () => {
 
 	const ratingChanged = async (rating, courseId) => {
 		try {
-			console.log('rating token ', token)
+			if(!token) {
+				alert('Please login to rate courses')
+			}
 			console.log('ratingChanged:: rating: ', rating);
 			const url = `${axiosApi.baseUrl}/api/v1/courses/course/rating`;
 			const response = await axios.post(url, { rating, courseId }, {
