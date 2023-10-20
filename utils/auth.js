@@ -1,6 +1,7 @@
 import cookie from 'js-cookie'
 import Router from 'next/router'
 import { axiosApi } from "../utils/baseUrl";
+import axios from 'axios'
 
 export const handleLogin = (token) => {
     setLoginCookie(token)
