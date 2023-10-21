@@ -7,7 +7,7 @@ import saveTransaction from "../SaveToDB/SaveTransaction";
 import { parseCookies } from 'nookies'
 import { calculateCartTotal } from '@/utils/cart/calculateCartTotal';
 
-const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlertMessage, setDisplayAlert, setLoading }) => {
+const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlertMessage, setIsAlert, setLoading }) => {
     const { token } = parseCookies();
     const Razorpay = useRazorpay();
     const router = useRouter();
@@ -28,8 +28,8 @@ const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlert
 
     const handlePayment = useCallback(async () => {
         if (!token) {
-            setDisplayAlert(true);
-            setShowAlertMessage('Please register first to complete the payment')
+            setIsAlert(true);
+            setShowAlertMessage({status: 'danger', message: 'Please register first to complete the payment'})
             setToRegister(true);
             return;
         }
@@ -88,6 +88,7 @@ const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlert
 
                 } else {
                     console.log('checkoutBtn.js:: payment handler error:', error)
+                    setShowAlertMessage({status: 'danger', message: 'Payment failed'});
                     // setError("Payment Failed");
                     // router.replace('/')
                 }

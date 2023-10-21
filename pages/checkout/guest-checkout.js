@@ -11,15 +11,17 @@ import { axiosApi } from "../../utils/baseUrl";
 import { useForm } from 'react-hook-form';
 import { Spinner, Alert } from 'reactstrap'
 import { fetchUser, setLoginCookie } from '../../utils/auth';
+import { parseCookies } from 'nookies'
 
 export const GuestCheckout = () => {
+    const { token } = parseCookies()
 
     const cartItems = useSelector((state) => state.cart.cartItems);
     const [cartAmount, setCartAmount] = useState(0);
     const dispatch = useDispatch();
 
-    const [displayAlert, setDisplayAlert] = React.useState(false);
-    const [showAlertMessage, setShowAlertMessage] = React.useState('');
+    const [isAlert, setIsAlert] = React.useState(false);
+    const [showAlertMessage, setShowAlertMessage] = React.useState({});
     const [loading, setLoading] = React.useState(false);
 
     // initial state
@@ -64,13 +66,13 @@ export const GuestCheckout = () => {
     useEffect(() => {
         let timeout = setTimeout(() => {
             setToRegister(false);
-            setDisplayAlert(false);
+            setIsAlert(false);
         }, 3000)
         return (() => {
             clearTimeout(timeout);
         })
 
-    }, [toRegister, displayAlert]);
+    }, [toRegister, isAlert]);
 
 
     const onClearCart = () => {
@@ -91,16 +93,24 @@ export const GuestCheckout = () => {
                 method: 'POST',
                 data: payload
             });
-            console.log('guest-checkout.js:: handleSubmit:: response.data: ', response.data);
+            console.log('guest-checkout.js:: handleSubmit:: response.data: ', response);
             const userObject = await fetchUser(response.data);
 
-            setDisplayAlert(true);
-            setShowAlertMessage('Registration successful!');
+            setIsAlert(true);
+            setShowAlertMessage({ status: 'success', message: 'Registration successful!' });
             setLoginCookie(response.data);
-            // window.location.href = '/checkout/guest-checkout';
+            dispatch({
+                type: "UPDATE_USER",
+                data: response.data
+            });
+
+            dispatch({
+                type: 'UPDATE_USEROBJ',
+                data: userObject
+            });
         } catch (error) {
-            setDisplayAlert(true);
-            setShowAlertMessage('Registration failed');
+            setIsAlert(true);
+            setShowAlertMessage({ status: 'danger', message: 'Registration failed' });
             catchErrors(error, setError);
         } finally {
             setLoading(false);
@@ -134,8 +144,8 @@ export const GuestCheckout = () => {
                     </div>
 
                     <form onSubmit={handleSubmit(handleRegister)}>
-                        {displayAlert && <Alert color="danger" className="text-center">
-                            {showAlertMessage}
+                        {isAlert && <Alert color={showAlertMessage.status} className="text-center">
+                            {showAlertMessage.message}
                         </Alert>}
                         <div className="row mtb-20" style={{ marginBottom: '20px' }}>
                             <div className={toRegister ? 'cart-highlight-border col-lg-6 col-md-12' : 'col-lg-6 col-md-12'} style={{ padding: '20px 10px 0px 10px' }}>
@@ -147,7 +157,7 @@ export const GuestCheckout = () => {
                                         <div className="col-lg-12 col-md-6">
                                             <div className="form-group">
                                                 <label>Full Name <span className="required">*</span></label>
-                                                <input type="text"{...register('name', validationOptions.name)} className="form-control" />
+                                                <input type="text"{...register('name', validationOptions.name)} readOnly={token} className="form-control" />
                                                 {errors.name && <p>{errors.name.message}</p>}
                                             </div>
                                         </div>
@@ -155,7 +165,7 @@ export const GuestCheckout = () => {
                                         <div className="col-lg-12 col-md-6">
                                             <div className="form-group">
                                                 <label>Email Address <span className="required">*</span></label>
-                                                <input type="email" {...register('email', validationOptions.email)} className="form-control" />
+                                                <input type="email" {...register('email', validationOptions.email)} readOnly={token} className="form-control" />
                                                 {errors.email && <p>{errors.email.message}</p>}
                                             </div>
                                         </div>
@@ -163,14 +173,14 @@ export const GuestCheckout = () => {
                                         <div className="col-lg-12 col-md-6">
                                             <div className="form-group">
                                                 <label>Password <span className="required">*</span></label>
-                                                <input type="password" {...register('password', validationOptions.password)} className="form-control" />
+                                                <input type="password" {...register('password', validationOptions.password)} readOnly={token} className="form-control" />
                                                 {errors.password && <p>{errors.password.message}</p>}
                                             </div>
                                         </div>
 
                                         <div className="col-lg-12 col-md-12">
                                             <div className="form-group">
-                                                <button type="submit" style={{
+                                                <button type="submit" disabled={token} style={{
                                                     marginTop: '22px',
                                                     border: 'none',
                                                     color: '#ffffff',
@@ -181,7 +191,7 @@ export const GuestCheckout = () => {
                                                     padding: '14.5px 30px',
                                                     fontWeight: '700',
                                                     fontSize: '16px'
-                                                }}>Create an account {loading ? <LoadingSpinner /> : ""} </button>
+                                                }}>Create an account {loading ? <LoadingSpinner /> : ""}</button>
                                             </div>
                                         </div>
 
@@ -245,7 +255,7 @@ export const GuestCheckout = () => {
                                             user={user}
                                             cartItems={cartItems}
                                             setToRegister={setToRegister}
-                                            setDisplayAlert={setDisplayAlert}
+                                            setIsAlert={setIsAlert}
                                             setShowAlertMessage={setShowAlertMessage}
                                             onClearCart={() => onClearCart()}
                                             setLoading={setLoading}
