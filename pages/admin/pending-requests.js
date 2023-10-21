@@ -8,9 +8,10 @@ import { axiosApi } from "@/utils/baseUrl";
 import catchErrors from '@/utils/catchErrors'
 import PageBanner from '@/components/Common/PageBanner'
 import Link from '@/utils/ActiveLink'
+import { redirectUser } from "../../utils/auth";
 
-const pendingRequests = ({pendingRequests}) => {
-    const router = useRouter()
+const pendingRequests = ({ pendingRequests }) => {
+    const router = useRouter();
 
     const approveReq = async id => {
         try {
@@ -40,12 +41,12 @@ const pendingRequests = ({pendingRequests}) => {
 
     return (
         <>
-            <PageBanner 
-                pageTitle="Admin Dashboard" 
-                homePageUrl="/" 
-                homePageText="Home" 
-                activePageText="Admin Dashboard" 
-            /> 
+            <PageBanner
+                pageTitle="Admin Dashboard"
+                homePageUrl="/"
+                homePageText="Home"
+                activePageText="Admin Dashboard"
+            />
 
             <div className="ptb-100">
                 <div className="container">
@@ -80,7 +81,7 @@ const pendingRequests = ({pendingRequests}) => {
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Instructor</th>
-                                            <th scope="col" className="text-right">Action</th> 
+                                            <th scope="col" className="text-right">Action</th>
                                         </tr>
                                     </thead>
 
@@ -96,24 +97,24 @@ const pendingRequests = ({pendingRequests}) => {
                                                             </td>
                                                             <td className="text-right">
                                                                 <button
-                                                                    onClick={ e => {
+                                                                    onClick={e => {
                                                                         window.confirm("Are you sure?") && approveReq(request._id)
-                                                                    }} 
+                                                                    }}
                                                                     className="btn btn-success mr-05"
                                                                 >
                                                                     Approve
                                                                 </button>
 
                                                                 <button
-                                                                    onClick={ e => {
+                                                                    onClick={e => {
                                                                         window.confirm("Are you sure?") && declineReq(request._id)
-                                                                    }} 
+                                                                    }}
                                                                     className="btn btn-danger"
                                                                 >
                                                                     Decline
                                                                 </button>
-                                                            </td> 
-                                                        </tr>   
+                                                            </td>
+                                                        </tr>
                                                     )
                                                 })}
                                             </>
@@ -123,7 +124,7 @@ const pendingRequests = ({pendingRequests}) => {
                                             </tr>
                                         )}
                                     </tbody>
-                                </table> 
+                                </table>
                             </div>
 
                             {/* {pendingRequests.length ? (
@@ -166,13 +167,14 @@ const pendingRequests = ({pendingRequests}) => {
 }
 
 pendingRequests.getInitialProps = async (ctx) => {
-    // console.log(id)
-    const { token } = parseCookies(ctx)
-    if(!token){
+    console.log('ctx@@', ctx);
+    const { token } = parseCookies(ctx); 
+    console.log('token@@', token)
+    if (!token) {
         redirectUser(ctx, '/authentication')
     }
     const url = `${axiosApi.baseUrl}/api/v1/apply/pending-requests`
-    const payload = { headers: {Authorization: token} }
+    const payload = { headers: { Authorization: token } }
     const response = await axios.get(url, payload)
     // console.log(response.data)
     return response.data

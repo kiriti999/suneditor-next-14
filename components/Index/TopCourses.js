@@ -123,8 +123,11 @@ const TopCourses = ({ courses }) => {
 											key={course._id}
 											count={5}
 											size={24}
+											emptyIcon={<i className="far fa-star"></i>}
+											halfIcon={<i className="fa fa-star-half-alt"></i>}
+											fullIcon={<i className="fa fa-star"></i>}
 											activeColor="#ffd700"
-											
+											value={course.rating}
 										/>
 									</div>
 								</div>

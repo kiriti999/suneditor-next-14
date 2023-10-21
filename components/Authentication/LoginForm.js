@@ -2,9 +2,11 @@ import React from "react";
 import { Alert } from "reactstrap";
 import Link from "next/link";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+
 import catchErrors from "../../utils/catchErrors";
 import { axiosApi } from "../../utils/baseUrl";
-import { handleLogin } from "../../utils/auth";
+import { handleLogin, fetchUser } from "../../utils/auth";
 import LoadingSpinner from "@/utils/LoadingSpinner";
 
 const INITIAL_USER = {
@@ -13,6 +15,8 @@ const INITIAL_USER = {
 };
 
 const LoginForm = () => {
+	const dispatch = useDispatch();
+
 	const [user, setUser] = React.useState(INITIAL_USER);
 	const [disabled, setDisabled] = React.useState(true);
 	const [loading, setLoading] = React.useState(false);
@@ -37,6 +41,18 @@ const LoginForm = () => {
 			const payload = { ...user };
 			const response = await axios.post(url, payload);
 			console.log('login response ', response.data)
+
+            const userObject = await fetchUser(response.data);
+            dispatch({
+                type: "UPDATE_USER",
+                data: response.data
+            });
+
+            dispatch({
+                type: 'UPDATE_USEROBJ',
+                data: userObject
+            });
+
 			handleLogin(response.data);
 		} catch (error) {
 			console.log('error ', error.message);
