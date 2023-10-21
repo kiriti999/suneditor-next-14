@@ -13,6 +13,7 @@ import * as imageHelper from '@/utils/image-upload';
 import { indexPost } from '../../api/v1/courses/search/addToAlgolia';
 import 'suneditor/dist/css/suneditor.min.css';
 import WYSIWYGEditor from "../../../components/rich-text-editor";
+import LoadingSpinner from "@/utils/LoadingSpinner";
 
 
 const INIT_COURSE = {
@@ -41,6 +42,7 @@ const Create = () => {
     const [disabled, setDisabled] = useState(false)
     const [error, setError] = useState();
     const [categories, setCategories] = useState([]);
+    const router = useRouter();
 
     useEffect(() => {
         setIsBrowser(typeof window !== "undefined");
@@ -150,7 +152,7 @@ const Create = () => {
             const {
                 title, video_course_price, live_training_price, lessons, duration, category, course_preview_video, published
             } = course
-            
+
             const payload = {
                 title, overview: description.content, topics: courseTopics.content, video_course_price, lessons, duration, category, profile, course_preview_video, published
             }
@@ -158,7 +160,7 @@ const Create = () => {
             if (live_training_price > 0) {
                 payload['live_training_price'] = live_training_price
             }
-            
+
             console.log('create.js:: handleCourseSubmit:: payload: ', payload);
 
             const response = await axios.post(url, payload, {
@@ -175,7 +177,7 @@ const Create = () => {
             setLoading(false)
             setCourse(INIT_COURSE)
             setProfilePreview('')
-            // router.replace('/teacher/course/upload-course-video')
+            router.replace('/teacher/course/upload-course-video')
         } catch (err) {
             catchErrors(err, setError)
             toast.error(error);
@@ -219,23 +221,9 @@ const Create = () => {
                         <div className="col-md-8 col-lg-8">
                             <div className="border-box">
                                 {imageUploading && (
-                                    <h3 className="loading-spinner">
-                                        <div className="d-table">
-                                            <div className="d-table-cell">
-                                                <Spinner color="primary" /> Image Uploading....
-                                            </div>
-                                        </div>
-                                    </h3>
+                                    <LoadingSpinner msg='Image imageUploading...'></LoadingSpinner>
                                 )}
-                                {loading && (
-                                    <h3 className="loading-spinner">
-                                        <div className="d-table">
-                                            <div className="d-table-cell">
-                                                <Spinner color="success"> </Spinner>
-                                            </div>
-                                        </div>
-                                    </h3>
-                                )}
+                                {loading && <LoadingSpinner></LoadingSpinner>}
 
                                 <form onSubmit={handleSubmit(handleCourseSubmit)}>
                                     <div className="form-group">

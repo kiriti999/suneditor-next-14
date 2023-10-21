@@ -5,7 +5,8 @@ import { Alert, Spinner } from 'reactstrap'
 import { axiosApi } from "@/utils/baseUrl";
 import { toast } from 'react-toastify';
 import catchErrors from '@/utils/catchErrors'
-import Link from '@/utils/ActiveLink'
+import Link from '@/utils/ActiveLink';
+import LoadingSpinner from "@/utils/LoadingSpinner";
 
 const INIT_VIDEO = {
     video_url: '',
@@ -152,15 +153,7 @@ const UploadCourseVideo = ({ courses }) => {
                         <div className="col-md-8 col-lg-8">
                             <div className="border-box">
                                 <form onSubmit={handleSubmit}>
-                                    {loading && (
-                                        <h3 className="loading-spinner">
-                                            <div className="d-table">
-                                                <div className="d-table-cell">
-                                                    <Spinner color="success"> </Spinner>
-                                                </div>
-                                            </div>
-                                        </h3>
-                                    )}
+                                {loading && <LoadingSpinner></LoadingSpinner>}
 
                                     <div className="form-group">
                                         <label>Select Course</label>

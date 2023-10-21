@@ -43,6 +43,7 @@ const Details = () => {
 
 	const ratingChanged = async (rating, courseId) => {
 		try {
+			console.log('token ', token );
 			if(!token) {
 				alert('Please login to rate courses')
 			}
@@ -370,7 +371,9 @@ const Details = () => {
 											count={5}
 											size={24}
 											activeColor="#ffd700"
-											
+											emptyIcon={<i className="far fa-star"></i>}
+											halfIcon={<i className="fa fa-star-half-alt"></i>}
+											fullIcon={<i className="fa fa-star"></i>}											
 										/>
 										</>}
 										{isRatingProvided && <h3>Thank you!</h3>}

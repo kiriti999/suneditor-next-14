@@ -10,6 +10,7 @@ import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
 import * as imageHelper from '@/utils/image-upload'
 import 'suneditor/dist/css/suneditor.min.css';
+import LoadingSpinner from "@/utils/LoadingSpinner";
 
 const SunEditor = dynamic(() => import('suneditor-react'), {
     ssr: false
@@ -114,7 +115,7 @@ const Edit = (data) => {
 
             console.log('pages:: course/[id].js:: response.data: ', response.data)
             setLoading(false)
-            
+
             toast.success(response.data);
         } catch (err) {
             catchErrors(err, setError)
@@ -160,23 +161,10 @@ const Edit = (data) => {
                         <div className="col-md-8 col-lg-8">
                             <div className="border-box">
                                 {imageUploading && (
-                                    <h3 className="loading-spinner">
-                                        <div className="d-table">
-                                            <div className="d-table-cell">
-                                                <Spinner color="primary" /> Image Uploading....
-                                            </div>
-                                        </div>
-                                    </h3>
+                                    <LoadingSpinner msg='Image imageUploading...'></LoadingSpinner>
                                 )}
-                                {loading && (
-                                    <h3 className="loading-spinner">
-                                        <div className="d-table">
-                                            <div className="d-table-cell">
-                                                <Spinner color="success"> </Spinner>
-                                            </div>
-                                        </div>
-                                    </h3>
-                                )}
+                                
+                                {loading && <LoadingSpinner></LoadingSpinner>}
 
                                 <form onSubmit={handleCourseUpdate}>
                                     <div className="form-group">

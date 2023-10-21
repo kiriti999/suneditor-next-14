@@ -9,7 +9,8 @@ import api from "@/axios/axiosConfig"
 import catchErrors from "../../utils/catchErrors";
 import { axiosApi } from "../../utils/baseUrl";
 import { useForm } from 'react-hook-form';
-import { Spinner, Alert } from 'reactstrap'
+import { Alert } from 'reactstrap'
+
 import { fetchUser, setLoginCookie } from '../../utils/auth';
 import { parseCookies } from 'nookies'
 
@@ -126,15 +127,7 @@ export const GuestCheckout = () => {
                 activePageText="Checkout"
             />
 
-            {loading && (
-                <h3 className="loading-spinner">
-                    <div className="d-table">
-                        <div className="d-table-cell">
-                            <Spinner color="success"> </Spinner>
-                        </div>
-                    </div>
-                </h3>
-            )}
+            {loading && <LoadingSpinner></LoadingSpinner>}
 
             <div className="checkout-area ptb-65">
                 <div className="container">
