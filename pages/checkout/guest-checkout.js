@@ -116,6 +116,16 @@ export const GuestCheckout = () => {
                 activePageText="Checkout"
             />
 
+            {loading && (
+                <h3 className="loading-spinner">
+                    <div className="d-table">
+                        <div className="d-table-cell">
+                            <Spinner color="success"> </Spinner>
+                        </div>
+                    </div>
+                </h3>
+            )}
+
             <div className="checkout-area ptb-65">
                 <div className="container">
                     <div className="user-actions">
@@ -238,6 +248,7 @@ export const GuestCheckout = () => {
                                             setDisplayAlert={setDisplayAlert}
                                             setShowAlertMessage={setShowAlertMessage}
                                             onClearCart={() => onClearCart()}
+                                            setLoading={setLoading}
                                         />
                                     </div>
                                 </div>

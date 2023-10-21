@@ -10,7 +10,7 @@ const WYSIWYGEditor = (props: any) => {
 
   return (
     <div>
-      <CustomSunEditor {...props} />
+      <CustomSunEditor {...props}/>
     </div>
   );
 };

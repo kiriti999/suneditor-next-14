@@ -7,7 +7,7 @@ import saveTransaction from "../SaveToDB/SaveTransaction";
 import { parseCookies } from 'nookies'
 import { calculateCartTotal } from '@/utils/cart/calculateCartTotal';
 
-const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlertMessage, setDisplayAlert }) => {
+const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlertMessage, setDisplayAlert, setLoading }) => {
     const { token } = parseCookies();
     const Razorpay = useRazorpay();
     const router = useRouter();
@@ -33,6 +33,8 @@ const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlert
             setToRegister(true);
             return;
         }
+
+        setLoading(true)
 
         console.log('CheckoutBtn.js:: handlePayment:: payload: ', payload);
 
@@ -79,6 +81,8 @@ const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlert
                     await axios.post(`${axiosApi.baseUrl}/api/v1/mail/sendMail`, toSave);
 
                     console.log('CheckoutBtn.js:: handlePayment:: savedOrder: ', savedOrder);
+
+                    setLoading(false)
 
                     router.replace('/checkout/success')
 

@@ -275,7 +275,7 @@ const Create = () => {
                                                 type="number"
                                                 placeholder="Enter video course price"
                                                 className="form-control"
-                                                {...register('video_course_price', validationOptions.video_course_price)}
+                                                {...register('video_course_price')}
                                             />
                                         </div>
 
@@ -285,7 +285,7 @@ const Create = () => {
                                                 type="number"
                                                 placeholder="Enter live training price"
                                                 className="form-control"
-                                                {...register('live_training_price')}
+                                                {...register('live_training_price', validationOptions.live_training_price)}
                                             />
                                         </div>
                                     </div>

@@ -28,8 +28,9 @@ const CustomSunEditor = (props) => {
     }
 
 
-    return <SunEditor width="100%" height="300px" setOptions={{
-        buttonList: editorOptions }} setContents={props?.props?.description} onChange={handleChange} onImageUpload={handleImageUpload} onVideoUpload={handleVideoUpload} />;
+    return <SunEditor setDefaultStyle="font-size:18px" width="100%" height="150px" setOptions={{
+        buttonList: editorOptions
+    }} setContents={props?.props?.description} onChange={handleChange} onImageUpload={handleImageUpload} onVideoUpload={handleVideoUpload} />;
 };
 
 export default CustomSunEditor;
