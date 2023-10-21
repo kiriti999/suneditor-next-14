@@ -108,7 +108,7 @@ const TopCourses = ({ courses }) => {
 												*/}
 											</li>
 
-											{course?.purchaseCount > 2 && <li>
+											{course?.purchaseCount > 0 && <li>
 												<span className="badge  text-dark bg-yellow-badge" >Best Seller</span>
 
 											</li>}
@@ -123,6 +123,7 @@ const TopCourses = ({ courses }) => {
 											key={course._id}
 											count={5}
 											size={24}
+											edit={false}
 											emptyIcon={<i className="far fa-star"></i>}
 											halfIcon={<i className="fa fa-star-half-alt"></i>}
 											fullIcon={<i className="fa fa-star"></i>}

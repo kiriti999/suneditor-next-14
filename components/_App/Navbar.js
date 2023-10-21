@@ -185,7 +185,7 @@ const Navbar = ({ user }) => {
 
 												<ul className="dropdown-menu">
 													<li className="nav-item">
-														<Link
+														<Link legacyBehavior
 															href="/my-courses"
 															activeClassName="active">
 															<a onClick={toggleNavbar}
