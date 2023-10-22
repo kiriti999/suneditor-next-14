@@ -15820,3 +15820,7 @@ marquee {
 .flex-direction-col {
   flex-direction: column;
 }
+
+.no-click {
+  pointer-events: none;
+}

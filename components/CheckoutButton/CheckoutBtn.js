@@ -29,7 +29,7 @@ const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlert
     const handlePayment = useCallback(async () => {
         if (!token) {
             setIsAlert(true);
-            setShowAlertMessage({status: 'danger', message: 'Please register first to complete the payment'})
+            setShowAlertMessage({ status: 'danger', message: 'Please register first to complete the payment' })
             setToRegister(true);
             return;
         }
@@ -88,7 +88,7 @@ const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlert
 
                 } else {
                     console.log('checkoutBtn.js:: payment handler error:', error)
-                    setShowAlertMessage({status: 'danger', message: 'Payment failed'});
+                    setShowAlertMessage({ status: 'danger', message: 'Payment failed' });
                     // setError("Payment Failed");
                     // router.replace('/')
                 }
@@ -115,7 +115,7 @@ const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlert
     return (
         <div>
             <div className="payment-box">
-                <button className="default-btn" onClick={(e) => {
+                <button className={loading ? 'default-btn no-click' : 'default-btn'} onClick={(e) => {
                     e.preventDefault()
                     handlePayment()
                 }}>

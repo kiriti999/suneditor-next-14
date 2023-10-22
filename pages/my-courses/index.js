@@ -45,8 +45,7 @@ const MyCourses = ({ enrolled }) => {
                                             </Link>
                                         </h3>
 
-                                        <p>{enrolledCourse.course.overview.slice(0, 100)}</p>
-                                        { /*<p dangerouslySetInnerHTML={{html: (enrolledCourse.course.overview.slice(0, 100))}}></p> */}
+                                        <p dangerouslySetInnerHTML={{ __html: enrolledCourse.course.overview.slice(0, 100) }}></p>
 
                                         <ul className="courses-box-footer d-flex justify-content-between align-items-center">
                                             <li>

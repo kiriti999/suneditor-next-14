@@ -127,7 +127,7 @@ export const GuestCheckout = () => {
                 activePageText="Checkout"
             />
 
-            {loading && <LoadingSpinner></LoadingSpinner>}
+                {loading && <LoadingSpinner></LoadingSpinner>}
 
             <div className="checkout-area ptb-65">
                 <div className="container">

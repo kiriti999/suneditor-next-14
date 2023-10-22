@@ -59,7 +59,10 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
 		const isProtectedRoute =
 			ctx.pathname === "/become-a-teacher" ||
 			ctx.pathname === "/my-courses" ||
-			ctx.pathname === "/teacher/courses";
+			ctx.pathname === "/teacher/courses" ||
+			ctx.pathname === "/teacher/dashboard" ||
+			ctx.pathname === "/teacher/courses/course-edit" ||
+			ctx.pathname === "/teacher/course/upload-course-video";
 
 		if (isProtectedRoute) {
 			redirectUser(ctx, "/authentication");

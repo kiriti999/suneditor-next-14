@@ -15,7 +15,7 @@ const LoadingSpinner = () => {
 					width: 20px;
 				}
 			`}</style>
-			<div className="spinner-border text-secondary" role="status">
+			<div className="spinner-border text-secondary text-center" role="status">
 				<span className="visually-hidden">Loading...</span>
 			</div>
 		</>
