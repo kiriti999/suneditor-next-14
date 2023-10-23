@@ -15,13 +15,13 @@ import axios from "axios";
 import { axiosApi } from "@/utils/baseUrl";
 import SEO from "@/components/SEO";
 
-const index = ({ courses }) => {
+const index = ({ courses, total }) => {
 	const { t } = useTranslation("distance-learning");
 	return (
 		<div>
 			<SEO title={t("pagetitle")} description={t("bannersubtitle")} />
 			<MainBanner />
-			<TopCourses courses={courses} />
+			<TopCourses courses={courses} total={total} />
 			<About />
 			{/* <Testimonials /> */}
 			{/* <Instance /> */}
@@ -35,7 +35,7 @@ const index = ({ courses }) => {
 
 index.getInitialProps = async () => {
 	console.log('axiosApi ', axiosApi);
-	const url = `${axiosApi.baseUrl}/api/v1/courses/course`;
+	const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=0`;
 	const response = await axios.get(url);
 	return response.data;
 };

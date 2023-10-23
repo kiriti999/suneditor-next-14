@@ -18,7 +18,7 @@ const overviewStyle = {
     overflow: 'hidden'
 }
 
-const HomePageCourses = ({ data }) => {
+const HomePageCourses = ({ data, totalRecords }) => {
     const [state, setState] = useContext(Context);
     const [sidebarFilter, setSidebarFilter] = useState([]);
 
@@ -28,6 +28,7 @@ const HomePageCourses = ({ data }) => {
 
     // initial courses value is empty array
     const [courses, setCourse] = useState(data)
+    const [offset, setOffset] = useState(data.length);
 
     useEffect(() => {
         setInitialData();
@@ -54,8 +55,11 @@ const HomePageCourses = ({ data }) => {
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
     const currentRecords = courses.slice(indexOfFirstRecord, indexOfLastRecord);
-    const nPages = Math.ceil(courses.length / recordsPerPage);
+    const nPages = Math.ceil(totalRecords / recordsPerPage);
 
+    useEffect(() => {
+        if ((currentPage % 3 == 2 && currentPage < nPages - 1) || !courses[indexOfFirstRecord]) fetchCourses();
+    }, [currentPage]);
 
     // sort course function
     const sortCourses = async (type) => {
@@ -78,6 +82,20 @@ const HomePageCourses = ({ data }) => {
         setState({ ...state, filteredCourses: sortedCourses });
     }
 
+    const fetchCourses = async () => {
+        const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=${offset}`
+        const response = await axios.get(url);
+        const coursesRes = response.data.courses;
+        const copy = [...courses];
+        for (let i = 0; i < coursesRes.length; i++) {
+            const course = coursesRes[i];
+            copy[offset + i] = course;
+        }
+
+        setCourse(copy);
+        setOffset(indexOfFirstRecord);
+    }
+
     return (
         <div>
             <PageBanner
@@ -93,7 +111,7 @@ const HomePageCourses = ({ data }) => {
                         <div className="col-lg-9 col-md-12">
                             <div className="whatsnxt-grid-sorting row align-items-center">
                                 <div className="col-lg-8 col-md-6 result-count">
-                                    <p>We found <span className="count">{courses?.length ? courses.length : 0}</span> courses available for you</p>
+                                    <p>We found <span className="count">{totalRecords}</span> courses available for you</p>
                                 </div>
 
                                 <div className="col-lg-4 col-md-6 ordering">
@@ -183,9 +201,10 @@ HomePageCourses.getInitialProps = async () => {
     let courses;
     let coursesPopularity;
 
-    let url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=10`
+    let url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=0`
     const response = await axios.get(url);
     courses = response.data.courses;
+    const totalRecords = response.data.total;
 
     // get data for courses popularity
     url = `${axiosApi.baseUrl}/api/v1/courses/popularity`
@@ -199,7 +218,8 @@ HomePageCourses.getInitialProps = async () => {
     });
 
     return {
-        data: courses
+        data: courses,
+        totalRecords
     }
 }
 

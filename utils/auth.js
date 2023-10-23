@@ -3,9 +3,8 @@ import Router from 'next/router'
 import { axiosApi } from "../utils/baseUrl";
 import axios from 'axios'
 
-export const handleLogin = (token) => {
+export const handleLogin = (token, router) => {
     setLoginCookie(token)
-    Router.push('/');
 }
 
 export const setLoginCookie = (token) => {
