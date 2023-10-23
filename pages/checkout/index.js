@@ -90,6 +90,7 @@ const Checkout = ({ user }) => {
 									cartItems={cartItems}
 									user={user}
 									onClearCart={() => onClearCart()}
+									loading={loading}
 									setLoading={setLoading}
 								/>
 							</div>

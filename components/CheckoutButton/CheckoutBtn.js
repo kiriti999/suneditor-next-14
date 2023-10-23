@@ -7,7 +7,7 @@ import saveTransaction from "../SaveToDB/SaveTransaction";
 import { parseCookies } from 'nookies'
 import { calculateCartTotal } from '@/utils/cart/calculateCartTotal';
 
-const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlertMessage, setIsAlert, setLoading }) => {
+const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlertMessage, setIsAlert, loading, setLoading }) => {
     const { token } = parseCookies();
     const Razorpay = useRazorpay();
     const router = useRouter();
