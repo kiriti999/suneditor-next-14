@@ -1,25 +1,15 @@
-import React from "react";
+import { Spinner } from 'reactstrap'
 
-const LoadingSpinner = () => {
-	return (
-		<>
-			<style jsx>{`
-				.spinner-border {
-					height: 20px;
-					left: 8px;
-					border-bottom: 3px solid #fff;
-					border-left: 3px solid #fff;
-					border-top: 3px solid #fff;
-					top: 3px;
-					position: relative;
-					width: 20px;
-				}
-			`}</style>
-			<div className="spinner-border text-secondary text-center" role="status">
-				<span className="visually-hidden">Loading...</span>
-			</div>
-		</>
-	);
-};
-
-export default LoadingSpinner;
+export const LoadingSpinner = (message, status) => {
+    return (
+        <>
+            <h3 className="loading-spinner text-center">
+                <div className="d-table">
+                    <div className="d-table-cell">
+                        <Spinner color="success"> </Spinner>
+                    </div>
+                </div>
+            </h3>
+        </>
+    )
+}
