@@ -16,16 +16,36 @@ const overviewStyle = {
 	overflow: 'hidden'
 }
 
-const TopCourses = ({ courses }) => {
+const TopCourses = ({ courses: initialCourses, total }) => {
 	const { token } = parseCookies();
 	const { t } = useTranslation("distance-learning");
 
+	const [courses, setCourse] = useState(initialCourses);
+	const [offset, setOffset] = useState(courses.length);
 	const [recordsPerPage] = useState(8);
 	const [currentPage, setCurrentPage] = useState(1);
 	const indexOfLastRecord = currentPage * recordsPerPage;
 	const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
 	const currentRecords = courses.slice(indexOfFirstRecord, indexOfLastRecord);
-	const nPages = Math.ceil(courses.length / recordsPerPage);
+	const nPages = Math.ceil(total / recordsPerPage);
+
+	useEffect(() => {
+        if ((currentPage % 3 == 2 && currentPage < nPages - 1) || !courses[indexOfFirstRecord]) fetchCourses();
+    }, [currentPage]);
+
+	const fetchCourses = async () => {
+        const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=${offset}`
+        const response = await axios.get(url);
+        const coursesRes = response.data.courses;
+        const copy = [...courses];
+        for (let i = 0; i < coursesRes.length; i++) {
+            const course = coursesRes[i];
+            copy[offset + i] = course;
+        }
+
+        setCourse(copy);
+        setOffset(indexOfFirstRecord);
+    }
 
 
 	const getRating = courseMeta => {
