@@ -55,25 +55,19 @@ const LoginForm = () => {
                 data: userObject
             });
 
-			const cartId = localStorage.getItem('cart-id');
-			if (cartId) {
-				const cartRes = await axios.get(`${axiosApi.baseUrl}/api/v1/cart/${cartId}`, {
-					headers: { Authorization: response.data }
-				});
-	
+			const cartRes = await axios.get(`${axiosApi.baseUrl}/api/v1/cart`, {
+				headers: { Authorization: response.data }
+			});
+
+			if (cartRes.data.cart) {
 				dispatch({
 					type: 'UPDATE_CART',
 					data: cartRes.data.cart
 				});
-	
-				console.log(cartRes);
 			} else {
-				const cartRes = await axios.post(`${axiosApi.baseUrl}/api/v1/cart`, {}, {
+				await axios.post(`${axiosApi.baseUrl}/api/v1/cart`, null, {
 					headers: { Authorization: response.data }
 				});
-
-				localStorage.setItem('cart-id', cartRes.data.id);
-				console.log(cartRes);
 			}
 
 			handleLogin(response.data);

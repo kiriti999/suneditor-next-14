@@ -54,10 +54,9 @@ export const cartReducer = (state = initialState, action) => {
 
 	const updateCart = async (details) => {
 		const { token } = parseCookies();
-		const cartId = localStorage.getItem('cart-id');
 		const { cartItems, discount } = details;
-		if (cartId && token) {
-			const url = `${axiosApi.baseUrl}/api/v1/cart/${cartId}`;
+		if (token) {
+			const url = `${axiosApi.baseUrl}/api/v1/cart`;
 			await axios.post(url, { cartItems, discount }, {
 				headers: { Authorization: token }
 			});
