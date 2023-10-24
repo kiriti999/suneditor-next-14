@@ -81,7 +81,7 @@ const RegisterForm = () => {
 					{errors.password && <p>{errors.password.message}</p>}
 				</div>
 
-				<button type="submit">Register {loading ? <LoadingSpinner /> : ""}</button>
+				<button type="submit">Register</button>
 			</form>
 		</div>
 	);

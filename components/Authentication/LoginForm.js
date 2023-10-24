@@ -114,7 +114,7 @@ const LoginForm = () => {
 
 				<button type="submit" disabled={disabled}>
 					Log In
-					{loading ? <LoadingSpinner /> : ""}
+					{loading}
 				</button>
 			</form>
 		</div>
