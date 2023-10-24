@@ -7,6 +7,7 @@ import { axiosApi } from "../../utils/baseUrl";
 import { handleLogin } from "../../utils/auth";
 import LoadingSpinner from "@/utils/LoadingSpinner";
 import { useForm } from 'react-hook-form';
+import Router from 'next/router'
 
 const RegisterForm = () => {
 	const [loading, setLoading] = React.useState(false);
@@ -47,6 +48,7 @@ const RegisterForm = () => {
 			});
 			console.log('RegisterForm.js:: response.data: ', response.data);
 			handleLogin(response.data);
+			Router.push('/')
 		} catch (error) {
 			console.log('RegisterForm.js:: error: ', error);
 			// catchErrors(error, setError);
@@ -81,7 +83,7 @@ const RegisterForm = () => {
 					{errors.password && <p>{errors.password.message}</p>}
 				</div>
 
-				<button type="submit">Register {loading ? <LoadingSpinner /> : ""}</button>
+				<button type="submit">Register</button>
 			</form>
 		</div>
 	);

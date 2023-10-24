@@ -241,6 +241,11 @@ const Navbar = ({ user }) => {
 																		type: 'UPDATE_USEROBJ',
 																		data: null
 																	});
+																	dispatch({
+																		type: 'UPDATE_CART',
+																		data: { cartItems: [], discount: 0 }
+																	});
+																	localStorage.removeItem('cart');
 																	handleLogout();
 																}}>
 																Logout

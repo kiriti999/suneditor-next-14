@@ -1,6 +1,5 @@
 import React from "react";
 import { Alert } from "reactstrap";
-import { useRouter } from 'next/router';
 import Link from "next/link";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -9,6 +8,7 @@ import catchErrors from "../../utils/catchErrors";
 import { axiosApi } from "../../utils/baseUrl";
 import { handleLogin, fetchUser } from "../../utils/auth";
 import LoadingSpinner from "@/utils/LoadingSpinner";
+import Router from 'next/router'
 
 const INITIAL_USER = {
 	email: "",
@@ -44,6 +44,7 @@ const LoginForm = () => {
 			console.log('login response ', response.data)
 
             const userObject = await fetchUser(response.data);
+			console.log('userObject ', userObject);
             dispatch({
                 type: "UPDATE_USER",
                 data: response.data
@@ -54,9 +55,31 @@ const LoginForm = () => {
                 data: userObject
             });
 
+			const cartId = localStorage.getItem('cart-id');
+			if (cartId) {
+				const cartRes = await axios.get(`${axiosApi.baseUrl}/api/v1/cart/${cartId}`, {
+					headers: { Authorization: response.data }
+				});
+	
+				dispatch({
+					type: 'UPDATE_CART',
+					data: cartRes.data.cart
+				});
+	
+				console.log(cartRes);
+			} else {
+				const cartRes = await axios.post(`${axiosApi.baseUrl}/api/v1/cart`, {}, {
+					headers: { Authorization: response.data }
+				});
+
+				localStorage.setItem('cart-id', cartRes.data.id);
+				console.log(cartRes);
+			}
+
 			handleLogin(response.data);
+			Router.push('/')
 		} catch (error) {
-			console.log('error ', error.message);
+			console.log('error ', error);
 			alert('Unable to login')
 		} finally {
 			setLoading(false);
@@ -114,7 +137,6 @@ const LoginForm = () => {
 
 				<button type="submit" disabled={disabled}>
 					Log In
-					{loading ? <LoadingSpinner /> : ""}
 				</button>
 			</form>
 		</div>
