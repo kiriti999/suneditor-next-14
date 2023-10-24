@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import catchErrors from "../../utils/catchErrors";
 import { axiosApi } from "../../utils/baseUrl";
 import { handleLogin, fetchUser } from "../../utils/auth";
+import Router from 'next/router'
 import LoadingSpinner from "@/utils/LoadingSpinner";
 
 const INITIAL_USER = {
@@ -55,6 +56,7 @@ const LoginForm = () => {
             });
 
 			handleLogin(response.data);
+			Router.push('/')
 		} catch (error) {
 			console.log('error ', error.message);
 			alert('Unable to login')

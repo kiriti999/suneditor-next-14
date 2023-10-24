@@ -6,6 +6,7 @@ import catchErrors from "../../utils/catchErrors";
 import { axiosApi } from "../../utils/baseUrl";
 import { handleLogin } from "../../utils/auth";
 import LoadingSpinner from "@/utils/LoadingSpinner";
+import Router from 'next/router'
 import { useForm } from 'react-hook-form';
 
 const RegisterForm = () => {
@@ -47,6 +48,7 @@ const RegisterForm = () => {
 			});
 			console.log('RegisterForm.js:: response.data: ', response.data);
 			handleLogin(response.data);
+			Router.push('/')
 		} catch (error) {
 			console.log('RegisterForm.js:: error: ', error);
 			// catchErrors(error, setError);
