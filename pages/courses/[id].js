@@ -8,6 +8,7 @@ import dynamic from 'next/dynamic';
 const Tabs = dynamic(import('react-tabs').then(mod => mod.Tabs), { ssr: false }) // disable ssr
 import { Tab, TabList, TabPanel } from 'react-tabs';
 import ReactStars from "react-rating-stars-component";
+import Router from 'next/router'
 
 const Details = () => {
 	const { token } = parseCookies();
@@ -43,9 +44,8 @@ const Details = () => {
 
 	const ratingChanged = async (rating, courseId) => {
 		try {
-			console.log('token ', token );
 			if(!token) {
-				alert('Please login to rate courses')
+				Router.push('/authentication')
 			}
 			console.log('ratingChanged:: rating: ', rating);
 			const url = `${axiosApi.baseUrl}/api/v1/courses/course/rating`;

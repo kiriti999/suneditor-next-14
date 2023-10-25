@@ -30,40 +30,26 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 	const nPages = Math.ceil(total / recordsPerPage);
 
 	useEffect(() => {
-        if ((currentPage % 3 == 2 && currentPage < nPages - 1) || !courses[indexOfFirstRecord]) fetchCourses();
-    }, [currentPage]);
+		if ((currentPage % 3 == 2 && currentPage < nPages - 1) || !courses[indexOfFirstRecord]) fetchCourses();
+	}, [currentPage]);
 
 	const fetchCourses = async () => {
-        const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=${offset}`
-        const response = await axios.get(url);
-        const coursesRes = response.data.courses;
-        const copy = [...courses];
-        for (let i = 0; i < coursesRes.length; i++) {
-            const course = coursesRes[i];
-            copy[offset + i] = course;
-        }
+		const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=${offset}`
+		const response = await axios.get(url);
+		const coursesRes = response.data.courses;
+		const copy = [...courses];
+		for (let i = 0; i < coursesRes.length; i++) {
+			const course = coursesRes[i];
+			copy[offset + i] = course;
+		}
 
-        setCourse(copy);
-        setOffset(indexOfFirstRecord);
-    }
-
-
-	const getRating = courseMeta => {
-		var count = 0
-		var sum = 0;
-		console.log("TopCourses.js:: courseMeta:", courseMeta);
-		courseMeta.forEach((a, index) => {
-			if (a.fieldName == 'rating') {
-				count += 1;
-				sum += parseInt(a.fieldValue);
-				console.log("sum", sum, count);
-
-			}
-		})
-		console.log("total rating", parseFloat(sum / count).toFixed(2));
-		return parseFloat(sum / count).toFixed(2);
-
+		setCourse(copy);
+		setOffset(indexOfFirstRecord);
 	}
+
+	useEffect(()=>{
+		console.log('courses ', courses)
+	},[courses])
 
 	return (
 		<div className="courses-area pt-50 pb-100">

@@ -26,7 +26,7 @@ const INIT_COURSE = {
     course_preview_video: '',
     duration: '',
     lessons: '',
-    category: ''
+    categoryName: ''
 }
 
 const Create = () => {
@@ -52,7 +52,7 @@ const Create = () => {
         {
             mode: "onBlur",
             defaultValues: {
-                category: "misc",
+                categoryName: "misc",
                 course_preview_video: '',
                 coverPhoto: '',
                 duration: '30 days approx',
@@ -95,10 +95,6 @@ const Create = () => {
         })()
     }, [])
 
-    useEffect(() => {
-        console.log('create.js:: Updated category: ', course.category);
-    }, [course.category]);
-
     const handleChange = e => {
         const { name, value, files } = e.target
 
@@ -138,6 +134,7 @@ const Create = () => {
     };
 
     const handleCourseSubmit = async (course, e) => {
+        console.log('course ', course);
         e.preventDefault()
         setLoading(true);
         try {
@@ -150,11 +147,11 @@ const Create = () => {
             const url = `${axiosApi.baseUrl}/api/v1/courses/course/new`;
 
             const {
-                title, video_course_price, live_training_price, lessons, duration, category, course_preview_video, published
+                title, video_course_price, live_training_price, lessons, duration, categoryName, course_preview_video, published
             } = course
 
             const payload = {
-                title, overview: description.content, topics: courseTopics.content, video_course_price, lessons, duration, category, profile, course_preview_video, published
+                title, overview: description.content, topics: courseTopics.content, video_course_price, lessons, duration, categoryName, profile, course_preview_video, published
             }
 
             if (live_training_price > 0) {
@@ -300,8 +297,8 @@ const Create = () => {
 
                                     <div className="form-group">
                                         <label>Categories</label>
-                                        <select className="form-control" placeholder="Category name" {...register('category')}>
-                                            {categories.map((category) => <option key={category._id} data-id={category._id}>{category.categoryName}</option>)}
+                                        <select className="form-control" placeholder="Category name" {...register('categoryName')}>
+                                            {categories.map((category) => <option key={category.categoryName} data-id={category._id}>{category.categoryName}</option>)}
                                         </select>
                                     </div>
 
