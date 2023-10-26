@@ -9,20 +9,30 @@ const Tabs = dynamic(import('react-tabs').then(mod => mod.Tabs), { ssr: false })
 import { Tab, TabList, TabPanel } from 'react-tabs';
 import ReactStars from "react-rating-stars-component";
 import Router from 'next/router'
+import LoadingSpinner from "@/utils/LoadingSpinner";
 
 const Details = () => {
 	const { token } = parseCookies();
 	const [course, setCourse] = useState([]);
+	const [loading, setLoading] = useState([]);
 	const [price, setPrice] = useState([]);
-	const [isRatingProvided, setIsRatingProvided] =useState(false);
-	
+	const [isRatingProvided, setIsRatingProvided] = useState(false);
+
 
 	const getCourseById = async (id) => {
-		const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
-		const response = await axios.get(url, {
-			headers: { Authorization: token }
-		});
-		return response.data;
+		try {
+			const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
+			const response = await axios.get(url, {
+				headers: { Authorization: token }
+			});
+			setLoading(true);
+			return response.data;
+		} catch (error) {
+			console.log('error', error);
+		} finally {
+			setLoading(false)
+		}
+
 	}
 
 	useEffect(() => {
@@ -44,7 +54,7 @@ const Details = () => {
 
 	const ratingChanged = async (rating, courseId) => {
 		try {
-			if(!token) {
+			if (!token) {
 				Router.push('/authentication')
 			}
 			console.log('ratingChanged:: rating: ', rating);
@@ -61,6 +71,7 @@ const Details = () => {
 
 	return (
 		<div>
+			{loading && <LoadingSpinner />}
 			<div className="courses-details-area pb-100">
 
 				<div className="container">
@@ -232,8 +243,8 @@ const Details = () => {
 											</div>
 										</div>
 
-										
-									{/*	<div className="courses-review-comments">
+
+										{/*	<div className="courses-review-comments">
 											<h3>3 Reviews</h3>
 											<div className="user-review">
 												<img
@@ -362,20 +373,20 @@ const Details = () => {
 									</TabPanel>
 
 									<TabPanel>
-										{!isRatingProvided && 
-										<>
-										<h3>Please provide rating for the course</h3>
-										<ReactStars
-											key={course._id}
-											onChange={(e) => ratingChanged(e, course._id)}
-											count={5}
-											size={24}
-											activeColor="#ffd700"
-											emptyIcon={<i className="far fa-star"></i>}
-											halfIcon={<i className="fa fa-star-half-alt"></i>}
-											fullIcon={<i className="fa fa-star"></i>}											
-										/>
-										</>}
+										{!isRatingProvided &&
+											<>
+												<h3>Please provide rating for the course</h3>
+												<ReactStars
+													key={course._id}
+													onChange={(e) => ratingChanged(e, course._id)}
+													count={5}
+													size={24}
+													activeColor="#ffd700"
+													emptyIcon={<i className="far fa-star"></i>}
+													halfIcon={<i className="fa fa-star-half-alt"></i>}
+													fullIcon={<i className="fa fa-star"></i>}
+												/>
+											</>}
 										{isRatingProvided && <h3>Thank you!</h3>}
 									</TabPanel>
 
