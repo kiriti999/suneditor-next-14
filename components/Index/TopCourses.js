@@ -47,10 +47,6 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 		setOffset(indexOfFirstRecord);
 	}
 
-	useEffect(()=>{
-		console.log('courses ', courses)
-	},[courses])
-
 	return (
 		<div className="courses-area pt-50 pb-100">
 			<div className="container">
