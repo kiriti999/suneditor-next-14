@@ -1,6 +1,5 @@
 import React from "react";
 import { Alert } from "reactstrap";
-import { useRouter } from 'next/router';
 import Link from "next/link";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -45,6 +44,7 @@ const LoginForm = () => {
 			console.log('login response ', response.data)
 
             const userObject = await fetchUser(response.data);
+			console.log('userObject ', userObject);
             dispatch({
                 type: "UPDATE_USER",
                 data: response.data
@@ -55,10 +55,25 @@ const LoginForm = () => {
                 data: userObject
             });
 
+			const cartRes = await axios.get(`${axiosApi.baseUrl}/api/v1/cart`, {
+				headers: { Authorization: response.data }
+			});
+
+			if (cartRes.data.cart) {
+				dispatch({
+					type: 'UPDATE_CART',
+					data: cartRes.data.cart
+				});
+			} else {
+				await axios.post(`${axiosApi.baseUrl}/api/v1/cart`, null, {
+					headers: { Authorization: response.data }
+				});
+			}
+
 			handleLogin(response.data);
 			Router.push('/')
 		} catch (error) {
-			console.log('error ', error.message);
+			console.log('error ', error);
 			alert('Unable to login')
 		} finally {
 			setLoading(false);
@@ -116,7 +131,6 @@ const LoginForm = () => {
 
 				<button type="submit" disabled={disabled}>
 					Log In
-					{loading}
 				</button>
 			</form>
 		</div>

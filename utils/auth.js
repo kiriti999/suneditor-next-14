@@ -3,7 +3,7 @@ import Router from 'next/router'
 import { axiosApi } from "../utils/baseUrl";
 import axios from 'axios'
 
-export const handleLogin = (token, router) => {
+export const handleLogin = (token) => {
     setLoginCookie(token)
 }
 
@@ -16,7 +16,7 @@ export const redirectUser = (ctx, location) => {
         ctx.res.writeHead(302, { Location: location });
         ctx.res.end()
     } else {
-        Router.push(location)
+        Router.push(location) // you there?
     }
 }
 
@@ -27,8 +27,13 @@ export const handleLogout = () => {
 }
 
 export const fetchUser = async (token) => {
-    const payload = { headers: { Authorization: token } };
-    const url = `${axiosApi.baseUrl}/api/v1/account`;
-    const response = await axios.get(url, payload);
-    return response.data;
+    try {
+        const payload = { headers: { Authorization: token } };
+        const url = `${axiosApi.baseUrl}/api/v1/account`;
+        const response = await axios.get(url, payload);
+        return response.data;
+    } catch (error) {
+        console.log('auth.js:: fetchUser:: error: ', error);
+    }
+
 }

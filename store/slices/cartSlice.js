@@ -1,6 +1,10 @@
 /* eslint-disable default-param-last */
+import { parseCookies } from "nookies";
+import axios from 'axios';
+import { axiosApi } from "../../utils/baseUrl";
 
-const initialState = {
+const localCart = typeof localStorage !== 'undefined' ? localStorage.getItem('cart') : null;
+const initialState = localCart ? JSON.parse(localCart) : {
 	cartItems: [],
 	discount: 0.0,
 };
@@ -46,9 +50,30 @@ export const cartReducer = (state = initialState, action) => {
 			both: getBothTypesActionData
 		}
 		selectedType[selected](action, price, cartState, idType);
-
 	}
+
+	const updateCart = async (details) => {
+		const { token } = parseCookies();
+		const { cartItems, discount } = details;
+		if (token) {
+			const url = `${axiosApi.baseUrl}/api/v1/cart`;
+			await axios.post(url, { cartItems, discount }, {
+				headers: { Authorization: token }
+			});
+		}
+	}
+
 	switch (action.type) {
+		case "UPDATE_CART":
+			const updateState = {
+				...state,
+				cartItems: action.data.cartItems,
+				discount: action.data.discount
+			};
+
+			localStorage.setItem('cart', JSON.stringify(updateState));
+			return updateState;
+
 		case "ADD_TO_CART":
 			let existingItem = state.cartItems.find(
 				(course) => action.data.id === course._id
@@ -73,6 +98,9 @@ export const cartReducer = (state = initialState, action) => {
 				}
 
 				console.log('newState ', newState);
+				localStorage.setItem('cart', JSON.stringify(newState));
+				updateCart(newState);
+
 				return newState;
 			}
 
@@ -86,11 +114,18 @@ export const cartReducer = (state = initialState, action) => {
 			let new_items = state.cartItems.filter(
 				(item) => action.id !== item.id
 			);
-			return {
+			const newState = {
 				...state,
-				cartItems: new_items,
+				cartItems: new_items
 			};
+			localStorage.setItem('cart', JSON.stringify(newState));
+			updateCart(newState);
+
+			return newState;
+
 		case "RESET_CART":
+			localStorage.removeItem('cart');
+			updateCart({ cartItems: [], discount: 0 });
 			return {
 				...state,
 				cartItems: [],
