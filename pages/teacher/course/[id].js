@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
 import dynamic from 'next/dynamic'
@@ -20,28 +20,39 @@ const Edit = (data) => {
     console.log('pages:: course/[id].js:: existingData: ', data);
     const { course: existingData, user } = data;
     const { token } = parseCookies()
+    const [categories, setCategories] = useState([]);
     // console.log(existingData)
 
     const INIT_COURSE = {
         id: existingData._id,
         title: existingData.title,
         overview: existingData.overview,
-        price: existingData.price,
+        video_course_price: existingData.video_course_price,
+        live_training_price: existingData.live_training_price,
         profilePhoto: '',
         coverPhoto: '',
         course_preview_img: '',
         course_preview_video: existingData.course_preview_video,
         duration: existingData.duration,
         lessons: existingData.lessons,
-        category: existingData.category
+        categoryName: existingData.categoryName
     }
 
-    const [course, setCourse] = React.useState(INIT_COURSE)
-    const [profilePreview, setProfilePreview] = React.useState('')
-    const [imageUploading, setImageUploading] = React.useState(false)
-    const [loading, setLoading] = React.useState(false)
-    const [disabled, setDisabled] = React.useState(false)
-    const [error, setError] = React.useState()
+    const [course, setCourse] = useState(INIT_COURSE)
+    const [profilePreview, setProfilePreview] = useState('')
+    const [imageUploading, setImageUploading] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [disabled, setDisabled] = useState(false)
+    const [error, setError] = useState()
+
+    useEffect(() => {
+        const url = `${axiosApi.baseUrl}/api/v1/courses/categories`;
+        (async () => {
+            const response = await axios.get(url)
+            console.log('teacher/course/[id].js:: useEffect: categories:', response.data.categories);
+            setCategories(response.data?.categories);
+        })()
+    }, [])
 
     // React.useEffect(() => {
     //     const isCourse = Object.values(course).every(el => Boolean(el))
@@ -100,13 +111,13 @@ const Edit = (data) => {
 
             const url = `${axiosApi.baseUrl}/api/v1/courses/course/update`
             const {
-                id, title, overview, topics, price, published, duration,
-                lessons, category, course_preview_video
+                id, title, overview, topics, live_training_price, video_course_price, published, duration,
+                lessons, categoryName, course_preview_video
             } = course
 
             const payload = {
-                id, title, overview, topics, price, published, duration,
-                lessons, category, profile, course_preview_video
+                id, title, overview, topics, live_training_price, video_course_price, published, duration,
+                lessons, categoryName, profile, course_preview_video
             }
 
             const response = await axios.post(url, payload, {
@@ -163,7 +174,7 @@ const Edit = (data) => {
                                 {imageUploading && (
                                     <LoadingSpinner msg='Image imageUploading...'></LoadingSpinner>
                                 )}
-                                
+
                                 {loading && <LoadingSpinner></LoadingSpinner>}
 
                                 <form onSubmit={handleCourseUpdate}>
@@ -201,16 +212,30 @@ const Edit = (data) => {
                                         />
                                     </div>
 
-                                    <div className="form-group">
-                                        <label>Course Price</label>
-                                        <input
-                                            type="number"
-                                            placeholder="Enter course price"
-                                            className="form-control"
-                                            name="price"
-                                            value={course.price}
-                                            onChange={handleChange}
-                                        />
+                                    <div className='d-flex justify-content-between'>
+                                        <div className="col-5">
+                                            <label>Video course price</label>
+                                            <input
+                                                type="number"
+                                                placeholder="Enter video course price"
+                                                className="form-control"
+                                                name="video_course_price"
+                                                value={course.video_course_price}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+
+                                        <div className="col-5">
+                                            <label>Live training price</label>
+                                            <input
+                                                type="number"
+                                                placeholder="Enter live training price"
+                                                className="form-control"
+                                                name="video_course_price"
+                                                value={course.live_training_price}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
                                     </div>
 
                                     <div className="form-group">
@@ -239,14 +264,9 @@ const Edit = (data) => {
 
                                     <div className="form-group">
                                         <label>Categories</label>
-                                        <input
-                                            type="text"
-                                            placeholder="React, Ruby, Rails"
-                                            className="form-control"
-                                            name="category"
-                                            value={course.category}
-                                            onChange={handleChange}
-                                        />
+                                        <select className="form-control" placeholder="Category name" onChange={handleChange}>
+                                            {categories.map((category) => <option key={category.categoryName} selected={course.categoryName} data-id={category._id}>{category.categoryName}</option>)}
+                                        </select>
                                     </div>
 
                                     <div className="form-group">
