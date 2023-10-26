@@ -90,7 +90,7 @@ const CoursesSidebar = ({ setSidebarFilter }) => {
 				<div className="tagcloud">
 					{categories?.length > 0 ? categories.map((item, i) => (
 						<Link href="" legacyBehavior key={i}>
-							<a onClick={(e) => getCoursesByTagName(item.categoryId)}>{item.categoryName}
+							<a onClick={(e) => getCoursesByTagName(item.categoryName)}>{item.categoryName}
 								<span className="tag-link-count"> ({item.count})</span>
 							</a>
 						</Link>
