@@ -21,6 +21,7 @@ const Edit = (data) => {
     const { course: existingData, user } = data;
     const { token } = parseCookies()
     const [categories, setCategories] = useState([]);
+    const [selectedOption, setSelectedOption] = useState();
     // console.log(existingData)
 
     const INIT_COURSE = {
@@ -61,6 +62,8 @@ const Edit = (data) => {
 
     const handleChange = e => {
         const { name, value, files } = e.target;
+        console.log('e.target.value ', e.target.value);
+        setSelectedOption(e.target.value);
 
         if (name === 'profilePhoto') {
             const profilePhotoSize = files[0].size / 1024 / 1024
@@ -112,13 +115,15 @@ const Edit = (data) => {
             const url = `${axiosApi.baseUrl}/api/v1/courses/course/update`
             const {
                 id, title, overview, topics, live_training_price, video_course_price, published, duration,
-                lessons, categoryName, course_preview_video
+                lessons, course_preview_video
             } = course
 
             const payload = {
                 id, title, overview, topics, live_training_price, video_course_price, published, duration,
-                lessons, categoryName, profile, course_preview_video
+                lessons, profile, course_preview_video
             }
+
+            payload['categoryName'] = selectedOption;
 
             const response = await axios.post(url, payload, {
                 headers: { Authorization: token }
@@ -264,8 +269,8 @@ const Edit = (data) => {
 
                                     <div className="form-group">
                                         <label>Categories</label>
-                                        <select className="form-control" placeholder="Category name" onChange={handleChange}>
-                                            {categories.map((category) => <option key={category.categoryName} selected={course.categoryName} data-id={category._id}>{category.categoryName}</option>)}
+                                        <select className="form-control" placeholder="Category name" value={selectedOption} onChange={handleChange}>
+                                            {categories.map((category) => <option key={category.categoryName} value={category.categoryName} data-id={category._id}>{category.categoryName}</option>)}
                                         </select>
                                     </div>
 
