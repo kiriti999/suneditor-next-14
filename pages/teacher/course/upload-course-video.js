@@ -153,7 +153,7 @@ const UploadCourseVideo = ({ courses }) => {
                         <div className="col-md-8 col-lg-8">
                             <div className="border-box">
                                 <form onSubmit={handleSubmit}>
-                                {loading && <LoadingSpinner></LoadingSpinner>}
+                                {loading && <LoadingSpinner/>}
 
                                     <div className="form-group">
                                         <label>Select Course</label>

@@ -87,6 +87,8 @@ const LoginForm = () => {
 				{error}
 			</Alert>
 
+			{loading && <LoadingSpinner />}
+
 			<form onSubmit={handleSubmit}>
 				<div className="form-group">
 					<label>Email</label>

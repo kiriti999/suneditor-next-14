@@ -217,10 +217,8 @@ const Create = () => {
 
                         <div className="col-md-8 col-lg-8">
                             <div className="border-box">
-                                {imageUploading && (
-                                    <LoadingSpinner msg='Image imageUploading...'></LoadingSpinner>
-                                )}
-                                {loading && <LoadingSpinner></LoadingSpinner>}
+                                {imageUploading && <LoadingSpinner/>}
+                                {loading && <LoadingSpinner/>}
 
                                 <form onSubmit={handleSubmit(handleCourseSubmit)}>
                                     <div className="form-group">

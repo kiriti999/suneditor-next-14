@@ -64,6 +64,8 @@ const RegisterForm = () => {
 				{error}
 			</Alert>
 
+			{loading && <LoadingSpinner />}
+
 			<form onSubmit={handleSubmit(handleRegister)}>
 				<div className="form-group">
 					<label>Name <span className="required">*</span></label>
