@@ -20,7 +20,7 @@ const CoursesSidebar = ({ setSidebarFilter }) => {
 	}, [])
 
 	useEffect(() => {
-		const url = `${axiosApi.baseUrl}/api/v1/courses/categories`;
+		const url = `${axiosApi.baseUrl}/api/v1/courses/categories/categoryByCount`;
 		(async () => {
 			const response = await axios.get(url)
 			console.log('CoursesSidebar.js:: useEffect: categories:', response.data.categories);
