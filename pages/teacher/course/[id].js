@@ -21,8 +21,7 @@ const Edit = (data) => {
     const { course: existingData, user } = data;
     const { token } = parseCookies()
     const [categories, setCategories] = useState([]);
-    const [selectedOption, setSelectedOption] = useState();
-    // console.log(existingData)
+    const [selectedOption, setSelectedOption] = useState(existingData.categoryName);
 
     const INIT_COURSE = {
         id: existingData._id,

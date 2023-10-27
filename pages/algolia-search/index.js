@@ -1,14 +1,22 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import PageBanner from '@/components/Common/PageBanner';
 import Link from 'next/link';
-import CoursesSidebar from '@/components/Courses/CoursesSidebar';
 import { Context } from 'context/filterStore';
-import { kConverter } from '@/utils/cart/currencyHelper';
 import axios from 'axios';
 import { axiosApi } from '@/utils/baseUrl';
 import { algoliaSearchByKeyword } from '@/lib/algolia';
 import QueryPagination from '@/components/QueryPagination/QueryPagination';
+
+const overviewStyle = {
+	display: '-webkit-box',
+	// maxWidth: '200px',
+	'fontSize': '15px',
+	WebkitLineClamp: '4',
+	WebkitBoxOrient: 'vertical',
+	overflow: 'hidden'
+}
 
 const sortOption = [
 	{
@@ -34,6 +42,17 @@ const AlgoliaSearch = ({ data, pages }) => {
 	const { push, query } = useRouter();
 	const [sidebarFilter, setSidebarFilter] = useState([]);
 
+	const [newCourses, setNewCourses] = useState([]);
+
+	useEffect(() => {
+		const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=3`;
+		(async () => {
+			const response = await axios.get(url)
+			console.log('CoursesSidebar.js:: useEffect: courses:', response.data.courses);
+			setNewCourses(response.data?.courses);
+		})()
+	}, [])
+
 	// initial courses value is empty array
 	const [courses, setCourse] = useState(data)
 
@@ -51,16 +70,6 @@ const AlgoliaSearch = ({ data, pages }) => {
 			});
 			setCourse(data)
 		}
-		else {
-			if (sidebarFilter.length) {
-				setState({
-					...state,
-					courses: sidebarFilter,
-					filteredCourses: sidebarFilter,
-				});
-				setCourse(sidebarFilter)
-			}
-		}
 	}, [data]);
 
 	/**
@@ -75,121 +84,117 @@ const AlgoliaSearch = ({ data, pages }) => {
 		push({ query: { ...query, page: pageNumber } });
 	};
 
+	const createCourseCards = (course, live = true) => (
+		<div className="col-lg-3 col-md-6" key={course.title + (live ? 'live' : 'video')}>
+			<div className="single-courses-box">
+				<div className="courses-image">
+					<Link href="/courses/[id]" as={`/courses/${course._id}`}>
+						<a className="d-block image">
+							<img src={course.profilePhoto} alt={course.title} />
+						</a>
+					</Link>
+				</div>
+				<div className="courses-content">
+
+					<b title={course.title}>
+						<Link href="/courses/[id]" as={`/courses/${course._id}`}>
+							<a><h5>{course.title.slice(0, 45)}...</h5></a>
+						</Link>
+					</b>
+
+					<div className="course-author d-flex align-items-center mt-2">
+						<img src="/images/user1.svg" className="rounded-circle" alt="image" />
+						<span><small>Led by experts</small></span>
+					</div>
+
+					<div style={overviewStyle} dangerouslySetInnerHTML={{ __html: course?.overview?.slice(0, 100) }} ></div>
+
+					<ul className="courses-box-footer d-flex justify-content-between align-items-center pb-10">
+						<li>
+							<i className="flaticon-fi-sr-indian-rupee-sign"></i>{" "}
+							<b>₹ {(live ? course.live_training_price : course.video_course_price)}</b>
+						</li>
+					</ul>
+
+					<p>{live ? 'Live training' : 'Course videos'}</p>
+				</div>
+			</div>
+		</div>
+	)
+
 	return (
-		<div>
-			<PageBanner
-				pageTitle="Algolia Search"
-				homePageUrl="/"
-				homePageText="Home"
-				activePageText="Search"
-			/>
+		<>
+			<div>
+				<PageBanner
+					pageTitle="Courses"
+					homePageUrl="/"
+					homePageText="Home"
+					activePageText="Courses"
+				/>
 
-			<div className="courses-area ptb-70">
-				<div className="container">
-					<div className="row">
-						<div className="col-lg-8 col-md-12">
-							<div className="whatsnxt-grid-sorting row align-items-center">
-								<div className="col-lg-8 col-md-6 result-count">
-									<p>
-										We found{' '}
-										<span className="count">
-											{courses.length ? courses.length : 0}
-										</span>{' '}
-										courses available for you
-									</p>
-								</div>
+				<div className="courses-area pt-40 pb-70">
+					<div className="container">
+						<div className="row">
+							<div className="col-lg-12 col-md-12">
+								<div className="whatsnxt-grid-sorting row align-items-center">
+									<div className="col-lg-8 col-md-6 result-count">
+										<p>We found <span className="count">{courses.length ? courses.length : 0}</span> courses available for you</p>
+									</div>
 
-								<div className="col-lg-4 col-md-6 ordering">
-									<div className="select-box">
-										<select
-											onChange={(e) => sortCourses(e.target.value)}
-											className="form-control">
-											<option>Sort By</option>
-											{sortOption.map(({ value, text }) => (
-												<option
-													key={value}
-													value={value}
-													defaultValue={value === query.sort}>
-													{text}
-												</option>
-											))}
-										</select>
+									<div className="col-lg-4 col-md-6 ordering">
+										<div className="select-box">
+											<select onChange={(e) => sortCourses(e.target.value)} className="form-control">
+												<option>Sort By</option>
+												{sortOption.map(({ value, text }) => (
+													<option key={value} value={value} defaultValue={value === query.sort}>
+														{text}
+													</option>
+												))}
+											</select>
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<div className="row">
-								{courses?.length === 0 ? (
-									<h6>Empty</h6>
-								) : (
-									courses?.map((course) => (
-										<div className="col-lg-6 col-md-6" key={course.title}>
-											<div className="single-courses-box">
-												<div className="courses-image">
-													<Link
-														href="/courses/[id]"
-														as={`/courses/${course._id}`}>
-														<a className="d-block image">
-															<img src={course?.profilePhoto || '/images/courses/courses1.jpg'}
-																alt={course.title} />
-														</a>
-													</Link>
-													<div className="price shadow">
-														&#8377;{kConverter(course.price)}
-													</div>
-												</div>
-												<div className="courses-content">
-													<div className="course-author d-flex align-items-center">
-														<img src="/images/user1.jpg"
-															className="rounded-circle"
-															alt="image" />
-														<span>Alex Morgan</span>
-													</div>
+								<div className="row">
+									{courses ? courses.map(course => (
+										<>
+											{course.live_training_price && createCourseCards(course)}
+											{course.video_course_price && createCourseCards(course, false)}
+										</>
 
-													<h3 title={course.title}>
-														<Link
-															href="/courses/[id]"
-															as={`/courses/${course._id}`}>
-															<a>{course?.title?.slice(0, 20)}...</a>
-														</Link>
-													</h3>
+									)) : (
+										<h6>Empty</h6>
+									)}
 
-													<p>{course?.overview?.slice(0, 100)}...</p>
-													<ul className="courses-box-footer d-flex justify-content-between align-items-center">
-														<li>
-															<i className="flaticon-agenda"></i>
-															<Link
-																href="/courses/[id]"
-																as={`/courses/${course._id}`}>
-																<a>More details</a>
-															</Link>
-														</li>
-													</ul>
-												</div>
-											</div>
+								</div>
+
+								<div className="row">
+									<QueryPagination
+										totalPage={pages}
+										currentPage={query.page}
+										previousPageClickHandler={handlePagination}
+										nextPageClickHandler={handlePagination}
+										pageNumberClickHandler={handlePagination}
+									/>
+								</div>
+
+								<>
+									<h3 className="pt-10">New courses</h3>
+									<div className="col-lg-12 col-md-12">
+										<div className="row">
+											{newCourses.length && newCourses.map(course => (
+												createCourseCards(course)
+											))}
 										</div>
-									))
-								)}
-							</div>
+									</div>
+								</>
 
-							<div className="row">
-								<QueryPagination
-									totalPage={pages}
-									currentPage={query.page}
-									previousPageClickHandler={handlePagination}
-									nextPageClickHandler={handlePagination}
-									pageNumberClickHandler={handlePagination}
-								/>
 							</div>
-						</div>
-
-						<div className="col-lg-4 col-md-12">
-							<CoursesSidebar setSidebarFilter={setSidebarFilter} />
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
@@ -225,6 +230,9 @@ export const getServerSideProps = async ({ query }) => {
 		// sort course data or pass the same data
 		if (sortQuery) {
 			filteredCourses = courses.sort((a, b) => {
+				const totalPriceA = (a.video_course_price || 0) + (a.live_training_price || 0);
+				const totalPriceB = (b.video_course_price || 0) + (b.live_training_price || 0);
+
 				switch (sortQuery) {
 					case 'popularity':
 						let aCount = parseInt(a.popularity);
@@ -233,9 +241,9 @@ export const getServerSideProps = async ({ query }) => {
 					case 'latest':
 						return a.createdAt - b.createdAt;
 					case 'low-high':
-						return a.price - b.price;
+						return totalPriceA - totalPriceB;
 					case 'high-low':
-						return b.price - a.price;
+						return totalPriceB - totalPriceA;
 				}
 			});
 		} else {

@@ -42,7 +42,7 @@ const index = ({ courses }) => {
                         <div className="col-md-8 col-lg-8">
                             <div className="row">
                                 {courses.length ? courses.map(course => (
-                                    <CourseCard {...course} key={course._id} />
+                                    <CourseCard {...course} key={course._id} publish={true} />
                                 )) : (
                                     <div className="col-lg-12">
                                         <h3 className="empty-content">Empty</h3>

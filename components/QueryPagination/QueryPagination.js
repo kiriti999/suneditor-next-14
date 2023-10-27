@@ -53,7 +53,7 @@ const QueryPagination = ({
 	};
 
 	return (
-		<nav aria-label="Page navigation" className="pt-70">
+		<nav aria-label="Page navigation" className="pt-50">
 			<ul className="pagination">
 				<li className="page-item" onClick={handlePreviousPageClick}>
 					<span className="page-link" aria-label="Previous">

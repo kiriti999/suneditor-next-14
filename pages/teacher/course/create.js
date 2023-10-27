@@ -4,13 +4,11 @@ import axios from 'axios'
 import { Spinner } from 'reactstrap'
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
 import { axiosApi } from "@/utils/baseUrl";
 import { useForm, Controller } from "react-hook-form";
 import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
 import * as imageHelper from '@/utils/image-upload';
-import { indexPost } from '../../api/v1/courses/search/addToAlgolia';
 import 'suneditor/dist/css/suneditor.min.css';
 import WYSIWYGEditor from "../../../components/rich-text-editor";
 import LoadingSpinner from "@/utils/LoadingSpinner";
@@ -168,7 +166,6 @@ const Create = () => {
 
             if (response.status === 200) {
                 toast.success('New course successfully created.');
-                await indexPost(response.data);
             }
 
             setLoading(false)

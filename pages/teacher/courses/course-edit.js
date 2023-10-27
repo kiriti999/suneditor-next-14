@@ -5,10 +5,9 @@ import { axiosApi } from '@/utils/baseUrl';
 import Link from '@/utils/ActiveLink';
 import Modal from '@/components/Modal/Modal';
 import { toast } from 'react-toastify';
-const algoliasearch = require('algoliasearch');
+import { deleteIndex } from '../../api/v1/courses/search/algolia';
 
 const CourseEdit = ({ courses: data }) => {
-	const client = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_ADMIN_KEY)
 	const [courses, setCourses] = useState(data);
 	const [showModal, setShowModal] = useState(false);
 	const [deleteCourseIds, setDeleteCourseIds] = useState([]);
@@ -31,8 +30,7 @@ const CourseEdit = ({ courses: data }) => {
 
 			const successIds = result.map(({ status, value }) => {
 				if (status === 'fulfilled' && value.status === 200) {
-					const index = client.initIndex('courses');
-					index.deleteObject(value.data.id)
+					deleteIndex(value.data.id)
 					return value.config.url.replace(
 						`${axiosApi.baseUrl}/api/v1/courses/course/delete?id=`,
 						''
