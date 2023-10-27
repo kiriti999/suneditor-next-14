@@ -7,7 +7,8 @@ import { Context } from 'context/filterStore'
 import { useMemo } from 'react'
 import Fuse from 'fuse.js'
 import { useRouter } from 'next/router';
-const algoliasearch = require('algoliasearch');
+import { getAlgoliaIndex } from './getIndex';
+const index = getAlgoliaIndex();
 
 export const checkString = (keyword, course) => {
     let string =
@@ -166,8 +167,6 @@ export const getServerSideProps = async ({ query }) => {
 };
 
 async function searchIndexedPost(title) {
-    const client = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_ADMIN_KEY)
-    const index = client.initIndex('courses');
     if (title.length > 3) {
         // Search the index and print the results
         const hits = await index.search(title);

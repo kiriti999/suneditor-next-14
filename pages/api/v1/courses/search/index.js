@@ -1,5 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
-import algoliasearch from "algoliasearch/lite";
+import { getAlgoliaIndex } from './getAlgoliaIndex';
+const index = getAlgoliaIndex();
 
 /**
  * @desc This function is used to add algolia search to SearchForm component.
@@ -23,8 +24,6 @@ export default async (req) => {
  */
 async function searchIndexedPost(title) {
     console.log('')
-    const client = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_ADMIN_KEY)
-    const index = client.initIndex('courses');
     const results = await index.search(title);
     return results;
 }

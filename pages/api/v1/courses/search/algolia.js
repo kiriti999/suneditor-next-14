@@ -1,15 +1,9 @@
-/* eslint-disable import/no-anonymous-default-export */
-const algoliasearch = require('algoliasearch');
+import { getAlgoliaIndex } from './getAlgoliaIndex';
+const index = getAlgoliaIndex();
 
 export async function indexPost(post) {
     try {
         console.log('algolia.js:: indexPost:: post:', post);
-
-        // Connect and authenticate with your Algolia app
-        const client = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_ADMIN_KEY)
-
-        // Create a new index and add a record
-        const index = client.initIndex('courses')
 
         const record = {
             "objectID": post._id,
@@ -46,12 +40,6 @@ export async function indexPost(post) {
 export async function deleteIndex(id) {
     try {
         console.log('algolia.js:: deleteIndex:: id:', id);
-
-        // Connect and authenticate with your Algolia app
-        const client = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_ADMIN_KEY)
-
-        // Create a new index and add a record
-        const index = client.initIndex('courses');
 
         const algoliaResponse = await index.deleteObject(id);
         console.log('algolia.js:: deleteIndex:: algoliaResponse: ', algoliaResponse)
