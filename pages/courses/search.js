@@ -7,7 +7,7 @@ import { Context } from 'context/filterStore'
 import { useMemo } from 'react'
 import Fuse from 'fuse.js'
 import { useRouter } from 'next/router';
-import { getAlgoliaIndex } from './getIndex';
+import { getAlgoliaIndex } from '../../pages/api/v1/courses/search/getAlgoliaIndex';
 const index = getAlgoliaIndex();
 
 export const checkString = (keyword, course) => {
