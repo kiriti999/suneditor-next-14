@@ -308,7 +308,7 @@ const Details = () => {
 
 											{courseReviews.comments && courseReviews.comments.map((comment, i)=>{
 												return (
-													<div className="user-review">
+													<div className="user-review" key={i}>
 													<img
 														src="/images/user2.jpg"
 														alt="image"
