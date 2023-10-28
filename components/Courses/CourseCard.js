@@ -28,9 +28,9 @@ const CourseCard = ({
                 headers: { Authorization: token }
             });
             setStatePublished(value => !value);
-            if (response.status === 200 && statePublished) {
+            if (response.status === 200 && !statePublished) {
                 await indexPost(response.data);
-            } else if (response.status === 200 && !statePublished) {
+            } else if (response.status === 200 && statePublished) {
                 await deleteIndex(_id);
             }
         } catch (error) {
