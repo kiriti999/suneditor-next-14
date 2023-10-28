@@ -34,10 +34,15 @@ const index = ({ courses, total }) => {
 };
 
 index.getInitialProps = async () => {
-	console.log('axiosApi ', axiosApi);
-	const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=0`;
-	const response = await axios.get(url);
-	return response.data;
+	try {
+		console.log('axiosApi ', axiosApi);
+		const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=0`;
+		const response = await axios.get(url);
+		return response.data;
+	} catch (error) {
+		console.log('pages/index.js:: getInitialProps:: error: ', error);
+	}
+
 };
 
 export default index;

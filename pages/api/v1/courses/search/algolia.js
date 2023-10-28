@@ -15,7 +15,7 @@ export async function indexPost(post) {
             "purchaseCount": post.purchaseCount,
             "free": null,
             "rating": post.rating,
-            "published": true,
+            "published": post.published,
             "profilePhoto": post.profilePhoto,
             "coverPhoto": post.coverPhoto,
             "course_preview_img": null,

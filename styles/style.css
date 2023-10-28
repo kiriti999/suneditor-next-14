@@ -15824,3 +15824,9 @@ marquee {
 .no-click {
   pointer-events: none;
 }
+
+.align-nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}

@@ -27,12 +27,12 @@ const CourseCard = ({
             const response = await axios.post(url, payload, {
                 headers: { Authorization: token }
             });
+            setStatePublished(value => !value);
             if (response.status === 200 && statePublished) {
                 await indexPost(response.data);
             } else if (response.status === 200 && !statePublished) {
                 await deleteIndex(_id);
             }
-            setStatePublished(value => !value);
         } catch (error) {
             console.log('CourseCard.js:: handlePublish:: error:', error);
             alert('unable to publish');
