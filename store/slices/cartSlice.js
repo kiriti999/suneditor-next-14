@@ -11,7 +11,6 @@ const initialState = localCart ? JSON.parse(localCart) : {
 
 // COUNTER REDUCER
 export const cartReducer = (state = initialState, action) => {
-	console.log('action.data: ', action.data);
 
 	const isItemExistInCart = (id) => {
 		const result = state.cartItems.some((item) => item.id === id)

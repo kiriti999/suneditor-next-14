@@ -10,13 +10,31 @@ import { Tab, TabList, TabPanel } from 'react-tabs';
 import ReactStars from "react-rating-stars-component";
 import Router from 'next/router'
 import LoadingSpinner from "@/utils/LoadingSpinner";
+import { useForm } from 'react-hook-form';
 
 const Details = () => {
 	const { token } = parseCookies();
 	const [course, setCourse] = useState([]);
 	const [loading, setLoading] = useState([]);
-	const [price, setPrice] = useState([]);
+	const [courseReviews, setCourseReviews] = useState([]);
 	const [isRatingProvided, setIsRatingProvided] = useState(false);
+	const [isReviewProvided, setIsReviewProvided] = useState(false);
+
+	const { register, handleSubmit, reset, control, formState: { errors } } = useForm(
+		{
+			mode: "onBlur",
+			defaultValues: {
+				review: '',
+			},
+			resetOptions: {
+				keepDirtyValues: true, // user-interacted input will be retained
+				keepErrors: true, // input errors will be retained with value update
+			}
+		});
+
+	const validationOptions = {
+		review: { },
+	};
 
 
 	const getCourseById = async (id) => {
@@ -32,25 +50,40 @@ const Details = () => {
 		} finally {
 			setLoading(false)
 		}
-
 	}
+
+	const getCourseReviews = async (id) => {
+		try {
+			const url = `${axiosApi.baseUrl}/api/v1/courses/course/reviews?courseId=${id}`;
+			const response = await axios.get(url, {
+				headers: { Authorization: token }
+			});
+			setLoading(true);
+			return response.data;
+		} catch (error) {
+			console.log('error', error);
+		} finally {
+			setLoading(false)
+		}
+	}
+
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			const courseId = window.location.pathname.split('/')[2];
 			(async () => {
 				const course = await getCourseById(courseId);
-				// if (role === 'teacher') {
-				// 	// const course = await getCourseByIdForTeacher(courseId);
-				// }
-				// if (role !== 'teacher' && role !== 'admin') {
-				// 	// const course = await getCourseByIdForUser(courseId);
-				// }
 				console.log('pages/courses/[id].js:: useEffect:: course: ', course);
 				setCourse(course?.course);
+				const courseReviews = await getCourseReviews(courseId);
+				setCourseReviews(courseReviews);
 			})()
 		}
 	}, []);
+
+	useEffect(()=>{
+		console.log('courseReviews ', courseReviews)
+	},[courseReviews])
 
 	const ratingChanged = async (rating, courseId) => {
 		try {
@@ -63,11 +96,33 @@ const Details = () => {
 				headers: { Authorization: token }
 			});
 			console.log('response ', response);
-			setIsRatingProvided(true);
+			if(response.status === 200) {
+				setIsRatingProvided(true);
+			}
+
 		} catch (error) {
 			console.log('ratingChanged:: error: ', error);
 		}
 	};
+
+	const handleCourseReview = async(review)=>{
+		console.log('[id].js:: handleCourseReview::  review: ', review);
+		try {
+			const url = `${axiosApi.baseUrl}/api/v1/courses/course/review`;
+			const response = await axios.post(url, {review: review.review, courseId: course._id}, {
+				headers: { Authorization: token }
+			});
+			if(response.status === 200){
+				setIsReviewProvided(true);
+			}
+			setLoading(true);
+			return response.data;
+		} catch (error) {
+			console.log('error', error);
+		} finally {
+			setLoading(false)
+		}
+	}
 
 	return (
 		<div>
@@ -171,13 +226,17 @@ const Details = () => {
 									<TabPanel>
 										<div className="courses-reviews">
 											{/* <h3>Course Rating</h3> */}
-											<div className="rating">
-												<span className="bx bxs-star checked"></span>
-												<span className="bx bxs-star checked"></span>
-												<span className="bx bxs-star checked"></span>
-												<span className="bx bxs-star checked"></span>
-												<span className="bx bxs-star"></span>
-											</div>
+											<ReactStars
+												key={course._id}
+												count={5}
+												size={24}
+												edit={false}
+												emptyIcon={<i className="far fa-star"></i>}
+												halfIcon={<i className="fa fa-star-half-alt"></i>}
+												fullIcon={<i className="fa fa-star"></i>}
+												activeColor="#ffd700"
+												value={course.rating}
+											/>
 											<div className="rating-count">
 												<span>
 													4.1 average based on 4
@@ -244,150 +303,74 @@ const Details = () => {
 										</div>
 
 
-										{/*	<div className="courses-review-comments">
-											<h3>3 Reviews</h3>
-											<div className="user-review">
-												<img
-													src="/images/user1.jpg"
-													alt="image"
-												/>
+										<div className="courses-review-comments">
+											<h3>{courseReviews.comments?.length || 0} Reviews</h3>
 
-												<div className="review-rating">
-													<div className="review-stars">
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star checked"></i>
+											{courseReviews.comments && courseReviews.comments.map((comment, i)=>{
+												return (
+													<div className="user-review">
+													<img
+														src="/images/user2.jpg"
+														alt="image"
+													/>
+
+													<div className="review-rating">
+													<ReactStars
+														key={course._id}
+														count={5}
+														size={24}
+														edit={false}
+														emptyIcon={<i className="far fa-star"></i>}
+														halfIcon={<i className="fa fa-star-half-alt"></i>}
+														fullIcon={<i className="fa fa-star"></i>}
+														activeColor="#ffd700"
+														value={courseReviews.rating}
+													/>
+
+														<span className="d-inline-block">
+															Sarah Taylor
+														</span>
 													</div>
 
-													<span className="d-inline-block">
-														James Anderson
-													</span>
-												</div>
-
-												<span className="d-block sub-comment">
-													Excellent
-												</span>
-												<p>
-													Very well built theme,
-													couldn't be happier with it.
-													Can't wait for future
-													updates to see what else
-													they add in.
-												</p>
-											</div>
-
-											<div className="user-review">
-												<img
-													src="/images/user2.jpg"
-													alt="image"
-												/>
-
-												<div className="review-rating">
-													<div className="review-stars">
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star"></i>
-														<i className="bx bxs-star"></i>
-													</div>
-
-													<span className="d-inline-block">
-														Sarah Taylor
-													</span>
-												</div>
-
-												<span className="d-block sub-comment">
-													Video Quality!
-												</span>
-												<p>
-													Was really easy to implement
-													and they quickly answer my
-													additional questions!
-												</p>
-											</div>
-
-											<div className="user-review">
-												<img
-													src="/images/user3.jpg"
-													alt="image"
-												/>
-
-												<div className="review-rating">
-													<div className="review-stars">
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star checked"></i>
-													</div>
-
-													<span className="d-inline-block">
-														David Warner
-													</span>
-												</div>
-
-												<span className="d-block sub-comment">
-													Perfect Coding!
-												</span>
-												<p>
-													Stunning design, very
-													dedicated crew who welcome
-													new ideas suggested by
-													customers, nice support.
-												</p>
-											</div>
-
-											<div className="user-review">
-												<img
-													src="/images/user4.jpg"
-													alt="image"
-												/>
-
-												<div className="review-rating">
-													<div className="review-stars">
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star checked"></i>
-														<i className="bx bxs-star"></i>
-													</div>
-
-													<span className="d-inline-block">
-														King Kong
-													</span>
-												</div>
-
-												<span className="d-block sub-comment">
-													Perfect Video!
-												</span>
-												<p>
-													Stunning design, very
-													dedicated crew who welcome
-													new ideas suggested by
-													customers, nice support.
-												</p>
-											</div>
-										</div> */}
+													<p>
+														{comment}
+													</p>
+												</div> 
+												)
+											})}
+										</div>
 									</TabPanel>
 
 									<TabPanel>
-										{!isRatingProvided &&
+											{!isReviewProvided &&
 											<>
-												<h3>Please provide rating for the course</h3>
+												<h3>How would you rate this course?</h3>
+												<div className="mt-30 mb-0"><h5>Select rating</h5></div>
 												<ReactStars
 													key={course._id}
 													onChange={(e) => ratingChanged(e, course._id)}
 													count={5}
-													size={24}
+													size={34}
+													isHalf={true}
 													activeColor="#ffd700"
 													emptyIcon={<i className="far fa-star"></i>}
 													halfIcon={<i className="fa fa-star-half-alt"></i>}
 													fullIcon={<i className="fa fa-star"></i>}
 												/>
-											</>}
-										{isRatingProvided && <h3>Thank you!</h3>}
+												<br></br>
+											</>
+											}
+											{(isRatingProvided && !isReviewProvided) && <form onSubmit={handleSubmit(handleCourseReview)}>
+												<div className="mb-3">
+													<label className="form-label"><h3>Why did you leave this rating?</h3></label>
+													<textarea className="form-control" {...register('review', validationOptions.review)}
+													placeholder="Tell us about your own personal experience taking this course. Was it a good match for you?"
+													rows="5"></textarea>
+													<button type="submit" className="default-btn mt-20">Save and continue</button>
+												</div>
+											</form>}
+											
+										{isReviewProvided && <h3>Thank you!</h3>}
 									</TabPanel>
 
 

@@ -8,6 +8,7 @@ export const handleLogin = (token) => {
 }
 
 export const setLoginCookie = (token) => {
+    console.log('setting login cookie...', token)
     cookie.set('token', token, { sameSite: 'strict' });
 }
 
@@ -16,7 +17,7 @@ export const redirectUser = (ctx, location) => {
         ctx.res.writeHead(302, { Location: location });
         ctx.res.end()
     } else {
-        Router.push(location) // you there?
+        Router.push(location)
     }
 }
 
