@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Link from 'next/link';
 import { kConverter } from '../../utils/cart/currencyHelper';
-import { algoliaGetCategoryList, algoliaGetRecentEntries } from '@/lib/algolia';
-
 import axios from 'axios'
 import { axiosApi } from "@/utils/baseUrl";;
 
@@ -10,51 +8,36 @@ const CoursesSidebar = ({ setSidebarFilter }) => {
 	const [courses, setCourses] = useState([]);
 	const [categories, setCategories] = useState([]);
 
-	useEffect(() => {
+	async function getCourses(){
 		const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=3`;
-		(async () => {
 			const response = await axios.get(url)
 			console.log('CoursesSidebar.js:: useEffect: courses:', response.data.courses);
 			setCourses(response.data?.courses);
-		})()
-	}, [])
+	}
 
-	useEffect(() => {
+	async function getCategoryByCount(){
 		const url = `${axiosApi.baseUrl}/api/v1/courses/categories/categoryByCount`;
-		(async () => {
 			const response = await axios.get(url)
 			console.log('CoursesSidebar.js:: useEffect: categories:', response.data.categories);
 			setCategories(response.data?.categories);
-		})()
+	}
+
+	useEffect(() => {
+		getCourses();
+		getCategoryByCount();
 	}, [])
 
 	const getCoursesByTagName = async (tagName) => {
-		const url = `${axiosApi.baseUrl}/api/v1/courses/course?tagName=${tagName}`;
+		let url = `${axiosApi.baseUrl}/api/v1/courses/course?tagName=${tagName}`;
 		const response = await axios.get(url);
 		console.log('CoursesSidebar.js:: getCoursesByTagName:: response: ', response.data.courses);
 		setSidebarFilter(response.data.courses);
 	}
 
-
 	// const CoursesSidebar = () => {
 	// 	const [courses, setCourses] = useState([]);
 	// 	const [categories, setCategories] = useState([]);
-
-	// 	useEffect(() => {
-	// 		(async () => {
-	// 			const { hits } = await algoliaGetRecentEntries('courses', 3);
-	// 			setCourses(hits);
-	// 		})();
-	// 	}, []);
-
-	// 	useEffect(() => {
-	// 		(async () => {
-	// 			const result = await algoliaGetCategoryList('courses');
-	// 			setCategories(result);
-	// 		})();
-	// 	}, []);
-
-	// 	console.log('categories ', categories)
+	// }
 
 	return (
 		<div className="widget-area">
@@ -90,7 +73,9 @@ const CoursesSidebar = ({ setSidebarFilter }) => {
 				<div className="tagcloud">
 					{categories?.length > 0 ? categories.map((item, i) => (
 						<Link href="" legacyBehavior key={i}>
-							<a onClick={(e) => getCoursesByTagName(item.categoryName)}>{item.categoryName}
+							<a onClick={(e) => {
+								getCoursesByTagName(item.categoryName);
+							}}>{item.categoryName}
 								<span className="tag-link-count"> ({item.count})</span>
 							</a>
 						</Link>

@@ -7,7 +7,7 @@ const FilterStore = ({ children }) => {
     const [state, setState] = useState({
         courses: [],
         filteredCourses: [],
-        searchParam: '',
+        searchParam: ''
     });
 
 

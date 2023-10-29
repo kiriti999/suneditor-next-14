@@ -304,9 +304,9 @@ const Details = () => {
 
 
 										<div className="courses-review-comments">
-											<h3>{courseReviews.comments?.length || 0} Reviews</h3>
+											<h3>{courseReviews?.comments?.length || 0} Reviews</h3>
 
-											{courseReviews.comments && courseReviews.comments.map((comment, i)=>{
+											{courseReviews?.comments && courseReviews.comments.map((comment, i)=>{
 												return (
 													<div className="user-review" key={i}>
 													<img

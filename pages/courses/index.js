@@ -1,12 +1,10 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PageBanner from '../../components/Common/PageBanner';
 import Link from 'next/link';
 import axios from 'axios'
 import { axiosApi } from "@/utils/baseUrl";;
 import CoursesSidebar from '../../components/Courses/CoursesSidebar';
-import { kConverter } from '../../utils/cart/currencyHelper';
 import { Context } from 'context/filterStore';
-import { useMemo } from 'react';
 import Pagination from '../../components/pagination/pagination';
 
 const overviewStyle = {
@@ -18,16 +16,16 @@ const overviewStyle = {
     overflow: 'hidden'
 }
 
-const HomePageCourses = ({ data, totalRecords }) => {
+const CoursesPage = ({ data, totalRecords }) => {
     const [state, setState] = useContext(Context);
     const [sidebarFilter, setSidebarFilter] = useState([]);
 
     const setInitialData = () => {
-        setState({ ...state, courses: data, filteredCourses: data });
+        setState({ ...state, courses: data, filteredCourses: data, coursePageLoaded: true });
     }
 
     // initial courses value is empty array
-    const [courses, setCourse] = useState(data)
+    const [courses, setCourse] = useState(data);
     const [offset, setOffset] = useState(data.length);
 
     useEffect(() => {
@@ -44,10 +42,6 @@ const HomePageCourses = ({ data, totalRecords }) => {
             setCourse(sidebarFilter)
         }
     }, [sidebarFilter])
-
-    useEffect(() => {
-        console.log('courses ', courses);
-    }, [courses])
 
 
     const [recordsPerPage] = useState(6);
@@ -196,7 +190,7 @@ const HomePageCourses = ({ data, totalRecords }) => {
     )
 }
 
-HomePageCourses.getInitialProps = async () => {
+CoursesPage.getInitialProps = async () => {
 
     let courses;
     let coursesPopularity;
@@ -223,4 +217,4 @@ HomePageCourses.getInitialProps = async () => {
     }
 }
 
-export default HomePageCourses;
+export default CoursesPage;
