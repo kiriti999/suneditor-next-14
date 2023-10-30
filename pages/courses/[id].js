@@ -70,6 +70,7 @@ const Details = () => {
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
+			console.log('window.location ', window.location);
 			const courseId = window.location.pathname.split('/')[2];
 			(async () => {
 				const course = await getCourseById(courseId);
