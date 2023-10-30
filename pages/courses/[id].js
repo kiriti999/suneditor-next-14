@@ -71,7 +71,7 @@ const Details = () => {
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
-			console.log('window.location ', window.location);
+			console.log('token ', token);
 			const courseId = window.location.pathname.split('/')[2];
 			const parts = token.split('.');
 			const tokenPayload = JSON.parse(atob(parts[1]));
