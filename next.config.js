@@ -24,7 +24,7 @@ const nextConfig = nextTranslate({
     NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY: "dda22bdfa7963a4e2fec2f95b4846863"
   },
   compiler: {
-    removeConsole: process.env.NODE_ENV === "production"
+    // removeConsole: process.env.NODE_ENV === "production"
   },
 })
 
