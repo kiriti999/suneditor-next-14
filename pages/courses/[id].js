@@ -19,8 +19,9 @@ const Details = () => {
 	const [courseReviews, setCourseReviews] = useState([]);
 	const [isRatingProvided, setIsRatingProvided] = useState(false);
 	const [isReviewProvided, setIsReviewProvided] = useState(false);
+	const [rating, setRating] = useState(0);
 
-	const { register, handleSubmit, reset, control, formState: { errors } } = useForm(
+	const { register, handleSubmit, reset, control, setValue, formState: { errors } } = useForm(
 		{
 			mode: "onBlur",
 			defaultValues: {
@@ -72,12 +73,26 @@ const Details = () => {
 		if (typeof window !== "undefined") {
 			console.log('window.location ', window.location);
 			const courseId = window.location.pathname.split('/')[2];
+			const parts = token.split('.');
+			const tokenPayload = JSON.parse(atob(parts[1]));
+			const { userId } = tokenPayload;
+
 			(async () => {
 				const course = await getCourseById(courseId);
 				console.log('pages/courses/[id].js:: useEffect:: course: ', course);
 				setCourse(course?.course);
 				const courseReviews = await getCourseReviews(courseId);
 				setCourseReviews(courseReviews);
+
+				for (let i = 0; i < courseReviews.length; i++) {
+					const review = courseReviews[i];
+					if (review.userId === userId) {
+						setRating(review.rating);
+						setIsRatingProvided(true);
+						setValue('review', review.comments);
+						break;
+					}
+				}
 			})()
 		}
 	}, []);
@@ -92,6 +107,7 @@ const Details = () => {
 				Router.push('/authentication')
 			}
 			console.log('ratingChanged:: rating: ', rating);
+			setRating(rating);
 			const url = `${axiosApi.baseUrl}/api/v1/courses/course/rating`;
 			const response = await axios.post(url, { rating, courseId }, {
 				headers: { Authorization: token }
@@ -124,6 +140,17 @@ const Details = () => {
 			setLoading(false)
 		}
 	}
+
+	const stars5Count = !Array.isArray(course) ? course.rateArray.filter(item => item === 5).length : 0;
+	const stars5Ratio = courseReviews.length > 0 ? stars5Count / courseReviews.length : 0;
+	const stars4Count = !Array.isArray(course) ? course.rateArray.filter(item => item === 4).length : 0;
+	const stars4Ratio = courseReviews.length > 0 ? stars4Count / courseReviews.length : 0;
+	const stars3Count = !Array.isArray(course) ? course.rateArray.filter(item => item === 3).length : 0;
+	const stars3Ratio = courseReviews.length > 0 ? stars3Count / courseReviews.length : 0;
+	const stars2Count = !Array.isArray(course) ? course.rateArray.filter(item => item === 2).length : 0;
+	const stars2Ratio = courseReviews.length > 0 ? stars2Count / courseReviews.length : 0;
+	const stars1Count = !Array.isArray(course) ? course.rateArray.filter(item => item === 1).length : 0;
+	const stars1Ratio = courseReviews.length > 0 ? stars1Count / courseReviews.length : 0;
 
 	return (
 		<div>
@@ -240,8 +267,7 @@ const Details = () => {
 											/>
 											<div className="rating-count">
 												<span>
-													4.1 average based on 4
-													reviews.
+													{course.rating} average based on {courseReviews.length} reviews.
 												</span>
 											</div>
 											<div className="row">
@@ -250,64 +276,64 @@ const Details = () => {
 												</div>
 												<div className="middle">
 													<div className="bar-container">
-														<div className="bar-5"></div>
+														<div className="bar-5" style={{width: (stars5Ratio * 100).toString() + '%'}}></div>
 													</div>
 												</div>
 												<div className="side right">
-													<div>02</div>
+													<div>{stars5Count}</div>
 												</div>
 												<div className="side">
 													<div>4 star</div>
 												</div>
 												<div className="middle">
 													<div className="bar-container">
-														<div className="bar-4"></div>
+														<div className="bar-4" style={{width: (stars4Ratio * 100).toString() + '%'}}></div>
 													</div>
 												</div>
 												<div className="side right">
-													<div>03</div>
+													<div>{stars4Count}</div>
 												</div>
 												<div className="side">
 													<div>3 star</div>
 												</div>
 												<div className="middle">
 													<div className="bar-container">
-														<div className="bar-3"></div>
+														<div className="bar-3" style={{width: (stars3Ratio * 100).toString() + '%'}}></div>
 													</div>
 												</div>
 												<div className="side right">
-													<div>04</div>
+													<div>{stars3Count}</div>
 												</div>
 												<div className="side">
 													<div>2 star</div>
 												</div>
 												<div className="middle">
 													<div className="bar-container">
-														<div className="bar-2"></div>
+														<div className="bar-2" style={{width: (stars2Ratio * 100).toString() + '%'}}></div>
 													</div>
 												</div>
 												<div className="side right">
-													<div>05</div>
+													<div>{stars2Count}</div>
 												</div>
 												<div className="side">
 													<div>1 star</div>
 												</div>
 												<div className="middle">
 													<div className="bar-container">
-														<div className="bar-1"></div>
+													<div className="bar-1" style={{width: (stars1Ratio * 100).toString() + '%'}}></div>
 													</div>
 												</div>
 												<div className="side right">
-													<div>00</div>
+													<div>{stars1Count}</div>
 												</div>
 											</div>
 										</div>
 
 
 										<div className="courses-review-comments">
-											<h3>{courseReviews?.comments?.length || 0} Reviews</h3>
+											<h3>{courseReviews?.length || 0} Reviews</h3>
 
-											{courseReviews?.comments && courseReviews.comments.map((comment, i)=>{
+											{courseReviews && courseReviews.map((review, i)=>{
 												return (
 													<div className="user-review" key={i}>
 													<img
@@ -325,7 +351,7 @@ const Details = () => {
 														halfIcon={<i className="fa fa-star-half-alt"></i>}
 														fullIcon={<i className="fa fa-star"></i>}
 														activeColor="#ffd700"
-														value={courseReviews.rating}
+														value={review.rating}
 													/>
 
 														<span className="d-inline-block">
@@ -334,7 +360,7 @@ const Details = () => {
 													</div>
 
 													<p>
-														{comment}
+														{review.comments}
 													</p>
 												</div> 
 												)
@@ -357,6 +383,7 @@ const Details = () => {
 													emptyIcon={<i className="far fa-star"></i>}
 													halfIcon={<i className="fa fa-star-half-alt"></i>}
 													fullIcon={<i className="fa fa-star"></i>}
+													value={rating}
 												/>
 												<br></br>
 											</>
