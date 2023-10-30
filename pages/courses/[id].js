@@ -141,6 +141,11 @@ const Details = () => {
 		}
 	}
 
+	const editRating = (event) => {
+		event.preventDefault();
+		setIsReviewProvided(false);
+	}
+
 	const stars5Count = !Array.isArray(course) ? course.rateArray.filter(item => item === 5).length : 0;
 	const stars5Ratio = courseReviews.length > 0 ? stars5Count / courseReviews.length : 0;
 	const stars4Count = !Array.isArray(course) ? course.rateArray.filter(item => item === 4).length : 0;
@@ -398,7 +403,7 @@ const Details = () => {
 												</div>
 											</form>}
 											
-										{isReviewProvided && <h3>Thank you!</h3>}
+										{isReviewProvided && <h4>You have rated (<a href="" onClick={editRating}>Edit</a>)</h4>}
 									</TabPanel>
 
 
