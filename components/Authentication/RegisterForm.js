@@ -29,10 +29,16 @@ const RegisterForm = () => {
 
 	const validationOptions = {
 		name: { required: "Name is required" },
-		email: { required: "Email is required" },
+		email: {
+			required: "Email is required", pattern: {
+				value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
+				message: "Email is not valid.",
+			},
+		},
 		password: {
 			required: `The password should be at least eight characters long. 
-        To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ &` }
+        To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ &`, minLength: 8
+		}
 	};
 
 	const handleRegister = async (payload, e) => {
