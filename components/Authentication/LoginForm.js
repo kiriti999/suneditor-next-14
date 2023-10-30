@@ -4,7 +4,6 @@ import Link from "next/link";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
-import catchErrors from "../../utils/catchErrors";
 import { axiosApi } from "../../utils/baseUrl";
 import { handleLogin, fetchUser } from "../../utils/auth";
 import Router from 'next/router'

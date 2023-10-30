@@ -23,10 +23,15 @@ const ContactForm = () => {
 
 	const validationOptions = {
 		name: { required: "Name is required" },
-		email: { required: "Email is required" },
+		email: {
+			required: "Email is required", pattern: {
+				value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
+				message: "Email is not valid.",
+			},
+		},
 		number: { required: "Number is required" },
 		subject: { required: "Subject is required" },
-		text: { required: "Text is required" },
+		text: { required: "Text is required", maxLength: 800 },
 	};
 
 	const onSubmit = async (contact) => {
@@ -57,6 +62,7 @@ const ContactForm = () => {
 								placeholder="Your name"
 								{...register('name', validationOptions.name)}
 							/>
+							{errors.name && <p>{errors.name.message}</p>}
 						</div>
 					</div>
 
@@ -67,6 +73,7 @@ const ContactForm = () => {
 								placeholder="Your email address"
 								{...register('email', validationOptions.email)}
 							/>
+							{errors.email && <p>{errors.email.message}</p>}
 						</div>
 					</div>
 
@@ -77,6 +84,7 @@ const ContactForm = () => {
 								placeholder="Your number"
 								{...register('number', validationOptions.number)}
 							/>
+							{errors.number && <p>{errors.number.message}</p>}
 						</div>
 					</div>
 
@@ -87,6 +95,7 @@ const ContactForm = () => {
 								placeholder="Your Subject"
 								{...register('subject', validationOptions.subject)}
 							/>
+							{errors.subject && <p>{errors.subject.message}</p>}
 						</div>
 					</div>
 
@@ -99,6 +108,7 @@ const ContactForm = () => {
 								placeholder="Write your message..."
 								{...register('text', validationOptions.text)}
 							/>
+							{errors.text && <p>{errors.text.message}</p>}
 						</div>
 					</div>
 

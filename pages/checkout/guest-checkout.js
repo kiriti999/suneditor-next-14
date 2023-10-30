@@ -47,8 +47,14 @@ export const GuestCheckout = () => {
 
     const validationOptions = {
         name: { required: "Name is required" },
-        email: { required: "Email is required" },
+        email: {
+            required: "Email is required", pattern: {
+                value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
+                message: "Email is not valid.",
+            },
+        },
         password: {
+            minLength: 8,
             required: `The password should be at least eight characters long. 
         To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ &` }
     };
