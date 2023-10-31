@@ -36,7 +36,7 @@ const Details = () => {
 		});
 
 	const validationOptions = {
-		review: { },
+		review: {},
 	};
 
 
@@ -73,8 +73,16 @@ const Details = () => {
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
-			console.log('window.location ', window.location);
+			let userId;
 			const courseId = window.location.pathname.split('/')[2];
+<<<<<<< HEAD
+=======
+			if (token) {
+				const parts = token.split('.');
+				const tokenPayload = JSON.parse(atob(parts[1]));
+				userId = tokenPayload;
+			}
+>>>>>>> a73a30419b515a4947785185f7474a67bbaef499
 
 			(async () => {
 				const course = await getCourseById(courseId);
@@ -83,6 +91,7 @@ const Details = () => {
 				const courseReviews = await getCourseReviews(courseId);
 				setCourseReviews(courseReviews);
 
+<<<<<<< HEAD
 				if (!token) return;
 
 				const parts = token.split('.');
@@ -97,15 +106,26 @@ const Details = () => {
 						setIsRatingProvided(true);
 						setValue('review', review.comments);
 						break;
+=======
+				if (token) {
+					for (let i = 0; i < courseReviews.length; i++) {
+						const review = courseReviews[i];
+						if (review.userId === userId) {
+							setRating(review.rating);
+							setIsRatingProvided(true);
+							setValue('review', review.comments);
+							break;
+						}
+>>>>>>> a73a30419b515a4947785185f7474a67bbaef499
 					}
 				}
 			})()
 		}
 	}, []);
 
-	useEffect(()=>{
+	useEffect(() => {
 		console.log('courseReviews ', courseReviews)
-	},[courseReviews])
+	}, [courseReviews])
 
 	const ratingChanged = async (rating, courseId) => {
 		try {
@@ -119,10 +139,14 @@ const Details = () => {
 				headers: { Authorization: token }
 			});
 			console.log('response ', response);
+<<<<<<< HEAD
 			if(response.status === 200) {
 				const copy = [...courseReviews];
 				copy[commentIndex].rating = rating;
 				setCourseReviews(copy);
+=======
+			if (response.status === 200) {
+>>>>>>> a73a30419b515a4947785185f7474a67bbaef499
 				setIsRatingProvided(true);
 			}
 
@@ -131,11 +155,11 @@ const Details = () => {
 		}
 	};
 
-	const handleCourseReview = async(review)=>{
+	const handleCourseReview = async (review) => {
 		console.log('[id].js:: handleCourseReview::  review: ', review);
 		try {
 			const url = `${axiosApi.baseUrl}/api/v1/courses/course/review`;
-			const response = await axios.post(url, {review: review.review, courseId: course._id}, {
+			const response = await axios.post(url, { review: review.review, courseId: course._id }, {
 				headers: { Authorization: token }
 			});
 			if(response.status === 200){
@@ -297,7 +321,7 @@ const Details = () => {
 												</div>
 												<div className="middle">
 													<div className="bar-container">
-														<div className="bar-5" style={{width: (stars5Ratio * 100).toString() + '%'}}></div>
+														<div className="bar-5" style={{ width: (stars5Ratio * 100).toString() + '%' }}></div>
 													</div>
 												</div>
 												<div className="side right">
@@ -308,7 +332,7 @@ const Details = () => {
 												</div>
 												<div className="middle">
 													<div className="bar-container">
-														<div className="bar-4" style={{width: (stars4Ratio * 100).toString() + '%'}}></div>
+														<div className="bar-4" style={{ width: (stars4Ratio * 100).toString() + '%' }}></div>
 													</div>
 												</div>
 												<div className="side right">
@@ -319,7 +343,7 @@ const Details = () => {
 												</div>
 												<div className="middle">
 													<div className="bar-container">
-														<div className="bar-3" style={{width: (stars3Ratio * 100).toString() + '%'}}></div>
+														<div className="bar-3" style={{ width: (stars3Ratio * 100).toString() + '%' }}></div>
 													</div>
 												</div>
 												<div className="side right">
@@ -330,7 +354,7 @@ const Details = () => {
 												</div>
 												<div className="middle">
 													<div className="bar-container">
-														<div className="bar-2" style={{width: (stars2Ratio * 100).toString() + '%'}}></div>
+														<div className="bar-2" style={{ width: (stars2Ratio * 100).toString() + '%' }}></div>
 													</div>
 												</div>
 												<div className="side right">
@@ -341,7 +365,7 @@ const Details = () => {
 												</div>
 												<div className="middle">
 													<div className="bar-container">
-													<div className="bar-1" style={{width: (stars1Ratio * 100).toString() + '%'}}></div>
+														<div className="bar-1" style={{ width: (stars1Ratio * 100).toString() + '%' }}></div>
 													</div>
 												</div>
 												<div className="side right">
@@ -354,6 +378,7 @@ const Details = () => {
 										<div className="courses-review-comments">
 											<h3>{courseReviews?.length || 0} Reviews</h3>
 
+<<<<<<< HEAD
 											{courseReviews && courseReviews.map((review, i)=>{
 												if (i >= displayLength) return '';
 												return (
@@ -379,11 +404,38 @@ const Details = () => {
 															{review.user[0].name}
 														</span>
 													</div>
+=======
+											{courseReviews && courseReviews.map((review, i) => {
+												return (
+													<div className="user-review" key={i}>
+														<img
+															src="/images/user2.jpg"
+															alt="image"
+														/>
 
-													<p>
-														{review.comments}
-													</p>
-												</div> 
+														<div className="review-rating">
+															<ReactStars
+																key={course._id}
+																count={5}
+																size={24}
+																edit={false}
+																emptyIcon={<i className="far fa-star"></i>}
+																halfIcon={<i className="fa fa-star-half-alt"></i>}
+																fullIcon={<i className="fa fa-star"></i>}
+																activeColor="#ffd700"
+																value={review.rating}
+															/>
+
+															<span className="d-inline-block">
+																Sarah Taylor
+															</span>
+														</div>
+>>>>>>> a73a30419b515a4947785185f7474a67bbaef499
+
+														<p>
+															{review.comments}
+														</p>
+													</div>
 												)
 											})}
 
@@ -392,7 +444,7 @@ const Details = () => {
 									</TabPanel>
 
 									<TabPanel>
-											{!isReviewProvided &&
+										{!isReviewProvided &&
 											<>
 												<h3>How would you rate this course?</h3>
 												<div className="mt-30 mb-0"><h5>Select rating</h5></div>
@@ -410,17 +462,17 @@ const Details = () => {
 												/>
 												<br></br>
 											</>
-											}
-											{(isRatingProvided && !isReviewProvided) && <form onSubmit={handleSubmit(handleCourseReview)}>
-												<div className="mb-3">
-													<label className="form-label"><h3>Why did you leave this rating?</h3></label>
-													<textarea className="form-control" {...register('review', validationOptions.review)}
+										}
+										{(isRatingProvided && !isReviewProvided) && <form onSubmit={handleSubmit(handleCourseReview)}>
+											<div className="mb-3">
+												<label className="form-label"><h3>Why did you leave this rating?</h3></label>
+												<textarea className="form-control" {...register('review', validationOptions.review)}
 													placeholder="Tell us about your own personal experience taking this course. Was it a good match for you?"
 													rows="5"></textarea>
-													<button type="submit" className="default-btn mt-20">Save and continue</button>
-												</div>
-											</form>}
-											
+												<button type="submit" className="default-btn mt-20">Save and continue</button>
+											</div>
+										</form>}
+
 										{isReviewProvided && <h4>You have rated (<a href="" onClick={editRating}>Edit</a>)</h4>}
 									</TabPanel>
 
