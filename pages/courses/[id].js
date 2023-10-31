@@ -75,14 +75,6 @@ const Details = () => {
 		if (typeof window !== "undefined") {
 			let userId;
 			const courseId = window.location.pathname.split('/')[2];
-<<<<<<< HEAD
-=======
-			if (token) {
-				const parts = token.split('.');
-				const tokenPayload = JSON.parse(atob(parts[1]));
-				userId = tokenPayload;
-			}
->>>>>>> a73a30419b515a4947785185f7474a67bbaef499
 
 			(async () => {
 				const course = await getCourseById(courseId);
@@ -91,7 +83,6 @@ const Details = () => {
 				const courseReviews = await getCourseReviews(courseId);
 				setCourseReviews(courseReviews);
 
-<<<<<<< HEAD
 				if (!token) return;
 
 				const parts = token.split('.');
@@ -106,17 +97,6 @@ const Details = () => {
 						setIsRatingProvided(true);
 						setValue('review', review.comments);
 						break;
-=======
-				if (token) {
-					for (let i = 0; i < courseReviews.length; i++) {
-						const review = courseReviews[i];
-						if (review.userId === userId) {
-							setRating(review.rating);
-							setIsRatingProvided(true);
-							setValue('review', review.comments);
-							break;
-						}
->>>>>>> a73a30419b515a4947785185f7474a67bbaef499
 					}
 				}
 			})()
@@ -139,14 +119,10 @@ const Details = () => {
 				headers: { Authorization: token }
 			});
 			console.log('response ', response);
-<<<<<<< HEAD
 			if(response.status === 200) {
 				const copy = [...courseReviews];
 				copy[commentIndex].rating = rating;
 				setCourseReviews(copy);
-=======
-			if (response.status === 200) {
->>>>>>> a73a30419b515a4947785185f7474a67bbaef499
 				setIsRatingProvided(true);
 			}
 
@@ -312,7 +288,7 @@ const Details = () => {
 											/>
 											<div className="rating-count">
 												<span>
-													{course.rating} average based on {courseReviews.length} reviews.
+													{course.rating.toFixed(2)} average based on {courseReviews.length} reviews.
 												</span>
 											</div>
 											<div className="row">
@@ -378,7 +354,6 @@ const Details = () => {
 										<div className="courses-review-comments">
 											<h3>{courseReviews?.length || 0} Reviews</h3>
 
-<<<<<<< HEAD
 											{courseReviews && courseReviews.map((review, i)=>{
 												if (i >= displayLength) return '';
 												return (
@@ -404,33 +379,6 @@ const Details = () => {
 															{review.user[0].name}
 														</span>
 													</div>
-=======
-											{courseReviews && courseReviews.map((review, i) => {
-												return (
-													<div className="user-review" key={i}>
-														<img
-															src="/images/user2.jpg"
-															alt="image"
-														/>
-
-														<div className="review-rating">
-															<ReactStars
-																key={course._id}
-																count={5}
-																size={24}
-																edit={false}
-																emptyIcon={<i className="far fa-star"></i>}
-																halfIcon={<i className="fa fa-star-half-alt"></i>}
-																fullIcon={<i className="fa fa-star"></i>}
-																activeColor="#ffd700"
-																value={review.rating}
-															/>
-
-															<span className="d-inline-block">
-																Sarah Taylor
-															</span>
-														</div>
->>>>>>> a73a30419b515a4947785185f7474a67bbaef499
 
 														<p>
 															{review.comments}
