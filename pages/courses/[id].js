@@ -288,7 +288,7 @@ const Details = () => {
 											/>
 											<div className="rating-count">
 												<span>
-													{course.rating.toFixed(2)} average based on {courseReviews.length} reviews.
+													{parseInt(course.rating).toFixed(1)} average based on {courseReviews.length} reviews.
 												</span>
 											</div>
 											<div className="row">

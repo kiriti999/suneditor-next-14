@@ -372,7 +372,7 @@ a:hover {
 .default-btn {
   border: none;
   position: relative;
-  display: inline-block;
+  display: flex;
   text-align: center;
   overflow: hidden;
   z-index: 1;
@@ -382,10 +382,15 @@ a:hover {
   border-radius: 5px;
   font-weight: 700;
   font-size: 16px;
-  padding-left: 55px;
+  padding-left: 30px;
   padding-right: 30px;
   padding-top: 11px;
   padding-bottom: 11px;
+}
+
+.default-btn > i {
+  align-self: center;
+  padding-right: 8px;
 }
 
 .default-btn span {
@@ -399,12 +404,6 @@ a:hover {
   transform: translate(-50%, -50%);
   z-index: -1;
   border-radius: 5px;
-}
-
-.default-btn i {
-  position: absolute;
-  left: 30px;
-  top: 10px;
 }
 
 .default-btn:hover {
@@ -4725,7 +4724,7 @@ Courses Details Area CSS
   position: relative;
   left: 0;
   top: 2px;
-  margin-right: 8px;
+  /* margin-right: 8px; */
   line-height: 1;
   font-weight: normal;
   font-size: 20px;
