@@ -4546,7 +4546,7 @@ Courses Details Area CSS
   position: relative;
 }
 
-.courses-details-desc .react-tabs__tab-panel .courses-review-comments .user-review img {
+.courses-details-desc .react-tabs__tab-panel .courses-review-comments .user-review .review-profile {
   position: absolute;
   left: 0;
   top: 20px;
@@ -15833,4 +15833,25 @@ marquee {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
+}
+
+.review-profile {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-avatar {
+  margin-left: 0;
+  order: 1;
+}
+
+.review-avatar-circle {
+  align-items: center;
+  display: inline-flex;
+  background-color: #00d53b;
+  object-fit: cover;
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  justify-content: center;
 }

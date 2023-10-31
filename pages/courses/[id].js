@@ -20,6 +20,8 @@ const Details = () => {
 	const [isRatingProvided, setIsRatingProvided] = useState(false);
 	const [isReviewProvided, setIsReviewProvided] = useState(false);
 	const [rating, setRating] = useState(0);
+	const [displayLength, setDisplayLength] = useState(5);
+	const [commentIndex, setCommentIndex] = useState(-1);
 
 	const { register, handleSubmit, reset, control, setValue, formState: { errors } } = useForm(
 		{
@@ -73,9 +75,6 @@ const Details = () => {
 		if (typeof window !== "undefined") {
 			console.log('window.location ', window.location);
 			const courseId = window.location.pathname.split('/')[2];
-			const parts = token.split('.');
-			const tokenPayload = JSON.parse(atob(parts[1]));
-			const { userId } = tokenPayload;
 
 			(async () => {
 				const course = await getCourseById(courseId);
@@ -84,9 +83,16 @@ const Details = () => {
 				const courseReviews = await getCourseReviews(courseId);
 				setCourseReviews(courseReviews);
 
+				if (!token) return;
+
+				const parts = token.split('.');
+				const tokenPayload = JSON.parse(atob(parts[1]));
+				const { userId } = tokenPayload;
+
 				for (let i = 0; i < courseReviews.length; i++) {
 					const review = courseReviews[i];
 					if (review.userId === userId) {
+						setCommentIndex(i);
 						setRating(review.rating);
 						setIsRatingProvided(true);
 						setValue('review', review.comments);
@@ -114,6 +120,9 @@ const Details = () => {
 			});
 			console.log('response ', response);
 			if(response.status === 200) {
+				const copy = [...courseReviews];
+				copy[commentIndex].rating = rating;
+				setCourseReviews(copy);
 				setIsRatingProvided(true);
 			}
 
@@ -130,6 +139,9 @@ const Details = () => {
 				headers: { Authorization: token }
 			});
 			if(response.status === 200){
+				const copy = [...courseReviews];
+				copy[commentIndex].comments = review.review;
+				setCourseReviews(copy);
 				setIsReviewProvided(true);
 			}
 			setLoading(true);
@@ -144,6 +156,10 @@ const Details = () => {
 	const editRating = (event) => {
 		event.preventDefault();
 		setIsReviewProvided(false);
+	}
+
+	const loadMore = () => {
+		setDisplayLength(length => length + 5);
 	}
 
 	const stars5Count = !Array.isArray(course) ? course.rateArray.filter(item => item === 5).length : 0;
@@ -339,12 +355,12 @@ const Details = () => {
 											<h3>{courseReviews?.length || 0} Reviews</h3>
 
 											{courseReviews && courseReviews.map((review, i)=>{
+												if (i >= displayLength) return '';
 												return (
 													<div className="user-review" key={i}>
-													<img
-														src="/images/user2.jpg"
-														alt="image"
-													/>
+													<div className="review-profile">
+														<div className="review-avatar review-avatar-circle">{review.user[0].name.charAt(0).toUpperCase()}</div>
+													</div>
 
 													<div className="review-rating">
 													<ReactStars
@@ -360,7 +376,7 @@ const Details = () => {
 													/>
 
 														<span className="d-inline-block">
-															Sarah Taylor
+															{review.user[0].name}
 														</span>
 													</div>
 
@@ -370,6 +386,8 @@ const Details = () => {
 												</div> 
 												)
 											})}
+
+											<button type="button" className="default-btn" onClick={loadMore}>Load More</button>
 										</div>
 									</TabPanel>
 
