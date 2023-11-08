@@ -4543,6 +4543,7 @@ Courses Details Area CSS
   border-bottom: 1px solid #f3f3f3;
   padding: 20px 0 20px 110px;
   position: relative;
+  margin-bottom: 20px;
 }
 
 .courses-details-desc .react-tabs__tab-panel .courses-review-comments .user-review .review-profile {
@@ -15841,6 +15842,7 @@ marquee {
 
 .review-avatar {
   margin-left: 0;
+  margin-right: 1.6rem;
   order: 1;
 }
 
@@ -15849,8 +15851,8 @@ marquee {
   display: inline-flex;
   background-color: #00d53b;
   object-fit: cover;
-  height: 90px;
-  width: 90px;
+  height: 3em;
+  width: 3em;
   border-radius: 50%;
   justify-content: center;
 }
