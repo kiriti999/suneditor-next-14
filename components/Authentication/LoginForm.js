@@ -73,7 +73,7 @@ const LoginForm = () => {
 			Router.push('/')
 		} catch (error) {
 			console.log('error ', error);
-			alert('Unable to login')
+			setError('Unable to login');
 		} finally {
 			setLoading(false);
 		}
@@ -82,7 +82,7 @@ const LoginForm = () => {
 		<div className="login-form">
 			<h2>Login</h2>
 
-			<Alert color="danger" isOpen={error ? true : false}>
+			<Alert color="danger" isOpen={error !== ''}>
 				{error}
 			</Alert>
 

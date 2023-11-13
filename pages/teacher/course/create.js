@@ -297,7 +297,7 @@ const Create = () => {
                                         </select>
                                     </div>
 
-                                    { /*
+                                    {/*
                                         <div className="form-group">
                                             <label>Course Profile (<i>Image less than 2 MB & size 750x500</i>)</label>
                                             <br />
@@ -310,7 +310,7 @@ const Create = () => {
                                             <br />
                                             <img src={profilePreview} className="mxw-200 mt-20" />
                                         </div>
-                                    */ }
+                                    */}
 
                                     <div className="form-group">
                                         <label>Course Preview Video URL</label>
