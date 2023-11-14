@@ -57,6 +57,7 @@ const RegisterForm = () => {
 			Router.push('/')
 		} catch (error) {
 			console.log('RegisterForm.js:: error: ', error);
+			if (error.response) setError(error.response.data);
 			// catchErrors(error, setError);
 		} finally {
 			setLoading(false);
@@ -66,7 +67,7 @@ const RegisterForm = () => {
 	return (
 		<div className="register-form">
 			<h2>Register</h2>
-			<Alert color="danger" isOpen={error ? true : false}>
+			<Alert color="danger" isOpen={error !== ''}>
 				{error}
 			</Alert>
 
