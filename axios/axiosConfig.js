@@ -5,6 +5,9 @@ import { axiosApi } from '../utils/baseUrl'
 export const api = axios.create({
     // withCredentials: true,
     baseURL: axiosApi.baseUrl,
+    headers: {
+        'Host': 'whatsnxt.in'
+    }
 });
 
 
