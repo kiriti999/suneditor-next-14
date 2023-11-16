@@ -3,7 +3,7 @@ import api from "@/axios/axiosConfig";
 export const CloudinaryAPI = {
     upload: async function (formData) {
         const response = await api.request({
-            url: 'https://api.cloudinary.com/v1_1/cloudinary999/image/upload',
+            url: '/cloudinary/upload',
             method: 'POST',
             data: formData,
             withCredentials: false

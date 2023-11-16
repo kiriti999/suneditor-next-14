@@ -17,10 +17,8 @@ export const getImageAsData = (file) => new Promise((resolve, reject) => {
 });
 
 export async function uploadToCloudinary(image) {
-    let formData = new FormData();
-    formData.append("api_key", process.env.CLOUDINARY_API_KEY);
-    formData.append("file", image);
-    formData.append("upload_preset", process.env.CLOUDINARY_UPLOAD_PRESET);
+    const formData = new FormData();
+    formData.set('file', image);
     return await CloudinaryAPI.upload(formData);
 }
 

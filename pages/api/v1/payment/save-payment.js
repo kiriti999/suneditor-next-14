@@ -29,16 +29,16 @@ export default async (req, res) => {
 
   try {
     const response = await api.request({
-        url: `/payment`,
-        method: 'POST',
-        data: payload
+      url: `/payment`,
+      method: 'POST',
+      data: payload
     });
     console.log('payment:: response: ', response?.data);
     res.status(200).json(response?.data);
-} catch (error) {
+  } catch (error) {
     console.error(error)
     res.status(403).json({ message: "error" });
-}
+  }
 
 };
 

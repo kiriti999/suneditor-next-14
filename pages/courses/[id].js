@@ -73,7 +73,6 @@ const Details = () => {
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
-			let userId;
 			const courseId = window.location.pathname.split('/')[2];
 
 			(async () => {
@@ -121,7 +120,13 @@ const Details = () => {
 			console.log('response ', response);
 			if(response.status === 200) {
 				const copy = [...courseReviews];
-				copy[commentIndex].rating = rating;
+				if (commentIndex > -1) {
+					copy[commentIndex].rating = rating;
+				} else {
+					copy.push(response.data.metadata[0]);
+					setCommentIndex(copy.length - 1);
+				}
+
 				setCourseReviews(copy);
 				setIsRatingProvided(true);
 			}
