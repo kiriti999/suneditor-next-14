@@ -6,7 +6,7 @@ export const api = axios.create({
     // withCredentials: true,
     baseURL: axiosApi.baseUrl,
     headers: {
-        'Host': 'whatsnxt.in'
+        ['X-Service-Identifier']: 'whatsnxt.in'
     }
 });
 
