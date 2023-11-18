@@ -53,6 +53,22 @@ const UploadCourseVideo = ({ courses }) => {
         return { videoUrl, videoDuration };
     }
 
+    // const handleVideoUpload = async () => {
+    //     // console.log(post.file_url)
+    //     const data = new FormData();
+    //     data.append('file', video.video_url);
+    //     data.append('resource_type', 'video');
+    //     const response = await axios.post(`${axiosApi.baseUrl}/api/v1/cloudinary/upload`, data);
+    //     const cloudinaryData = response.data;
+
+    //     console.log("cloudinaryData.duration", cloudinaryData.duration);
+
+    //     const videoUrl = cloudinaryData.secure_url;
+    //     const videoDuration = cloudinaryData.duration;
+
+    //     return { videoUrl, videoDuration };
+    // }
+
     const handleChange = e => {
         const { name, value, files } = e.target
         if (name === 'video_url' && files[0]) {
