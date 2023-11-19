@@ -21,7 +21,7 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 	const { t } = useTranslation("distance-learning");
 
 	const [courses, setCourse] = useState(initialCourses);
-	const [offset, setOffset] = useState(courses.length);
+	const [offset, setOffset] = useState(courses?.length || []);
 	const [recordsPerPage] = useState(8);
 	const [currentPage, setCurrentPage] = useState(1);
 	const indexOfLastRecord = currentPage * recordsPerPage;
