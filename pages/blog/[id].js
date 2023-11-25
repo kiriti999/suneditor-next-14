@@ -3,7 +3,6 @@ import { BlogAPI } from '../../pages/api/v1';
 import { sanitize } from 'isomorphic-dompurify';
 import { useRouter } from 'next/router';
 import SidebarPost from '../sidebar-post/sidebar-post';
-import DisqusComments from '../../components/disqus/DisqusComments';
 
 
 const initialProps = {
@@ -186,7 +185,7 @@ export function BlogDetails() {
 
               {/* <CommentArea /> */}
             </div>
-            <DisqusComments post={item}></DisqusComments>
+
           </div>
 
           <div className="col-lg-3 col-md-12">
