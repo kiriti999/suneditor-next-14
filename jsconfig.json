@@ -5,7 +5,7 @@
             "@/components/*": ["components/*"],
             "@/utils/*": ["utils/*"],
             "@/models/*": ["models/*"],
-            "@/lib/*": ["lib/*"],
+            "@/lib/*": ["lib/*", "webworker"],
             "@/axios/*": ["axios/*"],
         }
     }

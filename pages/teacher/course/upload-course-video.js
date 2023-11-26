@@ -37,20 +37,26 @@ const UploadCourseVideo = ({ courses }) => {
     }, [video])
 
     const handleVideoUpload = async () => {
-        // console.log(post.file_url)
         const data = new FormData()
         data.append('file', video.video_url)
         data.append('upload_preset', 'whatsnxt')
         data.append('cloud_name', 'cloudinary999')
-        const response = await axios.post(process.env.CLOUDINARY_VIDEO_URL, data);
-        const cloudinaryData = response.data;
+        let formObject = Object.fromEntries(data.entries());
 
-        console.log("cloudinaryData.duration", cloudinaryData.duration);
-
-        const videoUrl = cloudinaryData.secure_url;
-        const videoDuration = cloudinaryData.duration;
-
-        return { videoUrl, videoDuration };
+        if (typeof Worker !== 'undefined') {
+            const worker = new Worker(new URL('../../../worker/cloudinaryWorker', import.meta.url));
+            worker.postMessage(formObject);
+            worker.onmessage = ({ cloudinaryData }) => {
+                console.log(`page got message: ${cloudinaryData}`);
+                console.log("cloudinaryData.duration", cloudinaryData.duration);
+                const videoUrl = cloudinaryData.secure_url;
+                const videoDuration = cloudinaryData.duration;
+                return { videoUrl, videoDuration };
+            };
+        } else {
+            console.log('Web workers are not supported in this environment.');
+            console.log('You should add a fallback so that your program still executes correctly.');
+        }
     }
 
     // const handleVideoUpload = async () => {
@@ -88,7 +94,8 @@ const UploadCourseVideo = ({ courses }) => {
 
     const handleSubmit = async e => {
         e.preventDefault()
-        setLoading(true)
+        setLoading(true);
+        alert('Uploading file in background...')
         try {
             if (!video.video_url) {
                 toast.error('No video available. Please upload a video to continue.');
@@ -169,7 +176,7 @@ const UploadCourseVideo = ({ courses }) => {
                         <div className="col-md-8 col-lg-8">
                             <div className="border-box">
                                 <form onSubmit={handleSubmit}>
-                                {loading && <LoadingSpinner/>}
+                                    {loading && <LoadingSpinner />}
 
                                     <div className="form-group">
                                         <label>Select Course</label>
