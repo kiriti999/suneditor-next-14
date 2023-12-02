@@ -126,7 +126,7 @@ const CoursesPage = ({ data, totalRecords }) => {
                                     <div className="col-lg-4 col-md-6" key={course._id}>
                                         <div className="single-courses-box">
                                             <div className="courses-image">
-                                                <Link href="/courses/[id]" as={`/courses/${course._id}`}>
+                                                <Link href="/courses/[id]" as={`/courses/${course.slug}`}>
                                                     <a className="d-block image">
                                                         <img src={course.profilePhoto} alt={course.title} />
                                                     </a>
@@ -138,7 +138,7 @@ const CoursesPage = ({ data, totalRecords }) => {
                                             <div className="courses-content">
 
                                                 <b title={course.title}>
-                                                    <Link href="/courses/[id]" as={`/courses/${course._id}`}>
+                                                    <Link href="/courses/[id]" as={`/courses/${course.slug}`}>
                                                         <a>{course.title.slice(0, 45)}...</a>
                                                     </Link>
                                                 </b>

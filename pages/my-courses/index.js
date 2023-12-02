@@ -23,7 +23,7 @@ const MyCourses = ({ enrolled }) => {
                             <div className="col-lg-4 col-md-6" key={enrolledCourse._id}>
                                 <div className="single-courses-box">
                                     <div className="courses-image">
-                                        <Link href="/courses/[id]" as={`/courses/${enrolledCourse.course._id}`}>
+                                        <Link href="/courses/[id]" as={`/courses/${enrolledCourse.course.slug}`}>
                                             <a className="d-block image">
                                                 <img src={enrolledCourse.course.profilePhoto} alt={enrolledCourse.course.title} />
                                             </a>
@@ -40,7 +40,7 @@ const MyCourses = ({ enrolled }) => {
                                         </div>
 
                                         <h3>
-                                            <Link href="/courses/[id]" as={`/courses/${enrolledCourse.course._id}`}>
+                                            <Link href="/courses/[id]" as={`/courses/${enrolledCourse.course.slug}`}>
                                                 <a>{enrolledCourse.course.title}</a>
                                             </Link>
                                         </h3>

@@ -40,9 +40,9 @@ const Details = () => {
 	};
 
 
-	const getCourseById = async (id) => {
+	const getCourseBySlug = async (slug) => {
 		try {
-			const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
+			const url = `${axiosApi.baseUrl}/api/v1/courses/course/slug/${slug}`;
 			const response = await axios.get(url, {
 				headers: { Authorization: token }
 			});
@@ -73,10 +73,11 @@ const Details = () => {
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
-			const courseId = window.location.pathname.split('/')[2];
+			const slug = window.location.pathname.split('/')[2];
 
 			(async () => {
-				const course = await getCourseById(courseId);
+				const course = await getCourseBySlug(slug);
+				const courseId = course?.course._id;
 				console.log('pages/courses/[id].js:: useEffect:: course: ', course);
 				setCourse(course?.course);
 				const courseReviews = await getCourseReviews(courseId);

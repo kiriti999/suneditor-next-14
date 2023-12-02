@@ -1,9 +1,9 @@
-import axios from "axios";
+import { useState, useEffect } from 'react';
 import { parseCookies, destroyCookie } from "nookies";
 import { Provider } from "react-redux";
+import { useRouter } from 'next/router';
 import Layout from "../components/_App/Layout";
 import { redirectUser, fetchUser } from "../utils/auth";
-import { axiosApi } from "../utils/baseUrl";
 import "../styles/bootstrap.min.css";
 import "../styles/animate.min.css";
 import "../styles/boxicons.min.css";
@@ -29,6 +29,27 @@ import FilterStore from "context/filterStore";
 const MyApp = ({ Component, ...rest }) => {
 	const { store, props } = wrapper.useWrappedStore(rest);
 	const { pageProps } = props;
+	const router = useRouter();
+    const [routeHistory, setRouteHistory] = useState([router.asPath]);
+
+    useEffect(() => {
+        const handleRouteChange = (url) => {
+            const history = [...routeHistory, url];
+            if (history.length >= 3) {
+                const isRedirected = history[history.length - 2] === '/authentication';
+                const next = history[history.length - 3];
+                if (isRedirected) router.push(next);
+            }
+
+            setRouteHistory(history);
+        }
+
+        router.events.on('routeChangeComplete', handleRouteChange);
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChange);
+        }
+    }, [router, routeHistory]);
+
 	// const store = useStore(pageProps.initialReduxState);
 	return (
 		<Provider store={store}>
