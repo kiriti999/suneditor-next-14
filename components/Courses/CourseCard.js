@@ -7,7 +7,7 @@ import Highlighter from 'react-highlight-words';
 import { axiosApi } from "../../utils/baseUrl";
 
 const CourseCard = ({
-    _id, title, price, overview, profilePhoto, lessons, userId, enrolled_courses, highlight, published, publish = false
+    _id, title, slug, price, overview, profilePhoto, lessons, userId, enrolled_courses, highlight, published, publish = false
 }) => {
     const enrolled = enrolled_courses ? enrolled_courses : []
     const { token } = parseCookies()
@@ -45,7 +45,7 @@ const CourseCard = ({
         <div className="col-lg-12 col-md-12">
             <div className="single-courses-box">
                 <div className="courses-image">
-                    <Link href="/courses/[id]" as={`/courses/${_id}`}>
+                    <Link href="/courses/[id]" as={`/courses/${slug}`}>
                         <a className="d-block image">
                             {/* <img src={profilePhoto} alt={title} /> */}
                         </a>
@@ -56,7 +56,7 @@ const CourseCard = ({
                 </div>
                 <div className="courses-content">
                     <h3>
-                        <Link href="/courses/[_id]" as={`/courses/${_id}`}>
+                        <Link href="/courses/[_id]" as={`/courses/${slug}`}>
 
                             <a>
                                 <Highlighter

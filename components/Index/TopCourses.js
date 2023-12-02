@@ -64,7 +64,7 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 									<div className="courses-image">
 										<Link
 											href="/courses/[id]"
-											as={`/courses/${course._id}`}>
+											as={`/courses/${course.slug}`}>
 											<a className="d-block image">
 												<img src={course.profilePhoto} alt={course.title} />
 											</a>
@@ -85,7 +85,7 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 										<b title={course.title}>
 											<Link
 												href="/courses/[id]"
-												as={`/courses/${course._id}`}>
+												as={`/courses/${course.slug}`}>
 												<a>
 													{course.title.slice(0, 47)}
 													...
