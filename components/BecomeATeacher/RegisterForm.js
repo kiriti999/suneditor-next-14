@@ -8,6 +8,8 @@ import catchErrors from '@/utils/catchErrors'
 import { axiosApi } from "@/utils/baseUrl";
 
 const RegisterForm = ({ user }) => {
+    console.log('teacher user ', user)
+    console.log('teacher token ', token)
     const { token } = parseCookies()
 
     const [initApply, setInitApply] = React.useState(false)
@@ -20,7 +22,7 @@ const RegisterForm = ({ user }) => {
             mode: "onBlur",
             defaultValues: {
                 name: '',
-                email: '',
+                email: user.email ? user.email : '',
                 number: '',
                 subject: 'teacher',
                 as_teacher_apply: true,
@@ -102,7 +104,7 @@ const RegisterForm = ({ user }) => {
                             <div className="col-lg-6 col-md-6">
                                 <div className="form-group">
                                     <input
-                                        type="text"
+                                        type="text" readOnly={user.email ? true : false}
                                         placeholder="Your email address"
                                         {...register('email', validationOptions.email)}
                                     />

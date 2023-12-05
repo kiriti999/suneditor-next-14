@@ -21,7 +21,7 @@ const index = ({ courses, total }) => {
 		<div>
 			<SEO title={t("pagetitle")} description={t("bannersubtitle")} />
 			<MainBanner />
-			<TopCourses courses={courses} total={total} />
+			<TopCourses courses={courses || []} total={total} />
 			<About />
 			{/* <Testimonials /> */}
 			{/* <Instance /> */}
@@ -38,7 +38,7 @@ index.getInitialProps = async () => {
 		console.log('axiosApi ', axiosApi);
 		const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=0`;
 		const response = await axios.get(url);
-		return response.data;
+		return response?.data;
 	} catch (error) {
 		console.log('pages/index.js:: getInitialProps:: error: ', error);
 	}

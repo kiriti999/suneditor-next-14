@@ -9,7 +9,7 @@ export function Pagination(props) {
 
     const { nPages, currentPage, setCurrentPage } = props;
 
-    const pageNumbers = Array.from(Array(nPages + 1).keys()).slice(1);
+    const pageNumbers = Array.from(Array((nPages || 0) + 1).keys()).slice(1);
 
     const prevPage = () => {
         if (currentPage !== 1) {
