@@ -191,7 +191,8 @@ const Details = () => {
 								<Tabs>
 									<TabList>
 										<Tab>Overview</Tab>
-										<Tab>Curriculum</Tab>
+										<Tab>Topics</Tab>
+										<Tab>Videos</Tab>
 										<Tab>Instructor</Tab>
 										<Tab>Reviews</Tab>
 										<Tab>User feedback</Tab>
@@ -201,6 +202,12 @@ const Details = () => {
 										<div className="courses-overview">
 											<h3>{course.title}</h3>
 											<div style={{ display: 'contents' }} dangerouslySetInnerHTML={{ __html: course.overview }} />
+										</div>
+									</TabPanel>
+
+									<TabPanel>
+										<div className="courses-overview">
+											<div style={{ display: 'contents' }} dangerouslySetInnerHTML={{ __html: course.topics }} />
 										</div>
 									</TabPanel>
 
