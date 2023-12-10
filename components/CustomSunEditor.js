@@ -29,6 +29,7 @@ const CustomSunEditor = (props) => {
 
 
     return <SunEditor setDefaultStyle="font-size:18px" width="100%" height="150px" setOptions={{
+        katex: 'window.katex',
         buttonList: editorOptions
     }} setContents={props?.props?.description} onChange={handleChange} onImageUpload={handleImageUpload} onVideoUpload={handleVideoUpload} />;
 };

@@ -27,6 +27,7 @@ const Edit = (data) => {
         id: existingData._id,
         title: existingData.title,
         overview: existingData.overview,
+        topics: existingData.topics,
         video_course_price: existingData.video_course_price,
         live_training_price: existingData.live_training_price,
         profilePhoto: '',
@@ -61,7 +62,7 @@ const Edit = (data) => {
 
     const handleChange = e => {
         const { name, value, files } = e.target;
-        console.log('e.target.value ', e.target.value);
+        console.log(`e.target.name: ${e.target.name}  ::: e.target.value: ${e.target.value}`);
         setSelectedOption(e.target.value);
 
         if (name === 'profilePhoto') {
@@ -207,7 +208,7 @@ const Edit = (data) => {
                                         <label>Course topics</label>
                                         <SunEditor
                                             placeholder="Enter course topics"
-                                            name="overview"
+                                            name="topics"
                                             defaultValue={course.topics}
                                             height="200px"
                                             onChange={handleSunEditor}
@@ -233,7 +234,7 @@ const Edit = (data) => {
                                                 type="number"
                                                 placeholder="Enter live training price"
                                                 className="form-control"
-                                                name="video_course_price"
+                                                name="live_training_price"
                                                 value={course.live_training_price}
                                                 onChange={handleChange}
                                             />
