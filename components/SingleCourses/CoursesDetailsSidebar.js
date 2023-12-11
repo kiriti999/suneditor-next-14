@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { parseCookies } from 'nookies';
 import dynamic from "next/dynamic";
 const ModalVideo = dynamic(import("react-modal-video"));
@@ -19,6 +19,7 @@ const CoursesDetailsSidebar = ({
 	lessons,
 	loggedInUser,
 	courseData,
+	slug
 }) => {
 	const { token } = parseCookies();
 	const cartItems = useSelector((state) => state.cart.cartItems);
@@ -29,6 +30,8 @@ const CoursesDetailsSidebar = ({
 	const [totalCost, setTotalCost] = useState(0);
 	const [displayVideoPrice, setDisplayVideoPrice] = useState(false);
 	const [displayLivePrice, setDisplayLivePrice] = useState(false);
+
+	const url = useMemo(() => `https://whatsnxt.in/courses/${slug}`, [slug]);
 
 	const purchaseInitData = [
 		{ id: '1', name: 'liveType', purchaseType: 'liveType', label: 'Live training', checked: false },
@@ -351,6 +354,19 @@ const CoursesDetailsSidebar = ({
 						</span>
 
 						<ul className="social-link">
+							<li>
+								<a href="#" className="d-block" target="_blank" onClick={(event) => {
+									event.preventDefault();
+									navigator.clipboard.writeText(url);
+								}}>
+									<i className="bx bxs-copy"></i>
+								</a>
+							</li>
+							<li>
+								<a href={`https://wa.me/?text=${encodeURIComponent(url)}`} className="d-block" target="_blank">
+									<i className="bx bxl-whatsapp"></i>
+								</a>
+							</li>
 							<li>
 								<a href="#" className="d-block" target="_blank">
 									<i className="bx bxl-facebook"></i>

@@ -4751,7 +4751,7 @@ Courses Details Area CSS
 }
 
 .courses-details-info .courses-share .share-info {
-  display: inline-block;
+  display: block;
   position: relative;
   cursor: pointer;
 }
