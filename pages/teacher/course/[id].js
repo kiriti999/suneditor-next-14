@@ -9,12 +9,9 @@ import { toast } from 'react-toastify';
 import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
 import * as imageHelper from '@/utils/image-upload'
+import WYSIWYGEditor from "components/rich-text-editor";
 import 'suneditor/dist/css/suneditor.min.css';
 import LoadingSpinner from "@/utils/LoadingSpinner";
-
-const SunEditor = dynamic(() => import('suneditor-react'), {
-    ssr: false
-})
 
 const Edit = (data) => {
     console.log('pages:: course/[id].js:: existingData: ', data);
@@ -191,7 +188,7 @@ const Edit = (data) => {
 
                                     <div className="form-group">
                                         <label>Course Overview</label>
-                                        <SunEditor
+                                        <WYSIWYGEditor
                                             placeholder="Enter course overview"
                                             name="overview"
                                             defaultValue={course.overview}
@@ -202,7 +199,7 @@ const Edit = (data) => {
 
                                     <div className="form-group">
                                         <label>Course topics</label>
-                                        <SunEditor
+                                        <WYSIWYGEditor
                                             placeholder="Enter course topics"
                                             name="topics"
                                             defaultValue={course.topics}

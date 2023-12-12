@@ -367,26 +367,6 @@ const CoursesDetailsSidebar = ({
 									<i className="bx bxl-whatsapp"></i>
 								</a>
 							</li>
-							<li>
-								<a href="#" className="d-block" target="_blank">
-									<i className="bx bxl-facebook"></i>
-								</a>
-							</li>
-							<li>
-								<a href="#" className="d-block" target="_blank">
-									<i className="bx bxl-twitter"></i>
-								</a>
-							</li>
-							<li>
-								<a href="#" className="d-block" target="_blank">
-									<i className="bx bxl-instagram"></i>
-								</a>
-							</li>
-							<li>
-								<a href="#" className="d-block" target="_blank">
-									<i className="bx bxl-linkedin"></i>
-								</a>
-							</li>
 						</ul>
 					</div>
 				</div>
