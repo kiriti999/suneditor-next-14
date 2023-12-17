@@ -33,9 +33,9 @@ export default NextAuth({
           const email = profile.email;
 
           const payload = { name, email };
-          await axios.post(`${axiosApi.baseUrl}/api/v1/auth/create`, payload);
+          await axios.post(`${axiosApi.baseUrl}/api/v1/auth/google-create`, payload);
 
-          const url = `${axiosApi.baseUrl}/api/v1/auth/signin`;
+          const url = `${axiosApi.baseUrl}/api/v1/auth/google-login`;
           const id_token = account.id_token;
           const response = await axios.post(url, { id_token });
           token.token = response.data;
