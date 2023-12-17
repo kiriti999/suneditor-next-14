@@ -2,6 +2,8 @@
 const editorOptions: any = [
     // default
     ['undo', 'redo'],
+    ['font', 'fontSize', 'formatBlock'],
+    ['fullScreen', 'showBlocks', 'codeView'],
     [':p-More Paragraph-default.more_paragraph', 'font', 'fontSize', 'formatBlock', 'paragraphStyle', 'blockquote'],
     ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
     ['fontColor', 'hiliteColor', 'textStyle'],

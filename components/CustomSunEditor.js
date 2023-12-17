@@ -1,5 +1,6 @@
 import React from 'react';
 import SunEditor from 'suneditor-react';
+import plugins from 'suneditor/src/plugins';
 import editorOptions from '../utils/sunEditor/editorOptions';
 
 const editorData = {
@@ -30,6 +31,7 @@ const CustomSunEditor = (props) => {
 
     return <SunEditor setDefaultStyle="font-size:18px" width="100%" height="150px" setOptions={{
         katex: 'window.katex',
+        plugins: plugins,
         buttonList: editorOptions
     }} setContents={props?.props?.description} onChange={handleChange} onImageUpload={handleImageUpload} onVideoUpload={handleVideoUpload} />;
 };

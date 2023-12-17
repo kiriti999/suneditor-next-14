@@ -9,19 +9,15 @@ import { toast } from 'react-toastify';
 import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
 import * as imageHelper from '@/utils/image-upload'
+import WYSIWYGEditor from "components/rich-text-editor";
 import 'suneditor/dist/css/suneditor.min.css';
 import LoadingSpinner from "@/utils/LoadingSpinner";
-
-const SunEditor = dynamic(() => import('suneditor-react'), {
-    ssr: false
-})
 
 const Edit = (data) => {
     console.log('pages:: course/[id].js:: existingData: ', data);
     const { course: existingData, user } = data;
     const { token } = parseCookies()
     const [categories, setCategories] = useState([]);
-    const [selectedOption, setSelectedOption] = useState(existingData.categoryName);
 
     const INIT_COURSE = {
         id: existingData._id,
@@ -63,7 +59,6 @@ const Edit = (data) => {
     const handleChange = e => {
         const { name, value, files } = e.target;
         console.log(`e.target.name: ${e.target.name}  ::: e.target.value: ${e.target.value}`);
-        setSelectedOption(e.target.value);
 
         if (name === 'profilePhoto') {
             const profilePhotoSize = files[0].size / 1024 / 1024
@@ -81,8 +76,8 @@ const Edit = (data) => {
         }
     }
 
-    const handleSunEditor = value => {
-        setCourse(prevState => ({ ...prevState, overview: value }))
+    const handleSunEditor = (name) => (value) => {
+        setCourse(prevState => ({ ...prevState, [name]: value }));
     }
 
     const handleProfilePhotoUpload = async () => {
@@ -115,15 +110,13 @@ const Edit = (data) => {
             const url = `${axiosApi.baseUrl}/api/v1/courses/course/update`
             const {
                 id, title, overview, topics, live_training_price, video_course_price, published, duration,
-                lessons, course_preview_video
+                lessons, course_preview_video, categoryName
             } = course
 
             const payload = {
                 id, title, overview, topics, live_training_price, video_course_price, published, duration,
-                lessons, profile, course_preview_video
+                lessons, profile, course_preview_video, categoryName
             }
-
-            payload['categoryName'] = selectedOption;
 
             const response = await axios.post(url, payload, {
                 headers: { Authorization: token }
@@ -195,23 +188,23 @@ const Edit = (data) => {
 
                                     <div className="form-group">
                                         <label>Course Overview</label>
-                                        <SunEditor
+                                        <WYSIWYGEditor
                                             placeholder="Enter course overview"
                                             name="overview"
                                             defaultValue={course.overview}
                                             height="200px"
-                                            onChange={handleSunEditor}
+                                            onChange={handleSunEditor('overview')}
                                         />
                                     </div>
 
                                     <div className="form-group">
                                         <label>Course topics</label>
-                                        <SunEditor
+                                        <WYSIWYGEditor
                                             placeholder="Enter course topics"
                                             name="topics"
                                             defaultValue={course.topics}
                                             height="200px"
-                                            onChange={handleSunEditor}
+                                            onChange={handleSunEditor('topics')}
                                         />
                                     </div>
 
@@ -267,7 +260,7 @@ const Edit = (data) => {
 
                                     <div className="form-group">
                                         <label>Categories</label>
-                                        <select className="form-control" placeholder="Category name" value={selectedOption} onChange={handleChange}>
+                                        <select className="form-control" placeholder="Category name" name="categoryName" value={course.categoryName} onChange={handleChange}>
                                             {categories.map((category) => <option key={category.categoryName} value={category.categoryName} data-id={category._id}>{category.categoryName}</option>)}
                                         </select>
                                     </div>
