@@ -24,7 +24,6 @@ export const redirectUser = (ctx, location) => {
 export const handleLogout = () => {
     console.log('logout called')
     cookie.remove('token')
-    Router.push('/')
 }
 
 export const fetchUser = async (token) => {

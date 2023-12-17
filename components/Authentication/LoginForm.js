@@ -3,7 +3,7 @@ import { Alert } from "reactstrap";
 import Link from "next/link";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-
+import { useSession, signIn } from "next-auth/react";
 import { axiosApi } from "../../utils/baseUrl";
 import { handleLogin, fetchUser } from "../../utils/auth";
 import Router from 'next/router'
@@ -17,10 +17,55 @@ const INITIAL_USER = {
 const LoginForm = () => {
 	const dispatch = useDispatch();
 
+	const { data, status } = useSession();
 	const [user, setUser] = React.useState(INITIAL_USER);
 	const [disabled, setDisabled] = React.useState(true);
 	const [loading, setLoading] = React.useState(false);
 	const [error, setError] = React.useState("");
+
+	React.useEffect(() => {
+		if (status !== 'authenticated') return;
+
+		setLoading(true);
+		setError("");
+
+		const handleAuth = async () => {
+			const token = data.user.token;
+			const userObject = await fetchUser(token);
+
+			dispatch({
+				type: "UPDATE_USER",
+				data: token
+			});
+
+			dispatch({
+				type: 'UPDATE_USEROBJ',
+				data: userObject
+			});
+
+			const cartRes = await axios.get(`${axiosApi.baseUrl}/api/v1/cart`, {
+				headers: { Authorization: token }
+			});
+
+			if (cartRes.data.cart) {
+				dispatch({
+					type: 'UPDATE_CART',
+					data: cartRes.data.cart
+				});
+			} else {
+				await axios.post(`${axiosApi.baseUrl}/api/v1/cart`, null, {
+					headers: { Authorization: token }
+				});
+			}
+
+			handleLogin(token);
+			Router.push('/');
+		}
+
+		handleAuth().catch(() => {
+			setLoading(false);
+		});
+	}, [data, status, dispatch]);
 
 	React.useEffect(() => {
 		const isUser = Object.values(user).every((el) => Boolean(el));
@@ -42,17 +87,17 @@ const LoginForm = () => {
 			const response = await axios.post(url, payload);
 			console.log('login response ', response.data)
 
-            const userObject = await fetchUser(response.data);
+			const userObject = await fetchUser(response.data);
 			console.log('userObject ', userObject);
-            dispatch({
-                type: "UPDATE_USER",
-                data: response.data
-            });
+			dispatch({
+				type: "UPDATE_USER",
+				data: response.data
+			});
 
-            dispatch({
-                type: 'UPDATE_USEROBJ',
-                data: userObject
-            });
+			dispatch({
+				type: 'UPDATE_USEROBJ',
+				data: userObject
+			});
 
 			const cartRes = await axios.get(`${axiosApi.baseUrl}/api/v1/cart`, {
 				headers: { Authorization: response.data }
@@ -133,6 +178,9 @@ const LoginForm = () => {
 				<button type="submit" disabled={disabled}>
 					Log In
 				</button>
+
+				
+
 			</form>
 		</div>
 	);

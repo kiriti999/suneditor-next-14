@@ -388,7 +388,7 @@ a:hover {
   padding-bottom: 11px;
 }
 
-.default-btn > i {
+.default-btn>i {
   align-self: center;
   padding-right: 8px;
 }
@@ -14382,6 +14382,24 @@ Coming Soon Area CSS
 /*================================================
 Profile Authentication Area CSS
 =================================================*/
+
+.btn-google {
+  display: flex;
+  align-items: center;
+  color: #545454;
+  margin: 0 auto;
+  border: none;
+}
+
+.btn-google span {
+  font-size: 18px;
+}
+
+.btn-google img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .login-form {
   padding: 40px 50px;
   border-radius: 5px;

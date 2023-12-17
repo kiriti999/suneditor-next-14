@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { parseCookies, destroyCookie } from "nookies";
 import { Provider } from "react-redux";
 import { useRouter } from 'next/router';
+import { SessionProvider } from 'next-auth/react';
 import Layout from "../components/_App/Layout";
 import { redirectUser, fetchUser } from "../utils/auth";
 import "../styles/bootstrap.min.css";
@@ -53,11 +54,13 @@ const MyApp = ({ Component, ...rest }) => {
 	// const store = useStore(pageProps.initialReduxState);
 	return (
 		<Provider store={store}>
-			<FilterStore >
-				<Layout {...pageProps}>
-					<Component {...pageProps} />
-				</Layout>
-			</FilterStore>
+			<SessionProvider session={pageProps.session}>
+				<FilterStore>
+					<Layout {...pageProps}>
+						<Component {...pageProps} />
+					</Layout>
+				</FilterStore>
+			</SessionProvider>
 		</Provider>
 	);
 };

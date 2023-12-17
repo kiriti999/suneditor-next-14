@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "@/utils/ActiveLink";
+import { signOut } from 'next-auth/react';
 import { useSelector, useDispatch } from "react-redux";
 import { handleLogout } from "../../utils/auth";
 import SearchForm from "./SearchForm";
@@ -246,6 +247,7 @@ const Navbar = ({ user }) => {
 																		data: { cartItems: [], discount: 0 }
 																	});
 																	localStorage.removeItem('cart');
+																	signOut();
 																	handleLogout();
 																}}>
 																Logout
