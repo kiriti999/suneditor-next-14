@@ -1,0 +1,122 @@
+
+.teacher-register-area {
+  background-image: url(/images/teacher-register-bg.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.teacher-register-box {
+  overflow: hidden;
+  margin-left: auto;
+  max-width: 600px;
+  padding: 45px;
+  border-radius: 5px;
+  background-color: #fe4a55;
+  background-image: url(/images/register-shape.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.teacher-register-box h2 {
+  margin-bottom: 0;
+  color: #ffffff;
+  font-size: 33px;
+  font-weight: 800;
+}
+
+.teacher-register-box p {
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.teacher-register-box form {
+  margin-top: 25px;
+}
+
+.teacher-register-box form input,
+.teacher-register-box form textarea {
+  display: block;
+  width: 100%;
+  border: none;
+  color: #ffffff;
+  background-color: #c22b34;
+  height: 50px;
+  padding-left: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.teacher-register-box form input::-moz-placeholder,
+.teacher-register-box form textarea::-moz-placeholder {
+  color: #cdcdcd;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.teacher-register-box form input::placeholder,
+.teacher-register-box form textarea::placeholder {
+  color: #cdcdcd;
+  transition: 0.5s;
+}
+
+.teacher-register-box form .form-control:focus {
+  background-color: #c22b34;
+  color: #fff;
+}
+
+.teacher-register-box form textarea {
+  height: auto !important;
+  padding-top: 15px;
+}
+
+.teacher-register-box form .default-btn {
+  background-color: #221638;
+  margin-top: 5px;
+  padding: 12px 30px;
+}
+
+.teacher-register-box form .default-btn span {
+  background-color: #ffffff;
+}
+
+.teacher-register-box form .default-btn:hover {
+  color: #fe4a55;
+}
+
+.teacher-register-box .invalid-feedback {
+  color: #fff;
+}
+
+@media only screen and (max-width: 767px) {
+  .teacher-register-box {
+    max-width: 100%;
+    padding: 25px;
+  }
+  .teacher-register-box h2 {
+    font-size: 25px;
+  }
+  .teacher-register-box form textarea, .teacher-register-box form input {
+    height: 48px;
+    font-size: 14.5px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .teacher-register-box {
+    max-width: 500px;
+    padding: 35px;
+  }
+  .teacher-register-box h2 {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .teacher-register-box h2 {
+    font-size: 30px;
+  }
+}

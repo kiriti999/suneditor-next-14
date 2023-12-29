@@ -1,15 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from './Widget.module.css';
 
 const BlogSidebar = () => {
     return (
-        <div className="widget-area">
-            <div className="widget widget_search">
-                <h3 className="widget-title">Search</h3>
+        <div className={styles['widget-area']}>
+            <div className={`${styles['widget']} ${styles['widget_search']}`}>
+                <h3 className={styles['widget-title']}>Search</h3>
 
                 <form className="search-form">
                     <label>
-                        <input type="search" className="search-field" placeholder="Search..." />
+                        <input type="search" className={styles['search-field']} placeholder="Search..." />
                     </label>
                     <button type="submit">
                         <i className="bx bx-search-alt"></i>
@@ -17,18 +18,18 @@ const BlogSidebar = () => {
                 </form>
             </div>
 
-            <div className="widget widget_whatsnxt_posts_thumb">
-                <h3 className="widget-title">Popular Posts</h3>
+            <div className={`${styles['widget']} ${styles['widget_whatsnxt_posts_thumb']}`}>
+                <h3 className={styles['widget-title']}>Popular Posts</h3>
 
-                <div className="item">
+                <div className={styles['item']}>
                     <Link href="#">
-                        <a className="thumb">
-                            <span className="fullimage cover bg1" role="img"></span>
+                        <a className={styles['thumb']}>
+                            <span className={`${styles['fullimage']} cover ${styles['bg1']}`} role="img"></span>
                         </a>
                     </Link>
-                    <div className="info">
+                    <div className={styles['info']}>
                         <span>June 10, 2020</span>
-                        <h4 className="title usmall">
+                        <h4 className={`${styles['title']} usmall`}>
                             <Link href="#">
                                 <a>Ultimate Bali Guide + Where to stay in Bali 2020</a>
                             </Link>
@@ -38,15 +39,15 @@ const BlogSidebar = () => {
                     <div className="clear"></div>
                 </div>
 
-                <div className="item">
+                <div className={styles['item']}>
                     <Link href="#">
-                        <a className="thumb">
-                            <span className="fullimage cover bg2" role="img"></span>
+                        <a className={styles['thumb']}>
+                            <span className={`${styles['fullimage']} cover ${styles['bg2']}`} role="img"></span>
                         </a>
                     </Link>
-                    <div className="info">
+                    <div className={styles['info']}>
                         <span>June 21, 2020</span>
-                        <h4 className="title usmall">
+                        <h4 className={`${styles['title']} usmall`}>
                             <Link href="#">
                                 <a>Live the Island life: 20 unique Islands to visit in 2020</a>
                             </Link>
@@ -56,15 +57,15 @@ const BlogSidebar = () => {
                     <div className="clear"></div>
                 </div>
 
-                <div className="item">
+                <div className={styles['item']}>
                     <Link href="#">
-                        <a className="thumb">
-                            <span className="fullimage cover bg3" role="img"></span>
+                        <a className={styles['thumb']}>
+                            <span className={`${styles['fullimage']} cover ${styles['bg3']}`} role="img"></span>
                         </a>
                     </Link>
-                    <div className="info">
+                    <div className={styles['info']}>
                         <span>June 30, 2020</span>
-                        <h4 className="title usmall">
+                        <h4 className={`${styles['title']} usmall`}>
                             <Link href="#">
                                 <a>Best Places to Visit in Europe this Autumn & Winter</a>
                             </Link>
@@ -75,42 +76,42 @@ const BlogSidebar = () => {
                 </div>
             </div>
 
-            <div className="widget widget_categories">
-                <h3 className="widget-title">Categories</h3>
+            <div className={`${styles['widget']} ${styles['widget_categories']}`}>
+                <h3 className={styles['widget-title']}>Categories</h3>
 
                 <ul>
                     <li>
                         <Link href="#">
-                            <a>Design <span className="post-count">(03)</span></a>
+                            <a>Design <span className={styles['post-count']}>(03)</span></a>
                         </Link>
                     </li>
                     <li>
                         <Link href="#">
-                            <a>Lifestyle <span className="post-count">(05)</span></a>
+                            <a>Lifestyle <span className={styles['post-count']}>(05)</span></a>
                         </Link>
                     </li>
                     <li>
                         <Link href="#">
-                            <a>Script <span className="post-count">(10)</span></a>
+                            <a>Script <span className={styles['post-count']}>(10)</span></a>
                         </Link>
                     </li>
                     <li>
                         <Link href="#">
-                            <a>Device <span className="post-count">(08)</span></a>
+                            <a>Device <span className={styles['post-count']}>(08)</span></a>
                         </Link>
                     </li>
                     <li>
                         <Link href="#">
-                            <a>Tips <span className="post-count">(01)</span></a>
+                            <a>Tips <span className={styles['post-count']}>(01)</span></a>
                         </Link>
                     </li>
                 </ul>
             </div>
 
-            <div className="widget widget_tag_cloud">
-                <h3 className="widget-title">Popular Tags</h3>
+            <div className={`${styles['widget']} ${styles['widget_tag_cloud']}`}>
+                <h3 className={styles['widget-title']}>Popular Tags</h3>
 
-                <div className="tagcloud">
+                <div className={styles['tagcloud']}>
                     <Link href="#">
                         <a>
                             Business <span className="tag-link-count"> (3)</span>

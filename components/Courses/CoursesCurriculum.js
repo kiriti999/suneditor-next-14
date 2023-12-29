@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ModalVideo from 'react-modal-video';
 import Link from 'next/link';
-import { parseCookies } from 'nookies'
+import { parseCookies } from 'nookies';
+import styles from '../Courses/Course.module.css';
 
 const CoursesCurriculum = ({ videos }) => {
     const { token } = parseCookies();
@@ -29,11 +30,11 @@ const CoursesCurriculum = ({ videos }) => {
 
     return (
         <>
-            <div className="courses-curriculum">
+            <div className={styles['courses-curriculum']}>
                 <h3>Course Videos</h3>
                 {videos ? (
                     <ul>
-                        {videos.map((video) => (
+                        {videos.length && videos.map((video) => (
                             <li key={video._id}>
                                 <Link href="/courses">
                                     <a
@@ -43,11 +44,11 @@ const CoursesCurriculum = ({ videos }) => {
                                             openModal(video);
                                         }}
                                     >
-                                        <span className="courses-name">{video.order} - {video.name}</span>
-                                        <div className="courses-meta">
+                                        <span className={styles['courses-name']}>{video.order} - {video.name}</span>
+                                        <div className={styles['courses-meta']}>
                                         <span className="duration">{Math.floor(video.video_duration / 60) || "< 1"} Min(s)</span>
                                         <span className="status"><i className="flaticon-play"></i></span>
-                                        {video.isPreview && <span className="status">preview</span>}
+                                        {video.isPreview && <span className={styles['status']}>preview</span>}
                                         </div>
                                     </a>
                                 </Link>

@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
+import styles from '../About/Blog.module.css';
 
 const Blog = () => {
 	const { t } = useTranslation("distance-learning");
 	return (
-		<div className="blog-area ptb-100">
+		<div className={`${styles['blog-area']} ptb-100`}>
 			<div className="container">
 				<div className="section-title">
 					<span className="sub-title">{t("news-and-blog")}</span>
@@ -14,8 +15,8 @@ const Blog = () => {
 				</div>
 				<div className="row justify-content-center">
 					<div className="col-lg-4 col-md-6">
-						<div className="single-blog-post">
-							<div className="post-image">
+						<div className={styles['single-blog-post']}>
+							<div className={styles['post-image']}>
 								<Link href="/single-blog-1">
 									<a className="d-block">
 										<img
@@ -25,9 +26,9 @@ const Blog = () => {
 									</a>
 								</Link>
 							</div>
-							<div className="post-content">
+							<div className={styles['post-content']}>
 								<Link href="#">
-									<a className="category">Education</a>
+									<a className={styles['category']}>Education</a>
 								</Link>
 								<h3>
 									<Link href="/single-blog-1">
@@ -37,9 +38,9 @@ const Blog = () => {
 										</a>
 									</Link>
 								</h3>
-								<ul className="post-content-footer d-flex justify-content-between align-items-center">
+								<ul className={`${styles['post-content-footer']} d-flex justify-content-between align-items-center`}>
 									<li>
-										<div className="post-author d-flex align-items-center">
+										<div className={`${styles['post-author']} d-flex align-items-center`}>
 											<img
 												src="/images/user1.jpg"
 												className="rounded-circle"
@@ -57,8 +58,8 @@ const Blog = () => {
 						</div>
 					</div>
 					<div className="col-lg-4 col-md-6">
-						<div className="single-blog-post">
-							<div className="post-image">
+						<div className={styles['single-blog-post']}>
+							<div className={styles['post-image']}>
 								<Link href="/single-blog-1">
 									<a className="d-block">
 										<img
@@ -68,9 +69,9 @@ const Blog = () => {
 									</a>
 								</Link>
 							</div>
-							<div className="post-content">
+							<div className={styles['post-content']}>
 								<Link href="#">
-									<a className="category">Online</a>
+									<a className={styles['category']}>Online</a>
 								</Link>
 								<h3>
 									<Link href="/single-blog-1">
@@ -80,9 +81,9 @@ const Blog = () => {
 										</a>
 									</Link>
 								</h3>
-								<ul className="post-content-footer d-flex justify-content-between align-items-center">
+								<ul className={`${styles['post-content-footer']} d-flex justify-content-between align-items-center`}>
 									<li>
-										<div className="post-author d-flex align-items-center">
+										<div className={`${styles['post-author']} d-flex align-items-center`}>
 											<img
 												src="/images/user2.jpg"
 												className="rounded-circle"
@@ -100,8 +101,8 @@ const Blog = () => {
 						</div>
 					</div>
 					<div className="col-lg-4 col-md-6">
-						<div className="single-blog-post">
-							<div className="post-image">
+						<div className={styles['single-blog-post']}>
+							<div className={styles['post-image']}>
 								<Link href="/single-blog-1">
 									<a className="d-block">
 										<img
@@ -111,9 +112,9 @@ const Blog = () => {
 									</a>
 								</Link>
 							</div>
-							<div className="post-content">
+							<div className={styles['post-content']}>
 								<Link href="#">
-									<a className="category">Learning</a>
+									<a className={styles['category']}>Learning</a>
 								</Link>
 								<h3>
 									<Link href="/single-blog-1">
@@ -123,9 +124,9 @@ const Blog = () => {
 										</a>
 									</Link>
 								</h3>
-								<ul className="post-content-footer d-flex justify-content-between align-items-center">
+								<ul className={`${styles['post-content-footer']} d-flex justify-content-between align-items-center`}>
 									<li>
-										<div className="post-author d-flex align-items-center">
+										<div className={`${styles['post-author']} d-flex align-items-center`}>
 											<img
 												src="/images/user3.jpg"
 												className="rounded-circle"
@@ -143,7 +144,7 @@ const Blog = () => {
 						</div>
 					</div>
 					<div className="col-lg-12 col-md-12">
-						<div className="blog-post-info">
+						<div className={styles['blog-post-info']}>
 							<p>
 								Get into details now?​ {` `}
 								<Link href="/blog-1">

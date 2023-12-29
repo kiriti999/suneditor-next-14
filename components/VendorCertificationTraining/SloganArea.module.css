@@ -1,0 +1,177 @@
+
+.slogan-area {
+  position: relative;
+  z-index: 1;
+}
+
+.slogan-area .shape2 {
+  left: 9%;
+  bottom: -20%;
+}
+
+.slogan-area .shape9 {
+  left: 8%;
+  bottom: auto;
+  top: 20%;
+}
+
+.slogan-image {
+  padding-right: 15px;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: -200px;
+  margin-bottom: -200px;
+}
+
+.slogan-image img {
+  border-radius: 5px;
+  width: 100%;
+}
+
+.slogan-content {
+  position: relative;
+  z-index: 1;
+  padding-left: 30px;
+}
+
+.slogan-content p {
+  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.slogan-content h3 {
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.slogan-content span {
+  display: block;
+  color: #fe4a55;
+  font-size: 15px;
+  margin-top: 7px;
+}
+
+.slogan-content::before {
+  content: "\f10a";
+  position: absolute;
+  right: 30px;
+  color: #e8e8e8;
+  z-index: -1;
+  top: -50px;
+  line-height: 1;
+  opacity: 0.5;
+  font-family: Flaticon;
+  font-size: 200px;
+}
+
+.divider2 {
+  width: 100%;
+  position: absolute;
+  height: 100px;
+  pointer-events: none;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,%3csvg viewBox='0 0 100 100' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3e%3cpath d='M0,0 C16.6666667,66 33.3333333,98 50,98 C66.6666667,98 83.3333333,66 100,0 L100,100 L0,100 L0,0 Z' fill='%23fff'/%3e%3c/svg%3e");
+  mask-image: url("data:image/svg+xml;utf8,%3csvg viewBox='0 0 100 100' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3e%3cpath d='M0,0 C16.6666667,66 33.3333333,98 50,98 C66.6666667,98 83.3333333,66 100,0 L100,100 L0,100 L0,0 Z' fill='%23fff'/%3e%3c/svg%3e");
+  -webkit-mask-size: 100% 101%;
+  mask-size: 100% 101%;
+  background: #fffaf3;
+  top: -100px;
+  left: 0;
+  z-index: -1;
+}
+
+.divider3 {
+  width: 100%;
+  position: absolute;
+  height: 100px;
+  pointer-events: none;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,%3csvg viewBox='0 0 100 100' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3e%3cpath d='M0,0 C16.6666667,66 33.3333333,98 50,98 C66.6666667,98 83.3333333,66 100,0 L100,100 L0,100 L0,0 Z' fill='%23fff'/%3e%3c/svg%3e");
+  mask-image: url("data:image/svg+xml;utf8,%3csvg viewBox='0 0 100 100' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3e%3cpath d='M0,0 C16.6666667,66 33.3333333,98 50,98 C66.6666667,98 83.3333333,66 100,0 L100,100 L0,100 L0,0 Z' fill='%23fff'/%3e%3c/svg%3e");
+  -webkit-mask-size: 100% 101%;
+  mask-size: 100% 101%;
+  background: #fffaf3;
+  transform: scaleY(-1);
+  bottom: -100px;
+  left: 0;
+  z-index: -1;
+}
+
+@media only screen and (max-width: 767px) {
+  .slogan-image {
+    padding-right: 0;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  .slogan-content {
+    padding-left: 0;
+    text-align: center;
+  }
+  .slogan-content p {
+    font-size: 17px;
+  }
+  .slogan-content h3 {
+    font-size: 18px;
+  }
+  .slogan-content span {
+    font-size: 14px;
+    margin-top: 6px;
+  }
+  .slogan-content::before {
+    right: 0;
+    left: 0;
+    top: 0;
+    font-size: 160px;
+  }
+  .divider2, .divider3 {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .slogan-image {
+    padding-right: 0;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  .slogan-content {
+    padding-left: 0;
+    text-align: center;
+  }
+  .slogan-content p {
+    font-size: 18px;
+  }
+  .slogan-content h3 {
+    font-size: 20px;
+  }
+  .slogan-content span {
+    font-size: 14px;
+  }
+  .slogan-content::before {
+    right: 0;
+    left: 0;
+    top: 0;
+    font-size: 160px;
+  }
+  .divider2, .divider3 {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .slogan-area .divider2, .slogan-area .divider3 {
+    display: none;
+  }
+  .slogan-image {
+    padding-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1355px) {
+  .slogan-area .shape3 {
+    display: none;
+  }
+}

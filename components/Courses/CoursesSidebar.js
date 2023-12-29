@@ -2,7 +2,8 @@ import React, { useEffect, useState, useContext } from 'react';
 import Link from 'next/link';
 import { kConverter } from '../../utils/cart/currencyHelper';
 import axios from 'axios'
-import { axiosApi } from "@/utils/baseUrl";;
+import { axiosApi } from "@/utils/baseUrl";
+import styles from '../Blog/Widget.module.css';
 
 const CoursesSidebar = ({ setSidebarFilter }) => {
 	const [courses, setCourses] = useState([]);
@@ -40,37 +41,37 @@ const CoursesSidebar = ({ setSidebarFilter }) => {
 	// }
 
 	return (
-		<div className="widget-area">
-			<div className="widget widget_recent_courses">
-				<h3 className="widget-title">New Courses</h3>
+		<div className={styles['widget-area']}>
+			<div className={`${styles['widget']} ${styles['widget_recent_courses']}`}>
+				<h3 className={styles['widget-title']}>New Courses</h3>
 
 				{courses?.length === 0 ? (
 					<h6>Empty</h6>
 				) : (
-					courses.map((course, i) => (
-						<div className="item" key={i}>
+					courses.length && courses.map((course, i) => (
+						<div className={styles['item']} key={i}>
 							<Link href="/courses/[id]" as={`/courses/${course.slug}`}>
-								<a className="thumb">
-									<span className="fullimage cover bg1" role="img"></span>
+								<a className={styles['thumb']}>
+									<span className={`${styles['fullimage']} cover bg1"`} role="img"></span>
 								</a>
 							</Link>
-							<div className="info">
+							<div className={styles['info']}>
 								<span>&#8377;{kConverter(course.live_training_price)}</span>
-								<h4 className="title usmall">
+								<h4 className={`${styles['title']} title usmall`}>
 									<Link href="/courses/[id]" as={`/courses/${course.slug}`}>
 										<a>{course.title}</a>
 									</Link>
 								</h4>
 							</div>
-							<div className="clear"></div>
+							<div className={styles['clear']}></div>
 						</div>
 					))
 				)}
 			</div>
 
-			<div className="widget widget_tag_cloud">
-				<h3 className="widget-title">Popular Tags</h3>
-				<div className="tagcloud">
+			<div className={`${styles['widget']} ${styles['widget_tag_cloud']}`}>
+				<h3 className={styles['widget-title']}>Popular Tags</h3>
+				<div className={styles['tagcloud']}>
 					{categories?.length > 0 ? categories.map((item, i) => (
 						<Link href="" legacyBehavior key={i}>
 							<a onClick={(e) => {

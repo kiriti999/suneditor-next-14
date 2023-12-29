@@ -1,5 +1,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
+import styles from './AboutUs.module.css';
 const ModalVideo = dynamic(import("react-modal-video"));
 
 const AboutUsContentTwo = () => {
@@ -15,12 +16,12 @@ const AboutUsContentTwo = () => {
   };
   return (
     <>
-      <div className="about-area-two ptb-100">
+      <div className={`${styles['about-area-two']} ptb-100`}>
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-5 col-md-12">
-              <div className="about-content-box">
-                <span className="sub-title">Distance Learning</span>
+              <div className={styles['about-content-box']}>
+                <span className={styles['sub-title']}>Distance Learning</span>
                 <h2>Build Your Project Management Skills Online, Anytime</h2>
                 <p>
                   Want to learn and earn PDUs or CEUs on your schedule —
@@ -38,19 +39,19 @@ const AboutUsContentTwo = () => {
             </div>
 
             <div className="col-lg-7 col-md-12">
-              <div className="about-video-box">
-                <div className="image">
+              <div className={styles['about-video-box']}>
+                <div className={styles['image']}>
                   <img src="/images/about-img5.jpg" alt="image" />
                 </div>
 
                 <div
                   onClick={() => openModal()}
-                  className="video-btn popup-youtube"
+                  className={`${styles['video-btn']} popup-youtube`}
                 >
                   <i className="flaticon-play"></i>
                 </div>
 
-                <div className="shape10">
+                <div className={`${styles['shape10']} shape10`}>
                   <img src="/images/shape9.png" alt="image" />
                 </div>
               </div>
@@ -58,13 +59,13 @@ const AboutUsContentTwo = () => {
           </div>
         </div>
 
-        <div className="shape3">
+        <div className={`${styles['shape3']} shape3`}>
           <img src="/images/shape3.png" alt="image" />
         </div>
-        <div className="shape4">
+        <div className={`${styles['shape4']} shape4`}>
           <img src="/images/shape4.png" alt="image" />
         </div>
-        <div className="shape2">
+        <div className={`${styles['shape2']} shape2`}>
           <img src="/images/shape2.png" alt="image" />
         </div>
       </div>

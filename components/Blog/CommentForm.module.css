@@ -1,0 +1,357 @@
+
+.comments-area {
+  margin-top: 30px;
+}
+
+.comments-area .comments-title {
+  line-height: initial;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.comments-area ol,
+.comments-area ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.comments-area .comment-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.comments-area .children {
+  margin-left: 20px;
+}
+
+.comments-area .comment-body {
+  border-bottom: 1px dashed #eeeeee;
+  padding-left: 65px;
+  color: #221638;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.comments-area .comment-body .reply {
+  margin-top: 15px;
+}
+
+.comments-area .comment-body .reply a {
+  border: 1px dashed #ded9d9;
+  color: #221638;
+  display: inline-block;
+  padding: 6px 20px 3px;
+  border-radius: 30px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.comments-area .comment-body .reply a:hover {
+  color: #ffffff;
+  background-color: #fe4a55;
+  border-color: #fe4a55;
+}
+
+.comments-area .comment-author {
+  font-size: 16.5px;
+  margin-bottom: 0.3em;
+  position: relative;
+  z-index: 2;
+}
+
+.comments-area .comment-author .avatar {
+  height: 50px;
+  left: -65px;
+  position: absolute;
+  width: 50px;
+}
+
+.comments-area .comment-author .fn {
+  font-weight: 800;
+}
+
+.comments-area .comment-author .says {
+  display: none;
+}
+
+.comments-area .comment-metadata {
+  margin-bottom: 0.8em;
+  color: #606060;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.comments-area .comment-metadata a {
+  display: inline-block;
+  color: #606060;
+}
+
+.comments-area .comment-metadata a:hover {
+  color: #fe4a55;
+}
+
+.comments-area .comment-respond {
+  margin-top: 30px;
+}
+
+.comments-area .comment-respond .comment-reply-title {
+  margin-bottom: 0;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.comments-area .comment-respond .comment-reply-title #cancel-comment-reply-link {
+  display: inline-block;
+}
+
+.comments-area .comment-respond .comment-form {
+  overflow: hidden;
+}
+
+.comments-area .comment-respond .comment-notes {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.comments-area .comment-respond .comment-notes .required {
+  color: red;
+}
+
+.comments-area .comment-respond .comment-form-comment {
+  float: left;
+  width: 100%;
+}
+
+.comments-area .comment-respond label {
+  display: none;
+}
+
+.comments-area .comment-respond input[type="date"],
+.comments-area .comment-respond input[type="time"],
+.comments-area .comment-respond input[type="datetime-local"],
+.comments-area .comment-respond input[type="week"],
+.comments-area .comment-respond input[type="month"],
+.comments-area .comment-respond input[type="text"],
+.comments-area .comment-respond input[type="email"],
+.comments-area .comment-respond input[type="url"],
+.comments-area .comment-respond input[type="password"],
+.comments-area .comment-respond input[type="search"],
+.comments-area .comment-respond input[type="tel"],
+.comments-area .comment-respond input[type="number"],
+.comments-area .comment-respond textarea {
+  display: block;
+  width: 100%;
+  background-color: #f4f4f4;
+  border: none;
+  padding: 1px 0 0 15px;
+  height: 50px;
+  outline: 0;
+  border-radius: 3px;
+  color: #221638;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.comments-area .comment-respond input[type="date"]::-moz-placeholder,
+.comments-area .comment-respond input[type="time"]::-moz-placeholder,
+.comments-area .comment-respond input[type="datetime-local"]::-moz-placeholder,
+.comments-area .comment-respond input[type="week"]::-moz-placeholder,
+.comments-area .comment-respond input[type="month"]::-moz-placeholder,
+.comments-area .comment-respond input[type="text"]::-moz-placeholder,
+.comments-area .comment-respond input[type="email"]::-moz-placeholder,
+.comments-area .comment-respond input[type="url"]::-moz-placeholder,
+.comments-area .comment-respond input[type="password"]::-moz-placeholder,
+.comments-area .comment-respond input[type="search"]::-moz-placeholder,
+.comments-area .comment-respond input[type="tel"]::-moz-placeholder,
+.comments-area .comment-respond input[type="number"]::-moz-placeholder,
+.comments-area .comment-respond textarea::-moz-placeholder {
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+  color: #606060;
+}
+
+.comments-area .comment-respond input[type="date"]::placeholder,
+.comments-area .comment-respond input[type="time"]::placeholder,
+.comments-area .comment-respond input[type="datetime-local"]::placeholder,
+.comments-area .comment-respond input[type="week"]::placeholder,
+.comments-area .comment-respond input[type="month"]::placeholder,
+.comments-area .comment-respond input[type="text"]::placeholder,
+.comments-area .comment-respond input[type="email"]::placeholder,
+.comments-area .comment-respond input[type="url"]::placeholder,
+.comments-area .comment-respond input[type="password"]::placeholder,
+.comments-area .comment-respond input[type="search"]::placeholder,
+.comments-area .comment-respond input[type="tel"]::placeholder,
+.comments-area .comment-respond input[type="number"]::placeholder,
+.comments-area .comment-respond textarea::placeholder {
+  transition: 0.5s;
+  color: #606060;
+}
+
+.comments-area .comment-respond input[type="date"]:focus::-moz-placeholder,
+.comments-area .comment-respond input[type="time"]:focus::-moz-placeholder,
+.comments-area .comment-respond input[type="datetime-local"]:focus::-moz-placeholder,
+.comments-area .comment-respond input[type="week"]:focus::-moz-placeholder,
+.comments-area .comment-respond input[type="month"]:focus::-moz-placeholder,
+.comments-area .comment-respond input[type="text"]:focus::-moz-placeholder,
+.comments-area .comment-respond input[type="email"]:focus::-moz-placeholder,
+.comments-area .comment-respond input[type="url"]:focus::-moz-placeholder,
+.comments-area .comment-respond input[type="password"]:focus::-moz-placeholder,
+.comments-area .comment-respond input[type="search"]:focus::-moz-placeholder,
+.comments-area .comment-respond input[type="tel"]:focus::-moz-placeholder,
+.comments-area .comment-respond input[type="number"]:focus::-moz-placeholder,
+.comments-area .comment-respond textarea:focus::-moz-placeholder {
+  color: transparent;
+}
+
+.comments-area .comment-respond input[type="date"]:focus::placeholder,
+.comments-area .comment-respond input[type="time"]:focus::placeholder,
+.comments-area .comment-respond input[type="datetime-local"]:focus::placeholder,
+.comments-area .comment-respond input[type="week"]:focus::placeholder,
+.comments-area .comment-respond input[type="month"]:focus::placeholder,
+.comments-area .comment-respond input[type="text"]:focus::placeholder,
+.comments-area .comment-respond input[type="email"]:focus::placeholder,
+.comments-area .comment-respond input[type="url"]:focus::placeholder,
+.comments-area .comment-respond input[type="password"]:focus::placeholder,
+.comments-area .comment-respond input[type="search"]:focus::placeholder,
+.comments-area .comment-respond input[type="tel"]:focus::placeholder,
+.comments-area .comment-respond input[type="number"]:focus::placeholder,
+.comments-area .comment-respond textarea:focus::placeholder {
+  color: transparent;
+}
+
+.comments-area .comment-respond textarea {
+  height: auto !important;
+  padding-top: 15px;
+}
+
+.comments-area .comment-respond .comment-form-author {
+  float: left;
+  width: 50%;
+  padding-right: 10px;
+  margin-bottom: 20px;
+}
+
+.comments-area .comment-respond .comment-form-email {
+  float: left;
+  width: 50%;
+  padding-left: 12px;
+  margin-bottom: 20px;
+}
+
+.comments-area .comment-respond .comment-form-url {
+  float: left;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.comments-area .comment-respond .comment-form-cookies-consent {
+  width: 100%;
+  float: left;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+.comments-area .comment-respond .comment-form-cookies-consent input {
+  position: absolute;
+  left: 0;
+  top: 4px;
+}
+
+.comments-area .comment-respond .comment-form-cookies-consent label {
+  display: inline-block;
+  margin: 0;
+  color: #606060;
+  position: relative;
+  top: -1px;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.comments-area .comment-respond .form-submit {
+  float: left;
+  width: 100%;
+}
+
+.comments-area .comment-respond .form-submit input {
+  background: #fe4a55;
+  border: none;
+  color: #ffffff;
+  padding: 12px 30px 10px;
+  display: inline-block;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.5s;
+  border-radius: 0;
+  font-weight: 800;
+  font-size: 14.5px;
+}
+
+.comments-area .comment-respond .form-submit input:hover,
+.comments-area .comment-respond .form-submit input:focus {
+  color: #ffffff;
+  background: #221638;
+}
+
+@media only screen and (max-width: 767px) {
+  .comments-area .comments-title {
+    font-size: 19px;
+  }
+  .comments-area .comment-author {
+    font-size: 16px;
+  }
+  .comments-area .comment-author .avatar {
+    height: 50px;
+    left: 0;
+    position: relative;
+    width: 50px;
+    display: block;
+    margin-bottom: 15px;
+  }
+  .comments-area .comment-body {
+    padding-left: 0;
+  }
+  .comments-area .comment-respond .comment-reply-title {
+    font-size: 19px;
+  }
+  .comments-area .comment-respond .comment-form-author {
+    width: 100%;
+    padding-right: 0;
+  }
+  .comments-area .comment-respond .comment-form-email {
+    width: 100%;
+    padding-left: 0;
+  }
+  .comments-area .comment-respond .form-submit input {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .comments-area .comments-title {
+    font-size: 20px;
+  }
+  .comments-area .comment-respond .comment-reply-title {
+    font-size: 20px;
+  }
+  .comments-area .comment-respond .form-submit input {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .comments-area .comments-title {
+    font-size: 22px;
+  }
+  .comments-area .comment-respond .comment-reply-title {
+    font-size: 22px;
+  }
+}

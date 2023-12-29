@@ -1,9 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from '../About/Features.module.css';
 
 const Features = () => {
     return (
-        <div className="features-area pt-100 pb-70">
+        <div className={`${styles['features-area']} pt-100 pb-70`}>
             <div className="container">
                 <div className="section-title">
                     <span className="sub-title">Education for everyone</span>
@@ -13,43 +14,43 @@ const Features = () => {
 
                 <div className="row">
                     <div className="col-lg-4 col-sm-6 col-md-6">
-                        <div className="single-features-box without-padding">
-                            <div className="icon">
+                        <div className={`${styles['single-features-box']} ${styles['without-padding']}`}>
+                            <div className={styles['icon']}>
                                 <i className="flaticon-brain-process"></i>
                             </div>
                             <h3>Learn the Latest Skills</h3>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
 
                             <Link href="/authentication">
-                                <a className="link-btn">Start Now!</a>
+                                <a className={styles['link-btn']}>Start Now!</a>
                             </Link>
                         </div>
                     </div>
 
                     <div className="col-lg-4 col-sm-6 col-md-6">
-                        <div className="single-features-box without-padding">
-                            <div className="icon">
+                        <div className={`${styles['single-features-box']} ${styles['without-padding']}`}>
+                            <div className={styles['icon']}>
                                 <i className="flaticon-computer"></i>
                             </div>
                             <h3>Go at Your Own Pace</h3>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
                             
                             <Link href="/authentication">
-                                <a className="link-btn">Start Now!</a>
+                                <a className={styles['link-btn']}>Start Now!</a>
                             </Link>
                         </div>
                     </div>
 
                     <div className="col-lg-4 col-md-6 col-sm-6 offset-lg-0 offset-md-3 offset-sm-3">
-                        <div className="single-features-box without-padding">
-                            <div className="icon">
+                        <div className={`${styles['single-features-box']} ${styles['without-padding']}`}>
+                            <div className={styles['icon']}>
                                 <i className="flaticon-shield-1"></i>
                             </div>
                             <h3>Learn from Industry Experts</h3>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
                             
                             <Link href="/authentication">
-                                <a className="link-btn">Start Now!</a>
+                                <a className={styles['link-btn']}>Start Now!</a>
                             </Link>
                         </div>
                     </div>

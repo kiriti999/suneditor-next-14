@@ -1,7 +1,8 @@
 import React from 'react'
 import { getPosts } from '../../store/slices/blogSlice';
 import { useDispatch } from 'react-redux';
-
+import widgetStyles from '../Blog/Widget.module.css';
+import styles from './pagination.module.css';
 
 export function Pagination(props) {
 
@@ -26,19 +27,19 @@ export function Pagination(props) {
     }
 
     return (
-        <div className="widget-area">
-            <div className="pagination-area text-center">
-                <a href="#" className="prev page-numbers" onClick={prevPage}>
+        <div className={widgetStyles['widget-area']}>
+            <div className={`${styles['pagination-area']} text-center`}>
+                <a href="#" className={`prev ${styles['page-numbers']}`} onClick={prevPage}>
                     <i className='bx bx-chevrons-left'></i>
                 </a>
-                {pageNumbers.map((pageNumber, index) => {
+                {pageNumbers.length && pageNumbers.map((pageNumber, index) => {
                     return (
                         <span key={index}>
-                            <a href="#" onClick={() => setCurrentPage(pageNumber)} className={`page-numbers ${currentPage == pageNumber ? 'current' : ''}`}>{pageNumber}</a>
+                            <a href="#" onClick={() => setCurrentPage(pageNumber)} className={`${styles['page-numbers']} ${currentPage == pageNumber ? styles['current'] : ''}`}>{pageNumber}</a>
                         </span>
                     )
                 })}
-                <a href="#" className="next page-numbers" onClick={nextPage}>
+                <a href="#" className={`next ${styles['page-numbers']}`} onClick={nextPage}>
                     <i className='bx bx-chevrons-right'></i>
                 </a>
             </div>

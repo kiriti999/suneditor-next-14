@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './GoTop.module.css';
 
 const GoTop = ({scrollStepInPx, delayInMs}) => {
 
@@ -28,7 +29,7 @@ const GoTop = ({scrollStepInPx, delayInMs}) => {
 
     const renderGoTopIcon = () => {
         return (
-            <div className={`go-top ${thePosition ? 'active' : ''}`} onClick={scrollToTop}>
+            <div className={`${styles['go-top']} ${thePosition ? styles['active'] : ''}`} onClick={scrollToTop}>
                 <i className='bx bx-chevron-up'></i>
             </div>
         )

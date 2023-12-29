@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { parseCookies } from 'nookies';
 import axios from 'axios'
 import { axiosApi } from "@/utils/baseUrl";
+import styles from '../../components/Courses/Course.module.css';
 
 const MyCourses = ({ enrolled }) => {
     return (
@@ -21,22 +22,22 @@ const MyCourses = ({ enrolled }) => {
                     <div className="row">
                         {enrolled.length > 0 ? enrolled.map((enrolledCourse) => (
                             <div className="col-lg-4 col-md-6" key={enrolledCourse._id}>
-                                <div className="single-courses-box">
-                                    <div className="courses-image">
+                                <div className={styles['single-courses-box']}>
+                                    <div className={styles['courses-image']}>
                                         <Link href="/courses/[id]" as={`/courses/${enrolledCourse.course.slug}`}>
-                                            <a className="d-block image">
+                                            <a className={`d-block ${styles['image']}`}>
                                                 <img src={enrolledCourse.course.profilePhoto} alt={enrolledCourse.course.title} />
                                             </a>
                                         </Link>
 
                                         <Link href="#">
-                                            <a className="fav"><i className="flaticon-heart"></i></a>
+                                            <a className={styles['fav']}><i className="flaticon-heart"></i></a>
                                         </Link>
 
                                     </div>
 
-                                    <div className="courses-content">
-                                        <div className="course-author d-flex align-items-center">
+                                    <div className={styles['courses-content']}>
+                                        <div className={`${styles['course-author']} d-flex align-items-center`}>
                                         </div>
 
                                         <h3>
@@ -47,7 +48,7 @@ const MyCourses = ({ enrolled }) => {
 
                                         <p dangerouslySetInnerHTML={{ __html: enrolledCourse.course.overview.slice(0, 100) }}></p>
 
-                                        <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+                                        <ul className={`${styles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
                                             <li>
                                                 <i className=''></i> {parseInt(enrolledCourse.course.lessons)} Lessons
                                             </li>
@@ -60,7 +61,7 @@ const MyCourses = ({ enrolled }) => {
                             </div>
                         )) : (
                             <div className="col-lg-12">
-                                <h2 className="empty-content">Empty</h2>
+                                <h2 className={styles['empty-content']}>Empty</h2>
                             </div>
                         )}
                     </div>

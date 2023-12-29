@@ -1,11 +1,12 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
+import styles from './Partner.module.css';
 
 const Partner = () => {
 	return (
 		<>
-			<div className="partner-area ptb-70">
+			<div className={`${styles['partner-area']} ptb-70`}>
 				<div className="container">
 					<Swiper
 						slidesPerView={1}
@@ -33,7 +34,7 @@ const Partner = () => {
 						className="partner-slides"
 					>
 						<SwiperSlide>
-							<div className="single-partner-item">
+							<div className={styles['single-partner-item']}>
 								<img
 									src="/images/partner/partner1.png"
 									alt="image"
@@ -42,7 +43,7 @@ const Partner = () => {
 						</SwiperSlide>
 
 						<SwiperSlide>
-							<div className="single-partner-item">
+							<div className={styles['single-partner-item']}>
 								<img
 									src="/images/partner/partner2.png"
 									alt="image"
@@ -51,7 +52,7 @@ const Partner = () => {
 						</SwiperSlide>
 
 						<SwiperSlide>
-							<div className="single-partner-item">
+							<div className={styles['single-partner-item']}>
 								<img
 									src="/images/partner/partner3.png"
 									alt="image"
@@ -60,7 +61,7 @@ const Partner = () => {
 						</SwiperSlide>
 
 						<SwiperSlide>
-							<div className="single-partner-item">
+							<div className={styles['single-partner-item']}>
 								<img
 									src="/images/partner/partner4.png"
 									alt="image"
@@ -69,7 +70,7 @@ const Partner = () => {
 						</SwiperSlide>
 
 						<SwiperSlide>
-							<div className="single-partner-item">
+							<div className={styles['single-partner-item']}>
 								<img
 									src="/images/partner/partner5.png"
 									alt="image"
@@ -78,7 +79,7 @@ const Partner = () => {
 						</SwiperSlide>
 
 						<SwiperSlide>
-							<div className="single-partner-item">
+							<div className={styles['single-partner-item']}>
 								<img
 									src="/images/partner/partner6.png"
 									alt="image"
@@ -87,7 +88,7 @@ const Partner = () => {
 						</SwiperSlide>
 						
 						<SwiperSlide>
-							<div className="single-partner-item">
+							<div className={styles['single-partner-item']}>
 								<img
 									src="/images/partner/partner4.png"
 									alt="image"

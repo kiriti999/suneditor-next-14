@@ -9,6 +9,7 @@ import {
 } from 'react-accessible-accordion';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import SubscribeForm from '../components/Common/SubscribeForm';
+import styles from './faq.module.css';
 
 const Faq = () => {
     return (
@@ -22,314 +23,314 @@ const Faq = () => {
 
             <div className="faq-area ptb-100">
                 <div className="container">
-                    <div className="tab faq-accordion-tab">
-                        <Tabs>
-                            <TabList>
-                                <Tab><i className='bx bx-flag'></i> <span>Getting Started</span></Tab>
-                                <Tab><i className='bx bxs-badge-dollar'></i> <span>Pricing & Planes</span></Tab>
-                                <Tab><i className='bx bx-shopping-bag'></i> <span>Sales Question</span></Tab>
-                                <Tab><i className='bx bx-book-open'></i> <span>Usage Guides</span></Tab>
-                                <Tab><i className='bx bx-info-circle'></i> <span>General Guide</span></Tab>
+                    <div className={`${styles['tab']} ${styles['faq-accordion-tab']}`}>
+                        <Tabs selectedTabClassName={`react-tabs__tab--selected ${styles['react-tabs__tab--selected']}`}>
+                            <TabList className={`react-tabs__tab-list ${styles['react-tabs__tab-list']}`}>
+                                <Tab className={`react-tabs__tab ${styles['react-tabs__tab']}`}><i className='bx bx-flag'></i> <span>Getting Started</span></Tab>
+                                <Tab className={`react-tabs__tab ${styles['react-tabs__tab']}`}><i className='bx bxs-badge-dollar'></i> <span>Pricing & Planes</span></Tab>
+                                <Tab className={`react-tabs__tab ${styles['react-tabs__tab']}`}><i className='bx bx-shopping-bag'></i> <span>Sales Question</span></Tab>
+                                <Tab className={`react-tabs__tab ${styles['react-tabs__tab']}`}><i className='bx bx-book-open'></i> <span>Usage Guides</span></Tab>
+                                <Tab className={`react-tabs__tab ${styles['react-tabs__tab']}`}><i className='bx bx-info-circle'></i> <span>General Guide</span></Tab>
                             </TabList>
 
                             <TabPanel>
-                                <div className="faq-accordion">
-                                    <Accordion allowZeroExpanded preExpanded={['a']}>
+                                <div className={styles['faq-accordion']}>
+                                    <Accordion className={`accordion ${styles['accordion']}`} allowZeroExpanded preExpanded={['a']}>
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="a">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    How can I contact a school directly?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="b">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    Where should I study abroad?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="c">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    How do I find a study abroad program on whatsnxt.com?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="d">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    How do I find a school where I want to study?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="e">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    Am I eligible for admission?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+                                    </Accordion>
+                                </div>
+                            </TabPanel>
+
+                            <TabPanel>
+                                <div className={styles['faq-accordion']}>
+                                    <Accordion className={`accordion ${styles['accordion']}`} allowZeroExpanded preExpanded={['a']}>
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="a">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    Where should I study abroad?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="b">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    How can I contact a school directly?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="c">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    How do I find a study abroad program on whatsnxt.com?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="d">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    How do I find a school where I want to study?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="e">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    Am I eligible for admission?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+                                    </Accordion>
+                                </div>
+                            </TabPanel>
+
+                            <TabPanel>
+                                <div className={styles['faq-accordion']}>
+                                    <Accordion className={`accordion ${styles['accordion']}`} allowZeroExpanded preExpanded={['a']}>
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="a">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    How do I find a study abroad program on whatsnxt.com?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="b">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    How can I contact a school directly?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="c">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    Where should I study abroad?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="d">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    How do I find a school where I want to study?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="e">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    Am I eligible for admission?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+                                    </Accordion>
+                                </div>
+                            </TabPanel>
+
+                            <TabPanel>
+                                <div className={styles['faq-accordion']}>
+                                    <Accordion className={`accordion ${styles['accordion']}`} allowZeroExpanded preExpanded={['a']}>
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="a">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    Am I eligible for admission?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="b">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    How can I contact a school directly?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="c">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    Where should I study abroad?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="d">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    How do I find a study abroad program on whatsnxt.com?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="e">
+                                            <AccordionItemHeading>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
+                                                    How do I find a school where I want to study?
+                                                </AccordionItemButton>
+                                            </AccordionItemHeading>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
+                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
+                                            </AccordionItemPanel>
+                                        </AccordionItem>
+                                    </Accordion>
+                                </div>
+                            </TabPanel>
+
+                            <TabPanel>
+                                <div className={styles['faq-accordion']}>
+                                    <Accordion className={`accordion ${styles['accordion']}`} allowZeroExpanded preExpanded={['a']}>
                                         <AccordionItem  uuid="a">
                                             <AccordionItemHeading>
-                                                <AccordionItemButton>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
                                                     How can I contact a school directly?
                                                 </AccordionItemButton>
                                             </AccordionItemHeading>
-                                            <AccordionItemPanel>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
                                                 <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
                                             </AccordionItemPanel>
                                         </AccordionItem>
 
-                                        <AccordionItem uuid="b">
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="b">
                                             <AccordionItemHeading>
-                                                <AccordionItemButton>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
                                                     Where should I study abroad?
                                                 </AccordionItemButton>
                                             </AccordionItemHeading>
-                                            <AccordionItemPanel>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
                                                 <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
                                             </AccordionItemPanel>
                                         </AccordionItem>
 
-                                        <AccordionItem uuid="c">
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="c">
                                             <AccordionItemHeading>
-                                                <AccordionItemButton>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
                                                     How do I find a study abroad program on whatsnxt.com?
                                                 </AccordionItemButton>
                                             </AccordionItemHeading>
-                                            <AccordionItemPanel>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
                                                 <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
                                             </AccordionItemPanel>
                                         </AccordionItem>
 
-                                        <AccordionItem uuid="d">
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="d">
                                             <AccordionItemHeading>
-                                                <AccordionItemButton>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
                                                     How do I find a school where I want to study?
                                                 </AccordionItemButton>
                                             </AccordionItemHeading>
-                                            <AccordionItemPanel>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
                                                 <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
                                             </AccordionItemPanel>
                                         </AccordionItem>
 
-                                        <AccordionItem uuid="e">
+                                        <AccordionItem className={`accordion__item ${styles['accordion__item']}`} uuid="e">
                                             <AccordionItemHeading>
-                                                <AccordionItemButton>
+                                                <AccordionItemButton className={`accordion__button ${styles['accordion__button']}`}>
                                                     Am I eligible for admission?
                                                 </AccordionItemButton>
                                             </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-                                    </Accordion>
-                                </div>
-                            </TabPanel>
-
-                            <TabPanel>
-                                <div className="faq-accordion">
-                                    <Accordion allowZeroExpanded preExpanded={['a']}>
-                                        <AccordionItem uuid="a">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    Where should I study abroad?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="b">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    How can I contact a school directly?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="c">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    How do I find a study abroad program on whatsnxt.com?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="d">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    How do I find a school where I want to study?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="e">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    Am I eligible for admission?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-                                    </Accordion>
-                                </div>
-                            </TabPanel>
-
-                            <TabPanel>
-                                <div className="faq-accordion">
-                                    <Accordion allowZeroExpanded preExpanded={['a']}>
-                                        <AccordionItem uuid="a">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    How do I find a study abroad program on whatsnxt.com?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="b">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    How can I contact a school directly?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="c">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    Where should I study abroad?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="d">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    How do I find a school where I want to study?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="e">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    Am I eligible for admission?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-                                    </Accordion>
-                                </div>
-                            </TabPanel>
-
-                            <TabPanel>
-                                <div className="faq-accordion">
-                                    <Accordion allowZeroExpanded preExpanded={['a']}>
-                                        <AccordionItem uuid="a">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    Am I eligible for admission?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="b">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    How can I contact a school directly?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="c">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    Where should I study abroad?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="d">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    How do I find a study abroad program on whatsnxt.com?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="e">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    How do I find a school where I want to study?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-                                    </Accordion>
-                                </div>
-                            </TabPanel>
-
-                            <TabPanel>
-                                <div className="faq-accordion">
-                                    <Accordion allowZeroExpanded preExpanded={['a']}>
-                                        <AccordionItem  uuid="a">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    How can I contact a school directly?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="b">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    Where should I study abroad?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="c">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    How do I find a study abroad program on whatsnxt.com?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="d">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    How do I find a school where I want to study?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
-                                                <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
-                                            </AccordionItemPanel>
-                                        </AccordionItem>
-
-                                        <AccordionItem uuid="e">
-                                            <AccordionItemHeading>
-                                                <AccordionItemButton>
-                                                    Am I eligible for admission?
-                                                </AccordionItemButton>
-                                            </AccordionItemHeading>
-                                            <AccordionItemPanel>
+                                            <AccordionItemPanel className={`accordion__panel ${styles['accordion__panel']}`}>
                                                 <p>You can contact a school by filling out a <a href="contact.html">“Contact Us”</a> form. This form can be found to the right of both the institute and education program profiles and also at the bottom of these profiles.</p>
                                             </AccordionItemPanel>
                                         </AccordionItem>

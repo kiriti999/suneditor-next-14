@@ -1,6 +1,7 @@
 import React from 'react';
 import PageBanner from '../components/Common/PageBanner';
 import Sidebar from '../components/TermsOfService/Sidebar';
+import styles from './purchase-guide.module.css';
 
 const PurchaseGuide = () => {
     return (
@@ -16,7 +17,7 @@ const PurchaseGuide = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 col-md-12">
-                            <div className="purchase-guide-content">
+                            <div className={styles['purchase-guide-content']}>
                                 <img src="/images/courses/courses3.jpg" alt="image" />
                                 <p><i>This Purchase Guide was last updated on January 1, 2020.</i></p>
                                 <h3>1. Our website</h3>
@@ -52,7 +53,7 @@ const PurchaseGuide = () => {
                                     <li>To get information and control cookies used for tailored advertising from participating companies, see the consumer opt-out pages for the Network Advertising Initiative and Digital Advertising Alliance, or if you’re located in the European Union, visit the Your Online Choices site. To opt out of Google’s display advertising or customize Google Display Network ads, visit the Google Ads Settings page. To opt out of Taboola’s targeted ads, see the Opt-out Link in their Cookie Policy.</li>
                                     <li>To update data you provide directly, log into your account and update your account at any time.</li>
                                 </ul>
-                                <blockquote className="blockquote">
+                                <blockquote className={styles['blockquote']}>
                                     <p>We collect certain data from you directly, like information you enter yourself, data about your participation in courses, and data from third-party platforms you connect with whatsnxt. We also collect some data automatically, like information about your device and what parts of our Services you interact with or spend time using.</p>
                                 </blockquote>
                                 <h3>7. Our Policy Concerning Children</h3>

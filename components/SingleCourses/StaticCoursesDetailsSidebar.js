@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 const ModalVideo = dynamic(import("react-modal-video"));
+import styles from '../Courses/Course.module.css';
 
 const StaticCoursesDetailsSidebar = () => {
 	const [display, setDisplay] = React.useState(false);
@@ -28,8 +29,8 @@ const StaticCoursesDetailsSidebar = () => {
 				""
 			)}
 
-			<div className="courses-details-info">
-				<div className="image">
+			<div className={styles['courses-details-info']}>
+				<div className={styles['image']}>
 					<img src="/images/courses/courses1.jpg" alt="image" />
 
 					<div
@@ -37,17 +38,17 @@ const StaticCoursesDetailsSidebar = () => {
 							e.preventDefault();
 							openModal();
 						}}
-						className="link-btn popup-youtube"
+						className={`${styles['link-btn']} popup-youtube`}
 					></div>
 
-					<div className="content">
+					<div className={styles['content']}>
 						<i className="flaticon-play"></i>
 						<span>Course Preview</span>
 					</div>
 				</div>
 
-				<ul className="info">
-					<li className="price">
+				<ul className={styles['info']}>
+					<li className={styles['price']}>
 						<div className="d-flex justify-content-between align-items-center">
 							<span>
 								<i className="flaticon-tag"></i> Price
@@ -100,26 +101,26 @@ const StaticCoursesDetailsSidebar = () => {
 
 				<div className="btn-box">
 					<Link href="#">
-						<a className="default-btn">
+						<a className={`${styles['default-btn']} default-btn`}>
 							<i className="flaticon-shopping-cart"></i> Add to
 							Cart <span></span>
 						</a>
 					</Link>
 					<Link href="#">
-						<a className="default-btn">
+						<a className={`${styles['default-btn']} default-btn`}>
 							<i className="flaticon-tag"></i> Buy Now{" "}
 							<span></span>
 						</a>
 					</Link>
 				</div>
 
-				<div className="courses-share">
-					<div className="share-info">
+				<div className={styles['courses-share']}>
+					<div className={styles['share-info']}>
 						<span>
 							Share This Course <i className="flaticon-share"></i>
 						</span>
 
-						<ul className="social-link">
+						<ul className={styles['social-link']}>
 							<li>
 								<a href="#" className="d-block" target="_blank">
 									<i className="bx bxl-facebook"></i>

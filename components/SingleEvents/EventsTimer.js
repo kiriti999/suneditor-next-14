@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Events.module.css';
 
 const EventsTimer = () => {
     const [days, setDays] = React.useState('');
@@ -32,7 +33,7 @@ const EventsTimer = () => {
         setSeconds(seconds);
     }
     return (
-        <div id="timer" className="flex-wrap d-flex justify-content-center">
+        <div id={styles['timer']} className="flex-wrap d-flex justify-content-center">
             <div id="days" className="align-items-center flex-column d-flex justify-content-center">
                 {days} <span>Days</span>
             </div>

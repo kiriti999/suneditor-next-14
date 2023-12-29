@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from './coming-soon.module.css';
 
 const ComingSoon = () => {
     const [days, setDays] = React.useState('');
@@ -33,19 +34,19 @@ const ComingSoon = () => {
         setSeconds(seconds);
     }
     return (
-        <div className="coming-soon-area">
+        <div className={styles['coming-soon-area']}>
             <div className="d-table">
                 <div className="d-table-cell">
-                    <div className="coming-soon-content">
+                    <div className={styles['coming-soon-content']}>
                         <Link href="/">
-                            <a className="logo">
+                            <a className={styles['logo']}>
                                 <img src="/images/logo.png" alt="image" />
                             </a>
                         </Link>
 
                         <h2>We Are Launching Soon</h2>
 
-                        <div id="timer" className="flex-wrap d-flex justify-content-center">
+                        <div id={styles['timer']} className="flex-wrap d-flex justify-content-center">
                             <div id="days" className="align-items-center flex-column d-flex justify-content-center">
                                 {days} <span>Days</span>
                             </div>
@@ -61,14 +62,14 @@ const ComingSoon = () => {
                         </div>
   
                         <form className="newsletter-form" data-toggle="validator">
-                            <div className="form-group">
-                                <input type="email" className="input-newsletter" placeholder="Enter your email" name="EMAIL" required />
-                                <span className="label-title">
+                            <div className={`${styles['form-group']} form-group`}>
+                                <input type="email" className={styles['input-newsletter']} placeholder="Enter your email" name="EMAIL" required />
+                                <span className={styles['label-title']}>
                                     <i className='bx bx-envelope'></i>
                                 </span>
                             </div>
 
-                            <button type="submit" className="default-btn">
+                            <button type="submit" className={`${styles['default-btn']} default-btn`}>
                                 <i className="flaticon-user"></i> Subscribe <span></span>
                             </button>
  

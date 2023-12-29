@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import PageBanner from "../../components/Common/PageBanner";
 import { calculateCartTotal } from "@/utils/cart/calculateCartTotal";
 import { Spinner } from 'reactstrap';
+import chkStyles from '../../components/CheckoutButton/CheckoutBtn.module.css';
 
 const Checkout = ({ user }) => {
 	console.log('Checkout.js:: user: ', user);
@@ -39,10 +40,10 @@ const Checkout = ({ user }) => {
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-12 col-md-12">
-							<div className="order-details">
-								<h3 className="title">Your Order</h3>
+							<div className={chkStyles['order-details']}>
+								<h3 className={`${chkStyles['title']} title`}>Your Order</h3>
 
-								<div className="order-table table-responsive">
+								<div className={`${chkStyles['order-table']} table-responsive`}>
 									<table className="table table-bordered">
 										<thead>
 											<tr>
@@ -54,16 +55,16 @@ const Checkout = ({ user }) => {
 										</thead>
 
 										<tbody>
-											{cartItems.map((cart) => (
+											{cartItems.length && cartItems.map((cart) => (
 												<tr key={cart.id}>
-													<td className="product-name">
+													<td className={chkStyles['product-name']}>
 														<a href="#">
 															{cart.title}
 														</a>
 													</td>
 
-													<td className="product-total">
-														<span className="subtotal-amount">
+													<td className={chkStyles['product-total']}>
+														<span className={chkStyles['subtotal-amount']}>
 															&#8377;{cart.total_cost}
 														</span>
 													</td>
@@ -71,12 +72,12 @@ const Checkout = ({ user }) => {
 											))}
 
 											<tr>
-												<td className="total-price">
+												<td className={chkStyles['total-price']}>
 													<span>Order Total</span>
 												</td>
 
-												<td className="product-subtotal">
-													<span className="subtotal-amount">
+												<td className={chkStyles['product-subtotal']}>
+													<span className={chkStyles['subtotal-amount']}>
 														&#8377;{cartAmount}
 													</span>
 												</td>

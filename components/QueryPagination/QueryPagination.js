@@ -61,7 +61,7 @@ const QueryPagination = ({
 					</span>
 				</li>
 
-				{pageNumbers.map((pageNumber) => (
+				{pageNumbers.length && pageNumbers.map((pageNumber) => (
 					<li
 						className={`page-item ${
 							pageNumber === currentPageNumber ? 'active' : ''

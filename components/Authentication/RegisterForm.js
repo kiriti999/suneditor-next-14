@@ -8,6 +8,7 @@ import { handleLogin } from "../../utils/auth";
 import LoadingSpinner from "@/utils/LoadingSpinner";
 import Router from 'next/router'
 import { useForm } from 'react-hook-form';
+import styles from './RegisterForm.module.css';
 
 const RegisterForm = () => {
 	const [loading, setLoading] = React.useState(false);
@@ -65,7 +66,7 @@ const RegisterForm = () => {
 	};
 
 	return (
-		<div className="register-form">
+		<div className={styles['register-form']}>
 			<h2>Register</h2>
 			<Alert color="danger" isOpen={error !== ''}>
 				{error}

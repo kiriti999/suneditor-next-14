@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from '../Common/PageBanner.module.css';
 
 const PageBanner = ({pageTitle, homePageUrl, homePageText, innerPageUrl, innerPageText, activePageText}) => {
     return (
-        <div className="page-title-area">
+        <div className={styles['page-title-area']}>
             <div className="container">
-                <div className="page-title-content">
+                <div className={styles['page-title-content']}>
                     <ul>
                         <li>
                             <Link href={homePageUrl}>
@@ -22,13 +23,13 @@ const PageBanner = ({pageTitle, homePageUrl, homePageText, innerPageUrl, innerPa
 
                     <h2>{pageTitle}</h2>
 
-                    <div className="rating">
+                    <div className={styles['rating']}>
                         <i className='bx bxs-star'></i>
                         <i className='bx bxs-star'></i>
                         <i className='bx bxs-star'></i>
                         <i className='bx bxs-star'></i>
                         <i className='bx bxs-star'></i>
-                        <div className="rating-count">
+                        <div className={styles['rating-count']}>
                             <span>4.0 (1 rating)</span>
                         </div>
                     </div>

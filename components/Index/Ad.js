@@ -1,6 +1,8 @@
 import React from "react";
 import dynamic from "next/dynamic";
 const ModalVideo = dynamic(import("react-modal-video"));
+import adStyles from './Ad.module.css';
+import videoStyles from '../About/Video.module.css';
 
 const Ad = () => {
 	const [display, setDisplay] = React.useState(false);
@@ -16,10 +18,10 @@ const Ad = () => {
 
 	return (
 		<>
-			<div className="video-area">
+			<div className={adStyles['video-area']}>
 				<div className="container">
-					<div className="video-box mt-0">
-						<div className="image">
+					<div className={`${videoStyles['video-box']} mt-0`}>
+						<div className={videoStyles['image']}>
 							<img
 								src="/images/video-img2.jpg"
 								className="shadow"
@@ -29,7 +31,7 @@ const Ad = () => {
 			 
 						<div
 							onClick={()=> openModal()}
-							className="video-btn"
+							className={videoStyles['video-btn']}
 						>
 							<i className="flaticon-play"></i>
 						</div>

@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { axiosApi } from "../../utils/baseUrl";
+import styles from './ContactForm.module.css';
 
 const ContactForm = () => {
 
@@ -46,7 +47,7 @@ const ContactForm = () => {
 	};
 
 	return (
-		<div className="contact-form">
+		<div className={styles['contact-form']}>
 			<h2>Ready to Get Started?</h2>
 			<p>
 				Your email address will not be published. Required fields are
@@ -56,7 +57,7 @@ const ContactForm = () => {
 			<form id="contactForm" onSubmit={handleSubmit(onSubmit)}>
 				<div className="row">
 					<div className="col-lg-6 col-md-6">
-						<div className="form-group">
+						<div className={`${styles['form-group']} form-group`}>
 							<input
 								type="text"
 								placeholder="Your name"
@@ -67,7 +68,7 @@ const ContactForm = () => {
 					</div>
 
 					<div className="col-lg-6 col-md-6">
-						<div className="form-group">
+						<div className={`${styles['form-group']} form-group`}>
 							<input
 								type="text"
 								placeholder="Your email address"
@@ -78,7 +79,7 @@ const ContactForm = () => {
 					</div>
 
 					<div className="col-lg-12 col-md-6">
-						<div className="form-group">
+						<div className={`${styles['form-group']} form-group`}>
 							<input
 								type="text"
 								placeholder="Your number"
@@ -89,7 +90,7 @@ const ContactForm = () => {
 					</div>
 
 					<div className="col-lg-12 col-md-12">
-						<div className="form-group">
+						<div className={`${styles['form-group']} form-group`}>
 							<input
 								type="text"
 								placeholder="Your Subject"
@@ -100,7 +101,7 @@ const ContactForm = () => {
 					</div>
 
 					<div className="col-lg-12 col-md-12">
-						<div className="form-group">
+						<div className={`${styles['form-group']} form-group`}>
 							<textarea
 								name="text"
 								cols="30"
@@ -113,7 +114,7 @@ const ContactForm = () => {
 					</div>
 
 					<div className="col-lg-12 col-sm-12">
-						<button type="submit" className="default-btn">
+						<button type="submit" className={`${styles['default-btn']} default-btn`}>
 							Send Message
 						</button>
 					</div>

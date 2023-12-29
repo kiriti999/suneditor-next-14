@@ -3,6 +3,8 @@ import { BlogAPI } from '../../pages/api/v1';
 import { sanitize } from 'isomorphic-dompurify';
 import { useRouter } from 'next/router';
 import SidebarPost from '../sidebar-post/sidebar-post';
+import styles from './[id].module.css';
+import widgetStyles from '../../components/Blog/Widget.module.css';
 
 
 const initialProps = {
@@ -36,13 +38,13 @@ export function BlogDetails() {
       <div className="container">
         <div className="row">
           <div className="col-lg-9 col-md-12">
-            <div className="blog-details-desc">
-              <div className="article-image">
+            <div className={styles['blog-details-desc']}>
+              <div className={styles['article-image']}>
                 {/* <img src="/images/blog/blog1.jpg" alt="image" /> */}
               </div>
 
-              <div className="article-content">
-                <div className="entry-meta">
+              <div className={styles['article-content']}>
+                <div className={styles['entry-meta']}>
                   <ul>
                     {/* <li>
                       <i className='bx bx-folder-open'></i>
@@ -105,8 +107,8 @@ export function BlogDetails() {
                 </ul> */}
               </div>
 
-              <div className="article-footer">
-                <div className="article-tags">
+              <div className={styles['article-footer']}>
+                <div className={styles['article-tags']}>
                   {/* <span><i className='bx bx-purchase-tag'></i></span> */}
 
                   {/* <a href="#">Fashion</a>
@@ -116,25 +118,25 @@ export function BlogDetails() {
                   {/* <p>Category: {item.categoryName[0]}</p> */}
                 </div>
 
-                <div className="article-share">
-                  <ul className="social">
+                <div className={styles['article-share']}>
+                  <ul className={styles['social']}>
                     <li><span>Share:</span></li>
-                    <li><a href="#" className="facebook" target="_blank"><i className='bx bxl-facebook'></i></a></li>
-                    <li><a href="#" className="twitter" target="_blank"><i className='bx bxl-twitter'></i></a></li>
-                    <li><a href="#" className="linkedin" target="_blank"><i className='bx bxl-linkedin'></i></a></li>
-                    <li><a href="#" className="instagram" target="_blank"><i className='bx bxl-instagram'></i></a></li>
+                    <li><a href="#" className={styles['facebook']} target="_blank"><i className='bx bxl-facebook'></i></a></li>
+                    <li><a href="#" className={styles['twitter']} target="_blank"><i className='bx bxl-twitter'></i></a></li>
+                    <li><a href="#" className={styles['linkedin']} target="_blank"><i className='bx bxl-linkedin'></i></a></li>
+                    <li><a href="#" className={styles['instagram']} target="_blank"><i className='bx bxl-instagram'></i></a></li>
                   </ul>
                 </div>
               </div>
 
-              <div className="article-author">
-                <div className="author-profile-header"></div>
-                <div className="author-profile">
-                  <div className="author-profile-title">
+              <div className={styles['article-author']}>
+                <div className={styles['author-profile-header']}></div>
+                <div className={styles['author-profile']}>
+                  <div className={styles['author-profile-title']}>
                     <img src="/images/user.png" className="shadow-sm" alt="image" />
 
-                    <div className="author-profile-title-details">
-                      <div className="author-profile-details">
+                    <div className={styles['author-profile-title-details']}>
+                      <div className={styles['author-profile-details']}>
                         <h4>Kiriti Komaragiri</h4>
                         <span className="d-block">Trainer, Author, Writer</span>
                       </div>
@@ -189,7 +191,7 @@ export function BlogDetails() {
           </div>
 
           <div className="col-lg-3 col-md-12">
-            <div className="widget-area">
+            <div className={widgetStyles['widget-area']}>
               {/* <SidebarSearch /> */}
               <SidebarPost />
             </div>

@@ -3,6 +3,8 @@ import PageBanner from '../components/Common/PageBanner';
 import Link from 'next/link';
 import BlogSidebar from '../components/Blog/BlogSidebar';
 import CommentArea from '../components/Blog/CommentForm';
+import styles from './blog/[id].module.css';
+import blogStyles from './single-blog-1.module.css';
 
 const BlogDetails = () => {
     return (
@@ -18,13 +20,13 @@ const BlogDetails = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 col-md-12">
-                            <div className="blog-details-desc">
-                                <div className="article-image">
+                            <div className={styles['blog-details-desc']}>
+                                <div className={styles['article-image']}>
                                     <img src="/images/blog/blog1.jpg" alt="image" />
                                 </div>
 
-                                <div className="article-content">
-                                    <div className="entry-meta">
+                                <div className={styles['article-content']}>
+                                    <div className={styles['entry-meta']}>
                                         <ul>
                                             <li>
                                                 <i className='bx bx-folder-open'></i>
@@ -67,7 +69,7 @@ const BlogDetails = () => {
 
                                     <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing.</p>
 
-                                    <ul className="wp-block-gallery columns-3">
+                                    <ul className={`${styles['wp-block-gallery']} ${styles['columns-3']}`}>
                                         <li className="blocks-gallery-item">
                                             <figure>
                                                 <img src="/images/blog/blog15.jpg" alt="image" />
@@ -87,7 +89,7 @@ const BlogDetails = () => {
 
                                     <h3>Four major elements that we offer:</h3>
 
-                                    <ul className="features-list">
+                                    <ul className={styles['features-list']}>
                                         <li><i className='bx bx-badge-check'></i> Scientific skills for getting a better result</li>
                                         <li><i className='bx bx-badge-check'></i> Communication skills to getting in touch</li>
                                         <li><i className='bx bx-badge-check'></i> A career overview opportunity available</li>
@@ -101,8 +103,8 @@ const BlogDetails = () => {
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
                                 </div>
 
-                                <div className="article-footer">
-                                    <div className="article-tags">
+                                <div className={styles['article-footer']}>
+                                    <div className={styles['article-tags']}>
                                         <span><i className='bx bx-purchase-tag'></i></span>
 
                                         <a href="#">Fashion</a>
@@ -110,25 +112,25 @@ const BlogDetails = () => {
                                         <a href="#">Travel</a>
                                     </div>
 
-                                    <div className="article-share">
-                                        <ul className="social">
+                                    <div className={styles['article-share']}>
+                                        <ul className={styles['social']}>
                                             <li><span>Share:</span></li>
-                                            <li><a href="#" className="facebook" target="_blank"><i className='bx bxl-facebook'></i></a></li>
-                                            <li><a href="#" className="twitter" target="_blank"><i className='bx bxl-twitter'></i></a></li>
-                                            <li><a href="#" className="linkedin" target="_blank"><i className='bx bxl-linkedin'></i></a></li>
-                                            <li><a href="#" className="instagram" target="_blank"><i className='bx bxl-instagram'></i></a></li>
+                                            <li><a href="#" className={styles['facebook']} target="_blank"><i className='bx bxl-facebook'></i></a></li>
+                                            <li><a href="#" className={styles['twitter']} target="_blank"><i className='bx bxl-twitter'></i></a></li>
+                                            <li><a href="#" className={styles['linkedin']} target="_blank"><i className='bx bxl-linkedin'></i></a></li>
+                                            <li><a href="#" className={styles['instagram']} target="_blank"><i className='bx bxl-instagram'></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
 
-                                <div className="article-author">
-                                    <div className="author-profile-header"></div>
-                                    <div className="author-profile">
-                                        <div className="author-profile-title">
+                                <div className={styles['article-author']}>
+                                    <div className={styles['author-profile-header']}></div>
+                                    <div className={styles['author-profile']}>
+                                        <div className={styles['author-profile-title']}>
                                             <img src="/images/user1.jpg" className="shadow-sm" alt="image" />
 
-                                            <div className="author-profile-title-details">
-                                                <div className="author-profile-details">
+                                            <div className={styles['author-profile-title-details']}>
+                                                <div className={styles['author-profile-details']}>
                                                     <h4>Chris Orwig</h4>
                                                     <span className="d-block">Photographer, Author, Writer</span>
                                                 </div>
@@ -138,38 +140,38 @@ const BlogDetails = () => {
                                     </div>
                                 </div>
 
-                                <div className="whatsnxt-post-navigation">
-                                    <div className="prev-link-wrapper">
-                                        <div className="info-prev-link-wrapper">
+                                <div className={blogStyles['whatsnxt-post-navigation']}>
+                                    <div className={blogStyles['prev-link-wrapper']}>
+                                        <div className={blogStyles['info-prev-link-wrapper']}>
                                             <a href="#">
-                                                <span className="image-prev">
+                                                <span className={blogStyles['image-prev']}>
                                                     <img src="/images/blog/blog11.jpg" alt="image" />
-                                                    <span className="post-nav-title">Prev</span>
+                                                    <span className={blogStyles['post-nav-title']}>Prev</span>
                                                 </span>
 
-                                                <span className="prev-link-info-wrapper">
-                                                    <span className="prev-title">What Is The MLB Summer Slugger Program?</span>
-                                                    <span className="meta-wrapper">
-                                                        <span className="date-post">January 21, 2020</span>
+                                                <span className={blogStyles['prev-link-info-wrapper']}>
+                                                    <span className={blogStyles['prev-title']}>What Is The MLB Summer Slugger Program?</span>
+                                                    <span className={blogStyles['meta-wrapper']}>
+                                                        <span className={blogStyles['date-post']}>January 21, 2020</span>
                                                     </span>
                                                 </span>
                                             </a>
                                         </div>
                                     </div>
 
-                                    <div className="next-link-wrapper">
-                                        <div className="info-next-link-wrapper">
+                                    <div className={blogStyles['next-link-wrapper']}>
+                                        <div className={blogStyles['info-next-link-wrapper']}>
                                             <a href="#">
-                                                <span className="next-link-info-wrapper">
-                                                    <span className="next-title">28 Student-Centered Instructional Strategies</span>
-                                                    <span className="meta-wrapper">
-                                                        <span className="date-post">January 19, 2020</span>
+                                                <span className={blogStyles['next-link-info-wrapper']}>
+                                                    <span className={blogStyles['next-title']}>28 Student-Centered Instructional Strategies</span>
+                                                    <span className={blogStyles['meta-wrapper']}>
+                                                        <span className={blogStyles['date-post']}>January 19, 2020</span>
                                                     </span>
                                                 </span>
 
-                                                <span className="image-next">
+                                                <span className={blogStyles['image-next']}>
                                                     <img src="/images/blog/blog12.jpg" alt="image" />
-                                                    <span className="post-nav-title">Next</span>
+                                                    <span className={blogStyles['post-nav-title']}>Next</span>
                                                 </span>
                                             </a>
                                         </div>

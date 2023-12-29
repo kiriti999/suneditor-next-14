@@ -6,6 +6,8 @@ import { axiosApi } from "@/utils/baseUrl";;
 import CoursesSidebar from '../../components/Courses/CoursesSidebar';
 import { Context } from 'context/filterStore';
 import Pagination from '../../components/pagination/pagination';
+import styles from '../../components/Courses/Course.module.css';
+import sortStyles from '../algolia-search/index.module.css';
 
 const overviewStyle = {
     display: '-webkit-box',
@@ -99,16 +101,16 @@ const CoursesPage = ({ data, totalRecords }) => {
                 activePageText="Courses"
             />
 
-            <div className="courses-area pt-40 pb-70">
+            <div className={`${styles['courses-area']} pt-40 pb-70`}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-9 col-md-12">
-                            <div className="whatsnxt-grid-sorting row align-items-center">
-                                <div className="col-lg-8 col-md-6 result-count">
-                                    <p>We found <span className="count">{totalRecords}</span> courses available for you</p>
+                            <div className={`${sortStyles['whatsnxt-grid-sorting']} row align-items-center`}>
+                                <div className={`col-lg-8 col-md-6 ${sortStyles['result-count']}`}>
+                                    <p>We found <span className={sortStyles['count']}>{totalRecords}</span> courses available for you</p>
                                 </div>
 
-                                <div className="col-lg-4 col-md-6 ordering">
+                                <div className={`col-lg-4 col-md-6 ${sortStyles['ordering']}`}>
                                     <div className="select-box">
                                         <select onChange={(e) => sortCourses(e.target.value)} className="form-control">
                                             <option>Sort By</option>
@@ -124,10 +126,10 @@ const CoursesPage = ({ data, totalRecords }) => {
                             <div className="row">
                                 {currentRecords ? currentRecords.map(course => (
                                     <div className="col-lg-4 col-md-6" key={course._id}>
-                                        <div className="single-courses-box">
-                                            <div className="courses-image">
+                                        <div className={styles['single-courses-box']}>
+                                            <div className={styles['courses-image']}>
                                                 <Link href="/courses/[id]" as={`/courses/${course.slug}`}>
-                                                    <a className="d-block image">
+                                                    <a className={`d-block ${styles['image']}`}>
                                                         <img src={course.profilePhoto} alt={course.title} />
                                                     </a>
                                                 </Link>
@@ -135,7 +137,7 @@ const CoursesPage = ({ data, totalRecords }) => {
                                                     <i className="flaticon-heart"></i>
                                                 </a> */}
                                             </div>
-                                            <div className="courses-content">
+                                            <div className={styles['courses-content']}>
 
                                                 <b title={course.title}>
                                                     <Link href="/courses/[id]" as={`/courses/${course.slug}`}>
@@ -143,14 +145,14 @@ const CoursesPage = ({ data, totalRecords }) => {
                                                     </Link>
                                                 </b>
 
-                                                <div className="course-author d-flex align-items-center mt-2">
+                                                <div className={`${styles['course-author']} d-flex align-items-center mt-2`}>
                                                     <img src="/images/user1.svg" className="rounded-circle" alt="image" />
                                                     <span><small>Led by experts</small></span>
                                                 </div>
 
                                                 <div style={overviewStyle} dangerouslySetInnerHTML={{ __html: course.overview }}></div>
 
-                                                <ul className="courses-box-footer d-flex justify-content-between align-items-center pb-10">
+                                                <ul className={`${styles['courses-box-footer']} d-flex justify-content-between align-items-center pb-10`}>
                                                     <li>
                                                         <i className="flaticon-fi-sr-indian-rupee-sign"></i>{" "}
                                                         {/* {parseInt(course.lessons)}{" "} */}

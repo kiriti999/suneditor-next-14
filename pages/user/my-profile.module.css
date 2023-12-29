@@ -1,0 +1,17 @@
+
+.user-profile {
+  text-align: center;
+}
+
+.user-profile img {
+  margin-bottom: 20px;
+}
+
+.user-profile h3 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.user-profile p {
+  margin: 0;
+}

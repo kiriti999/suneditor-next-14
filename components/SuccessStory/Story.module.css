@@ -1,0 +1,143 @@
+
+.success-story-area {
+  position: relative;
+  z-index: 1;
+}
+
+.success-story-area::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 40%;
+  background-color: #f8f9f8;
+  z-index: -2;
+}
+
+.success-story-area .shape4 {
+  right: 21%;
+  bottom: 85%;
+}
+
+.success-story-area .shape3 {
+  right: 23%;
+  bottom: 55%;
+}
+
+.success-story-area .shape2 {
+  left: auto;
+  bottom: 3%;
+  right: 25%;
+}
+
+.start-with-success-area .section-title h2 {
+  max-width: 713px;
+}
+
+.start-with-success-box {
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+
+.start-with-success-box .image {
+  border-radius: 5px 5px 0 0;
+}
+
+.start-with-success-box .image a {
+  display: block;
+  border-radius: 5px 5px 0 0;
+}
+
+.start-with-success-box .image a img {
+  border-radius: 5px 5px 0 0;
+}
+
+.start-with-success-box .content {
+  background-color: #ffffff;
+  border-radius: 0 0 5px 5px;
+  padding: 30px;
+  position: relative;
+}
+
+.start-with-success-box .content .link-btn {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position: absolute;
+  right: 30px;
+  top: -30px;
+  background-color: #f6f7f6;
+  text-align: center;
+  font-size: 32px;
+  color: #fe4a55;
+}
+
+.start-with-success-box .content .link-btn i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 53%;
+  transform: translateY(-53%);
+}
+
+.start-with-success-box .content .link-btn:hover {
+  background-color: #fe4a55;
+  color: #ffffff;
+}
+
+.start-with-success-box .content h3 {
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.start-with-success-box .content span {
+  display: block;
+  color: #fe4a55;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 767px) {
+  .start-with-success-area .section-title h2 {
+    max-width: 100%;
+  }
+  .start-with-success-box .content {
+    padding: 25px 20px;
+  }
+  .start-with-success-box .content h3 {
+    font-size: 18px;
+    margin-bottom: 7px;
+  }
+  .start-with-success-box .content span {
+    font-size: 14px;
+  }
+  .start-with-success-box .content .link-btn {
+    width: 50px;
+    height: 50px;
+    right: 20px;
+    top: -25px;
+    font-size: 25px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .start-with-success-area .section-title h2 {
+    max-width: 640px;
+  }
+  .start-with-success-box .content h3 {
+    font-size: 19px;
+    margin-bottom: 6px;
+  }
+  .start-with-success-box .content span {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .start-with-success-box .content h3 {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+}

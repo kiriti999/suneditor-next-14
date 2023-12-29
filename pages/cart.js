@@ -4,6 +4,7 @@ import Link from "next/link";
 import { calculateCartTotal } from "@/utils/cart/calculateCartTotal";
 import CartItems from "@/components/Cart/CartItems";
 import { kConverter } from '../utils/cart/currencyHelper';
+import styles from '../components/Cart/Cart.module.css';
 
 const Cart = ({ user }) => {
 	const cartItems = useSelector((state) => state.cart.cartItems);
@@ -28,7 +29,7 @@ const Cart = ({ user }) => {
 			<div className="cart-area ptb-100">
 				<div className="container">
 					<form>
-						<div className="cart-table table-responsive">
+						<div className={`${styles['cart-table']} table-responsive`}>
 							<table className="table table-bordered">
 								<thead>
 									<tr>
@@ -60,7 +61,7 @@ const Cart = ({ user }) => {
 							</table>
 						</div>
 
-						<div className="cart-totals">
+						<div className={styles['cart-totals']}>
 							<h3>Cart Totals</h3>
 
 							<ul>

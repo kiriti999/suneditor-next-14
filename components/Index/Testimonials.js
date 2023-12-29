@@ -1,11 +1,12 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper";
+import styles from '../Common/Testimonials.module.css';
 
 const Testimonials = () => {
   return (
     <>
-      <div className="testimonials-area ptb-100">
+      <div className={`${styles['testimonials-area']} ptb-100`}>
         <div className="container">
           <div className="section-title">
             <span className="sub-title">Testimonials</span>
@@ -27,13 +28,13 @@ const Testimonials = () => {
               pauseOnMouseEnter: true,
             }}
             modules={[Pagination, Autoplay]}
-            className="testimonials-slides"
+            className={styles['testimonials-slides']}
           >
             <SwiperSlide>
-              <div className="single-testimonials-item">
+              <div className={styles['single-testimonials-item']}>
                 <img
                   src="/images/user1.jpg"
-                  className="client-img"
+                  className={styles['client-img']}
                   alt="image"
                 />
                 <p>
@@ -47,20 +48,20 @@ const Testimonials = () => {
                 <h3>John Smith</h3>
                 <span>Python Developer</span>
 
-                <div className="shape-img">
+                <div className={styles['shape-img']}>
                   <img
                     src="/images/shape4.png"
-                    className="shape-1"
+                    className={`${styles['shape-1']} shape-1`}
                     alt="image"
                   />
                   <img
                     src="/images/shape14.png"
-                    className="shape-2"
+                    className={`${styles['shape-2']} shape-2`}
                     alt="image"
                   />
                   <img
                     src="/images/shape7.png"
-                    className="shape-3"
+                    className={`${styles['shape-3']} shape-3`}
                     alt="image"
                   />
                 </div>
@@ -68,10 +69,10 @@ const Testimonials = () => {
             </SwiperSlide>
 
             <SwiperSlide>
-              <div className="single-testimonials-item">
+              <div className={styles['single-testimonials-item']}>
                 <img
                   src="/images/user2.jpg"
-                  className="client-img"
+                  className={styles['client-img']}
                   alt="image"
                 />
                 <p>
@@ -85,20 +86,20 @@ const Testimonials = () => {
                 <h3>Sarah Taylor</h3>
                 <span>PHP Developer</span>
 
-                <div className="shape-img">
+                <div className={styles['shape-img']}>
                   <img
                     src="/images/shape4.png"
-                    className="shape-1"
+                    className={`${styles['shape-1']} shape-1`}
                     alt="image"
                   />
                   <img
                     src="/images/shape14.png"
-                    className="shape-2"
+                    className={`${styles['shape-2']} shape-2`}
                     alt="image"
                   />
                   <img
                     src="/images/shape7.png"
-                    className="shape-3"
+                    className={`${styles['shape-3']} shape-3`}
                     alt="image"
                   />
                 </div>
@@ -106,10 +107,10 @@ const Testimonials = () => {
             </SwiperSlide>
 
             <SwiperSlide>
-              <div className="single-testimonials-item">
+              <div className={styles['single-testimonials-item']}>
                 <img
                   src="/images/user3.jpg"
-                  className="client-img"
+                  className={styles['client-img']}
                   alt="image"
                 />
                 <p>
@@ -123,20 +124,20 @@ const Testimonials = () => {
                 <h3>David Warner</h3>
                 <span>QA Developer</span>
 
-                <div className="shape-img">
+                <div className={styles['shape-img']}>
                   <img
                     src="/images/shape4.png"
-                    className="shape-1"
+                    className={`${styles['shape-1']} shape-1`}
                     alt="image"
                   />
                   <img
                     src="/images/shape14.png"
-                    className="shape-2"
+                    className={`${styles['shape-2']} shape-2`}
                     alt="image"
                   />
                   <img
                     src="/images/shape7.png"
-                    className="shape-3"
+                    className={`${styles['shape-3']} shape-3`}
                     alt="image"
                   />
                 </div>

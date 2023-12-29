@@ -5,6 +5,7 @@ import { parseCookies } from 'nookies';
 import { indexPost, deleteIndex } from '../../pages/api/v1/courses/search/algolia';
 import Highlighter from 'react-highlight-words';
 import { axiosApi } from "../../utils/baseUrl";
+import styles from './Course.module.css';
 
 const CourseCard = ({
     _id, title, slug, price, overview, profilePhoto, lessons, userId, enrolled_courses, highlight, published, publish = false
@@ -43,10 +44,10 @@ const CourseCard = ({
 
     return (
         <div className="col-lg-12 col-md-12">
-            <div className="single-courses-box">
-                <div className="courses-image">
+            <div className={styles['single-courses-box']}>
+                <div className={styles['courses-image']}>
                     <Link href="/courses/[id]" as={`/courses/${slug}`}>
-                        <a className="d-block image">
+                        <a className={`d-block ${styles['image']}`}>
                             {/* <img src={profilePhoto} alt={title} /> */}
                         </a>
                     </Link>
@@ -54,7 +55,7 @@ const CourseCard = ({
                         <i className="flaticon-heart"></i>
                     </a> */}
                 </div>
-                <div className="courses-content">
+                <div className={styles['courses-content']}>
                     <h3>
                         <Link href="/courses/[_id]" as={`/courses/${slug}`}>
 
@@ -82,7 +83,7 @@ const CourseCard = ({
                             searchWords={[highlight]}
                             autoEscape={true}
                         /></p>
-                    <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+                    <ul className={`${styles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
                         <li>
                             {parseInt(lessons)} Lessons
                         </li>

@@ -7,6 +7,7 @@ import { axiosApi } from "@/utils/baseUrl";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { kConverter } from '../../utils/cart/currencyHelper';
+import styles from '../Courses/Course.module.css';
 
 const CoursesDetailsSidebar = ({
 	_id,
@@ -202,7 +203,7 @@ const CoursesDetailsSidebar = ({
 				""
 			)}
 
-			<div className="courses-details-info">
+			<div className={styles['courses-details-info']}>
 				{/* <div className="image">
 					<img src={profilePhoto} alt={title} />
 
@@ -220,7 +221,7 @@ const CoursesDetailsSidebar = ({
 					</div>
 				</div> */}
 
-				<ul className={purchaseTypeError ? 'cart-highlight-border info' : 'info'}>
+				<ul className={`${styles['info']} ${purchaseTypeError ? 'cart-highlight-border' : ''}`}>
 					<li>
 						<div className="d-flex justify-content-between align-items-center">
 							<span>
@@ -265,7 +266,7 @@ const CoursesDetailsSidebar = ({
 							{purchaseTypeError === true && <h6 style={{ color: 'red', marginTop: '10px' }}>Please select purchase type</h6>}
 						</div>}
 					</div>
-					<li className="price">
+					<li className={styles['price']}>
 						{!alreadyBuy && <div className="d-flex justify-content-between align-items-center">
 							<span>
 								<i className="flaticon-tag"></i> Price
@@ -304,11 +305,11 @@ const CoursesDetailsSidebar = ({
 					</li> */}
 				</ul>
 
-				<div className="btn-box">
+				<div className={styles['btn-box']}>
 					{alreadyBuy ? (
 						<button
 							onClick={() => router.push("/my-courses")}
-							className="default-btn"
+							className={`${styles['default-btn']} default-btn`}
 						>
 							<i className="flaticon-shopping-cart"></i> View My Courses
 							<span></span>
@@ -317,7 +318,7 @@ const CoursesDetailsSidebar = ({
 						<>
 							{add ? (
 								<button
-									className="default-btn"
+									className={`${styles['default-btn']} default-btn`}
 									onClick={() => router.push("/cart")}
 								>
 									<i className="flaticon-tag"></i> View Cart{" "}
@@ -325,7 +326,7 @@ const CoursesDetailsSidebar = ({
 								</button>
 							) : (
 								<button
-									className="default-btn"
+									className={`${styles['default-btn']} default-btn`}
 									onClick={() =>
 										addToCart(
 											_id,
@@ -347,13 +348,13 @@ const CoursesDetailsSidebar = ({
 					)}
 				</div>
 
-				<div className="courses-share">
-					<div className="share-info">
+				<div className={styles['courses-share']}>
+					<div className={styles['share-info']}>
 						<span>
 							Share This Course <i className="flaticon-share"></i>
 						</span>
 
-						<ul className="social-link">
+						<ul className={styles['social-link']}>
 							<li>
 								<a href="#" className="d-block" target="_blank" onClick={(event) => {
 									event.preventDefault();

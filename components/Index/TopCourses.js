@@ -6,6 +6,7 @@ import axios from "axios";
 import { axiosApi } from "../../utils/baseUrl";
 import { parseCookies } from 'nookies'
 import Pagination from '../../components/pagination/pagination';
+import styles from '../Courses/Course.module.css';
 
 const overviewStyle = {
 	display: '-webkit-box',
@@ -48,7 +49,7 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 	}
 
 	return (
-		<div className="courses-area pt-50 pb-100">
+		<div className={`${styles['courses-area']} pt-50 pb-100`}>
 			<div className="container">
 				<div className="section-title">
 					<span className="sub-title">{t("course-top-text")}</span>
@@ -58,14 +59,14 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 
 				<div className="row justify-content-center">
 					{currentRecords ? (
-						currentRecords.map((course) => (
+						currentRecords.length && currentRecords.map((course) => (
 							<div className="col-lg-3 col-md-6" key={course._id}>
-								<div className="single-courses-box course-box-border">
-									<div className="courses-image">
+								<div className={`${styles['single-courses-box']} ${styles['course-box-border']}`}>
+									<div className={styles['courses-image']}>
 										<Link
 											href="/courses/[id]"
 											as={`/courses/${course.slug}`}>
-											<a className="d-block image">
+											<a className={`d-block ${styles['image']}`}>
 												<img src={course.profilePhoto} alt={course.title} />
 											</a>
 										</Link>
@@ -81,7 +82,7 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 										</div> */}
 									</div>
 
-									<div className="courses-content pt-20 mb-2 ml-5">
+									<div className={`${styles['courses-content']} pt-20 mb-2 ml-5`}>
 										<b title={course.title}>
 											<Link
 												href="/courses/[id]"
@@ -97,7 +98,7 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 										<small style={{ color: 'grey' }}>Led by experts</small>
 
 
-										<ul className="courses-box-footer d-flex justify-content-between align-items-center">
+										<ul className={`${styles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
 											<li>
 												<i className="flaticon-fi-sr-indian-rupee-sign"></i>{" "}
 												{/* {parseInt(course.lessons)}{" "} */}
@@ -141,7 +142,7 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 					)}
 
 					<div className="col-lg-12 col-md-12">
-						<div className="courses-info">
+						<div className={styles['courses-info']}>
 							<p>
 								{t("course-description2")}{" "}
 							</p>

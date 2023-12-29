@@ -6,6 +6,7 @@ import useRazorpay from "react-razorpay";
 import saveTransaction from "../SaveToDB/SaveTransaction";
 import { parseCookies } from 'nookies'
 import { calculateCartTotal } from '@/utils/cart/calculateCartTotal';
+import styles from './CheckoutBtn.module.css';
 
 const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlertMessage, setIsAlert, loading, setLoading }) => {
     const { token } = parseCookies();
@@ -114,8 +115,8 @@ const CheckoutBtn = ({ user, cartItems, onClearCart, setToRegister, setShowAlert
 
     return (
         <div>
-            <div className="payment-box">
-                <button className={loading ? 'default-btn no-click' : 'default-btn'} onClick={(e) => {
+            <div className={styles['payment-box']}>
+                <button className={`${styles['default-btn']} default-btn ` + (loading ? 'no-click' : '')} onClick={(e) => {
                     e.preventDefault()
                     handlePayment()
                 }}>

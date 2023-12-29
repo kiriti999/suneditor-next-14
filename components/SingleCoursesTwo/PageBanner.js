@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from '../Common/PageBanner.module.css';
 
 const PageBanner = ({pageTitle, homePageUrl, homePageText, innerPageUrl, innerPageText, activePageText}) => {
     return (
-        <div className="page-title-area">
+        <div className={styles['page-title-area']}>
             <div className="container">
-                <div className="page-title-content">
+                <div className={styles['page-title-content']}>
                     <ul>
                         <li>
                             <Link href={homePageUrl}>

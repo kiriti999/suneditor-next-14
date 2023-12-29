@@ -1,6 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 const ModalVideo = dynamic(import("react-modal-video"));
+import styles from '../About/AboutUs.module.css';
 
 const AboutUsContentThree = () => {
 	const [display, setDisplay] = React.useState(false);
@@ -16,12 +17,12 @@ const AboutUsContentThree = () => {
 
 	return (
 		<>
-			<div className="about-area-two pb-100">
+			<div className={`${styles['about-area-two']} pb-100`}>
 				<div className="container">
 					<div className="row align-items-center">
 						<div className="col-lg-5 col-md-12">
-							<div className="about-content-box">
-								<span className="sub-title">
+							<div className={styles['about-content-box']}>
+								<span className={styles['sub-title']}>
 									Distance Learning
 								</span>
 								<h2>
@@ -46,8 +47,8 @@ const AboutUsContentThree = () => {
 						</div>
 
 						<div className="col-lg-7 col-md-12">
-							<div className="about-video-box">
-								<div className="image">
+							<div className={styles['about-video-box']}>
+								<div className={styles['image']}>
 									<img
 										src="/images/about-img6.jpg"
 										alt="image"
@@ -56,12 +57,12 @@ const AboutUsContentThree = () => {
 
 								<div
 									onClick={()=> openModal()}
-									className="video-btn popup-youtube"
+									className={`${styles['video-btn']} popup-youtube`}
 								>
 									<i className="flaticon-play"></i>
 								</div>
 
-								<div className="shape10">
+								<div className={`${styles['shape10']} shape10`}>
 									<img src="/images/shape9.png" alt="image" />
 								</div>
 							</div>
@@ -69,13 +70,13 @@ const AboutUsContentThree = () => {
 					</div>
 				</div>
 
-				<div className="shape3">
+				<div className={`${styles['shape3']} shape3`}>
 					<img src="/images/shape3.png" alt="image" />
 				</div>
-				<div className="shape4">
+				<div className={`${styles['shape4']} shape4`}>
 					<img src="/images/shape4.png" alt="image" />
 				</div>
-				<div className="shape2">
+				<div className={`${styles['shape2']} shape2`}>
 					<img src="/images/shape2.png" alt="image" />
 				</div>
 			</div>
