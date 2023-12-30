@@ -104,7 +104,8 @@ const CoursesPage = ({ data, totalRecords }) => {
           description: 'Open Graph Description',
           images: [
             {
-              url: course.profilePhoto,
+            //   url: course.profilePhoto ,
+              url: '',
               width: 800,
               height: 600,
               alt: 'Og Image portfolio',
