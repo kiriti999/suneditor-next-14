@@ -1,10 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from '../Blog/Widget.module.css';
 
 const Sidebar = () => {
     return (
-        <div className="widget-area">
-            <div className="widget widget_insight">
+        <div className={styles['widget-area']}>
+            <div className={`${styles['widget']} ${styles['widget_insight']}`}>
                 <ul>
                     <li>
                         <Link href="/about-1">
@@ -34,18 +35,18 @@ const Sidebar = () => {
                 </ul>
             </div>
 
-            <div className="widget widget_recent_courses">
-                <h3 className="widget-title">Recent Courses</h3>
+            <div className={`${styles['widget']} ${styles['widget_recent_courses']}`}>
+                <h3 className={styles['widget-title']}>Recent Courses</h3>
 
-                <div className="item">
+                <div className={styles['item']}>
                     <Link href="#">
-                        <a className="thumb">
-                            <span className="fullimage cover bg1" role="img"></span>
+                        <a className={styles['thumb']}>
+                            <span className={`${styles['fullimage']} cover ${styles['bg1']}`} role="img"></span>
                         </a>
                     </Link>
-                    <div className="info">
+                    <div className={styles['info']}>
                         <span>$49.00</span>
-                        <h4 className="title usmall">
+                        <h4 className={`${styles['title']} title usmall`}>
                             <Link href="#">
                                 <a>The Data Science Course 2020: Complete Data Science Bootcamp</a>
                             </Link>
@@ -54,15 +55,15 @@ const Sidebar = () => {
                     <div className="clear"></div>
                 </div>
 
-                <div className="item">
+                <div className={styles['item']}>
                     <Link href="#">
-                        <a className="thumb">
-                            <span className="fullimage cover bg2" role="img"></span>
+                        <a className={styles['thumb']}>
+                            <span className={`${styles['fullimage']} cover ${styles['bg2']}`} role="img"></span>
                         </a>
                     </Link>
-                    <div className="info">
+                    <div className={styles['info']}>
                         <span>$59.00</span>
-                        <h4 className="title usmall">
+                        <h4 className={`${styles['title']} title usmall`}>
                             <Link href="#">
                                 <a>Java Programming MasterclassName for Software Developers</a>
                             </Link>
@@ -71,15 +72,15 @@ const Sidebar = () => {
                     <div className="clear"></div>
                 </div>
 
-                <div className="item">
+                <div className={styles['item']}>
                     <Link href="#">
-                        <a className="thumb">
-                            <span className="fullimage cover bg3" role="img"></span>
+                        <a className={styles['thumb']}>
+                            <span className={`${styles['fullimage']} cover ${styles['bg3']}`} role="img"></span>
                         </a>
                     </Link>
-                    <div className="info">
+                    <div className={styles['info']}>
                         <span>$69.00</span>
-                        <h4 className="title usmall">
+                        <h4 className={`${styles['title']} title usmall`}>
                             <Link href="#">
                                 <a>Deep Learning A-Z™: Hands-On Artificial Neural Networks</a>
                             </Link>
@@ -89,10 +90,10 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            <div className="widget widget_tag_cloud">
-                <h3 className="widget-title">Popular Tags</h3>
+            <div className={`${styles['widget']} ${styles['widget_tag_cloud']}`}>
+                <h3 className={styles['widget-title']}>Popular Tags</h3>
 
-                <div className="tagcloud">
+                <div className={styles['tagcloud']}>
                     <Link href="#">
                         <a>Business <span className="tag-link-count">(3)</span></a>
                     </Link>

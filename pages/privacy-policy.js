@@ -1,6 +1,7 @@
 import React from 'react';
 import PageBanner from '../components/Common/PageBanner';
 import Sidebar from '../components/TermsOfService/Sidebar';
+import styles from './privacy-policy.module.css';
 
 const PrivacyPolicy = () => {
     return (
@@ -16,11 +17,11 @@ const PrivacyPolicy = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 col-md-12">
-                            <div className="privacy-policy-content">
+                            <div className={styles['privacy-policy-content']}>
                                 <p><i>This Privacy Policy was last updated on January 1, 2020.</i></p>
                                 <h3>1. What Data We Get</h3>
 
-                                <blockquote className="blockquote">
+                                <blockquote className={styles['blockquote']}>
                                     <p>We collect certain data from you directly, like information you enter yourself, data about your participation in courses, and data from third-party platforms you connect with whatsnxt. We also collect some data automatically, like information about your device and what parts of our Services you interact with or spend time using.</p>
                                 </blockquote>
 

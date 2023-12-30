@@ -1,0 +1,201 @@
+
+.coming-soon-area {
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+  background: #f6f7fb;
+  background-image: url(/images/coming-soon-bg.jpg);
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.coming-soon-content {
+  max-width: 700px;
+  background: #ffffff;
+  border-radius: 5px;
+  overflow: hidden;
+  text-align: center;
+  padding: 40px 60px;
+  box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, 0.05);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.coming-soon-content .logo {
+  display: inline-block;
+}
+
+.coming-soon-content h2 {
+  font-size: 40px;
+  font-weight: 800;
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.coming-soon-content #timer {
+  margin-top: 40px;
+}
+
+.coming-soon-content #timer div {
+  background-color: #221638;
+  color: #ffffff;
+  width: 100px;
+  height: 105px;
+  border-radius: 5px;
+  font-size: 40px;
+  font-weight: 800;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.coming-soon-content #timer div span {
+  display: block;
+  margin-top: -2px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.coming-soon-content form {
+  position: relative;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+.coming-soon-content form .form-group {
+  margin-bottom: 25px;
+  width: 100%;
+  position: relative;
+}
+
+.coming-soon-content form .form-group .label-title {
+  margin-bottom: 0;
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  color: #221638;
+}
+
+.coming-soon-content form .form-group .label-title i {
+  position: absolute;
+  left: 0;
+  transition: 0.5s;
+  top: 9px;
+  font-size: 22px;
+}
+
+.coming-soon-content form .form-group .label-title::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  transition: 0.5s;
+  background: #fe4a55;
+}
+
+.coming-soon-content form .form-group .input-newsletter {
+  border-radius: 0;
+  border: none;
+  border-bottom: 2px solid #eeeeee;
+  padding: 0 0 0 32px;
+  color: #221638;
+  height: 45px;
+  display: block;
+  width: 100%;
+  transition: 0.5s;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.coming-soon-content form .form-group .input-newsletter::-moz-placeholder {
+  color: #a1a1a1;
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.coming-soon-content form .form-group .input-newsletter::placeholder {
+  color: #a1a1a1;
+  transition: 0.5s;
+}
+
+.coming-soon-content form .form-group .input-newsletter:focus::-moz-placeholder {
+  color: transparent;
+}
+
+.coming-soon-content form .form-group .input-newsletter:focus::placeholder {
+  color: transparent;
+}
+
+.coming-soon-content form .default-btn {
+  border-radius: 0;
+}
+
+.coming-soon-content form .validation-danger {
+  margin-top: 15px;
+  color: red;
+}
+
+.coming-soon-content form .validation-success {
+  margin-top: 15px;
+}
+
+.coming-soon-content form p {
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  .coming-soon-area {
+    height: 100%;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .coming-soon-content {
+    padding: 30px 20px;
+  }
+  .coming-soon-content h2 {
+    margin-top: 25px;
+    font-size: 25px;
+  }
+  .coming-soon-content #timer {
+    margin-top: 10px;
+  }
+  .coming-soon-content #timer div {
+    width: 95px;
+    height: 100px;
+    font-size: 35px;
+    margin-top: 20px;
+  }
+  .coming-soon-content #timer div span {
+    font-size: 14px;
+  }
+  .coming-soon-content form {
+    max-width: 100%;
+    margin-top: 40px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .coming-soon-area {
+    height: auto;
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  .coming-soon-content {
+    max-width: 650px;
+  }
+  .coming-soon-content h2 {
+    font-size: 36px;
+  }
+}

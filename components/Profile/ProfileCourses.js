@@ -1,27 +1,29 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from './ProfileCourses.module.css';
+import courseStyles from '../Courses/Course.module.css';
 
 const ProfileCourses = () => {
     return (
-        <div className="profile-courses pb-70">
+        <div className={`${styles['profile-courses']} pb-70`}>
             <h3 className="title">Courses</h3>
             <div className="row">
                 <div className="col-lg-4 col-md-6">
-                    <div className="single-courses-box">
-                        <div className="courses-image">
+                    <div className={courseStyles['single-courses-box']}>
+                        <div className={courseStyles['courses-image']}>
                             <Link href="/single-courses-1">
-                                <a className="d-block image">
+                                <a className={`d-block ${courseStyles['image']}`}>
                                     <img src="/images/courses/courses1.jpg" alt="image" />
                                 </a>
                             </Link>
-                            <a href="#" className="fav">
+                            <a href="#" className={courseStyles['fav']}>
                                 <i className="flaticon-heart"></i>
                             </a>
-                            <div className="price shadow">&#8377; 39</div>
+                            <div className={`${courseStyles['price']} shadow`}>&#8377; 39</div>
                         </div>
 
-                        <div className="courses-content">
-                            <div className="course-author d-flex align-items-center">
+                        <div className={courseStyles['courses-content']}>
+                            <div className={`${courseStyles['course-author']} d-flex align-items-center`}>
                                 <img src="/images/user1.jpg" className="rounded-circle" alt="image" />
                                 <span>Alex Morgan</span>
                             </div>
@@ -33,7 +35,7 @@ const ProfileCourses = () => {
                             </h3>
                             
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+                            <ul className={`${courseStyles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
                                 <li>
                                     <i className='flaticon-agenda'></i> 15 Lessons
                                 </li>
@@ -46,20 +48,20 @@ const ProfileCourses = () => {
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                    <div className="single-courses-box">
-                        <div className="courses-image">
+                    <div className={courseStyles['single-courses-box']}>
+                        <div className={courseStyles['courses-image']}>
                             <Link href="/single-courses-1">
-                                <a className="d-block image">
+                                <a className={`d-block ${courseStyles['image']}`}>
                                     <img src="/images/courses/courses2.jpg" alt="image" />
                                 </a>
                             </Link>
-                            <a href="#" className="fav">
+                            <a href="#" className={courseStyles['fav']}>
                                 <i className="flaticon-heart"></i>
                             </a>
-                            <div className="price shadow">&#8377; 49</div>
+                            <div className={`${courseStyles['price']} shadow`}>&#8377; 49</div>
                         </div>
-                        <div className="courses-content">
-                            <div className="course-author d-flex align-items-center">
+                        <div className={courseStyles['courses-content']}>
+                            <div className={`${courseStyles['course-author']} d-flex align-items-center`}>
                                 <img src="/images/user2.jpg" className="rounded-circle" alt="image" />
                                 <span>Sarah Taylor</span>
                             </div>
@@ -71,7 +73,7 @@ const ProfileCourses = () => {
                             </h3>
 
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+                            <ul className={`${courseStyles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
                                 <li>
                                     <i className='flaticon-agenda'></i> 20 Lessons
                                 </li>
@@ -84,20 +86,20 @@ const ProfileCourses = () => {
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                    <div className="single-courses-box">
-                        <div className="courses-image">
+                    <div className={courseStyles['single-courses-box']}>
+                        <div className={courseStyles['courses-image']}>
                             <Link href="/single-courses-1">
-                                <a className="d-block image">
+                                <a className={`d-block ${courseStyles['image']}`}>
                                     <img src="/images/courses/courses3.jpg" alt="image" />
                                 </a>
                             </Link>
-                            <a href="#" className="fav">
+                            <a href="#" className={courseStyles['fav']}>
                                 <i className="flaticon-heart"></i>
                             </a>
-                            <div className="price shadow">&#8377; 59</div>
+                            <div className={`${courseStyles['price']} shadow`}>&#8377; 59</div>
                         </div>
-                        <div className="courses-content">
-                            <div className="course-author d-flex align-items-center">
+                        <div className={courseStyles['courses-content']}>
+                            <div className={`${courseStyles['course-author']} d-flex align-items-center`}>
                                 <img src="/images/user3.jpg" className="rounded-circle" alt="image" />
                                 <span>David Warner</span>
                             </div>
@@ -109,7 +111,7 @@ const ProfileCourses = () => {
                             </h3>
 
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+                            <ul className={`${courseStyles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
                                 <li>
                                     <i className='flaticon-agenda'></i> 20 Lessons
                                 </li>
@@ -122,20 +124,20 @@ const ProfileCourses = () => {
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                    <div className="single-courses-box">
-                        <div className="courses-image">
+                    <div className={courseStyles['single-courses-box']}>
+                        <div className={courseStyles['courses-image']}>
                             <Link href="/single-courses-1">
-                                <a className="d-block image">
+                                <a className={`d-block ${courseStyles['image']}`}>
                                     <img src="/images/courses/courses4.jpg" alt="image" />
                                 </a>
                             </Link>
-                            <a href="#" className="fav">
+                            <a href="#" className={courseStyles['fav']}>
                                 <i className="flaticon-heart"></i>
                             </a>
-                            <div className="price shadow">&#8377; 39</div>
+                            <div className={`${courseStyles['price']} shadow`}>&#8377; 39</div>
                         </div>
-                        <div className="courses-content">
-                            <div className="course-author d-flex align-items-center">
+                        <div className={courseStyles['courses-content']}>
+                            <div className={`${courseStyles['course-author']} d-flex align-items-center`}>
                                 <img src="/images/user6.jpg" className="rounded-circle" alt="image" />
                                 <span>Alex Morgan</span>
                             </div>
@@ -147,7 +149,7 @@ const ProfileCourses = () => {
                             </h3>
 
                             <p>Lorem ipsum dolor sit amet, constetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+                            <ul className={`${courseStyles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
                                 <li>
                                     <i className='flaticon-agenda'></i> 15 Lessons
                                 </li>
@@ -160,20 +162,20 @@ const ProfileCourses = () => {
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                    <div className="single-courses-box">
-                        <div className="courses-image">
+                    <div className={courseStyles['single-courses-box']}>
+                        <div className={courseStyles['courses-image']}>
                             <Link href="/single-courses-1">
-                                <a className="d-block image">
+                                <a className={`d-block ${courseStyles['image']}`}>
                                     <img src="/images/courses/courses5.jpg" alt="image" />
                                 </a>
                             </Link>
-                            <a href="#" className="fav">
+                            <a href="#" className={courseStyles['fav']}>
                                 <i className="flaticon-heart"></i>
                             </a>
-                            <div className="price shadow">&#8377; 49</div>
+                            <div className={`${courseStyles['price']} shadow`}>&#8377; 49</div>
                         </div>
-                        <div className="courses-content">
-                            <div className="course-author d-flex align-items-center">
+                        <div className={courseStyles['courses-content']}>
+                            <div className={`${courseStyles['course-author']} d-flex align-items-center`}>
                                 <img src="/images/user5.jpg" className="rounded-circle" alt="image" />
                                 <span>Sarah Taylor</span>
                             </div>
@@ -185,7 +187,7 @@ const ProfileCourses = () => {
                             </h3>
 
                             <p>Lorem ipsum dolor sit amet, constetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+                            <ul className={`${courseStyles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
                                 <li>
                                     <i className='flaticon-agenda'></i> 20 Lessons
                                 </li>
@@ -198,20 +200,20 @@ const ProfileCourses = () => {
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                    <div className="single-courses-box">
-                        <div className="courses-image">
+                    <div className={courseStyles['single-courses-box']}>
+                        <div className={courseStyles['courses-image']}>
                             <Link href="/single-courses-1">
-                                <a className="d-block image">
+                                <a className={`d-block ${courseStyles['image']}`}>
                                     <img src="/images/courses/courses6.jpg" alt="image" />
                                 </a>
                             </Link>
-                            <a href="#" className="fav">
+                            <a href="#" className={courseStyles['fav']}>
                                 <i className="flaticon-heart"></i>
                             </a>
-                            <div className="price shadow">&#8377; 99</div>
+                            <div className={`${courseStyles['price']} shadow`}>&#8377; 99</div>
                         </div>
-                        <div className="courses-content">
-                            <div className="course-author d-flex align-items-center">
+                        <div className={courseStyles['courses-content']}>
+                            <div className={`${courseStyles['course-author']} d-flex align-items-center`}>
                                 <img src="/images/user4.jpg" className="rounded-circle" alt="image" />
                                 <span>James Anderson</span>
                             </div>
@@ -223,7 +225,7 @@ const ProfileCourses = () => {
                             </h3>
 
                             <p>Lorem ipsum dolor sit amet, constetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+                            <ul className={`${courseStyles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
                                 <li>
                                     <i className='flaticon-agenda'></i> 44 Lessons
                                 </li>
@@ -236,20 +238,20 @@ const ProfileCourses = () => {
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                    <div className="single-courses-box">
-                        <div className="courses-image">
+                    <div className={courseStyles['single-courses-box']}>
+                        <div className={courseStyles['courses-image']}>
                             <Link href="/single-courses-1">
-                                <a className="d-block image">
+                                <a className={`d-block ${courseStyles['image']}`}>
                                     <img src="/images/courses/courses10.jpg" alt="image" />
                                 </a>
                             </Link>
-                            <a href="#" className="fav">
+                            <a href="#" className={courseStyles['fav']}>
                                 <i className="flaticon-heart"></i>
                             </a>
-                            <div className="price shadow">&#8377; 39</div>
+                            <div className={`${courseStyles['price']} shadow`}>&#8377; 39</div>
                         </div>
-                        <div className="courses-content">
-                            <div className="course-author d-flex align-items-center">
+                        <div className={courseStyles['courses-content']}>
+                            <div className={`${courseStyles['course-author']} d-flex align-items-center`}>
                                 <img src="/images/user1.jpg" className="rounded-circle" alt="image" />
                                 <span>Alex Morgan</span>
                             </div>
@@ -261,7 +263,7 @@ const ProfileCourses = () => {
                             </h3>
 
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+                            <ul className={`${courseStyles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
                                 <li>
                                     <i className='flaticon-agenda'></i> 15 Lessons
                                 </li>
@@ -274,20 +276,20 @@ const ProfileCourses = () => {
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                    <div className="single-courses-box">
-                        <div className="courses-image">
+                    <div className={courseStyles['single-courses-box']}>
+                        <div className={courseStyles['courses-image']}>
                             <Link href="/single-courses-1">
-                                <a className="d-block image">
+                                <a className={`d-block ${courseStyles['image']}`}>
                                     <img src="/images/courses/courses11.jpg" alt="image" />
                                 </a>
                             </Link>
-                            <a href="#" className="fav">
+                            <a href="#" className={courseStyles['fav']}>
                                 <i className="flaticon-heart"></i>
                             </a>
-                            <div className="price shadow">&#8377; 49</div>
+                            <div className={`${courseStyles['price']} shadow`}>&#8377; 49</div>
                         </div>
-                        <div className="courses-content">
-                            <div className="course-author d-flex align-items-center">
+                        <div className={courseStyles['courses-content']}>
+                            <div className={`${courseStyles['course-author']} d-flex align-items-center`}>
                                 <img src="/images/user2.jpg" className="rounded-circle" alt="image" />
                                 <span>Sarah Taylor</span>
                             </div>
@@ -299,7 +301,7 @@ const ProfileCourses = () => {
                             </h3>
 
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+                            <ul className={`${courseStyles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
                                 <li>
                                     <i className='flaticon-agenda'></i> 20 Lessons
                                 </li>
@@ -312,20 +314,20 @@ const ProfileCourses = () => {
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                    <div className="single-courses-box">
-                        <div className="courses-image">
+                    <div className={courseStyles['single-courses-box']}>
+                        <div className={courseStyles['courses-image']}>
                             <Link href="/single-courses-1">
-                                <a className="d-block image">
+                                <a className={`d-block ${courseStyles['image']}`}>
                                     <img src="/images/courses/courses12.jpg" alt="image" />
                                 </a>
                             </Link>
-                            <a href="#" className="fav">
+                            <a href="#" className={courseStyles['fav']}>
                                 <i className="flaticon-heart"></i>
                             </a>
-                            <div className="price shadow">&#8377; 59</div>
+                            <div className={`${courseStyles['price']} shadow`}>&#8377; 59</div>
                         </div>
-                        <div className="courses-content">
-                            <div className="course-author d-flex align-items-center">
+                        <div className={courseStyles['courses-content']}>
+                            <div className={`${courseStyles['course-author']} d-flex align-items-center`}>
                                 <img src="/images/user3.jpg" className="rounded-circle" alt="image" />
                                 <span>David Warner</span>
                             </div>
@@ -337,7 +339,7 @@ const ProfileCourses = () => {
                             </h3>
 
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+                            <ul className={`${courseStyles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
                                 <li>
                                     <i className='flaticon-agenda'></i> 20 Lessons
                                 </li>
@@ -350,20 +352,20 @@ const ProfileCourses = () => {
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                    <div className="single-courses-box">
-                        <div className="courses-image">
+                    <div className={courseStyles['single-courses-box']}>
+                        <div className={courseStyles['courses-image']}>
                             <Link href="/single-courses-1">
-                                <a className="d-block image">
+                                <a className={`d-block ${courseStyles['image']}`}>
                                     <img src="/images/courses/courses13.jpg" alt="image" />
                                 </a>
                             </Link>
-                            <a href="#" className="fav">
+                            <a href="#" className={courseStyles['fav']}>
                                 <i className="flaticon-heart"></i>
                             </a>
-                            <div className="price shadow">&#8377; 39</div>
+                            <div className={`${courseStyles['price']} shadow`}>&#8377; 39</div>
                         </div>
-                        <div className="courses-content">
-                            <div className="course-author d-flex align-items-center">
+                        <div className={courseStyles['courses-content']}>
+                            <div className={`${courseStyles['course-author']} d-flex align-items-center`}>
                                 <img src="/images/user6.jpg" className="rounded-circle" alt="image" />
                                 <span>Alex Morgan</span>
                             </div>
@@ -375,7 +377,7 @@ const ProfileCourses = () => {
                             </h3>
 
                             <p>Lorem ipsum dolor sit amet, constetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+                            <ul className={`${courseStyles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
                                 <li>
                                     <i className='flaticon-agenda'></i> 15 Lessons
                                 </li>
@@ -388,20 +390,20 @@ const ProfileCourses = () => {
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                    <div className="single-courses-box">
-                        <div className="courses-image">
+                    <div className={courseStyles['single-courses-box']}>
+                        <div className={courseStyles['courses-image']}>
                             <Link href="/single-courses-1">
-                                <a className="d-block image">
+                                <a className={`d-block ${courseStyles['image']}`}>
                                     <img src="/images/courses/courses14.jpg" alt="image" />
                                 </a>
                             </Link>
-                            <a href="#" className="fav">
+                            <a href="#" className={courseStyles['fav']}>
                                 <i className="flaticon-heart"></i>
                             </a>
-                            <div className="price shadow">&#8377; 49</div>
+                            <div className={`${courseStyles['price']} shadow`}>&#8377; 49</div>
                         </div>
-                        <div className="courses-content">
-                            <div className="course-author d-flex align-items-center">
+                        <div className={courseStyles['courses-content']}>
+                            <div className={`${courseStyles['course-author']} d-flex align-items-center`}>
                                 <img src="/images/user5.jpg" className="rounded-circle" alt="image" />
                                 <span>Sarah Taylor</span>
                             </div>
@@ -413,7 +415,7 @@ const ProfileCourses = () => {
                             </h3>
 
                             <p>Lorem ipsum dolor sit amet, constetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+                            <ul className={`${courseStyles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
                                 <li>
                                     <i className='flaticon-agenda'></i> 20 Lessons
                                 </li>
@@ -426,20 +428,20 @@ const ProfileCourses = () => {
                 </div>
 
                 <div className="col-lg-4 col-md-6">
-                    <div className="single-courses-box">
-                        <div className="courses-image">
+                    <div className={courseStyles['single-courses-box']}>
+                        <div className={courseStyles['courses-image']}>
                             <Link href="/single-courses-1">
-                                <a className="d-block image">
+                                <a className={`d-block ${courseStyles['image']}`}>
                                     <img src="/images/courses/courses15.jpg" alt="image" />
                                 </a>
                             </Link>
-                            <a href="#" className="fav">
+                            <a href="#" className={courseStyles['fav']}>
                                 <i className="flaticon-heart"></i>
                             </a>
-                            <div className="price shadow">&#8377; 99</div>
+                            <div className={`${courseStyles['price']} shadow`}>&#8377; 99</div>
                         </div>
-                        <div className="courses-content">
-                            <div className="course-author d-flex align-items-center">
+                        <div className={courseStyles['courses-content']}>
+                            <div className={`${courseStyles['course-author']} d-flex align-items-center`}>
                                 <img src="/images/user4.jpg" className="rounded-circle" alt="image" />
                                 <span>James Anderson</span>
                             </div>
@@ -451,7 +453,7 @@ const ProfileCourses = () => {
                             </h3>
 
                             <p>Lorem ipsum dolor sit amet, constetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            <ul className="courses-box-footer d-flex justify-content-between align-items-center">
+                            <ul className={`${courseStyles['courses-box-footer']} d-flex justify-content-between align-items-center`}>
                                 <li>
                                     <i className='flaticon-agenda'></i> 44 Lessons
                                 </li>

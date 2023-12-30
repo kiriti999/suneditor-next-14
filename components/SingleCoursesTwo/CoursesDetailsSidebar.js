@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from '../Courses/Course.module.css';
 
 const CoursesDetailsSidebarTwo = () => {
     return (
         <div className="courses-sidebar-sticky">
-            <div className="courses-sidebar-information">
-                <ul className="info">
+            <div className={styles['courses-sidebar-information']}>
+                <ul className={styles['info']}>
                     <li>
                         <div className="d-flex justify-content-between align-items-center">
                             <span><i className="flaticon-teacher"></i> Instructor</span>
@@ -62,19 +63,19 @@ const CoursesDetailsSidebarTwo = () => {
                     </li>
                 </ul>
 
-                <div className="btn-box">
+                <div className={styles['btn-box']}>
                     <Link href="#">
-                        <a className="default-btn">
+                        <a className={`default-btn ${styles['default-btn']}`}>
                             <i className="flaticon-shopping-cart"></i> Add to Cart <span></span>
                         </a>
                     </Link>
                 </div>
 
-                <div className="courses-share">
-                    <div className="share-info">
+                <div className={styles['courses-share']}>
+                    <div className={styles['share-info']}>
                         <span>Share This Course <i className="flaticon-share"></i></span>
 
-                        <ul className="social-link">
+                        <ul className={styles['social-link']}>
                             <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-facebook'></i></a></li>
                             <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-twitter'></i></a></li>
                             <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-instagram'></i></a></li>

@@ -1,12 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from './Quizzes.module.css';
 
 const Quizzes = () => {
     return (
-        <div className="profile-quizzes pb-70">
-            <h3 className="title">Quizzes</h3>
+        <div className={`${styles['profile-quizzes']} pb-70`}>
+            <h3 className={`title ${styles['title']}`}>Quizzes</h3>
             <div className="table-responsive">
-                <table className="table table-striped">
+                <table className={`${styles['table']} table table-striped`}>
                     <thead>
                         <tr>
                             <th>Course</th>
@@ -26,7 +27,7 @@ const Quizzes = () => {
                             </td>
                             <td>Lesson 1 Term Test</td>
                             <td>May 20, 2020</td>
-                            <td>25% <span className="progress">In Progress</span></td>
+                            <td>25% <span className={styles['progress']}>In Progress</span></td>
                             <td>15:30</td>
                         </tr>
                         <tr>
@@ -37,7 +38,7 @@ const Quizzes = () => {
                             </td>
                             <td>Lesson 2 Term Test</td>
                             <td>May 21, 2020</td>
-                            <td>0% <span className="progress pending">Pending</span></td>
+                            <td>0% <span className={`${styles['progress']} ${styles['pending']}`}>Pending</span></td>
                             <td>20:20</td>
                         </tr>
                         <tr>
@@ -48,7 +49,7 @@ const Quizzes = () => {
                             </td>
                             <td>Lesson 5 Term Test</td>
                             <td>May 22, 2020</td>
-                            <td>100% <span className="progress completed">Completed</span></td>
+                            <td>100% <span className={`${styles['progress']} ${styles['completed']}`}>Completed</span></td>
                             <td>10:10</td>
                         </tr>
                         <tr>
@@ -59,7 +60,7 @@ const Quizzes = () => {
                             </td>
                             <td>Lesson 1 Term Test</td>
                             <td>May 23, 2020</td>
-                            <td>30% <span className="progress">In Progress</span></td>
+                            <td>30% <span className={styles['progress']}>In Progress</span></td>
                             <td>15:30</td>
                         </tr>
                         <tr>
@@ -70,7 +71,7 @@ const Quizzes = () => {
                             </td>
                             <td>Lesson 1 Term Test</td>
                             <td>May 24, 2020</td>
-                            <td>35% <span className="progress failed">Failed</span></td>
+                            <td>35% <span className={`${styles['progress']} ${styles['failed']}`}>Failed</span></td>
                             <td>15:30</td>
                         </tr>
                     </tbody>

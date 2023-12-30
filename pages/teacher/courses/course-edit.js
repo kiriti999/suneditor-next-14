@@ -6,6 +6,7 @@ import Link from '@/utils/ActiveLink';
 import Modal from '@/components/Modal/Modal';
 import { toast } from 'react-toastify';
 import { deleteIndex } from '../../api/v1/courses/search/algolia';
+import styles from '../../admin/pending-requests.module.css';
 
 const CourseEdit = ({ courses: data }) => {
 	const [courses, setCourses] = useState(data);
@@ -90,17 +91,17 @@ const CourseEdit = ({ courses: data }) => {
 				<div className="container">
 					<div className="row">
 						<div className="col-md-4 col-lg-4">
-							<div className="td-sidebar">
+							<div className={styles['td-sidebar']}>
 								<ul>
 									<li>
-										<Link href="/teacher/courses" activeClassName="active">
+										<Link href="/teacher/courses" activeClassName={styles['active']}>
 											<a>My Courses</a>
 										</Link>
 									</li>
 									<li>
 										<Link
 											href="/teacher/course/create"
-											activeClassName="active"
+											activeClassName={styles['active']}
 										>
 											<a>Create A Course</a>
 										</Link>
@@ -108,7 +109,7 @@ const CourseEdit = ({ courses: data }) => {
 									<li>
 										<Link
 											href="/teacher/courses/course-edit"
-											activeClassName="active"
+											activeClassName={styles['active']}
 										>
 											<a>Edit My Course</a>
 										</Link>
@@ -116,7 +117,7 @@ const CourseEdit = ({ courses: data }) => {
 									<li>
 										<Link
 											href="/teacher/course/upload-course-video"
-											activeClassName="active"
+											activeClassName={styles['active']}
 										>
 											<a>Upload Course Video</a>
 										</Link>

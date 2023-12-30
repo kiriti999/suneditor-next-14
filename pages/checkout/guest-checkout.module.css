@@ -1,0 +1,196 @@
+
+.user-actions {
+  box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  padding: 15px 20px;
+  border-top: 3px solid #fe4a55;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.user-actions i {
+  color: #fe4a55;
+  margin-right: 2px;
+  font-size: 20px;
+  position: relative;
+  top: 3px;
+}
+
+.user-actions span {
+  display: inline-block;
+  font-weight: 700;
+  color: #fe4a55;
+}
+
+.user-actions span a {
+  display: inline-block;
+}
+
+.billing-details .title {
+  margin-bottom: 30px;
+  position: relative;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eeeeee;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.billing-details .title::before {
+  content: "";
+  position: absolute;
+  background: #fe4a55;
+  bottom: -1px;
+  left: 0;
+  width: 50px;
+  height: 1px;
+}
+
+.billing-details .form-group {
+  margin-bottom: 25px;
+}
+
+.billing-details .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.billing-details .form-group label .required {
+  color: red;
+}
+
+.billing-details .form-group .nice-select {
+  background: #f5f5f5;
+  border-color: #f5f5f5;
+  color: #221638;
+  transition: 0.5s;
+  padding: 0 0 0 12px;
+  height: 50px;
+  line-height: 51px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.billing-details .form-group .nice-select .list {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  list-style-type: none;
+  border: none;
+  width: 100%;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.billing-details .form-group .nice-select .list .option {
+  line-height: 38px;
+  min-height: 38px;
+  color: #221638;
+  position: relative;
+  transition: 0.5s;
+  padding-left: 32px;
+  padding-right: 25px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.billing-details .form-group .nice-select .list .option:hover {
+  background-color: #fe4a55 !important;
+  color: #ffffff;
+}
+
+.billing-details .form-group .nice-select .list .option:hover::before {
+  color: #ffffff;
+}
+
+.billing-details .form-group .nice-select .list .option.focus,
+.billing-details .form-group .nice-select .list .option.selected.focus {
+  background-color: transparent !important;
+  color: #221638;
+}
+
+.billing-details .form-group .nice-select .list .option::before {
+  content: "\f11f";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+  color: #fe4a55;
+  font-family: Flaticon;
+  font-size: 11px;
+}
+
+.billing-details .form-group .nice-select .list .option.selected::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.billing-details .form-group .nice-select .list .option.selected:hover {
+  background-color: #fe4a55 !important;
+  color: #ffffff;
+}
+
+.billing-details .form-group .nice-select .list .option.selected:hover::before {
+  color: #ffffff;
+}
+
+.billing-details .form-group .nice-select:after {
+  border-color: #221638;
+  height: 8px;
+  width: 8px;
+  margin-top: -5px;
+}
+
+.billing-details .form-group .nice-select:hover {
+  border-color: #fe4a55;
+  background-color: transparent;
+}
+
+.billing-details .form-check {
+  margin-bottom: 20px;
+  padding-left: 25px;
+}
+
+.billing-details .form-check .form-check-input {
+  margin-left: -25px;
+}
+
+.billing-details .form-check .form-check-label {
+  color: #221638;
+  font-weight: 600;
+}
+
+.billing-details .form-check label {
+  position: relative;
+  left: -3px;
+  top: 0;
+  font-weight: 500;
+}
+
+.billing-details .col-lg-12:last-child .form-group {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .billing-details .title {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .billing-details .title {
+    font-size: 19px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .billing-details .title {
+    font-size: 21px;
+  }
+}

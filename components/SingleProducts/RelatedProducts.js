@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from './Products.module.css';
 
 const RelatedProducts = () => {
     return (
@@ -12,18 +13,18 @@ const RelatedProducts = () => {
 
                 <div className="row">
                     <div className="col-lg-4 col-md-6 col-sm-6">
-                        <div className="single-products-box">
-                            <div className="products-image">
+                        <div className={styles['single-products-box']}>
+                            <div className={styles['products-image']}>
                                 <Link href="/single-products">
                                     <a>
-                                        <img src="/images/products/product4.jpg" className="main-image" alt="image" />
+                                        <img src="/images/products/product4.jpg" className={styles['main-image']} alt="image" />
                                     </a>
                                 </Link>
 
-                                <div className="products-button">
+                                <div className={styles['products-button']}>
                                     <ul>
                                         <li>
-                                            <div className="wishlist-btn">
+                                            <div className={styles['wishlist-btn']}>
                                                 <a href="#">
                                                     <i className='bx bx-heart'></i>
                                                     <span className="tooltip-label">Add to Wishlist</span>
@@ -34,40 +35,40 @@ const RelatedProducts = () => {
                                 </div>
                             </div>
 
-                            <div className="products-content">
+                            <div className={styles['products-content']}>
                                 <h3>
                                     <Link href="/single-products">
                                         <a>Stop and Take a Second</a>
                                     </Link>
                                 </h3>
-                                <div className="price">
-                                    <span className="new-price">$150</span>
+                                <div className={styles['price']}>
+                                    <span className={styles['new-price']}>$150</span>
                                 </div>
-                                <div className="star-rating">
+                                <div className={styles['star-rating']}>
                                     <i className='bx bxs-star'></i>
                                     <i className='bx bxs-star'></i>
                                     <i className='bx bxs-star'></i>
                                     <i className='bx bxs-star'></i>
                                     <i className='bx bxs-star'></i>
                                 </div>
-                                <a href="#" className="add-to-cart">Add to Cart</a>
+                                <a href="#" className={styles['add-to-cart']}>Add to Cart</a>
                             </div>
                         </div>
                     </div>
 
                     <div className="col-lg-4 col-md-6 col-sm-6">
-                        <div className="single-products-box">
-                            <div className="products-image">
+                        <div className={styles['single-products-box']}>
+                            <div className={styles['products-image']}>
                                 <Link href="/single-products">
                                     <a>
-                                        <img src="/images/products/product5.jpg" className="main-image" alt="image" />
+                                        <img src="/images/products/product5.jpg" className={styles['main-image']} alt="image" />
                                     </a>
                                 </Link>
 
-                                <div className="products-button">
+                                <div className={styles['products-button']}>
                                     <ul>
                                         <li>
-                                            <div className="wishlist-btn">
+                                            <div className={styles['wishlist-btn']}>
                                                 <a href="#">
                                                     <i className='bx bx-heart'></i>
                                                     <span className="tooltip-label">Add to Wishlist</span>
@@ -78,40 +79,40 @@ const RelatedProducts = () => {
                                 </div>
                             </div>
 
-                            <div className="products-content">
+                            <div className={styles['products-content']}>
                                 <h3>
                                     <Link href="/single-products">
                                         <a>Real Life Fairytale</a>
                                     </Link>
                                 </h3>
-                                <div className="price">
-                                    <span className="new-price">$240</span>
+                                <div className={styles['price']}>
+                                    <span className={styles['new-price']}>$240</span>
                                 </div>
-                                <div className="star-rating">
+                                <div className={styles['star-rating']}>
                                     <i className='bx bxs-star'></i>
                                     <i className='bx bxs-star'></i>
                                     <i className='bx bxs-star'></i>
                                     <i className='bx bxs-star'></i>
                                     <i className='bx bxs-star'></i>
                                 </div>
-                                <a href="#" className="add-to-cart">Add to Cart</a>
+                                <a href="#" className={styles['add-to-cart']}>Add to Cart</a>
                             </div>
                         </div>
                     </div>
 
                     <div className="col-lg-4 col-md-6 col-sm-6">
-                        <div className="single-products-box">
-                            <div className="products-image">
+                        <div className={styles['single-products-box']}>
+                            <div className={styles['products-image']}>
                                 <Link href="/single-products">
                                     <a>
-                                        <img src="/images/products/product6.jpg" className="main-image" alt="image" />
+                                        <img src="/images/products/product6.jpg" className={styles['main-image']} alt="image" />
                                     </a>
                                 </Link>
 
-                                <div className="products-button">
+                                <div className={styles['products-button']}>
                                     <ul>
                                         <li>
-                                            <div className="wishlist-btn">
+                                            <div className={styles['wishlist-btn']}>
                                                 <a href="#">
                                                     <i className='bx bx-heart'></i>
                                                     <span className="tooltip-label">Add to Wishlist</span>
@@ -121,27 +122,27 @@ const RelatedProducts = () => {
                                     </ul>
                                 </div>
 
-                                <div className="new-tag">New!</div>
+                                <div className={styles['new-tag']}>New!</div>
                             </div>
 
-                            <div className="products-content">
+                            <div className={styles['products-content']}>
                                 <h3>
                                     <Link href="/single-products">
                                         <a>Running From Me</a>
                                     </Link>
                                 </h3>
-                                <div className="price">
-                                    <span className="old-price">$150</span>
-                                    <span className="new-price">$100</span>
+                                <div className={styles['price']}>
+                                    <span className={styles['old-price']}>$150</span>
+                                    <span className={styles['new-price']}>$100</span>
                                 </div>
-                                <div className="star-rating">
+                                <div className={styles['star-rating']}>
                                     <i className='bx bxs-star'></i>
                                     <i className='bx bxs-star'></i>
                                     <i className='bx bxs-star'></i>
                                     <i className='bx bxs-star'></i>
                                     <i className='bx bxs-star'></i>
                                 </div>
-                                <a href="#" className="add-to-cart">Add to Cart</a>
+                                <a href="#" className={styles['add-to-cart']}>Add to Cart</a>
                             </div>
                         </div>
                     </div>

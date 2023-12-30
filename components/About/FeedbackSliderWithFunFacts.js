@@ -4,15 +4,17 @@ import FunFacts from "./FunFacts";
 import IntoVideo from "./IntoVideo";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper";
+import factsStyles from './FunFacts.module.css';
+import fbStyles from './Feedback.module.css';
 
 const FeedbackSliderWithFunFacts = () => {
 	return (
 		<>
-			<div className="funfacts-and-feedback-area ptb-100">
+			<div className={`${factsStyles['funfacts-and-feedback-area']} ptb-100`}>
 				<div className="container">
 					<div className="row align-items-center">
 						<div className="col-lg-6 col-md-12">
-							<div className="feedback-content">
+							<div className={fbStyles['feedback-content']}>
 								<span className="sub-title">Distance learning</span>
 								<h2>
 									Flexible Study at Your Own Pace, According to
@@ -39,10 +41,10 @@ const FeedbackSliderWithFunFacts = () => {
 										pauseOnMouseEnter: true,
 									}}
 									modules={[Pagination, Autoplay]}
-									className="feedback-slides"
+									className={`feedback-slides ${fbStyles['feedback-slides']}`}
 								>
 									<SwiperSlide>
-										<div className="single-feedback-item">
+										<div className={fbStyles['single-feedback-item']}>
 											<p>
 												Lorem ipsum dolor sit amet,
 												consectetur adipiscing elit, sed do
@@ -57,13 +59,13 @@ const FeedbackSliderWithFunFacts = () => {
 												dolore.
 											</p>
 
-											<div className="client-info d-flex align-items-center">
+											<div className={`${fbStyles['client-info']} d-flex align-items-center`}>
 												<img
 													src="/images/user1.jpg"
 													className="rounded-circle"
 													alt="image"
 												/>
-												<div className="title">
+												<div className={fbStyles['title']}>
 													<h3>John Smith</h3>
 													<span>Python Developer</span>
 												</div>
@@ -72,7 +74,7 @@ const FeedbackSliderWithFunFacts = () => {
 									</SwiperSlide>
 
 									<SwiperSlide>
-										<div className="single-feedback-item">
+										<div className={fbStyles['single-feedback-item']}>
 											<p>
 												Lorem ipsum dolor sit amet,
 												consectetur adipiscing elit, sed do
@@ -87,13 +89,13 @@ const FeedbackSliderWithFunFacts = () => {
 												dolore.
 											</p>
 
-											<div className="client-info d-flex align-items-center">
+											<div className={`${fbStyles['client-info']} d-flex align-items-center`}>
 												<img
 													src="/images/user2.jpg"
 													className="rounded-circle"
 													alt="image"
 												/>
-												<div className="title">
+												<div className={fbStyles['title']}>
 													<h3>Sarah Taylor</h3>
 													<span>PHP Developer</span>
 												</div>
@@ -102,7 +104,7 @@ const FeedbackSliderWithFunFacts = () => {
 									</SwiperSlide>
 
 									<SwiperSlide>
-										<div className="single-feedback-item">
+										<div className={fbStyles['single-feedback-item']}>
 											<p>
 												Lorem ipsum dolor sit amet,
 												consectetur adipiscing elit, sed do
@@ -117,13 +119,13 @@ const FeedbackSliderWithFunFacts = () => {
 												dolore.
 											</p>
 
-											<div className="client-info d-flex align-items-center">
+											<div className={`${fbStyles['client-info']} d-flex align-items-center`}>
 												<img
 													src="/images/user1.jpg"
 													className="rounded-circle"
 													alt="image"
 												/>
-												<div className="title">
+												<div className={fbStyles['title']}>
 													<h3>David Warner</h3>
 													<span>QA Developer</span>
 												</div>
@@ -132,7 +134,7 @@ const FeedbackSliderWithFunFacts = () => {
 									</SwiperSlide>
 								</Swiper>
 
-								<div className="feedback-info">
+								<div className={fbStyles['feedback-info']}>
 									<p>
 										Not a member yet?​{" "}
 										<Link href="/authentication">
@@ -153,16 +155,16 @@ const FeedbackSliderWithFunFacts = () => {
 					</div>
 				</div>
 
-				<div className="shape2">
+				<div className={`${factsStyles['shape2']} shape2`}>
 					<img src="/images/shape2.png" alt="image" />
 				</div>
-				<div className="shape3">
+				<div className={`${factsStyles['shape3']} shape3`}>
 					<img src="/images/shape3.png" alt="image" />
 				</div>
-				<div className="shape4">
+				<div className={`${factsStyles['shape4']} shape4`}>
 					<img src="/images/shape4.png" alt="image" />
 				</div>
-				<div className="shape9">
+				<div className={`${factsStyles['shape9']} shape9`}>
 					<img src="/images/shape8.svg" alt="image" />
 				</div>
 			</div>

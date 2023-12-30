@@ -1,6 +1,8 @@
 import React from "react";
 import dynamic from "next/dynamic";
 const ModalVideo = dynamic(import("react-modal-video"));
+import styles from './Story.module.css';
+import videoStyles from '../About/Video.module.css';
 
 const IntroVideo = () => {
 	const [display, setDisplay] = React.useState(false);
@@ -15,10 +17,10 @@ const IntroVideo = () => {
 	};
 	return (
 		<>
-			<div className="success-story-area pb-100">
+			<div className={`${styles['success-story-area']} pb-100`}>
 				<div className="container">
-					<div className="video-box mt-0">
-						<div className="image">
+					<div className={`${videoStyles['video-box']} mt-0`}>
+						<div className={videoStyles['image']}>
 							<img
 								src="/images/success-story.jpg"
 								className="shadow"
@@ -28,7 +30,7 @@ const IntroVideo = () => {
 
 						<div
 							onClick={()=> openModal()}
-							className="video-btn popup-youtube"
+							className={`${videoStyles['video-btn']} popup-youtube`}
 						>
 							<i className="flaticon-play"></i>
 						</div>
@@ -40,13 +42,13 @@ const IntroVideo = () => {
 					</div>
 				</div>
 
-				<div className="shape2">
+				<div className={`shape2 ${styles['shape2']}`}>
 					<img src="/images/shape2.png" alt="image" />
 				</div>
-				<div className="shape3">
+				<div className={`shape3 ${styles['shape3']}`}> 
 					<img src="/images/shape3.png" alt="image" />
 				</div>
-				<div className="shape4">
+				<div className={`shape4 ${styles['shape4']}`}>
 					<img src="/images/shape4.png" alt="image" />
 				</div>
 				<div className="shape9">

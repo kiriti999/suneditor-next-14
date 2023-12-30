@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
 import LoadingSpinner from "@/utils/LoadingSpinner";
+import styles from '../../admin/pending-requests.module.css';
 
 const INIT_VIDEO = {
     video_url: '',
@@ -147,25 +148,25 @@ const UploadCourseVideo = ({ courses }) => {
 
                     <div className="row">
                         <div className="col-md-4 col-lg-4">
-                            <div className="td-sidebar">
+                            <div className={styles['td-sidebar']}>
                                 <ul>
                                     <li>
-                                        <Link href="/teacher/courses" activeClassName="active">
+                                        <Link href="/teacher/courses" activeClassName={styles['active']}>
                                             <a>My Courses</a>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/teacher/course/create" activeClassName="active">
+                                        <Link href="/teacher/course/create" activeClassName={styles['active']}>
                                             <a>Create A Course</a>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/teacher/courses/course-edit" activeClassName="active">
+                                        <Link href="/teacher/courses/course-edit" activeClassName={styles['active']}>
                                             <a>Edit My Course</a>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/teacher/course/upload-course-video" activeClassName="active">
+                                        <Link href="/teacher/course/upload-course-video" activeClassName={styles['active']}>
                                             <a>Upload Course Video</a>
                                         </Link>
                                     </li>
@@ -182,7 +183,7 @@ const UploadCourseVideo = ({ courses }) => {
                                         <label>Select Course</label>
                                         <select onChange={handleChange} name="courseId" className="form-control">
                                             <option>Select Course</option>
-                                            {courses.map(course => (
+                                            {courses.length && courses.map(course => (
                                                 <option value={course._id} key={course._id}>
                                                     {course.title}
                                                 </option>

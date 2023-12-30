@@ -3,6 +3,7 @@ import api from '@/axios/axiosConfig';
 import axios from 'axios'
 import { axiosApi } from "@/utils/baseUrl";
 import { parseCookies } from 'nookies'
+import styles from './my-profile.module.css';
 
 const MyProfile = ({ profile }) => {
     return (
@@ -11,7 +12,7 @@ const MyProfile = ({ profile }) => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-4">
-                            <div className="user-profile">
+                            <div className={styles['user-profile']}>
                                 {/* <img src="/images/success-people/success-people3.jpg" /> */}
                                 <h3>{profile.name || 'No user info'}</h3>
                                 <p>{profile.email || 'No email found'}</p>

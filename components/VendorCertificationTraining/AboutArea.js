@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import styles from '../About/AboutUs.module.css';
 const ModalVideo = dynamic(import("react-modal-video"));
 
 const AboutArea = () => {
@@ -17,12 +18,12 @@ const AboutArea = () => {
   };
   return (
     <>
-      <div className="about-area-two bg-fffaf3 pt-70 pb-100">
+      <div className={`${styles['about-area-two']} bg-fffaf3 pt-70 pb-100`}>
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-5 col-md-12">
-              <div className="about-content-box">
-                <span className="sub-title">Distance Learning</span>
+              <div className={styles['about-content-box']}>
+                <span className={styles['sub-title']}>Distance Learning</span>
                 <h2>Build Your Project Management Skills Online, Anytime</h2>
                 <p>
                   Want to learn and earn PDUs or CEUs on your schedule —
@@ -38,18 +39,18 @@ const AboutArea = () => {
                 </p>
 
                 <Link href="/contact">
-                  <a className="link-btn">Explore Learning</a>
+                  <a className={styles['link-btn']}>Explore Learning</a>
                 </Link>
               </div>
             </div>
 
             <div className="col-lg-7 col-md-12">
-              <div className="about-video-box">
-                <div className="image">
+              <div className={styles['about-video-box']}>
+                <div className={styles['image']}>
                   <img src="/images/about-img5.jpg" alt="image" />
                 </div>
 
-                <div onClick={() => openModal()} className="video-btn">
+                <div onClick={() => openModal()} className={styles['video-btn']}>
                   <i className="flaticon-play"></i>
                 </div>
 

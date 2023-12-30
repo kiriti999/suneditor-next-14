@@ -1,5 +1,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
+import styles from './Video.module.css';
 const ModalVideo = dynamic(import("react-modal-video"));
 
 const IntoVideo = () => {
@@ -15,8 +16,8 @@ const IntoVideo = () => {
 	};
 	return (
 		<>
-			<div className="video-box">
-				<div className="image">
+			<div className={styles['video-box']}>
+				<div className={styles['image']}>
 					<img
 						src="/images/video-img1.jpg"
 						className="shadow"
@@ -26,7 +27,7 @@ const IntoVideo = () => {
 
 				<div
 					onClick={()=> openModal()}
-					className="video-btn popup-youtube"
+					className={`${styles['video-btn']} popup-youtube`}
 				>
 					<i className="flaticon-play"></i>
 				</div>

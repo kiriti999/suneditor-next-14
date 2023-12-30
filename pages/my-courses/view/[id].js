@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
 import { axiosApi } from "@/utils/baseUrl";
+import styles from '../../../components/Courses/Course.module.css';
 
 const SingleCourses = ({ videos }) => {
     const [videoId, setVideoId] = React.useState(videos.length ? videos[0].video_url : '')
@@ -21,7 +22,7 @@ const SingleCourses = ({ videos }) => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-3">
-                            <div className="course-video-list">
+                            <div className={styles['course-video-list']}>
                                 {videos.length ? videos.map(video => (
                                     <div key={video.id}>
                                         <Link href="/my-courses/[videos]/[id]" as={`/my-courses/${video.course._id}/${video.id}`}>
@@ -44,7 +45,7 @@ const SingleCourses = ({ videos }) => {
                         </div>
 
                         <div className="col-lg-9">
-                            <div className="course-video-iframe">
+                            <div className={styles['course-video-iframe']}>
                                 <video key={videoId} controls>
                                     <source src={videoId} type="video/mp4" />
                                     <source src="/images/courses/courses5.jpg" type="video/ogg" />

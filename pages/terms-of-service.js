@@ -1,6 +1,7 @@
 import React from 'react';
 import PageBanner from '../components/Common/PageBanner';
 import Sidebar from '../components/TermsOfService/Sidebar';
+import styles from './terms-of-service.module.css';
 
 const TermsOfService = () => {
     return (
@@ -16,11 +17,11 @@ const TermsOfService = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 col-md-12">
-                            <div className="terms-of-service-content">
+                            <div className={styles['terms-of-service-content']}>
                                 <p><i>This Terms of Service was last updated on January 1, 2020.</i></p>
                                 <h3>1. Our website</h3>
                                 <p>Our website address is: http://whatsnxt.com</p>
-                                <blockquote className="blockquote">
+                                <blockquote className={styles['blockquote']}>
                                     <p>We collect certain data from you directly, like information you enter yourself, data about your participation in courses, and data from third-party platforms you connect with whatsnxt. We also collect some data automatically, like information about your device and what parts of our Services you interact with or spend time using.</p>
                                 </blockquote>
                                 <h3>2. Data You Provide to Us</h3>

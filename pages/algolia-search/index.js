@@ -8,6 +8,8 @@ import axios from 'axios';
 import { axiosApi } from '@/utils/baseUrl';
 import { algoliaSearchByKeyword } from '@/lib/algolia';
 import QueryPagination from '@/components/QueryPagination/QueryPagination';
+import courseStyles from '../../components/Courses/Course.module.css';
+import styles from './index.module.css';
 
 const overviewStyle = {
 	display: '-webkit-box',
@@ -86,15 +88,15 @@ const AlgoliaSearch = ({ data, pages }) => {
 
 	const createCourseCards = (course, live = true) => (
 		<div className="col-lg-3 col-md-6" key={course.title + (live ? 'live' : 'video')}>
-			<div className="single-courses-box">
-				<div className="courses-image">
+			<div className={courseStyles['single-courses-box']}>
+				<div className={courseStyles['courses-image']}>
 					<Link href="/courses/[id]" as={`/courses/${course.slug}`}>
-						<a className="d-block image">
+						<a className={`d-block image ${courseStyles['image']}`}>
 							<img src={course.profilePhoto} alt={course.title} />
 						</a>
 					</Link>
 				</div>
-				<div className="courses-content">
+				<div className={courseStyles['courses-content']}>
 
 					<b title={course.title}>
 						<Link href="/courses/[id]" as={`/courses/${course.slug}`}>
@@ -102,14 +104,14 @@ const AlgoliaSearch = ({ data, pages }) => {
 						</Link>
 					</b>
 
-					<div className="course-author d-flex align-items-center mt-2">
+					<div className={`${courseStyles['course-author']} d-flex align-items-center mt-2`}>
 						<img src="/images/user1.svg" className="rounded-circle" alt="image" />
 						<span><small>Led by experts</small></span>
 					</div>
 
 					<div style={overviewStyle} dangerouslySetInnerHTML={{ __html: course?.overview?.slice(0, 100) }} ></div>
 
-					<ul className="courses-box-footer d-flex justify-content-between align-items-center pb-10">
+					<ul className={`${courseStyles['courses-box-footer']} d-flex justify-content-between align-items-center pb-10`}>
 						<li>
 							<i className="flaticon-fi-sr-indian-rupee-sign"></i>{" "}
 							<b>₹ {(live ? course.live_training_price : course.video_course_price)}</b>
@@ -132,20 +134,20 @@ const AlgoliaSearch = ({ data, pages }) => {
 					activePageText="Courses"
 				/>
 
-				<div className="courses-area pt-40 pb-70">
+				<div className={`${courseStyles['courses-area']} pt-40 pb-70`}>
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-12 col-md-12">
-								<div className="whatsnxt-grid-sorting row align-items-center">
-									<div className="col-lg-8 col-md-6 result-count">
-										<p>We found <span className="count">{courses.length ? courses.length : 0}</span> courses available for you</p>
+								<div className={`${styles['whatsnxt-grid-sorting']} row align-items-center`}>
+									<div className={`col-lg-8 col-md-6 ${styles['result-count']}`}>
+										<p>We found <span className={styles['count']}>{courses.length ? courses.length : 0}</span> courses available for you</p>
 									</div>
 
-									<div className="col-lg-4 col-md-6 ordering">
+									<div className={`col-lg-4 col-md-6 ${styles['ordering']}`}>
 										<div className="select-box">
 											<select onChange={(e) => sortCourses(e.target.value)} className="form-control">
 												<option>Sort By</option>
-												{sortOption.map(({ value, text }) => (
+												{sortOption.length && sortOption.map(({ value, text }) => (
 													<option key={value} value={value} defaultValue={value === query.sort}>
 														{text}
 													</option>
@@ -156,7 +158,7 @@ const AlgoliaSearch = ({ data, pages }) => {
 								</div>
 
 								<div className="row">
-									{courses ? courses.map(course => (
+									{courses && courses.length ? courses.map(course => (
 										<>
 											{course.live_training_price && createCourseCards(course)}
 											{course.video_course_price && createCourseCards(course, false)}

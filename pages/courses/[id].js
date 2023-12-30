@@ -12,6 +12,9 @@ import Router from 'next/router'
 import LoadingSpinner from "@/utils/LoadingSpinner";
 import { useForm } from 'react-hook-form';
 import { NextSeo } from 'next-seo';
+import styles from '../../components/Courses/Course.module.css';
+import advStyles from '../../components/Common/CourseAdvisor.module.css';
+
 const Details = () => {
 	const { token } = parseCookies();
 	const [course, setCourse] = useState([]);
@@ -219,40 +222,40 @@ const Details = () => {
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-8 col-md-12">
-							<div className="courses-details-desc">
-								<Tabs>
-									<TabList>
-										<Tab>Overview</Tab>
-										<Tab>Topics</Tab>
-										<Tab>Videos</Tab>
-										<Tab>Instructor</Tab>
-										<Tab>Reviews</Tab>
-										<Tab>User feedback</Tab>
+							<div className={styles['courses-details-desc']}>
+								<Tabs selectedTabClassName={`react-tabs__tab--selected ${styles['react-tabs__tab--selected']}`}>
+									<TabList className={`react-tabs__tab-list ${styles['react-tabs__tab-list']}`}>
+										<Tab className={`react-tabs__tab ${styles['react-tabs__tab']}`}>Overview</Tab>
+										<Tab className={`react-tabs__tab ${styles['react-tabs__tab']}`}>Topics</Tab>
+										<Tab className={`react-tabs__tab ${styles['react-tabs__tab']}`}>Videos</Tab>
+										<Tab className={`react-tabs__tab ${styles['react-tabs__tab']}`}>Instructor</Tab>
+										<Tab className={`react-tabs__tab ${styles['react-tabs__tab']}`}>Reviews</Tab>
+										<Tab className={`react-tabs__tab ${styles['react-tabs__tab']}`}>User feedback</Tab>
 									</TabList>
 
-									<TabPanel>
-										<div className="courses-overview">
+									<TabPanel className={`react-tabs__tab-panel ${styles['react-tabs__tab-panel']}`}>
+										<div className={styles['courses-overview']}>
 											<h3>{course.title}</h3>
 											<div style={{ display: 'contents' }} dangerouslySetInnerHTML={{ __html: course.overview }} />
 										</div>
 									</TabPanel>
 
-									<TabPanel>
-										<div className="courses-overview">
+									<TabPanel className={`react-tabs__tab-panel ${styles['react-tabs__tab-panel']}`}>
+										<div className={styles['courses-overview']}>
 											<div style={{ display: 'contents' }} dangerouslySetInnerHTML={{ __html: course.topics }} />
 										</div>
 									</TabPanel>
 
-									<TabPanel>
+									<TabPanel className={`react-tabs__tab-panel ${styles['react-tabs__tab-panel']}`}>
 										<CoursesCurriculum videos={course?.videos} />
 									</TabPanel>
 
-									<TabPanel>
-										<div className="courses-instructor">
-											<div className="single-advisor-box">
+									<TabPanel className={`react-tabs__tab-panel ${styles['react-tabs__tab-panel']}`}>
+										<div className={`${styles['courses-instructor']} ${advStyles['courses-instructor']}`}>
+											<div className={`${styles['single-advisor-box']} ${advStyles['single-advisor-box']}`}>
 												<div className="row align-items-center">
 													<div className="col-lg-4 col-md-4">
-														<div className="advisor-image">
+														<div className={`${styles['advisor-image']} ${advStyles['advisor-image']}`}>
 															<img
 																src={`${course?.userId?.profilePhoto ?
 																	course?.userId?.profilePhoto : "/images/advisor/advisor6.jpg"}`}
@@ -262,7 +265,7 @@ const Details = () => {
 													</div>
 
 													<div className="col-lg-8 col-md-8">
-														<div className="advisor-content">
+														<div className={`${styles['advisor-content']} ${advStyles['advisor-content']}`}>
 															{/*<h3> {course?.userId?.name} </h3>*/}
 															<h3> Arjun </h3>
 															<span className="sub-title">
@@ -272,7 +275,7 @@ const Details = () => {
 																{course?.userId?.about || "Expert trainer on full stack applications and software programming languages"}
 															</p>
 
-															<ul className="social-link">
+															<ul className={`${styles['social-link']} ${advStyles['social-link']}`}>
 																<li>
 																	<a
 																		href={course?.userId?.fb_url || "#"}
@@ -317,8 +320,8 @@ const Details = () => {
 										</div>
 									</TabPanel>
 
-									<TabPanel>
-										<div className="courses-reviews">
+									<TabPanel className={`react-tabs__tab-panel ${styles['react-tabs__tab-panel']}`}>
+										<div className={styles['courses-reviews']}>
 											{/* <h3>Course Rating</h3> */}
 											<ReactStars
 												key={course._id}
@@ -331,83 +334,83 @@ const Details = () => {
 												activeColor="#ffd700"
 												value={course.rating}
 											/>
-											<div className="rating-count">
+											<div className={styles['rating-count']}>
 												<span>
 													{parseInt(course.rating).toFixed(1)} average based on {courseReviews.length} reviews.
 												</span>
 											</div>
-											<div className="row">
-												<div className="side">
+											<div className={`${styles['row']} row`}>
+												<div className={styles['side']}>
 													<div>5 star</div>
 												</div>
-												<div className="middle">
-													<div className="bar-container">
-														<div className="bar-5" style={{ width: (stars5Ratio * 100).toString() + '%' }}></div>
+												<div className={styles['middle']}>
+													<div className={styles['bar-container']}>
+														<div className={styles['bar-5']} style={{ width: (stars5Ratio * 100).toString() + '%' }}></div>
 													</div>
 												</div>
-												<div className="side right">
+												<div className={`${styles['side']} ${styles['right']}`}>
 													<div>{stars5Count}</div>
 												</div>
-												<div className="side">
+												<div className={styles['side']}>
 													<div>4 star</div>
 												</div>
-												<div className="middle">
-													<div className="bar-container">
-														<div className="bar-4" style={{ width: (stars4Ratio * 100).toString() + '%' }}></div>
+												<div className={styles['middle']}>
+													<div className={styles['bar-container']}>
+														<div className={styles['bar-4']} style={{ width: (stars4Ratio * 100).toString() + '%' }}></div>
 													</div>
 												</div>
-												<div className="side right">
+												<div className={`${styles['side']} ${styles['right']}`}>
 													<div>{stars4Count}</div>
 												</div>
-												<div className="side">
+												<div className={styles['side']}>
 													<div>3 star</div>
 												</div>
-												<div className="middle">
-													<div className="bar-container">
-														<div className="bar-3" style={{ width: (stars3Ratio * 100).toString() + '%' }}></div>
+												<div className={styles['middle']}>
+													<div className={styles['bar-container']}>
+														<div className={styles['bar-3']} style={{ width: (stars3Ratio * 100).toString() + '%' }}></div>
 													</div>
 												</div>
-												<div className="side right">
+												<div className={`${styles['side']} ${styles['right']}`}>
 													<div>{stars3Count}</div>
 												</div>
-												<div className="side">
+												<div className={styles['side']}>
 													<div>2 star</div>
 												</div>
-												<div className="middle">
-													<div className="bar-container">
-														<div className="bar-2" style={{ width: (stars2Ratio * 100).toString() + '%' }}></div>
+												<div className={styles['middle']}>
+													<div className={styles['bar-container']}>
+														<div className={styles['bar-2']} style={{ width: (stars2Ratio * 100).toString() + '%' }}></div>
 													</div>
 												</div>
-												<div className="side right">
+												<div className={`${styles['side']} ${styles['right']}`}>
 													<div>{stars2Count}</div>
 												</div>
-												<div className="side">
+												<div className={styles['side']}>
 													<div>1 star</div>
 												</div>
-												<div className="middle">
-													<div className="bar-container">
-														<div className="bar-1" style={{ width: (stars1Ratio * 100).toString() + '%' }}></div>
+												<div className={styles['middle']}>
+													<div className={styles['bar-container']}>
+														<div className={styles['bar-1']} style={{ width: (stars1Ratio * 100).toString() + '%' }}></div>
 													</div>
 												</div>
-												<div className="side right">
+												<div className={`${styles['side']} ${styles['right']}`}>
 													<div>{stars1Count}</div>
 												</div>
 											</div>
 										</div>
 
 
-										<div className="courses-review-comments">
+										<div className={styles['courses-review-comments']}>
 											<h3>{courseReviews?.length || 0} Reviews</h3>
 
 											{courseReviews && courseReviews.map((review, i)=>{
 												if (i >= displayLength) return '';
 												return (
-													<div className="user-review" key={i}>
-													<div className="review-profile">
-														<div className="review-avatar review-avatar-circle">{review.user[0].name.charAt(0).toUpperCase()}</div>
+													<div className={styles['user-review']} key={i}>
+													<div className={styles['review-profile']}>
+														<div className={`${styles['review-avatar']} ${styles['review-avatar-circle']}`}>{review.user[0].name.charAt(0).toUpperCase()}</div>
 													</div>
 
-													<div className="review-rating">
+													<div className={styles['review-rating']}>
 													<ReactStars
 														key={course._id}
 														count={5}
@@ -432,11 +435,11 @@ const Details = () => {
 												)
 											})}
 
-											<button type="button" className="default-btn" onClick={loadMore}>Load More</button>
+											<button type="button" className={`${styles['default-btn']} default-btn`} onClick={loadMore}>Load More</button>
 										</div>
 									</TabPanel>
 
-									<TabPanel>
+									<TabPanel className={`react-tabs__tab-panel ${styles['react-tabs__tab-panel']}`}>
 										{!isReviewProvided &&
 											<>
 												<h3>How would you rate this course?</h3>
@@ -462,7 +465,7 @@ const Details = () => {
 												<textarea className="form-control" {...register('review', validationOptions.review)}
 													placeholder="Tell us about your own personal experience taking this course. Was it a good match for you?"
 													rows="5"></textarea>
-												<button type="submit" className="default-btn mt-20">Save and continue</button>
+												<button type="submit" className={`${styles['default-btn']} default-btn mt-20`}>Save and continue</button>
 											</div>
 										</form>}
 

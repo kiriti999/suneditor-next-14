@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PageBanner from "../components/Common/PageBanner";
 import SubscribeForm from "../components/Common/SubscribeForm";
 import Lightbox from "react-18-image-lightbox";
+import styles from './gallery.module.css';
 
 const images = [
   "images/courses/courses1.jpg",
@@ -61,9 +62,9 @@ export default class Gallery extends Component {
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="single-gallery-item">
+                <div className={styles['single-gallery-item']}>
                   <div
-                    className="popup-btn"
+                    className={styles['popup-btn']}
                     onClick={() =>
                       this.setState({ isOpen: true, photoIndex: 0 })
                     }
@@ -74,9 +75,9 @@ export default class Gallery extends Component {
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="single-gallery-item">
+                <div className={styles['single-gallery-item']}>
                   <div
-                    className="popup-btn"
+                    className={styles['popup-btn']}
                     onClick={() =>
                       this.setState({ isOpen: true, photoIndex: 1 })
                     }
@@ -87,9 +88,9 @@ export default class Gallery extends Component {
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="single-gallery-item">
+                <div className={styles['single-gallery-item']}>
                   <div
-                    className="popup-btn"
+                    className={styles['popup-btn']}
                     onClick={() =>
                       this.setState({ isOpen: true, photoIndex: 2 })
                     }
@@ -100,9 +101,9 @@ export default class Gallery extends Component {
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="single-gallery-item">
+                <div className={styles['single-gallery-item']}>
                   <div
-                    className="popup-btn"
+                    className={styles['popup-btn']}
                     onClick={() =>
                       this.setState({ isOpen: true, photoIndex: 3 })
                     }
@@ -113,9 +114,9 @@ export default class Gallery extends Component {
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="single-gallery-item">
+                <div className={styles['single-gallery-item']}>
                   <div
-                    className="popup-btn"
+                    className={styles['popup-btn']}
                     onClick={() =>
                       this.setState({ isOpen: true, photoIndex: 4 })
                     }
@@ -126,9 +127,9 @@ export default class Gallery extends Component {
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="single-gallery-item">
+                <div className={styles['single-gallery-item']}>
                   <div
-                    className="popup-btn"
+                    className={styles['popup-btn']}
                     onClick={() =>
                       this.setState({ isOpen: true, photoIndex: 5 })
                     }
@@ -139,9 +140,9 @@ export default class Gallery extends Component {
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="single-gallery-item">
+                <div className={styles['single-gallery-item']}>
                   <div
-                    className="popup-btn"
+                    className={styles['popup-btn']}
                     onClick={() =>
                       this.setState({ isOpen: true, photoIndex: 6 })
                     }
@@ -152,9 +153,9 @@ export default class Gallery extends Component {
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="single-gallery-item">
+                <div className={styles['single-gallery-item']}>
                   <div
-                    className="popup-btn"
+                    className={styles['popup-btn']}
                     onClick={() =>
                       this.setState({ isOpen: true, photoIndex: 7 })
                     }
@@ -165,9 +166,9 @@ export default class Gallery extends Component {
               </div>
 
               <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="single-gallery-item">
+                <div className={styles['single-gallery-item']}>
                   <div
-                    className="popup-btn"
+                    className={styles['popup-btn']}
                     onClick={() =>
                       this.setState({ isOpen: true, photoIndex: 8 })
                     }

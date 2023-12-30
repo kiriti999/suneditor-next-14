@@ -4,6 +4,7 @@ import { signOut } from 'next-auth/react';
 import { useSelector, useDispatch } from "react-redux";
 import { handleLogout } from "../../utils/auth";
 import SearchForm from "./SearchForm";
+import styles from './Navbar.module.css';
 
 const Navbar = ({ user }) => {
 	const cartItems = useSelector((state) => state.cart.cartItems);
@@ -21,9 +22,9 @@ const Navbar = ({ user }) => {
 		let elementId = document.getElementById("navbar");
 		document.addEventListener("scroll", () => {
 			if (window.scrollY > 170) {
-				elementId.classList.add("is-sticky");
+				elementId.classList.add(styles["is-sticky"]);
 			} else {
-				elementId.classList.remove("is-sticky");
+				elementId.classList.remove(styles["is-sticky"]);
 			}
 		});
 	});
@@ -31,23 +32,20 @@ const Navbar = ({ user }) => {
 	const isAdmin = user && user.role === "admin";
 	const isTeacher = user && user.role === "teacher";
 
-	const classOne = menu
-		? "collapse navbar-collapse"
-		: "collapse navbar-collapse show";
-	const classTwo = menu
-		? "navbar-toggler navbar-toggler-right collapsed"
-		: "navbar-toggler navbar-toggler-right";
+	const classOne = `collapse navbar-collapse ${styles['navbar-collapse']}` + (menu ? '' : ' show');
+	const classTwo = `navbar-toggler ${styles['navbar-toggler']} navbar-toggler-right` +
+		(menu ? ` collapsed ${styles['collapsed']}` : '');
 
 	return (
 		<>
-			<div id="navbar" className="navbar-area">
-				<div className="whatsnxt-nav">
-					<div className="container-fluid">
-						<div className="navbar navbar-expand-lg navbar-light">
+			<div id="navbar" className={styles['navbar-area']}>
+				<div className={styles['whatsnxt-nav']}>
+					<div className={`container-fluid ${styles['container-fluid']}`}>
+						<div className={`navbar navbar-expand-lg navbar-light ${styles['navbar']}`}>
 							<Link href="/">
 								<a
 									onClick={toggleNavbar}
-									className="navbar-brand"
+									className={`navbar-brand ${styles['navbar-brand']}`}
 								>
 									<img src="/images/logo.png" alt="logo" style={{ width: '200px', height: '100px' }} />
 								</a>
@@ -61,9 +59,9 @@ const Navbar = ({ user }) => {
 								aria-expanded="false"
 								aria-label="Toggle navigation"
 							>
-								<span className="icon-bar top-bar"></span>
-								<span className="icon-bar middle-bar"></span>
-								<span className="icon-bar bottom-bar"></span>
+								<span className={`${styles['icon-bar']} ${styles['top-bar']}`}></span>
+								<span className={`${styles['icon-bar']} ${styles['middle-bar']}`}></span>
+								<span className={`${styles['icon-bar']} ${styles['bottom-bar']}`}></span>
 							</button>
 
 							<div
@@ -72,9 +70,9 @@ const Navbar = ({ user }) => {
 							>
 								<SearchForm />
 
-								<ul className="navbar-nav">
-									<li className="nav-item">
-										<Link href="/" activeClassName="active">
+								<ul className={`navbar-nav ${styles['navbar-nav']}`}>
+									<li className={`nav-item ${styles['nav-item']}`}>
+										<Link href="/" activeClassName={`active ${styles['active']}`}>
 											<a
 												className="nav-link"
 											>
@@ -84,7 +82,7 @@ const Navbar = ({ user }) => {
 
 									</li>
 
-									<li className="nav-item megamenu">
+									<li className={`nav-item ${styles['nav-item']} ${styles['megamenu']}`}>
 										<Link href="/courses">
 											<a
 												className="nav-link"
@@ -95,10 +93,10 @@ const Navbar = ({ user }) => {
 
 									</li>
 
-									{/* <li className="nav-item">
+									{/* <li className={`nav-item ${styles['nav-item']} ${styles['megamenu']}`}>
 										<Link
 											href="/products-list-2"
-											activeClassName="active"
+											activeClassName={`active ${styles['active']}`}
 										>
 											<a
 												onClick={toggleNavbar}
@@ -109,7 +107,7 @@ const Navbar = ({ user }) => {
 										</Link>
 									</li> */}
 
-									<li className="nav-item">
+									<li className={`nav-item ${styles['nav-item']} ${styles['megamenu']}`}>
 										<Link href="/blog">
 											<a
 												className="nav-link"
@@ -121,7 +119,7 @@ const Navbar = ({ user }) => {
 									</li>
 
 									{(user && !isTeacher && !isAdmin) && (
-										<li className="nav-item">
+										<li className={`nav-item ${styles['nav-item']} ${styles['megamenu']}`}>
 											<Link href="/become-a-teacher">
 												<a
 													className="nav-link"
@@ -134,7 +132,7 @@ const Navbar = ({ user }) => {
 
 									{((user && isTeacher) ||
 										(user && isAdmin)) && (
-											<li className="nav-item">
+											<li className={`nav-item ${styles['nav-item']} ${styles['megamenu']}`}>
 												<Link href="/teacher/dashboard">
 													<a
 														className="nav-link"
@@ -146,7 +144,7 @@ const Navbar = ({ user }) => {
 											</li>
 										)}
 									{user && isAdmin && (
-										<li className="nav-item">
+										<li className={`nav-item ${styles['nav-item']} ${styles['megamenu']}`}>
 											<Link href="/admin/pending-requests">
 												<a className="nav-link"
 													onClick={toggleNavbar}>
@@ -157,9 +155,9 @@ const Navbar = ({ user }) => {
 									)}
 								</ul>
 
-								<div className="others-option d-flex align-items-center">
-									<div className="option-item">
-										<div className="cart-btn">
+								<div className={`${styles['others-option']} d-flex align-items-center`}>
+									<div className={styles['option-item']}>
+										<div className={styles['cart-btn']}>
 											<Link href="/cart">
 												<a>
 													<i className="flaticon-shopping-cart"></i>{" "}
@@ -171,24 +169,24 @@ const Navbar = ({ user }) => {
 										</div>
 									</div>
 
-									<div className="option-item">
+									<div className={styles['option-item']}>
 										{user ? (
-											<div className="user-dropdown">
+											<div className={styles['user-dropdown']}>
 												<Link href="/">
 													<a
 														onClick={(e) => e.preventDefault()}
-														className="default-btn">
+														className={`default-btn ${styles['default-btn']}`}>
 														<i className="flaticon-user"></i>{" "}
 														{user.name}{" "}
 														<span></span>
 													</a>
 												</Link>
 
-												<ul className="dropdown-menu">
-													<li className="nav-item">
+												<ul className={`dropdown-menu ${styles['dropdown-menu']}`}>
+													<li className={`nav-item ${styles['nav-item']}`}>
 														<Link legacyBehavior
 															href="/my-courses"
-															activeClassName="active">
+															activeClassName={`active ${styles['active']}`}>
 															<a onClick={toggleNavbar}
 																className="nav-link">
 																My Courses
@@ -196,10 +194,10 @@ const Navbar = ({ user }) => {
 														</Link>
 													</li>
 
-													<li className="nav-item">
+													<li className={`nav-item ${styles['nav-item']}`}>
 														<Link
 															href="/user/my-profile"
-															activeClassName="active">
+															activeClassName={`active ${styles['active']}`}>
 															<a
 																onClick={toggleNavbar}
 																className="nav-link">
@@ -208,10 +206,10 @@ const Navbar = ({ user }) => {
 														</Link>
 													</li>
 
-													<li className="nav-item">
+													<li className={`nav-item ${styles['nav-item']}`}>
 														<Link
 															href="/user/edit-profile"
-															activeClassName="active">
+															activeClassName={`active ${styles['active']}`}>
 															<a
 																onClick={toggleNavbar}
 																className="nav-link">
@@ -220,10 +218,10 @@ const Navbar = ({ user }) => {
 														</Link>
 													</li>
 
-													<li className="nav-item">
+													<li className={`nav-item ${styles['nav-item']}`}>
 														<Link
 															href="/user/edit-password"
-															activeClassName="active">
+															activeClassName={`active ${styles['active']}`}>
 															<a
 																onClick={toggleNavbar}
 																className="nav-link">
@@ -232,7 +230,7 @@ const Navbar = ({ user }) => {
 														</Link>
 													</li>
 
-													<li className="nav-item">
+													<li className={`nav-item ${styles['nav-item']}`}>
 														<Link href="/">
 															<a
 																className="nav-link"
@@ -258,7 +256,7 @@ const Navbar = ({ user }) => {
 											</div>
 										) : (
 											<Link href="/authentication">
-												<a className="default-btn">
+												<a className={`default-btn ${styles['default-btn']}`}>
 													<i className="flaticon-user"></i>{" "}
 													Login/Register <span></span>
 												</a>
@@ -267,7 +265,7 @@ const Navbar = ({ user }) => {
 									</div>
 
 
-									{/* <div className="option-item">
+									{/* <div className={styles['option-item']}>
 										<Link href="/contact">
 											<a className="default-btn">
 												<i className="flaticon-user"></i>{" "}

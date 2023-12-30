@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
+import styles from './MainBanner.module.css';
 
 const MainBanner = () => {
 	const { t } = useTranslation("distance-learning");
@@ -9,7 +10,7 @@ const MainBanner = () => {
 			<div className="container-fluid">
 				<div className="row align-items-center">
 					<div className="col-lg-12 col-md-12">
-						<div className="main-banner-content-style-two">
+						<div className={styles['main-banner-content-style-two']}>
 							<h1 className='text-center'>{t("bannertitle")}</h1>
 							{/* <marquee direction="left" scrollmount="9" width="100%" className='text-center mr-0-auto'>{t("bannersubtitle")}</marquee> */}
 						</div>

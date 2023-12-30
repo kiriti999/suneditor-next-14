@@ -6,11 +6,12 @@ import axios from 'axios'
 import { toast } from 'react-toastify';
 import catchErrors from '@/utils/catchErrors'
 import { axiosApi } from "@/utils/baseUrl";
+import styles from './RegisterForm.module.css';
 
 const RegisterForm = ({ user }) => {
+    const { token } = parseCookies()
     console.log('teacher user ', user)
     console.log('teacher token ', token)
-    const { token } = parseCookies()
 
     const [initApply, setInitApply] = React.useState(false)
     const [loading, setLoading] = React.useState(false)
@@ -67,9 +68,9 @@ const RegisterForm = ({ user }) => {
     const isCancelled = user && user.as_teacher_apply === true && user.as_teacher_confirmed === false
 
     return (
-        <div className="teacher-register-area ptb-100">
+        <div className={`${styles['teacher-register-area']} ptb-100`}>
             <div className="container">
-                <div className="teacher-register-box">
+                <div className={styles['teacher-register-box']}>
                     <h2>Register to Become an Instructor</h2>
                     <p>Your email address will not be published. Required fields are marked *</p>
 
@@ -140,7 +141,7 @@ const RegisterForm = ({ user }) => {
                                         className="form-control"
                                         {...register('as_teacher_req_desc')}
                                     />
-                                    <div className='invalid-feedback' style={{ display: 'block' }}>
+                                    <div className={styles['invalid-feedback']} style={{ display: 'block' }}>
                                         {errors.text && 'Details is required.'}
                                     </div>
                                 </div>

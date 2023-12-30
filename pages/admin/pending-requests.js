@@ -9,6 +9,7 @@ import catchErrors from '@/utils/catchErrors'
 import PageBanner from '@/components/Common/PageBanner'
 import Link from '@/utils/ActiveLink'
 import { redirectUser } from "../../utils/auth";
+import styles from './pending-requests.module.css';
 
 const pendingRequests = ({ pendingRequests }) => {
     const router = useRouter();
@@ -52,10 +53,10 @@ const pendingRequests = ({ pendingRequests }) => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4 col-lg-4">
-                            <div className="td-sidebar">
+                            <div className={styles['td-sidebar']}>
                                 <ul>
                                     <li>
-                                        <Link href="/admin/pending-requests" activeClassName="active">
+                                        <Link href="/admin/pending-requests" activeClassName={`${styles['active']} active`}>
                                             <a>Pending Requests</a>
                                         </Link>
                                     </li>

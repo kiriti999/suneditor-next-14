@@ -8,6 +8,7 @@ import { axiosApi } from "../../utils/baseUrl";
 import { handleLogin, fetchUser } from "../../utils/auth";
 import Router from 'next/router'
 import LoadingSpinner from "@/utils/LoadingSpinner";
+import styles from './LoginForm.module.css';
 
 const INITIAL_USER = {
 	email: "",
@@ -124,7 +125,7 @@ const LoginForm = () => {
 		}
 	};
 	return (
-		<div className="login-form">
+		<div className={styles['login-form']}>
 			<h2>Login</h2>
 
 			<Alert color="danger" isOpen={error !== ''}>
@@ -166,9 +167,9 @@ const LoginForm = () => {
 						</p>
 					</div>
 
-					<div className="col-lg-6 col-md-6 col-sm-6 lost-your-password-wrap">
+					<div className={`col-lg-6 col-md-6 col-sm-6 ${styles['lost-your-password-wrap']}`}>
 						<Link href="/reset-password">
-							<a className="lost-your-password">
+							<a className={styles['lost-your-password']}>
 								Lost your password?
 							</a>
 						</Link>

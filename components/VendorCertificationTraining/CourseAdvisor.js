@@ -1,6 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper";
+import styles from '../Common/CourseAdvisor.module.css';
 
 const CourseAdvisor = () => {
 	return (
@@ -36,13 +37,13 @@ const CourseAdvisor = () => {
 						pauseOnMouseEnter: true,
 					}}
 					modules={[Pagination, Autoplay]}
-					className="advisor-slides"
+					className={styles['advisor-slides']}
 				>
 					<SwiperSlide>
-						<div className="single-advisor-box">
+						<div className={styles['single-advisor-box']}>
 							<div className="row align-items-center">
 								<div className="col-lg-4 col-md-4">
-									<div className="advisor-image">
+									<div className={styles['advisor-image']}>
 										<img
 											src="/images/advisor/advisor1.jpg"
 											alt="image"
@@ -51,13 +52,13 @@ const CourseAdvisor = () => {
 								</div>
 
 								<div className="col-lg-8 col-md-8">
-									<div className="advisor-content">
+									<div className={styles['advisor-content']}>
 										<h3>
 											<a href="profile.html">
 												William James
 											</a>
 										</h3>
-										<span className="sub-title">
+										<span className={styles['sub-title']}>
 											Project Management Expert
 										</span>
 										<p>
@@ -67,7 +68,7 @@ const CourseAdvisor = () => {
 											et dol aliqua.
 										</p>
 
-										<ul className="social-link">
+										<ul className={styles['social-link']}>
 											<li>
 												<a
 													href="#"
@@ -112,10 +113,10 @@ const CourseAdvisor = () => {
 					</SwiperSlide>
 
 					<SwiperSlide>
-						<div className="single-advisor-box">
+						<div className={styles['single-advisor-box']}>
 							<div className="row align-items-center">
 								<div className="col-lg-4 col-md-4">
-									<div className="advisor-image">
+									<div className={styles['advisor-image']}>
 										<img
 											src="/images/advisor/advisor2.jpg"
 											alt="image"
@@ -124,13 +125,13 @@ const CourseAdvisor = () => {
 								</div>
 
 								<div className="col-lg-8 col-md-8">
-									<div className="advisor-content">
+									<div className={styles['advisor-content']}>
 										<h3>
 											<a href="profile.html">
 												Sarah Taylor
 											</a>
 										</h3>
-										<span className="sub-title">
+										<span className={styles['sub-title']}>
 											Agile Project Expert
 										</span>
 										<p>
@@ -139,7 +140,7 @@ const CourseAdvisor = () => {
 											eiusmod tempor incididunt ut labore
 											et dol aliqua.
 										</p>
-										<ul className="social-link">
+										<ul className={styles['social-link']}>
 											<li>
 												<a
 													href="#"
@@ -184,10 +185,10 @@ const CourseAdvisor = () => {
 					</SwiperSlide>
 
 					<SwiperSlide>
-						<div className="single-advisor-box">
+						<div className={styles['single-advisor-box']}>
 							<div className="row align-items-center">
 								<div className="col-lg-4 col-md-4">
-									<div className="advisor-image">
+									<div className={styles['advisor-image']}>
 										<img
 											src="/images/advisor/advisor3.jpg"
 											alt="image"
@@ -196,7 +197,7 @@ const CourseAdvisor = () => {
 								</div>
 
 								<div className="col-lg-8 col-md-8">
-									<div className="advisor-content">
+									<div className={styles['advisor-content']}>
 										<h3>
 											<a href="profile.html">
 												James Andy
@@ -211,7 +212,7 @@ const CourseAdvisor = () => {
 											eiusmod tempor incididunt ut labore
 											et dol aliqua.
 										</p>
-										<ul className="social-link">
+										<ul className={styles['social-link']}>
 											<li>
 												<a
 													href="#"

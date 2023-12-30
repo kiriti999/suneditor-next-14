@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper";
+import styles from './CourseAdvisor.module.css';
 
 const CoursesAreaStyleTwo = () => {
   return (
@@ -39,14 +40,14 @@ const CoursesAreaStyleTwo = () => {
               },
             }}
             modules={[Pagination, Autoplay]}
-            className="advisor-slides-two"
+            className={`advisor-slides-two ${styles['advisor-slides-two']}`}
           >
             <SwiperSlide>
-              <div className="single-advisor-item">
-                <div className="advisor-image">
+              <div className={styles['single-advisor-item']}>
+                <div className={styles['advisor-image']}>
                   <img src="/images/advisor/advisor4.jpg" alt="image" />
 
-                  <ul className="social-link">
+                  <ul className={styles['social-link']}>
                     <li>
                       <a href="#" className="d-block" target="_blank">
                         <i className="bx bxl-facebook"></i>
@@ -70,7 +71,7 @@ const CoursesAreaStyleTwo = () => {
                   </ul>
                 </div>
 
-                <div className="advisor-content">
+                <div className={styles['advisor-content']}>
                   <h3>
                     <Link href="/profile">
                       <a>James Andy</a>
@@ -82,11 +83,11 @@ const CoursesAreaStyleTwo = () => {
             </SwiperSlide>
 
             <SwiperSlide>
-              <div className="single-advisor-item">
-                <div className="advisor-image">
+              <div className={styles['single-advisor-item']}>
+                <div className={styles['advisor-image']}>
                   <img src="/images/advisor/advisor5.jpg" alt="image" />
 
-                  <ul className="social-link">
+                  <ul className={styles['social-link']}>
                     <li>
                       <a href="#" className="d-block" target="_blank">
                         <i className="bx bxl-facebook"></i>
@@ -110,7 +111,7 @@ const CoursesAreaStyleTwo = () => {
                   </ul>
                 </div>
 
-                <div className="advisor-content">
+                <div className={styles['advisor-content']}>
                   <h3>
                     <Link href="/profile">
                       <a>Jassica Hische</a>
@@ -122,11 +123,11 @@ const CoursesAreaStyleTwo = () => {
             </SwiperSlide>
 
             <SwiperSlide>
-              <div className="single-advisor-item">
-                <div className="advisor-image">
+              <div className={styles['single-advisor-item']}>
+                <div className={styles['advisor-image']}>
                   <img src="/images/advisor/advisor6.jpg" alt="image" />
 
-                  <ul className="social-link">
+                  <ul className={styles['social-link']}>
                     <li>
                       <a href="#" className="d-block" target="_blank">
                         <i className="bx bxl-facebook"></i>
@@ -150,7 +151,7 @@ const CoursesAreaStyleTwo = () => {
                   </ul>
                 </div>
 
-                <div className="advisor-content">
+                <div className={styles['advisor-content']}>
                   <h3>
                     <Link href="/profile">
                       <a>Alister Cock</a>
@@ -162,11 +163,11 @@ const CoursesAreaStyleTwo = () => {
             </SwiperSlide>
 
             <SwiperSlide>
-              <div className="single-advisor-item">
-                <div className="advisor-image">
+              <div className={styles['single-advisor-item']}>
+                <div className={styles['advisor-image']}>
                   <img src="/images/advisor/advisor7.jpg" alt="image" />
 
-                  <ul className="social-link">
+                  <ul className={styles['social-link']}>
                     <li>
                       <a href="#" className="d-block" target="_blank">
                         <i className="bx bxl-facebook"></i>
@@ -190,7 +191,7 @@ const CoursesAreaStyleTwo = () => {
                   </ul>
                 </div>
 
-                <div className="advisor-content">
+                <div className={styles['advisor-content']}>
                   <h3>
                     <Link href="/profile">
                       <a>Lina Ninja</a>

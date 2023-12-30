@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from '../pages/sidebar/sidebar';
 import BlogClient from '../components/Blog/blog-client';
 import PageBanner from '../components/Common/PageBanner';
+import styles from '../components/About/Blog.module.css';
 
 export function Blog(props) {
 
@@ -13,7 +14,7 @@ export function Blog(props) {
                 homePageText="Home"
                 activePageText="Blog Page"
             />
-            <div className="blog-area pt-25 pb-100">
+            <div className={`${styles['blog-area']} pt-25 pb-100`}>
                 <div className="container">
                     <div className="row">
 

@@ -1,9 +1,10 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import styles from './Partner.module.css';
 
 const PartnerStyleTwo = () => {
 	return (
-		<div className="partner-area bg-f0f2f5 ptb-70">
+		<div className={`${styles['partner-area']} bg-f0f2f5 ptb-70`}>
 			<div className="container">
 				<Swiper
 					slidesPerView={1}
@@ -25,7 +26,7 @@ const PartnerStyleTwo = () => {
 					className="partner-slides"
 				>
 					<SwiperSlide>
-						<div className="single-partner-item">
+						<div className={styles['single-partner-item']}>
 							<img
 								src="/images/partner/partner1.png"
 								alt="image"
@@ -33,7 +34,7 @@ const PartnerStyleTwo = () => {
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="single-partner-item">
+						<div className={styles['single-partner-item']}>
 							<img
 								src="/images/partner/partner2.png"
 								alt="image"
@@ -41,7 +42,7 @@ const PartnerStyleTwo = () => {
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="single-partner-item">
+						<div className={styles['single-partner-item']}>
 							<img
 								src="/images/partner/partner3.png"
 								alt="image"
@@ -49,7 +50,7 @@ const PartnerStyleTwo = () => {
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="single-partner-item">
+						<div className={styles['single-partner-item']}>
 							<img
 								src="/images/partner/partner4.png"
 								alt="image"
@@ -57,7 +58,7 @@ const PartnerStyleTwo = () => {
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="single-partner-item">
+						<div className={styles['single-partner-item']}>
 							<img
 								src="/images/partner/partner5.png"
 								alt="image"
@@ -65,7 +66,7 @@ const PartnerStyleTwo = () => {
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="single-partner-item">
+						<div className={styles['single-partner-item']}>
 							<img
 								src="/images/partner/partner6.png"
 								alt="image"
@@ -73,7 +74,7 @@ const PartnerStyleTwo = () => {
 						</div>
 					</SwiperSlide>
 					<SwiperSlide>
-						<div className="single-partner-item">
+						<div className={styles['single-partner-item']}>
 							<img
 								src="/images/partner/partner4.png"
 								alt="image"

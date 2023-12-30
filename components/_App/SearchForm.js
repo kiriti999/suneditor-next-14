@@ -2,6 +2,7 @@ import React, { startTransition, useContext, useState } from 'react'
 import { Context } from 'context/filterStore'
 import { useRouter } from 'next/router';
 import search from 'pages/api/v1/courses/search';
+import styles from './Navbar.module.css';
 
 const SearchForm = ({ }) => {
     const [state, setState] = useContext(Context);
@@ -24,10 +25,10 @@ const SearchForm = ({ }) => {
 
 
     return (
-        <form className="search-box" onSubmit={(e) => e.preventDefault()}>
+        <form className={`search-box ${styles['search-box']}`} onSubmit={(e) => e.preventDefault()}>
             <input
                 type="text"
-                className="input-search"
+                className={styles['input-search']}
                 placeholder="Search for anything"
                 name='search'
                 value={state.searchParam}

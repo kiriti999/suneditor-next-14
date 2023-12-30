@@ -1,0 +1,147 @@
+
+.get-instant-courses-area-two {
+  position: relative;
+  z-index: 1;
+}
+
+.get-instant-courses-area-two::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 25px;
+  z-index: -1;
+  background-color: #ffffff;
+}
+
+.get-instant-courses-area-two::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 21px;
+  z-index: -1;
+  background-color: #ffffff;
+}
+
+.get-instant-courses-area-two .bulb {
+  left: 20px;
+  width: 180px;
+  bottom: 21px;
+}
+
+.get-instant-courses-content-style-two .sub-title {
+  display: block;
+  color: #fe4a55;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.get-instant-courses-content-style-two h2 {
+  margin-bottom: 15px;
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.get-instant-courses-content-style-two p {
+  max-width: 620px;
+  line-height: 1.8;
+}
+
+.get-instant-courses-content-style-two .default-btn {
+  margin-top: 5px;
+}
+
+.get-instant-courses-image-style-two {
+  text-align: right;
+}
+
+@media only screen and (max-width: 767px) {
+  .get-instant-courses-content {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .get-instant-courses-content .sub-title {
+    font-size: 13px;
+  }
+  .get-instant-courses-content h2 {
+    font-size: 25px;
+  }
+  .get-instant-courses-area-two {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .get-instant-courses-area-two::before, .get-instant-courses-area-two::after {
+    display: none;
+  }
+  .get-instant-courses-content-style-two {
+    text-align: center;
+  }
+  .get-instant-courses-content-style-two .sub-title {
+    font-size: 13px;
+  }
+  .get-instant-courses-content-style-two h2 {
+    font-size: 25px;
+  }
+  .get-instant-courses-image-style-two {
+    margin-top: 30px;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .get-instant-courses-content {
+    text-align: center;
+    padding: 40px;
+  }
+  .get-instant-courses-content .sub-title {
+    font-size: 13.5px;
+  }
+  .get-instant-courses-content h2 {
+    font-size: 30px;
+  }
+  .get-instant-courses-area-two {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .get-instant-courses-area-two::before, .get-instant-courses-area-two::after {
+    display: none;
+  }
+  .get-instant-courses-content-style-two {
+    text-align: center;
+  }
+  .get-instant-courses-content-style-two .sub-title {
+    font-size: 13.5px;
+  }
+  .get-instant-courses-content-style-two h2 {
+    font-size: 30px;
+  }
+  .get-instant-courses-image-style-two {
+    margin-top: 30px;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .get-instant-courses-content {
+    padding: 30px;
+  }
+  .get-instant-courses-content h2 {
+    font-size: 30px;
+  }
+  .get-instant-courses-content-style-two h2 {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (min-width: 1550px) {
+  .get-instant-courses-area-two .bulb {
+    width: auto;
+  }
+}

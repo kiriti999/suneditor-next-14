@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts } from '../../store/slices/blogSlice';
 import Pagination from '../../components/pagination/pagination';
+import styles from './blog-client.module.css';
 
 const Blog = () => {
     const blog = useSelector((store) => store.blog);
@@ -29,27 +30,27 @@ const Blog = () => {
                 {!blog.loading && blog.error ? <div>Error: {blog.error}</div> : null}
                 {!blog.loading && blog.error === '' && blog.articles.length > 0 ? (
                     <>
-                        {currentRecords.map((item) => {
+                        {currentRecords.length && currentRecords.map((item) => {
                             return (
                                 <div className="col-lg-4 col-md-6" key={item._id}>
-                                    <div className="single-blog-post-box">
-                                        <div className="post-image">
+                                    <div className={styles['single-blog-post-box']}>
+                                        <div className={styles['post-image']}>
                                             <Link legacyBehavior href={`/blog/${item._id}`}>
                                                 <a className="d-block">
                                                     <img src={item.categoryImage} alt="image" />
                                                 </a>
                                             </Link>
                                         </div>
-                                        <div className="post-content">
+                                        <div className={styles['post-content']}>
                                             <Link legacyBehavior href="#">
-                                                <a className="category">{item.categoryName}</a>
+                                                <a className={styles['category']}>{item.categoryName}</a>
                                             </Link>
                                             <h3>
                                                 <Link legacyBehavior href={`/blog/${item._id}`}>
                                                     <a>{item.title}</a>
                                                 </Link>
                                             </h3>
-                                            <ul className="post-content-footer d-flex justify-content-between align-items-center">
+                                            <ul className={`${styles['post-content-footer']} d-flex justify-content-between align-items-center`}>
                                                 {item.updatedAt && <li>
                                                     <i className='bx bx-calendar'></i> {item.updatedAt}
                                                 </li>}

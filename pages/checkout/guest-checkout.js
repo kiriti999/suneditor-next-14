@@ -14,6 +14,9 @@ import { Alert } from 'reactstrap'
 import { fetchUser, setLoginCookie } from '../../utils/auth';
 import { parseCookies } from 'nookies'
 
+import styles from './guest-checkout.module.css';
+import chkStyles from '../../components/CheckoutButton/CheckoutBtn.module.css';
+
 export const GuestCheckout = () => {
     const { token } = parseCookies()
 
@@ -137,7 +140,7 @@ export const GuestCheckout = () => {
 
             <div className="checkout-area ptb-65">
                 <div className="container">
-                    <div className="user-actions">
+                    <div className={styles['user-actions']}>
                         <i className='bx bx-log-in'></i>
                         <span>Returning customer? <Link href="/authentication"><a>Click here to login</a></Link></span>
                     </div>
@@ -148,37 +151,37 @@ export const GuestCheckout = () => {
                         </Alert>}
                         <div className="row mtb-20" style={{ marginBottom: '20px' }}>
                             <div className={toRegister ? 'cart-highlight-border col-lg-6 col-md-12' : 'col-lg-6 col-md-12'} style={{ padding: '20px 10px 0px 10px' }}>
-                                <div className="billing-details">
-                                    <h3 className="title">Registration</h3>
+                                <div className={styles['billing-details']}>
+                                    <h3 className={`${styles['title']} title`}>Registration</h3>
 
                                     <div className="row">
 
-                                        <div className="col-lg-12 col-md-6">
-                                            <div className="form-group">
-                                                <label>Full Name <span className="required">*</span></label>
+                                        <div className={`${styles['col-lg-12']} col-lg-12 col-md-6`}>
+                                            <div className={`${styles['form-group']} form-group`}>
+                                                <label>Full Name <span className={styles['required']}>*</span></label>
                                                 <input type="text"{...register('name', validationOptions.name)} readOnly={token} className="form-control" />
                                                 {errors.name && <p>{errors.name.message}</p>}
                                             </div>
                                         </div>
 
-                                        <div className="col-lg-12 col-md-6">
-                                            <div className="form-group">
-                                                <label>Email Address <span className="required">*</span></label>
+                                        <div className={`${styles['col-lg-12']} col-lg-12 col-md-6`}>
+                                            <div className={`${styles['form-group']} form-group`}>
+                                                <label>Email Address <span className={styles['required']}>*</span></label>
                                                 <input type="email" {...register('email', validationOptions.email)} readOnly={token} className="form-control" />
                                                 {errors.email && <p>{errors.email.message}</p>}
                                             </div>
                                         </div>
 
-                                        <div className="col-lg-12 col-md-6">
-                                            <div className="form-group">
-                                                <label>Password <span className="required">*</span></label>
+                                        <div className={`${styles['col-lg-12']} col-lg-12 col-md-6`}>
+                                            <div className={`${styles['form-group']} form-group`}>
+                                                <label>Password <span className={styles['required']}>*</span></label>
                                                 <input type="password" {...register('password', validationOptions.password)} readOnly={token} className="form-control" />
                                                 {errors.password && <p>{errors.password.message}</p>}
                                             </div>
                                         </div>
 
-                                        <div className="col-lg-12 col-md-12">
-                                            <div className="form-group">
+                                        <div className={`${styles['col-lg-12']} col-lg-12 col-md-6`}>
+                                            <div className={`${styles['form-group']} form-group`}>
                                                 <button type="submit" disabled={token} style={{
                                                     marginTop: '22px',
                                                     border: 'none',
@@ -194,8 +197,8 @@ export const GuestCheckout = () => {
                                             </div>
                                         </div>
 
-                                        <div className="col-lg-12 col-md-12">
-                                            <div className="form-group">
+                                        <div className={`${styles['col-lg-12']} col-lg-12 col-md-6`}>
+                                            <div className={`${styles['form-group']} form-group`}>
                                             </div>
                                         </div>
 
@@ -205,10 +208,10 @@ export const GuestCheckout = () => {
                             </div>
 
                             <div className="col-lg-6 col-md-12">
-                                <div className="order-details">
-                                    <h3 className="title">Your Order</h3>
+                                <div className={chkStyles['order-details']}>
+                                    <h3 className={`${chkStyles['title']} title`}>Your Order</h3>
 
-                                    <div className="order-table table-responsive">
+                                    <div className={`${chkStyles['order-table']} table-responsive`}>
                                         <table className="table table-bordered">
                                             <thead>
                                                 <tr>
@@ -218,16 +221,16 @@ export const GuestCheckout = () => {
                                             </thead>
 
                                             <tbody>
-                                                {cartItems.map((cart) => (
+                                                {cartItems.length && cartItems.map((cart) => (
                                                     <tr key={cart.id}>
-                                                        <td className="product-name">
+                                                        <td className={chkStyles['product-name']}>
                                                             <a href="#">
                                                                 {cart.title}
                                                             </a>
                                                         </td>
 
-                                                        <td className="product-total">
-                                                            <span className="subtotal-amount">
+                                                        <td className={chkStyles['product-total']}>
+                                                            <span className={chkStyles['subtotal-amount']}>
                                                                 &#8377;{cart.total_cost}
                                                             </span>
                                                         </td>
@@ -235,12 +238,12 @@ export const GuestCheckout = () => {
                                                 ))}
 
                                                 <tr>
-                                                    <td className="total-price">
+                                                    <td className={chkStyles['total-price']}>
                                                         <span>Order Total</span>
                                                     </td>
 
-                                                    <td className="product-subtotal">
-                                                        <span className="subtotal-amount">
+                                                    <td className={chkStyles['product-subtotal']}>
+                                                        <span className={chkStyles['subtotal-amount']}>
                                                             &#8377;{cartAmount}
                                                         </span>
                                                     </td>
@@ -249,7 +252,7 @@ export const GuestCheckout = () => {
                                         </table>
                                     </div>
 
-                                    <div className="payment-box">
+                                    <div className={chkStyles['payment-box']}>
                                         <CheckoutBtn
                                             user={user}
                                             cartItems={cartItems}

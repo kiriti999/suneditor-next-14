@@ -1,0 +1,148 @@
+
+.faq-accordion-tab .react-tabs__tab-list {
+  padding-left: 0;
+  list-style-type: none;
+  margin-bottom: 60px;
+  text-align: center;
+  border: none;
+}
+
+.faq-accordion-tab .react-tabs__tab-list .react-tabs__tab {
+  margin-left: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  color: #221638;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 2px 8px 20px 0 rgba(25, 42, 70, 0.13) !important;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.faq-accordion-tab .react-tabs__tab-list .react-tabs__tab i {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.faq-accordion-tab .react-tabs__tab-list .react-tabs__tab span {
+  display: block;
+  margin-top: 8px;
+}
+
+.faq-accordion-tab .react-tabs__tab-list .react-tabs__tab:hover {
+  background-color: #fe4a55;
+  color: #ffffff;
+}
+
+.faq-accordion-tab .react-tabs__tab-list .react-tabs__tab.react-tabs__tab--selected {
+  background-color: #fe4a55;
+  color: #ffffff;
+}
+
+.faq-accordion .accordion {
+  list-style-type: none;
+  padding-left: 0;
+  border: none;
+  margin-bottom: 0;
+}
+
+.faq-accordion .accordion .accordion__item {
+  border-radius: 5px;
+  display: block;
+  box-shadow: 2px 8px 20px 0 rgba(25, 42, 70, 0.13) !important;
+  background: #ffffff;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+.faq-accordion .accordion .accordion__item:last-child {
+  margin-bottom: 0;
+}
+
+.faq-accordion .accordion .accordion__button {
+  padding: 20px 25px;
+  background-color: #fff;
+  color: #221638;
+  text-decoration: none;
+  position: relative;
+  display: block;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.faq-accordion .accordion .accordion__button i {
+  position: absolute;
+  left: 25px;
+  top: 18px;
+  font-size: 25px;
+  transition: 0.5s;
+}
+
+.faq-accordion .accordion .accordion__button.active i {
+  transform: rotate(180deg);
+}
+
+.faq-accordion .accordion .accordion__panel {
+  position: relative;
+  margin-top: -5px;
+  padding-bottom: 20px;
+  padding-right: 30px;
+  padding-left: 48px;
+  padding-top: 0;
+}
+
+.faq-accordion .accordion .accordion__panel p {
+  line-height: 1.8;
+}
+
+.tab .tabs-item {
+  display: none;
+}
+
+.tab .tabs-item:first-child {
+  display: block;
+}
+
+@media only screen and (max-width: 767px) {
+  .faq-accordion-tab .react-tabs__tab-list {
+    margin-bottom: 20px;
+  }
+  .faq-accordion-tab .react-tabs__tab-list .react-tabs__tab {
+    margin-bottom: 20px;
+    padding: 15px;
+    font-size: 14px;
+  }
+  .faq-accordion-tab .react-tabs__tab-list .react-tabs__tab i {
+    font-size: 25px;
+  }
+  .faq-accordion .accordion .accordion-title {
+    padding: 15px 15px 15px 43px;
+    font-size: 14px;
+  }
+  .faq-accordion .accordion .accordion-title i {
+    left: 15px;
+    top: 50%;
+    font-size: 20px;
+    transform: translateY(-50%);
+  }
+  .faq-accordion .accordion .accordion-content {
+    padding-bottom: 15px;
+    padding-right: 15px;
+    padding-left: 42px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .faq-accordion-tab .react-tabs__tab-list {
+    margin-bottom: 30px;
+  }
+  .faq-accordion-tab .react-tabs__tab-list li {
+    margin-bottom: 20px;
+  }
+  .faq-accordion .accordion .accordion-title {
+    font-size: 16px;
+  }
+}

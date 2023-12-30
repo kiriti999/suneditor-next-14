@@ -8,6 +8,8 @@ import { useMemo } from 'react'
 import Fuse from 'fuse.js'
 import { useRouter } from 'next/router';
 import { getAlgoliaIndex } from '../../pages/api/v1/courses/search/getAlgoliaIndex';
+import styles from '../../components/Courses/Course.module.css';
+import sortStyles from '../algolia-search/index.module.css';
 const index = getAlgoliaIndex();
 
 export const checkString = (keyword, course) => {
@@ -54,14 +56,14 @@ const Index = ({ data, q, filteredCourses }) => {
                 activePageText="Search"
             />
 
-            <div className="courses-area courses-section pt-50 pb-70">
+            <div className={`${styles['courses-area']} courses-section pt-50 pb-70`}>
                 <div className="container">
-                    <div className="whatsnxt-grid-sorting row align-items-center">
-                        <div className="col-lg-8 col-md-6 result-count">
-                            <p>We found <span className="count">12</span> courses available for you</p>
+                    <div className={`${sortStyles['whatsnxt-grid-sorting']} row align-items-center`}>
+                        <div className={`col-lg-8 col-md-6 ${sortStyles['result-count']}`}>
+                            <p>We found <span className={sortStyles['count']}>12</span> courses available for you</p>
                         </div>
 
-                        <div className="col-lg-4 col-md-6 ordering">
+                        <div className={`col-lg-4 col-md-6 ${sortStyles['ordering']}`}>
                             <div className="select-box">
                                 <select className="form-control" onChange={(e) => setparam({ q: q, sort: e.target.value })}>
                                     <option>Sort By</option>

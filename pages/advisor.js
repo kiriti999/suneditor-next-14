@@ -2,6 +2,7 @@ import React from 'react';
 import PageBanner from '../components/Common/PageBanner';
 import PremiumAccessTwo from '../components/Common/PremiumAccessTwo';
 import Link from 'next/link';
+import styles from '../components/Common/CourseAdvisor.module.css';
 
 const Advisor = () => {
     return (
@@ -17,11 +18,11 @@ const Advisor = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-4 col-sm-6 col-md-6">
-                            <div className="single-advisor-item">
-                                <div className="advisor-image">
+                            <div className={styles['single-advisor-item']}>
+                                <div className={styles['advisor-image']}>
                                     <img src="/images/advisor/advisor4.jpg" alt="image" />
 
-                                    <ul className="social-link">
+                                    <ul className={styles['social-link']}>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-facebook'></i></a></li>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-twitter'></i></a></li>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-instagram'></i></a></li>
@@ -29,7 +30,7 @@ const Advisor = () => {
                                     </ul>
                                 </div>
 
-                                <div className="advisor-content">
+                                <div className={styles['advisor-content']}>
                                     <h3>
                                         <Link href="#">
                                             <a>James Andy</a>
@@ -41,11 +42,11 @@ const Advisor = () => {
                         </div>
 
                         <div className="col-lg-4 col-sm-6 col-md-6">
-                            <div className="single-advisor-item">
-                                <div className="advisor-image">
+                            <div className={styles['single-advisor-item']}>
+                                <div className={styles['advisor-image']}>
                                     <img src="/images/advisor/advisor5.jpg" alt="image" />
 
-                                    <ul className="social-link">
+                                    <ul className={styles['social-link']}>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-facebook'></i></a></li>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-twitter'></i></a></li>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-instagram'></i></a></li>
@@ -53,7 +54,7 @@ const Advisor = () => {
                                     </ul>
                                 </div>
 
-                                <div className="advisor-content">
+                                <div className={styles['advisor-content']}>
                                     <h3>
                                         <Link href="#">
                                             <a>Jassica Hische</a>
@@ -65,11 +66,11 @@ const Advisor = () => {
                         </div>
 
                         <div className="col-lg-4 col-sm-6 col-md-6">
-                            <div className="single-advisor-item">
-                                <div className="advisor-image">
+                            <div className={styles['single-advisor-item']}>
+                                <div className={styles['advisor-image']}>
                                     <img src="/images/advisor/advisor6.jpg" alt="image" />
 
-                                    <ul className="social-link">
+                                    <ul className={styles['social-link']}>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-facebook'></i></a></li>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-twitter'></i></a></li>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-instagram'></i></a></li>
@@ -77,7 +78,7 @@ const Advisor = () => {
                                     </ul>
                                 </div>
 
-                                <div className="advisor-content">
+                                <div className={styles['advisor-content']}>
                                     <h3>
                                         <Link href="#">
                                             <a>Alister Cock</a>
@@ -89,11 +90,11 @@ const Advisor = () => {
                         </div>
 
                         <div className="col-lg-4 col-sm-6 col-md-6">
-                            <div className="single-advisor-item">
-                                <div className="advisor-image">
+                            <div className={styles['single-advisor-item']}>
+                                <div className={styles['advisor-image']}>
                                     <img src="/images/advisor/advisor7.jpg" alt="image" />
 
-                                    <ul className="social-link">
+                                    <ul className={styles['social-link']}>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-facebook'></i></a></li>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-twitter'></i></a></li>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-instagram'></i></a></li>
@@ -101,7 +102,7 @@ const Advisor = () => {
                                     </ul>
                                 </div>
 
-                                <div className="advisor-content">
+                                <div className={styles['advisor-content']}>
                                     <h3>
                                         <Link href="#">
                                             <a>Lina Ninja</a>
@@ -113,11 +114,11 @@ const Advisor = () => {
                         </div>
 
                         <div className="col-lg-4 col-sm-6 col-md-6">
-                            <div className="single-advisor-item">
-                                <div className="advisor-image">
+                            <div className={styles['single-advisor-item']}>
+                                <div className={styles['advisor-image']}>
                                     <img src="/images/advisor/advisor8.jpg" alt="image" />
 
-                                    <ul className="social-link">
+                                    <ul className={styles['social-link']}>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-facebook'></i></a></li>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-twitter'></i></a></li>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-instagram'></i></a></li>
@@ -125,7 +126,7 @@ const Advisor = () => {
                                     </ul>
                                 </div>
 
-                                <div className="advisor-content">
+                                <div className={styles['advisor-content']}>
                                     <h3>
                                         <Link href="#">
                                             <a>Chris Evans</a>
@@ -137,11 +138,11 @@ const Advisor = () => {
                         </div>
 
                         <div className="col-lg-4 col-sm-6 col-md-6">
-                            <div className="single-advisor-item">
-                                <div className="advisor-image">
+                            <div className={styles['single-advisor-item']}>
+                                <div className={styles['advisor-image']}>
                                     <img src="/images/advisor/advisor9.jpg" alt="image" />
 
-                                    <ul className="social-link">
+                                    <ul className={styles['social-link']}>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-facebook'></i></a></li>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-twitter'></i></a></li>
                                         <li><a href="#" className="d-block" target="_blank"><i className='bx bxl-instagram'></i></a></li>
@@ -149,7 +150,7 @@ const Advisor = () => {
                                     </ul>
                                 </div>
 
-                                <div className="advisor-content">
+                                <div className={styles['advisor-content']}>
                                     <h3>
                                         <Link href="#">
                                             <a>Scarlett Johansson</a>
