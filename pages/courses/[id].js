@@ -218,10 +218,10 @@ const Details = () => {
 									</TabPanel>
 
 									<TabPanel className={`react-tabs__tab-panel ${styles['react-tabs__tab-panel']}`}>
-										<div className={`${styles['courses-instructor']} ${advStyles['courses-instructor']}`}>
+										<div className={styles['courses-instructor']}>
 											<div className={`${styles['single-advisor-box']} ${advStyles['single-advisor-box']}`}>
-												<div className="row align-items-center">
-													<div className="col-lg-4 col-md-4">
+												<div className={`${styles['row']} ${advStyles['row']} row align-items-center`}>
+													<div className={`${styles['col-lg-4']} ${advStyles['col-lg-4']} col-lg-4 col-md-4`}>
 														<div className={`${styles['advisor-image']} ${advStyles['advisor-image']}`}>
 															<img
 																src={`${course?.userId?.profilePhoto ?
@@ -231,11 +231,11 @@ const Details = () => {
 														</div>
 													</div>
 
-													<div className="col-lg-8 col-md-8">
+													<div className={`${styles['col-lg-8']} col-lg-8 col-md-8`}>
 														<div className={`${styles['advisor-content']} ${advStyles['advisor-content']}`}>
 															{/*<h3> {course?.userId?.name} </h3>*/}
 															<h3> Arjun </h3>
-															<span className="sub-title">
+															<span className={styles['sub-title']}>
 																{course?.userId?.designation || "Technical Lead and Certified AWS Architect"}
 															</span>
 															<p>

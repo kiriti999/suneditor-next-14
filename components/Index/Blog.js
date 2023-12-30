@@ -9,7 +9,7 @@ const Blog = () => {
 		<div className={`${styles['blog-area']} ptb-100`}>
 			<div className="container">
 				<div className="section-title">
-					<span className="sub-title">{t("news-and-blog")}</span>
+					<span className={styles['sub-title']}>{t("news-and-blog")}</span>
 					<h2>{t("latest-blog")}</h2>
 					<p>{t("latest-blog-desc")}</p>
 				</div>

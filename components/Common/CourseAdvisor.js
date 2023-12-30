@@ -9,7 +9,7 @@ const CourseAdvisor = () => {
 			<div className="advisor-area bg-f9f9f9 ptb-100">
 				<div className="container">
 					<div className="section-title">
-						<span className="sub-title">Instructor</span>
+						<span className={styles['sub-title']}>Instructor</span>
 						<h2>Course Advisor</h2>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -58,7 +58,7 @@ const CourseAdvisor = () => {
 													William James
 												</a>
 											</h3>
-											<span className="sub-title">
+											<span className={styles['sub-title']}>
 												Project Management Expert
 											</span>
 											<p>
@@ -131,7 +131,7 @@ const CourseAdvisor = () => {
 													Sarah Taylor
 												</a>
 											</h3>
-											<span className="sub-title">
+											<span className={styles['sub-title']}>
 												Agile Project Expert
 											</span>
 											<p>
@@ -203,7 +203,7 @@ const CourseAdvisor = () => {
 													James Andy
 												</a>
 											</h3>
-											<span className="sub-title">
+											<span className={styles['sub-title']}>
 												QA Project Expert
 											</span>
 											<p>

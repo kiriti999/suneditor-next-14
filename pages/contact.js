@@ -10,7 +10,7 @@ const Contact = () => {
                     <div className="row align-items-center">
                         <div className="col-lg-6 col-md-12">
                             <div className={styles['contact-info']}>
-                                <span className={`${styles['sub-title']} sub-title`}>Contact Details</span>
+                                <span className={styles['sub-title']}>Contact Details</span>
                                 <h2>Get in Touch</h2>
 
                                 <ul>

@@ -7,7 +7,7 @@ const LatestNewsTwo = () => {
         <div className={`${styles['blog-area']} ptb-100`}>
             <div className="container">
                 <div className="section-title">
-                    <span className="sub-title">News</span>
+                    <span className={styles['sub-title']}>News</span>
                     <h2>Check Out Our Latest Blog</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>

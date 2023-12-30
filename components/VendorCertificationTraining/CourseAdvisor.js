@@ -9,7 +9,7 @@ const CourseAdvisor = () => {
 		<div className="advisor-area bg-f9f9f9 pt-100">
 			<div className="container">
 				<div className="section-title">
-					<span className="sub-title">Instructor</span>
+					<span className={styles['sub-title']}>Instructor</span>
 					<h2>Course Advisor</h2>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -41,8 +41,8 @@ const CourseAdvisor = () => {
 				>
 					<SwiperSlide>
 						<div className={styles['single-advisor-box']}>
-							<div className="row align-items-center">
-								<div className="col-lg-4 col-md-4">
+							<div className={`${styles['row']} row align-items-center`}>
+								<div className={`${styles['col-lg-4']} col-lg-4 col-md-4`}>
 									<div className={styles['advisor-image']}>
 										<img
 											src="/images/advisor/advisor1.jpg"
@@ -51,7 +51,7 @@ const CourseAdvisor = () => {
 									</div>
 								</div>
 
-								<div className="col-lg-8 col-md-8">
+								<div className={`${styles['col-lg-8']} col-lg-8 col-md-8`}>
 									<div className={styles['advisor-content']}>
 										<h3>
 											<a href="profile.html">
@@ -114,8 +114,8 @@ const CourseAdvisor = () => {
 
 					<SwiperSlide>
 						<div className={styles['single-advisor-box']}>
-							<div className="row align-items-center">
-								<div className="col-lg-4 col-md-4">
+							<div className={`${styles['row']} row align-items-center`}>
+								<div className={`${styles['col-lg-4']} col-lg-4 col-md-4`}>
 									<div className={styles['advisor-image']}>
 										<img
 											src="/images/advisor/advisor2.jpg"
@@ -124,7 +124,7 @@ const CourseAdvisor = () => {
 									</div>
 								</div>
 
-								<div className="col-lg-8 col-md-8">
+								<div className={`${styles['col-lg-8']} col-lg-8 col-md-8`}>
 									<div className={styles['advisor-content']}>
 										<h3>
 											<a href="profile.html">
@@ -186,8 +186,8 @@ const CourseAdvisor = () => {
 
 					<SwiperSlide>
 						<div className={styles['single-advisor-box']}>
-							<div className="row align-items-center">
-								<div className="col-lg-4 col-md-4">
+							<div className={`${styles['row']} row align-items-center`}>
+								<div className={`${styles['col-lg-4']} col-lg-4 col-md-4`}>
 									<div className={styles['advisor-image']}>
 										<img
 											src="/images/advisor/advisor3.jpg"
@@ -196,14 +196,14 @@ const CourseAdvisor = () => {
 									</div>
 								</div>
 
-								<div className="col-lg-8 col-md-8">
+								<div className={`${styles['col-lg-8']} col-lg-8 col-md-8`}>
 									<div className={styles['advisor-content']}>
 										<h3>
 											<a href="profile.html">
 												James Andy
 											</a>
 										</h3>
-										<span className="sub-title">
+										<span className={styles['sub-title']}>
 											QA Project Expert
 										</span>
 										<p>

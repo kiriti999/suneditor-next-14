@@ -52,7 +52,7 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 		<div className={`${styles['courses-area']} pt-50 pb-100`}>
 			<div className="container">
 				<div className="section-title">
-					<span className="sub-title">{t("course-top-text")}</span>
+					<span className={styles['sub-title']}>{t("course-top-text")}</span>
 					<h2>{t("course-heading")}</h2>
 					<p>{t("course-description")}</p>
 				</div>

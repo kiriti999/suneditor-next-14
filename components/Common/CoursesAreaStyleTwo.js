@@ -10,7 +10,7 @@ const CoursesAreaStyleTwo = () => {
       <div className="advisor-area bg-f9f9f9 ptb-100">
         <div className="container">
           <div className="section-title">
-            <span className="sub-title">Course Advisor</span>
+            <span className={styles['sub-title']}>Course Advisor</span>
             <h2>Meet Our World-class Instructors</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

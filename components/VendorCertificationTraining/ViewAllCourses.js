@@ -9,7 +9,7 @@ const ViewAllCourses = () => {
                 <div className="row align-items-center">
                     <div className="col-lg-6 col-md-12">
                         <div className={styles['view-all-courses-content']}>
-                            <span className="sub-title">Distance learning</span>
+                            <span className={styles['sub-title']}>Distance learning</span>
                             <h2>Get ahead with Learning Paths. Stay Sharp.</h2>
                             <p>With The Open University you can study whenever and wherever you choose. We have students in over 128 countries, and a global reputation as a pioneer in the field of flexible learning. Our flexible teaching also means, if you travel often or need to relocate, you can continue to study wherever you go.</p>
 

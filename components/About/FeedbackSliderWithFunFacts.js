@@ -15,7 +15,7 @@ const FeedbackSliderWithFunFacts = () => {
 					<div className="row align-items-center">
 						<div className="col-lg-6 col-md-12">
 							<div className={fbStyles['feedback-content']}>
-								<span className="sub-title">Distance learning</span>
+								<span className={styles['sub-title']}>Distance learning</span>
 								<h2>
 									Flexible Study at Your Own Pace, According to
 									Your Own Needs

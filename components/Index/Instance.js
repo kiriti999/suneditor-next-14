@@ -11,7 +11,7 @@ const Instance = () => {
 				<div className="row align-items-center">
 					<div className="col-lg-7 col-md-12">
 						<div className={styles['get-instant-courses-content-style-two']}>
-							<span className="sub-title">
+							<span className={styles['sub-title']}>
 								{t("instant-access")}
 							</span>
 							<h2>{t("self-development-course")}</h2>

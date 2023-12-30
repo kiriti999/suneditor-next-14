@@ -7,7 +7,7 @@ const SuccessfulStudents = () => {
         <div className={`${styles['start-with-success-area']} pt-100 bg-f8f9f8 pb-70`}>
             <div className="container">
                 <div className="section-title">
-                    <span className="sub-title">Education For Everyone</span>
+                    <span className={styles['sub-title']}>Education For Everyone</span>
                     <h2>Start writing your own success story with a good beginning from whatsnxt help</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>

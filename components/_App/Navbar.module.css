@@ -28,7 +28,6 @@
 }
 
 .whatsnxt-nav .navbar .search-box {
-  margin-left: 50px;
   position: relative;
   width: 215px;
   border-radius: 5px;
@@ -543,17 +542,17 @@
 }
 
 /* Navbar toggler */
-.navbar-toggler {
+button.navbar-toggler {
   border: none;
   border-radius: 0;
   padding: 0;
 }
 
-.navbar-toggler:focus {
+button.navbar-toggler:focus {
   box-shadow: none;
 }
 
-.navbar-toggler .icon-bar {
+button.navbar-toggler .icon-bar {
   width: 35px;
   transition: all 0.3s;
   background: #221638;
@@ -794,7 +793,7 @@
     padding-right: 120px;
   }
   .whatsnxt-nav .navbar .search-box {
-    margin-left: 90px;
+    /*margin-left: 90px;*/
   }
 }
 

@@ -16,7 +16,7 @@ const About = () => {
 					</div>
 					<div className="col-lg-6 col-md-12">
 						<div className={styles['about-content']}>
-							<span className="sub-title">
+							<span className={styles['sub-title']}>
 								{t("distance-learning")}
 							</span>
 							<h2>{t("distance-learning-heading")}</h2>
@@ -42,7 +42,7 @@ const About = () => {
 								</li>
 							</ul>
 							<Link href="/courses">
-								<a className="default-btn">
+								<a className={`${styles['default-btn']} default-btn`}>
 									<i className="flaticon-user"></i>
 									{t("view-all-courses")}
 									<span></span>

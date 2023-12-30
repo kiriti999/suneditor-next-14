@@ -21,7 +21,7 @@ const Profile = () => {
                             <div className="col-lg-8 col-md-8">
                                 <div className={styles['content']}>
                                     <h3>Sarah Taylor</h3>
-                                    <span className={`${styles['sub-title']} sub-title`}>Agile Project Expert</span>
+                                    <span className={styles['sub-title']}>Agile Project Expert</span>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                     
                                     <ul className={styles['info']}>

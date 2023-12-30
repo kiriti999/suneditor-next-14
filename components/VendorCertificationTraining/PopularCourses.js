@@ -7,7 +7,7 @@ const PopularCourses = () => {
         <div className={`${styles['courses-area']} ${styles['pt-100']} ${styles['pb-70']} pt-100 pb-70`}>
             <div className="container">
                 <div className="section-title">
-                    <span className="sub-title">Go at your own pace</span>
+                    <span className={styles['sub-title']}>Go at your own pace</span>
                     <h2>Popular Project Management Courses</h2>
                     <p>Explore all of our courses and pick your suitable ones to enroll and start learning with us! We ensure that you will never regret it!</p>
                 </div>

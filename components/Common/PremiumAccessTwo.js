@@ -7,7 +7,7 @@ const PremiumAccessTwo = () => {
         <div className={styles['premium-access-area']}>
             <div className="container">
                 <div className={styles['premium-access-content']}>
-                    <span className="sub-title">Go at your own pace</span>
+                    <span className={styles['sub-title']}>Go at your own pace</span>
                     <h2>Give their limitless potential unlimited access</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     

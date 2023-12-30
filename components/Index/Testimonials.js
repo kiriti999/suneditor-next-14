@@ -9,7 +9,7 @@ const Testimonials = () => {
       <div className={`${styles['testimonials-area']} ptb-100`}>
         <div className="container">
           <div className="section-title">
-            <span className="sub-title">Testimonials</span>
+            <span className={styles['sub-title']}>Testimonials</span>
             <h2>What People Say About whatsnxt</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

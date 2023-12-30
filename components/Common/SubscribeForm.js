@@ -6,7 +6,7 @@ const SubscribeForm = () => {
         <div className={`${styles['subscribe-area']} bg-f9f9f9 ptb-100`}>
             <div className="container">
                 <div className={styles['subscribe-content']}>
-                    <span className={`${styles['sub-title']} sub-title`}>Go At Your Own Pace</span>
+                    <span className={styles['sub-title']}>Go At Your Own Pace</span>
                     <h2>Subscribe To Our Newsletter</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     

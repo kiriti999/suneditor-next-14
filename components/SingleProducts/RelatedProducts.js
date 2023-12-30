@@ -7,7 +7,7 @@ const RelatedProducts = () => {
         <div className="products-area pt-100 pb-70 bg-f5f1ed">
             <div className="container">
                 <div className="section-title">
-                    <span className="sub-title">Our Shop</span>
+                    <span className={styles['sub-title']}>Our Shop</span>
                     <h2>Related Products</h2>
                 </div>
 

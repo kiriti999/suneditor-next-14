@@ -7,7 +7,7 @@ const Features = () => {
         <div className={`${styles['features-area']} pt-100 pb-70`}>
             <div className="container">
                 <div className="section-title">
-                    <span className="sub-title">Education for everyone</span>
+                    <span className={styles['sub-title']}>Education for everyone</span>
                     <h2>Online Coaching Lessons For Remote Learning</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>

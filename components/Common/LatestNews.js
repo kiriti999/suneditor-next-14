@@ -7,7 +7,7 @@ const LatestNews = () => {
         <div className={`${styles['blog-area']} ptb-100`}>
             <div className="container">
                 <div className="section-title">
-                    <span className="sub-title">News and Blogs</span>
+                    <span className={styles['sub-title']}>News and Blogs</span>
                     <h2>Our Latest Publications</h2>
                     <p>We always give extra care to our student's skills improvements and feel excited to share our latest research and learnings!</p>
                 </div>
