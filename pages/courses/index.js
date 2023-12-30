@@ -6,6 +6,8 @@ import { axiosApi } from "@/utils/baseUrl";;
 import CoursesSidebar from '../../components/Courses/CoursesSidebar';
 import { Context } from 'context/filterStore';
 import Pagination from '../../components/pagination/pagination';
+import { NextSeo } from 'next-seo';
+
 import styles from '../../components/Courses/Course.module.css';
 import sortStyles from '../algolia-search/index.module.css';
 
@@ -94,6 +96,39 @@ const CoursesPage = ({ data, totalRecords }) => {
 
     return (
         <div>
+        <NextSeo
+        title="whatsnxt courses"
+        description="Educational site where you can upload and buy courses"
+        canonical="https://www.canonical.ie/"
+        openGraph={{
+          url: 'https://www.url.ie/a',
+          title: 'Open Graph Title',
+          description: 'Open Graph Description',
+          images: [
+            {
+            //   url: course.profilePhoto ,
+              url: '',
+              width: 800,
+              height: 600,
+              alt: 'Og Image portfolio',
+              type: 'image/jpeg',
+            },
+            {
+              url: '/images/user1.svg',
+              width: 900,
+              height: 800,
+              alt: 'Og Image user',
+              type: 'image/jpeg',
+            },
+          ],
+          siteName: 'whatsnext',
+        }}
+        twitter={{
+          handle: '@handle',
+          site: '@site',
+          cardType: 'summary_large_image',
+        }}
+      />
             <PageBanner
                 pageTitle="Courses"
                 homePageUrl="/"

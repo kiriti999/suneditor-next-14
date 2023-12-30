@@ -11,6 +11,7 @@ import ReactStars from "react-rating-stars-component";
 import Router from 'next/router'
 import LoadingSpinner from "@/utils/LoadingSpinner";
 import { useForm } from 'react-hook-form';
+import { NextSeo } from 'next-seo';
 import styles from '../../components/Courses/Course.module.css';
 import advStyles from '../../components/Common/CourseAdvisor.module.css';
 
@@ -183,6 +184,38 @@ const Details = () => {
 
 	return (
 		<div>
+	    <NextSeo
+        title="`whats-next{$slug}`"
+        description="`Educational site where you can upload and buy courses about {$slug}`"
+        canonical="https://www.canonical.ie/"
+        openGraph={{
+          url: 'https://www.url.ie/a',
+          title: 'Open Graph Title',
+          description: 'Open Graph Description',
+          images: [
+            {
+              url: course?.userId?.profilePhoto ,
+              width: 800,
+              height: 600,
+              alt: course?.userId?.name,
+              type: 'image/jpeg',
+            },
+            {
+              url: '/images/advisor/advisor6.jpg',
+              width: 900,
+              height: 800,
+              alt: 'Og Image advisor',
+              type: 'image/jpeg',
+            },
+          ],
+          siteName: 'whatsnext',
+        }}
+        twitter={{
+          handle: '@handle',
+          site: '@site',
+          cardType: 'summary_large_image',
+        }}
+      />
 			{loading && <LoadingSpinner />}
 			<div className="courses-details-area pb-100">
 
