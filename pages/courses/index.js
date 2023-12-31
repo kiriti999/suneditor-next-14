@@ -234,7 +234,7 @@ CoursesPage.getInitialProps = async () => {
 
     let url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=0`
     const response = await axios.get(url);
-    courses = response.data.courses;
+    courses = await response.data.courses;
     const totalRecords = response.data.total;
 
     // get data for courses popularity
@@ -243,13 +243,13 @@ CoursesPage.getInitialProps = async () => {
     coursesPopularity = popularResponse.data.enrolled
 
     // add popularity to courses
-    courses.forEach(course => {
+    courses && courses?.length && courses.forEach(course => {
         const popularity = coursesPopularity.find(popular => popular.courseId === course._id)
         course.popularity = popularity ? popularity.count : 0
     });
 
     return {
-        data: courses,
+        data: courses || [],
         totalRecords
     }
 }
