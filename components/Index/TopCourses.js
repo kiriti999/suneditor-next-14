@@ -37,7 +37,7 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 	const fetchCourses = async () => {
 		const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=${offset}`
 		const response = await axios.get(url);
-		const coursesRes = response.data.courses || [];
+		const coursesRes = await response.data.courses || [];
 		const copy = [...courses];
 		for (let i = 0; i < coursesRes.length; i++) {
 			const course = coursesRes[i];
