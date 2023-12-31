@@ -42,27 +42,25 @@ const CoursesSidebar = ({ setSidebarFilter }) => {
 			<div className={`${styles['widget']} ${styles['widget_recent_courses']}`}>
 				<h3 className={styles['widget-title']}>New Courses</h3>
 
-				{courses?.length === 0 || !isMount ? (
-					<Skeleton count={10} />
-				) : (
-					isMount && courses.length && courses.map((course, i) => (
-						<div className={styles['item']} key={i}>
-							<Link href="/courses/[id]" as={`/courses/${course.slug}`}>
-								<a className={styles['thumb']}>
-									<span className={`${styles['fullimage']} cover bg1"`} role="img"></span>
-								</a>
-							</Link>
-							<div className={styles['info']}>
-								<span>&#8377;{kConverter(course.live_training_price)}</span>
-								<h4 className={`${styles['title']} title usmall`}>
-									<Link href="/courses/[id]" as={`/courses/${course.slug}`}>
-										<a>{course.title}</a>
-									</Link>
-								</h4>
-							</div>
-							<div className={styles['clear']}></div>
+				{courses ? courses.length && courses.map((course, i) => (
+					<div className={styles['item']} key={i}>
+						<Link href="/courses/[id]" as={`/courses/${course.slug}`}>
+							<a className={styles['thumb']}>
+								<span className={`${styles['fullimage']} cover bg1"`} role="img"></span>
+							</a>
+						</Link>
+						<div className={styles['info']}>
+							<span>&#8377;{kConverter(course.live_training_price)}</span>
+							<h4 className={`${styles['title']} title usmall`}>
+								<Link href="/courses/[id]" as={`/courses/${course.slug}`}>
+									<a>{course.title}</a>
+								</Link>
+							</h4>
 						</div>
-					))
+						<div className={styles['clear']}></div>
+					</div>
+				)) : (
+					<Skeleton count={10} />
 				)}
 			</div>
 
