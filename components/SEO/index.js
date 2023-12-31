@@ -14,8 +14,8 @@ const SEO = ({ title, description, image }) => {
 
 SEO.defaultProps = {
 	title: "whatsnxt",
-	description: "whatsnxt - edu",
-	image: "https://res.cloudinary.com/dev-empty/image/upload/v1595838139/vivi/about-img-two.jpg",
+	description: "whatsnxt edu",
+	image: "https://www.whatsnxt.in/images/logo.png",
 };
 
 export default SEO;

@@ -187,7 +187,7 @@ const Details = () => {
 	    <NextSeo
         title="`whats-next{$slug}`"
         description="`Educational site where you can upload and buy courses about {$slug}`"
-        canonical="https://www.canonical.ie/"
+        canonical="https://www.whatsnxt.in"
         openGraph={{
           url: 'https://www.url.ie/a',
           title: 'Open Graph Title',

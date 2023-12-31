@@ -99,8 +99,8 @@ const CoursesPage = ({ data, totalRecords }) => {
         <div>
             <NextSeo
                 title="whatsnxt courses"
-                description="Educational site where you can upload and buy courses"
-                canonical="https://www.canonical.ie/"
+                description="Learn anything online"
+                canonical="https://www.whatsnxt.in"
                 openGraph={{
                     url: 'https://www.url.ie/a',
                     title: 'Open Graph Title',

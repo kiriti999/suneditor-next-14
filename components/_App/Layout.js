@@ -27,11 +27,6 @@ const Layout = ({ children, user }) => {
         setLoader(false)
     })
 
-    const isStudent = user && user.role === 'student'
-    const isAdmin = user && user.role === 'admin'
-    const isTeacher = user && user.role === 'teacher'
-
-
     return (
         <>
             <Head>
@@ -40,7 +35,7 @@ const Layout = ({ children, user }) => {
                 <meta name="description" content="whatsnxt edu - Online skill development and learning provider" />
                 <meta name="og:title" property="og:title" content="whatsnxt edu - Online skill development and learning provider"></meta>
                 <meta name="twitter:card" content="whatsnxt edu - Online skill development and learning provider"></meta>
-                <link rel="canonical" href="https://whatsnxt-react.envytheme.com/"></link>
+                <link rel="canonical" href="https://whatsnxt.in"></link>
             </Head>
 
             {loader && <Preloader />}
