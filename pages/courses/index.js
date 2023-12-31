@@ -83,6 +83,7 @@ const CoursesPage = ({ data, totalRecords }) => {
     const fetchCourses = async () => {
         const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=${offset}`
         const response = await axios.get(url);
+        console.log('fetchCourses:: response: ', response);
         const coursesRes = response.data.courses;
         const copy = [...courses];
         for (let i = 0; i < coursesRes.length; i++) {
@@ -96,39 +97,39 @@ const CoursesPage = ({ data, totalRecords }) => {
 
     return (
         <div>
-        <NextSeo
-        title="whatsnxt courses"
-        description="Educational site where you can upload and buy courses"
-        canonical="https://www.canonical.ie/"
-        openGraph={{
-          url: 'https://www.url.ie/a',
-          title: 'Open Graph Title',
-          description: 'Open Graph Description',
-          images: [
-            {
-            //   url: course.profilePhoto ,
-              url: '',
-              width: 800,
-              height: 600,
-              alt: 'Og Image portfolio',
-              type: 'image/jpeg',
-            },
-            {
-              url: '/images/user1.svg',
-              width: 900,
-              height: 800,
-              alt: 'Og Image user',
-              type: 'image/jpeg',
-            },
-          ],
-          siteName: 'whatsnext',
-        }}
-        twitter={{
-          handle: '@handle',
-          site: '@site',
-          cardType: 'summary_large_image',
-        }}
-      />
+            <NextSeo
+                title="whatsnxt courses"
+                description="Educational site where you can upload and buy courses"
+                canonical="https://www.canonical.ie/"
+                openGraph={{
+                    url: 'https://www.url.ie/a',
+                    title: 'Open Graph Title',
+                    description: 'Open Graph Description',
+                    images: [
+                        {
+                            //   url: course.profilePhoto ,
+                            url: '',
+                            width: 800,
+                            height: 600,
+                            alt: 'Og Image portfolio',
+                            type: 'image/jpeg',
+                        },
+                        {
+                            url: '/images/user1.svg',
+                            width: 900,
+                            height: 800,
+                            alt: 'Og Image user',
+                            type: 'image/jpeg',
+                        },
+                    ],
+                    siteName: 'whatsnext',
+                }}
+                twitter={{
+                    handle: '@handle',
+                    site: '@site',
+                    cardType: 'summary_large_image',
+                }}
+            />
             <PageBanner
                 pageTitle="Courses"
                 homePageUrl="/"
@@ -235,6 +236,7 @@ CoursesPage.getInitialProps = async () => {
     let url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=0`
     const response = await axios.get(url);
     courses = await response.data.courses;
+    console.log('CoursesPage.getInitialProps:: courses: ', courses);
     const totalRecords = response.data.total;
 
     // get data for courses popularity

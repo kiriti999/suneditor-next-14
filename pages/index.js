@@ -35,7 +35,6 @@ const index = ({ courses, total }) => {
 
 index.getInitialProps = async () => {
 	try {
-		console.log('axiosApi ', axiosApi);
 		const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=0`;
 		const response = await axios.get(url);
 		return response?.data;
