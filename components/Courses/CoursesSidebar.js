@@ -1,26 +1,28 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { kConverter } from '../../utils/cart/currencyHelper';
 import axios from 'axios'
 import { axiosApi } from "@/utils/baseUrl";
 import styles from '../Blog/Widget.module.css';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const CoursesSidebar = ({ setSidebarFilter }) => {
 	const [courses, setCourses] = useState([]);
 	const [categories, setCategories] = useState([]);
 
-	async function getCourses(){
+	async function getCourses() {
 		const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=3`;
-			const response = await axios.get(url)
-			console.log('CoursesSidebar.js:: useEffect: courses:', response.data.courses);
-			setCourses(response.data?.courses);
+		const response = await axios.get(url)
+		console.log('CoursesSidebar.js:: useEffect: courses:', response.data.courses);
+		setCourses(response.data?.courses);
 	}
 
-	async function getCategoryByCount(){
+	async function getCategoryByCount() {
 		const url = `${axiosApi.baseUrl}/api/v1/courses/categories/categoryByCount`;
-			const response = await axios.get(url)
-			console.log('CoursesSidebar.js:: useEffect: categories:', response.data.categories);
-			setCategories(response.data?.categories);
+		const response = await axios.get(url)
+		console.log('CoursesSidebar.js:: useEffect: categories:', response.data.categories);
+		setCategories(response.data?.categories);
 	}
 
 	useEffect(() => {
@@ -35,20 +37,15 @@ const CoursesSidebar = ({ setSidebarFilter }) => {
 		setSidebarFilter(response.data.courses);
 	}
 
-	// const CoursesSidebar = () => {
-	// 	const [courses, setCourses] = useState([]);
-	// 	const [categories, setCategories] = useState([]);
-	// }
-
 	return (
 		<div className={styles['widget-area']}>
 			<div className={`${styles['widget']} ${styles['widget_recent_courses']}`}>
 				<h3 className={styles['widget-title']}>New Courses</h3>
 
-				{courses?.length === 0 ? (
-					<h6>Empty</h6>
+				{courses?.length === 0 || !isMount ? (
+					<Skeleton count={10} />
 				) : (
-					courses.length && courses.map((course, i) => (
+					isMount && courses.length && courses.map((course, i) => (
 						<div className={styles['item']} key={i}>
 							<Link href="/courses/[id]" as={`/courses/${course.slug}`}>
 								<a className={styles['thumb']}>
@@ -81,7 +78,7 @@ const CoursesSidebar = ({ setSidebarFilter }) => {
 							</a>
 						</Link>
 					)) : (
-						<h6>Empty</h6>
+						<Skeleton count={10} />
 					)}
 				</div>
 			</div>

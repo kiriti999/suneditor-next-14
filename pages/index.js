@@ -10,7 +10,6 @@ import Instance from "@/components/Index/Instance";
 import Partner from "@/components/Index/Partner";
 import Ad from "@/components/Index/Ad";
 import Funfacts from "@/components/Index/Funfacts";
-import Blog from "@/components/Index/Blog";
 import axios from "axios";
 import { axiosApi } from "@/utils/baseUrl";
 import SEO from "@/components/SEO";

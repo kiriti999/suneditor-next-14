@@ -4,21 +4,12 @@ import useTranslation from "next-translate/useTranslation";
 import ReactStars from "react-rating-stars-component";
 import axios from "axios";
 import { axiosApi } from "../../utils/baseUrl";
-import { parseCookies } from 'nookies'
 import Pagination from '../../components/pagination/pagination';
 import styles from '../Courses/Course.module.css';
-
-const overviewStyle = {
-	display: '-webkit-box',
-	// maxWidth: '200px',
-	'margin-top': '10px',
-	WebkitLineClamp: '4',
-	WebkitBoxOrient: 'vertical',
-	overflow: 'hidden'
-}
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const TopCourses = ({ courses: initialCourses, total }) => {
-	const { token } = parseCookies();
 	const { t } = useTranslation("distance-learning");
 
 	const [courses, setCourse] = useState(initialCourses);
@@ -138,7 +129,7 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 							</div>
 						))
 					) : (
-						<h6>Empty</h6>
+						<Skeleton count={10} />
 					)}
 
 					<div className="col-lg-12 col-md-12">

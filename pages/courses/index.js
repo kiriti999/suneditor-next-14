@@ -7,6 +7,8 @@ import CoursesSidebar from '../../components/Courses/CoursesSidebar';
 import { Context } from 'context/filterStore';
 import Pagination from '../../components/pagination/pagination';
 import { NextSeo } from 'next-seo';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import styles from '../../components/Courses/Course.module.css';
 import sortStyles from '../algolia-search/index.module.css';
@@ -209,12 +211,14 @@ const CoursesPage = ({ data, totalRecords }) => {
                                     </div>
 
                                 )) : (
-                                    <h6>Empty</h6>
+                                    <Skeleton count={20} />
                                 )}
 
                             </div>
                             <div className="col-lg-12 col-md-12">
-                                <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                                {currentRecords && currentRecords.length ?
+                                    (<Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} ></Pagination>) :
+                                    (<Skeleton count={3} />)}
                             </div>
                         </div>
 

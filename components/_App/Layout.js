@@ -38,8 +38,6 @@ const Layout = ({ children, user }) => {
                 <link rel="canonical" href="https://whatsnxt.in"></link>
             </Head>
 
-            {loader && <Preloader />}
-
             
             <Navbar user={user} />
 
