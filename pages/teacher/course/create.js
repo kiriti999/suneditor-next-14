@@ -9,6 +9,7 @@ import { useForm, Controller } from "react-hook-form";
 import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
 import * as imageHelper from '@/utils/image-upload';
+import { useQuery } from '@tanstack/react-query';
 import 'suneditor/dist/css/suneditor.min.css';
 import WYSIWYGEditor from "../../../components/rich-text-editor";
 import LoadingSpinner from "@/utils/LoadingSpinner";
@@ -84,14 +85,19 @@ const Create = () => {
         }));
     }
 
-    useEffect(() => {
-        const url = `${axiosApi.baseUrl}/api/v1/courses/categories`;
-        (async () => {
+    const { isFetching, data } = useQuery({
+        queryKey: ['teacher-course-create'],
+        queryFn: async () => {
+            const url = `${axiosApi.baseUrl}/api/v1/courses/categories`;
             const response = await axios.get(url)
             console.log('pages/create.js:: useEffect: categories:', response.data?.categories);
-            setCategories(response.data?.categories);
-        })()
-    }, [])
+            return response.data?.categories || [];
+        }
+    });
+
+    useEffect(() => {
+        if (!isFetching) setCategories(data);
+    }, [isFetching, data]);
 
     const handleChange = e => {
         const { name, value, files } = e.target

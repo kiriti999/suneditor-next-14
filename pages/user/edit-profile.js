@@ -3,11 +3,33 @@ import axios from 'axios'
 import { axiosApi } from "@/utils/baseUrl";
 import { parseCookies } from 'nookies'
 import api from "@/axios/axiosConfig"
+import { useQuery } from '@tanstack/react-query';
 
-const EditProfile = ({ profile }) => {
+const defProfile = { name: '', email: '' };
+
+const EditProfile = () => {
     const { token } = parseCookies()
-    const [user, setUser] = React.useState(profile);
+    const [user, setUser] = React.useState(defProfile);
     const [disabled, setDisabled] = React.useState(true);
+
+    const { isFetching, data } = useQuery({
+        queryKey: ['edit-profile'],
+        queryFn: async () => {
+            if (!token) return defProfile;
+
+            const payload = {
+                headers: { Authorization: token }
+            }
+
+            const response = await axios.get(`${axiosApi.baseUrl}/api/v1/edit`, payload)
+            console.log('pages/user/edit-profile.js:: ', response);
+            return response.data?.profile || defProfile;
+        }
+    });
+
+    React.useEffect(() => {
+        if (!isFetching) setUser(data);
+    }, [isFetching, data]);
 
     React.useEffect(() => {
         const isUser = Object.values(user).every((el) => Boolean(el));
@@ -68,20 +90,6 @@ const EditProfile = ({ profile }) => {
             </div>
         </div>
     )
-}
-
-
-EditProfile.getInitialProps = async (ctx) => {
-    const { token } = parseCookies(ctx);
-    if (!token) {
-        return { name: '', email: '' }
-    }
-    const payload = {
-        headers: { Authorization: token }
-    }
-    const response = await axios.get(`${axiosApi.baseUrl}/api/v1/edit`, payload)
-    console.log('pages/user/edit-profile.js:: ', response);
-    return response.data
 }
 
 export default EditProfile;

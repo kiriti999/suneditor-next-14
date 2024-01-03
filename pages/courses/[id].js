@@ -12,10 +12,18 @@ import Router from 'next/router'
 import LoadingSpinner from "@/utils/LoadingSpinner";
 import { useForm } from 'react-hook-form';
 import { NextSeo } from 'next-seo';
+import { useQuery } from '@tanstack/react-query';
 import styles from '../../components/Courses/Course.module.css';
 import advStyles from '../../components/Common/CourseAdvisor.module.css';
 
-const Details = () => {
+export async function getServerSideProps(context) {
+	const { id } = context.params;
+	return {
+		props: { slug: id }
+	};
+}
+
+const Details = ({ slug }) => {
 	const { token } = parseCookies();
 	const [course, setCourse] = useState([]);
 	const [loading, setLoading] = useState([]);
@@ -42,69 +50,51 @@ const Details = () => {
 		review: {},
 	};
 
-
-	const getCourseBySlug = async (slug) => {
-		try {
-			const url = `${axiosApi.baseUrl}/api/v1/courses/course/slug/${slug}`;
-			const response = await axios.get(url, {
+	const { isPending, data } = useQuery({
+		queryKey: [`course-${slug}`],
+		queryFn: async () => {
+			const courseUrl = `${axiosApi.baseUrl}/api/v1/courses/course/slug/${slug}`;
+			const courseRes = await axios.get(courseUrl, {
 				headers: { Authorization: token }
 			});
-			setLoading(true);
-			return response.data;
-		} catch (error) {
-			console.log('error', error);
-		} finally {
-			setLoading(false)
-		}
-	}
 
-	const getCourseReviews = async (id) => {
-		try {
-			const url = `${axiosApi.baseUrl}/api/v1/courses/course/reviews?courseId=${id}`;
-			const response = await axios.get(url, {
+			const id = courseRes.data?.course._id;
+			const reviewsUrl = `${axiosApi.baseUrl}/api/v1/courses/course/reviews?courseId=${id}`;
+			const reviewsRes = await axios.get(reviewsUrl, {
 				headers: { Authorization: token }
 			});
-			setLoading(true);
-			return response.data;
-		} catch (error) {
-			console.log('error', error);
-		} finally {
-			setLoading(false)
-		}
-	}
 
+			return { course: courseRes.data, reviews: reviewsRes.data };
+		}
+	});
 
 	useEffect(() => {
-		if (typeof window !== "undefined") {
-			const slug = window.location.pathname.split('/')[2];
+		setLoading(isPending);
+	}, [isPending]);
 
-			(async () => {
-				const course = await getCourseBySlug(slug);
-				const courseId = course?.course._id;
-				console.log('pages/courses/[id].js:: useEffect:: course: ', course);
-				setCourse(course?.course);
-				const courseReviews = await getCourseReviews(courseId);
-				setCourseReviews(courseReviews);
+	useEffect(() => {
+		if (!data) return;
 
-				if (!token) return;
+		setCourse(data.course?.course);
+		setCourseReviews(data.reviews);
 
-				const parts = token.split('.');
-				const tokenPayload = JSON.parse(atob(parts[1]));
-				const { userId } = tokenPayload;
+		if (!token) return;
 
-				for (let i = 0; i < courseReviews.length; i++) {
-					const review = courseReviews[i];
-					if (review.userId === userId) {
-						setCommentIndex(i);
-						setRating(review.rating);
-						setIsRatingProvided(true);
-						setValue('review', review.comments);
-						break;
-					}
-				}
-			})()
+		const parts = token.split('.');
+		const tokenPayload = JSON.parse(atob(parts[1]));
+		const { userId } = tokenPayload;
+
+		for (let i = 0; i < data.reviews.length; i++) {
+			const review = data.reviews[i];
+			if (review.userId === userId) {
+				setCommentIndex(i);
+				setRating(review.rating);
+				setIsRatingProvided(true);
+				setValue('review', review.comments);
+				break;
+			}
 		}
-	}, []);
+	}, [token, data, setValue]);
 
 	useEffect(() => {
 		console.log('courseReviews ', courseReviews)

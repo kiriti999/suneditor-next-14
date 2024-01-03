@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import catchErrors from '@/utils/catchErrors'
 import Link from '@/utils/ActiveLink';
 import LoadingSpinner from "@/utils/LoadingSpinner";
+import { useQuery } from '@tanstack/react-query';
 import styles from '../../admin/pending-requests.module.css';
 
 const INIT_VIDEO = {
@@ -17,15 +18,34 @@ const INIT_VIDEO = {
     courseId: ''
 }
 
-const UploadCourseVideo = ({ courses }) => {
-    // console.log(courses)
+const UploadCourseVideo = () => {
     const { token } = parseCookies()
+    const [courses, setCourses] = React.useState([]);
     const [error, setError] = React.useState(false);
     const [video, setVideo] = React.useState(INIT_VIDEO)
     const [loading, setLoading] = React.useState(false)
     const [disabled, setDisabled] = React.useState(true)
 
     const fileInputRef = useRef(null);
+
+    const { isFetching, data } = useQuery({
+        queryKey: ['teacher-course-upload'],
+        queryFn: async () => {
+            if (!token) return [];
+
+            const payload = {
+                headers: { Authorization: token }
+            }
+
+            const url = `${axiosApi.baseUrl}/api/v1/courses/teacher/my-courses`;
+            const response = await axios.get(url, payload);
+            return response.data?.courses || [];
+        }
+    });
+
+    React.useEffect(() => {
+        if (!isFetching) setCourses(data);
+    }, [isFetching, data]);
 
     React.useEffect(() => {
         const { order, video_url, name } = video
@@ -264,22 +284,6 @@ const UploadCourseVideo = ({ courses }) => {
             </div>
         </>
     )
-}
-
-UploadCourseVideo.getInitialProps = async ctx => {
-    const { token } = parseCookies(ctx)
-    if (!token) {
-        return { courses: [] }
-    }
-
-    const payload = {
-        headers: { Authorization: token }
-    }
-
-    const url = `${axiosApi.baseUrl}/api/v1/courses/teacher/my-courses`
-    const response = await axios.get(url, payload)
-    // console.log(response.data)
-    return response.data
 }
 
 export default UploadCourseVideo

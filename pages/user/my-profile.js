@@ -1,11 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '@/axios/axiosConfig';
 import axios from 'axios'
 import { axiosApi } from "@/utils/baseUrl";
-import { parseCookies } from 'nookies'
-import styles from './my-profile.module.css';
+import { parseCookies } from 'nookies';
+import { useQuery } from '@tanstack/react-query';
+import styles from './my-profile.module.css'
 
-const MyProfile = ({ profile }) => {
+const defProfile = { name: '', email: '' };
+
+const MyProfile = () => {
+    const { token } = parseCookies();
+    const [profile, setProfile] = useState(defProfile);
+    const { isFetching, data } = useQuery({
+        queryKey: ['user-profile', token],
+        queryFn: async () => {
+            if (!token) return defProfile;
+
+            const payload = {
+                headers: { Authorization: token }
+            }
+
+            const response = await axios.get(`${axiosApi.baseUrl}/api/v1/profile`, payload)
+            console.log('pages/user/my-profile.js:: ', response);
+            return response.data.profile || defProfile;
+        }
+    });
+
+    useEffect(() => {
+        if (!isFetching) setProfile(data);
+    }, [isFetching, data]);
+
     return (
         <div>
             <div className="ptb-100">
@@ -23,19 +47,6 @@ const MyProfile = ({ profile }) => {
             </div>
         </div>
     )
-}
-
-MyProfile.getInitialProps = async (ctx) => {
-    const { token } = parseCookies(ctx);
-    if (!token) {
-        return { name: '', email: '' }
-    }
-    const payload = {
-        headers: { Authorization: token }
-    }
-    const response = await axios.get(`${axiosApi.baseUrl}/api/v1/profile`, payload)
-    console.log('pages/user/my-profile.js:: ', response);
-    return response.data
 }
 
 export default MyProfile;

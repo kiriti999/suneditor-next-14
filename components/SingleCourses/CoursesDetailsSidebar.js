@@ -7,6 +7,7 @@ import { axiosApi } from "@/utils/baseUrl";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { kConverter } from '../../utils/cart/currencyHelper';
+import { useQuery } from '@tanstack/react-query';
 import styles from '../Courses/Course.module.css';
 
 const CoursesDetailsSidebar = ({
@@ -88,20 +89,27 @@ const CoursesDetailsSidebar = ({
 		})
 	}, [purchaseTypeError])
 
+	const { isFetching, data } = useQuery({
+		queryKey: [`courses-details-side-${_id}`, token, cartItems, _id],
+		queryFn: async () => {
+			if (!token || !_id) return false;
+
+			const payload = { params: { courseId: _id }, headers: { Authorization: token } };
+			const url = `${axiosApi.baseUrl}/api/v1/courses/enrolled/exist`;
+			const response = await axios.get(url, payload);
+			return response.data === true;
+		}
+	});
+
+	useEffect(() => {
+		if (!isFetching) setAlreadyBuy(data);
+	}, [isFetching, data]);
+
 	useEffect(() => {
 		const courseExist = cartItems.find((cart) => {
 			return _id === cart.id.split('_')[1];
 		});
 		courseExist && setAdd(true);
-
-		if (token && _id) {
-			const payload = { params: { courseId: _id }, headers: { Authorization: token } };
-			const url = `${axiosApi.baseUrl}/api/v1/courses/enrolled/exist`;
-			axios.get(url, payload).then((result) => {
-				setAlreadyBuy(result.data === true);
-			});
-		}
-
 	}, [cartItems, _id]);
 
 	useEffect(() => {

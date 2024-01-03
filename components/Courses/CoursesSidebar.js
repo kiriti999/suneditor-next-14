@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { kConverter } from '../../utils/cart/currencyHelper';
 import axios from 'axios'
 import { axiosApi } from "@/utils/baseUrl";
+import { useQuery } from '@tanstack/react-query';
 import styles from '../Blog/Widget.module.css';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -11,24 +12,33 @@ const CoursesSidebar = ({ setSidebarFilter }) => {
 	const [courses, setCourses] = useState([]);
 	const [categories, setCategories] = useState([]);
 
-	async function getCourses() {
-		const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=3`;
-		const response = await axios.get(url)
-		console.log('CoursesSidebar.js:: useEffect: courses:', response.data.courses);
-		setCourses(response.data?.courses);
-	}
+	const { isFetching: coursesFetching, data: coursesData } = useQuery({
+		queryKey: ['courses-sidebar-courses'],
+		queryFn: async () => {
+			const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=3`;
+			const response = await axios.get(url);
+			console.log('CoursesSidebar.js:: useEffect: courses:', response.data.courses);
+			return response.data?.courses || [];
+		}
+	});
 
-	async function getCategoryByCount() {
-		const url = `${axiosApi.baseUrl}/api/v1/courses/categories/categoryByCount`;
-		const response = await axios.get(url)
-		console.log('CoursesSidebar.js:: useEffect: categories:', response.data.categories);
-		setCategories(response.data?.categories);
-	}
+	const { isFetching: categoriesFetching, data: categoriesData } = useQuery({
+		queryKey: ['courses-sidebar-categories'],
+		queryFn: async () => {
+			const url = `${axiosApi.baseUrl}/api/v1/courses/categories/categoryByCount`;
+			const response = await axios.get(url);
+			console.log('CoursesSidebar.js:: useEffect: categories:', response.data.categories);
+			return response.data?.categories || [];
+		}
+	});
 
 	useEffect(() => {
-		getCourses();
-		getCategoryByCount();
-	}, [])
+		if (!coursesFetching) setCourses(coursesData);
+	}, [coursesFetching, coursesData]);
+
+	useEffect(() => {
+		if (!categoriesFetching) setCategories(categoriesData);
+	}, [categoriesFetching, categoriesData]);
 
 	const getCoursesByTagName = async (tagName) => {
 		let url = `${axiosApi.baseUrl}/api/v1/courses/course?tagName=${tagName}`;

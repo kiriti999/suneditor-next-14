@@ -1,19 +1,40 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { parseCookies } from 'nookies';
 import axios from 'axios';
 import { axiosApi } from '@/utils/baseUrl';
 import Link from '@/utils/ActiveLink';
 import Modal from '@/components/Modal/Modal';
+import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import { deleteIndex } from '../../api/v1/courses/search/algolia';
 import styles from '../../admin/pending-requests.module.css';
 
-const CourseEdit = ({ courses: data }) => {
-	const [courses, setCourses] = useState(data);
+const CourseEdit = () => {
+	const [courses, setCourses] = useState([]);
 	const [showModal, setShowModal] = useState(false);
 	const [deleteCourseIds, setDeleteCourseIds] = useState([]);
 
 	const { token } = parseCookies();
+
+	const { isFetching, data } = useQuery({
+		queryKey: ['teacher-courses-edit', token],
+		queryFn: async () => {
+			if (!token) return [];
+
+			const payload = {
+				headers: { Authorization: token }
+			};
+
+			const url = `${axiosApi.baseUrl}/api/v1/courses/teacher/my-courses`;
+			const response = await axios.get(url, payload);
+
+			return response.data?.courses || [];
+		}
+	});
+
+	useEffect(() => {
+		if (!isFetching) setCourses(data);
+	}, [isFetching, data]);
 
 	const deleteCourseHandler = async () => {
 		try {
@@ -207,22 +228,6 @@ const CourseEdit = ({ courses: data }) => {
 			/>
 		</>
 	);
-};
-
-CourseEdit.getInitialProps = async (ctx) => {
-	const { token } = parseCookies(ctx);
-	if (!token) {
-		return { courses: [] };
-	}
-
-	const payload = {
-		headers: { Authorization: token }
-	};
-
-	const url = `${axiosApi.baseUrl}/api/v1/courses/teacher/my-courses`;
-	const response = await axios.get(url, payload);
-
-	return response.data;
 };
 
 export default CourseEdit;

@@ -5,6 +5,7 @@ import ReactStars from "react-rating-stars-component";
 import axios from "axios";
 import { axiosApi } from "../../utils/baseUrl";
 import Pagination from '../../components/pagination/pagination';
+import { useQuery } from '@tanstack/react-query';
 import styles from '../Courses/Course.module.css';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -12,8 +13,9 @@ import 'react-loading-skeleton/dist/skeleton.css'
 const TopCourses = ({ courses: initialCourses, total }) => {
 	const { t } = useTranslation("distance-learning");
 
+	console.log(initialCourses, total);
 	const [courses, setCourse] = useState(initialCourses);
-	const [offset, setOffset] = useState(courses?.length || []);
+	const [offset, setOffset] = useState(initialCourses.length || []);
 	const [recordsPerPage] = useState(8);
 	const [currentPage, setCurrentPage] = useState(1);
 	const indexOfLastRecord = currentPage * recordsPerPage;
@@ -21,23 +23,29 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 	const currentRecords = courses.slice(indexOfFirstRecord, indexOfLastRecord);
 	const nPages = Math.ceil(total / recordsPerPage);
 
+	const { data: coursesData } = useQuery({
+        queryKey: ['top-courses', currentPage],
+        queryFn: async () => {
+            const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=${offset}`
+            const response = await axios.get(url);
+            return response.data?.courses || [];
+        },
+        keepPreviousData: true,
+        enabled: (currentPage % 3 == 2 && currentPage < nPages - 1) || !courses[indexOfFirstRecord]
+    });
+
 	useEffect(() => {
-		if ((currentPage % 3 == 2 && currentPage < nPages - 1) || !courses[indexOfFirstRecord]) fetchCourses();
-	}, [currentPage]);
+        if (!coursesData) return;
 
-	const fetchCourses = async () => {
-		const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=${offset}`
-		const response = await axios.get(url);
-		const coursesRes = await response.data.courses || [];
-		const copy = [...courses];
-		for (let i = 0; i < coursesRes.length; i++) {
-			const course = coursesRes[i];
-			copy[offset + i] = course;
-		}
+        const copy = [...courses];
+        for (let i = 0; i < coursesData.length; i++) {
+            const course = coursesData[i];
+            copy[offset + i] = course;
+        }
 
-		setCourse(copy);
-		setOffset(indexOfFirstRecord);
-	}
+        setCourse(copy);
+        setOffset(indexOfFirstRecord);
+    }, [coursesData]);
 
 	return (
 		<div className={`${styles['courses-area']} pt-50 pb-100`}>

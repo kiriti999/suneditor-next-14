@@ -6,6 +6,7 @@ import { axiosApi } from "@/utils/baseUrl";;
 import CoursesSidebar from '../../components/Courses/CoursesSidebar';
 import { Context } from 'context/filterStore';
 import Pagination from '../../components/pagination/pagination';
+import { useQuery } from '@tanstack/react-query';
 import { NextSeo } from 'next-seo';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -57,9 +58,29 @@ const CoursesPage = ({ data, totalRecords }) => {
     const currentRecords = courses.slice(indexOfFirstRecord, indexOfLastRecord);
     const nPages = Math.ceil(totalRecords / recordsPerPage);
 
+    const { data: coursesData } = useQuery({
+        queryKey: ['courses', currentPage],
+        queryFn: async () => {
+            const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=${offset}`
+            const response = await axios.get(url);
+            return response.data?.courses || [];
+        },
+        keepPreviousData: true,
+        enabled: currentPage % 3 == 2 && currentPage < nPages - 1
+    });
+
     useEffect(() => {
-        if ((currentPage % 3 == 2 && currentPage < nPages - 1) || !courses[indexOfFirstRecord]) fetchCourses();
-    }, [currentPage]);
+        if (!coursesData) return;
+
+        const copy = [...courses];
+        for (let i = 0; i < coursesData.length; i++) {
+            const course = coursesData[i];
+            copy[offset + i] = course;
+        }
+
+        setCourse(copy);
+        setOffset(indexOfFirstRecord);
+    }, [coursesData]);
 
     // sort course function
     const sortCourses = async (type) => {
@@ -80,21 +101,6 @@ const CoursesPage = ({ data, totalRecords }) => {
         });
 
         setState({ ...state, filteredCourses: sortedCourses });
-    }
-
-    const fetchCourses = async () => {
-        const url = `${axiosApi.baseUrl}/api/v1/courses/course?limit=30&offset=${offset}`
-        const response = await axios.get(url);
-        console.log('fetchCourses:: response: ', response);
-        const coursesRes = await response?.data?.courses || [];
-        const copy = [...courses];
-        for (let i = 0; i < coursesRes.length; i++) {
-            const course = coursesRes[i];
-            copy[offset + i] = course;
-        }
-
-        setCourse(copy);
-        setOffset(indexOfFirstRecord);
     }
 
     return (

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
 import { toast } from 'react-toastify';
@@ -7,12 +7,31 @@ import { useRouter } from 'next/router'
 import { axiosApi } from "@/utils/baseUrl";
 import catchErrors from '@/utils/catchErrors'
 import PageBanner from '@/components/Common/PageBanner'
-import Link from '@/utils/ActiveLink'
+import Link from '@/utils/ActiveLink';
+import { useQuery } from '@tanstack/react-query';
 import { redirectUser } from "../../utils/auth";
 import styles from './pending-requests.module.css';
 
-const pendingRequests = ({ pendingRequests }) => {
+const pendingRequests = () => {
     const router = useRouter();
+    const [pendingRequests, setPendingRequests] = useState([]);
+    const { token } = parseCookies();
+
+    const { isFetching, data } = useQuery({
+        queryKey: ['admin-pending'],
+        queryFn: async () => {
+            if (!token) return [];
+
+            const url = `${axiosApi.baseUrl}/api/v1/apply/pending-requests`;
+            const payload = { headers: { Authorization: token } };
+            const response = await axios.get(url, payload);
+            return response.data?.pendingRequests || [];
+        }
+    });
+
+    useEffect(() => {
+        if (!isFetching) setPendingRequests(data);
+    }, [isFetching, data]);
 
     const approveReq = async id => {
         try {
@@ -165,20 +184,6 @@ const pendingRequests = ({ pendingRequests }) => {
             </div>
         </>
     )
-}
-
-pendingRequests.getInitialProps = async (ctx) => {
-    console.log('ctx@@', ctx);
-    const { token } = parseCookies(ctx); 
-    console.log('token@@', token)
-    if (!token) {
-        redirectUser(ctx, '/authentication')
-    }
-    const url = `${axiosApi.baseUrl}/api/v1/apply/pending-requests`
-    const payload = { headers: { Authorization: token } }
-    const response = await axios.get(url, payload)
-    // console.log(response.data)
-    return response.data
 }
 
 export default pendingRequests

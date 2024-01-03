@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
-import dynamic from 'next/dynamic'
 import { axiosApi } from "@/utils/baseUrl";
-import { redirectUser } from '../../../utils/auth'
 import { Spinner } from 'reactstrap'
 import { toast } from 'react-toastify';
 import catchErrors from '@/utils/catchErrors'
@@ -11,37 +9,76 @@ import Link from '@/utils/ActiveLink';
 import * as imageHelper from '@/utils/image-upload'
 import WYSIWYGEditor from "components/rich-text-editor";
 import 'suneditor/dist/css/suneditor.min.css';
+import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from "@/utils/LoadingSpinner";
 import styles from '../../admin/pending-requests.module.css';
 
-const Edit = (data) => {
-    console.log('pages:: course/[id].js:: existingData: ', data);
-    const { course: existingData, user } = data;
-    const { token } = parseCookies()
-    const [categories, setCategories] = useState([]);
+export async function getServerSideProps (context) {
+    const { id } = context.params;
+    return {
+        props: { id }
+    }
+}
 
-    const INIT_COURSE = {
-        id: existingData._id,
-        title: existingData.title,
-        overview: existingData.overview,
-        topics: existingData.topics,
-        video_course_price: existingData.video_course_price,
-        live_training_price: existingData.live_training_price,
+const Edit = ({ id }) => {
+    const { token } = parseCookies()
+    const { isFetching, data } = useQuery({
+        queryKey: [`teacher-course-${id}`, id],
+        queryFn: async () => {
+            if (!token) return null;
+
+            const payload = {
+                headers: { Authorization: token }
+            };
+
+            const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`;
+            const response = await axios.get(url, payload);
+            console.log('pages:: course/[id].js response.data', response.data);
+            return response.data.course || null;
+        }
+    });
+
+    const [categories, setCategories] = useState([]);
+    const [course, setCourse] = useState({
+        id: '',
+        title: '',
+        overview: '',
+        topics: '',
+        video_course_price: '',
+        live_training_price: '',
         profilePhoto: '',
         coverPhoto: '',
         course_preview_img: '',
-        course_preview_video: existingData.course_preview_video,
-        duration: existingData.duration,
-        lessons: existingData.lessons,
-        categoryName: existingData.categoryName
-    }
-
-    const [course, setCourse] = useState(INIT_COURSE)
+        course_preview_video: '',
+        duration: '',
+        lessons: '',
+        categoryName: ''
+    });
     const [profilePreview, setProfilePreview] = useState('')
     const [imageUploading, setImageUploading] = useState(false)
     const [loading, setLoading] = useState(false)
     const [disabled, setDisabled] = useState(false)
     const [error, setError] = useState()
+
+    useEffect(() => {
+        if (isFetching || !data) return;
+
+        setCourse({
+            id: data._id,
+            title: data.title,
+            overview: data.overview,
+            topics: data.topics,
+            video_course_price: data.video_course_price,
+            live_training_price: data.live_training_price,
+            profilePhoto: '',
+            coverPhoto: '',
+            course_preview_img: '',
+            course_preview_video: data.course_preview_video,
+            duration: data.duration,
+            lessons: data.lessons,
+            categoryName: data.categoryName
+        });
+    }, [isFetching, data]);
 
     useEffect(() => {
         const url = `${axiosApi.baseUrl}/api/v1/courses/categories`;
@@ -314,22 +351,6 @@ const Edit = (data) => {
             </div>
         </>
     )
-}
-
-Edit.getInitialProps = async ctx => {
-    const { token } = parseCookies(ctx)
-    if (!token) {
-        redirectUser(ctx, '/')
-    }
-    const { id } = ctx.query
-    const payload = {
-        headers: { Authorization: token }
-    }
-
-    const url = `${axiosApi.baseUrl}/api/v1/courses/course/${id}`
-    const response = await axios.get(url, payload)
-    console.log('pages:: course/[id].js response.data', response.data);
-    return response.data
 }
 
 export default Edit

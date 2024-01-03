@@ -1,14 +1,36 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
 import { axiosApi } from "@/utils/baseUrl";
 import CourseCard from '@/components/Courses/CourseCard'
 import PageBanner from '@/components/Common/PageBanner'
 import Link from '@/utils/ActiveLink';
+import { useQuery } from '@tanstack/react-query';
 import styles from '../../admin/pending-requests.module.css';
 import coursesStyles from '../../../components/Courses/Course.module.css';
 
-const index = ({ courses }) => {
+const Index = () => {
+    const [courses, setCourses] = useState([]);
+    const { isFetching, data } = useQuery({
+        queryKey: ['teacher-courses'],
+        queryFn: async () => {
+            const { token } = parseCookies();
+            if (!token) return [];
+
+            const payload = {
+                headers: { Authorization: token }
+            }
+
+            const url = `${axiosApi.baseUrl}/api/v1/courses/teacher/my-courses`;
+            const response = await axios.get(url, payload);
+            return response.data?.courses || [];
+        }
+    });
+
+    useEffect(() => {
+        if (!isFetching) setCourses(data);
+    }, [isFetching, data]);
+
     return (
         <>
             <div className={`${coursesStyles['courses-area']} courses-section pt-100 pb-70`}>
@@ -59,20 +81,4 @@ const index = ({ courses }) => {
     )
 }
 
-index.getInitialProps = async ctx => {
-    const { token } = parseCookies(ctx)
-    if (!token) {
-        return { courses: [] }
-    }
-
-    const payload = {
-        headers: { Authorization: token }
-    }
-
-    const url = `${axiosApi.baseUrl}/api/v1/courses/teacher/my-courses`
-    const response = await axios.get(url, payload)
-    console.log('pages/teacher/courses/index:: getInitialProps:: response.data: ', response.data);
-    return response.data
-}
-
-export default index
+export default Index

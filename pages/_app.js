@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { parseCookies, destroyCookie } from "nookies";
 import { Provider } from "react-redux";
 import { useRouter } from 'next/router';
 import { SessionProvider } from 'next-auth/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Layout from "../components/_App/Layout";
 import { redirectUser, fetchUser } from "../utils/auth";
 import "../styles/bootstrap.min.css";
@@ -33,6 +34,19 @@ const MyApp = ({ Component, ...rest }) => {
 	const router = useRouter();
     const [routeHistory, setRouteHistory] = useState([router.asPath]);
 
+	const [queryClient] = useState(
+		() =>
+		    new QueryClient({
+			    defaultOptions: {
+			  		queries: {
+						// With SSR, we usually want to set some default staleTime
+						// above 0 to avoid refetching immediately on the client
+						staleTime: 60 * 1000,
+			  		},
+				},
+		    }),
+	);
+
     useEffect(() => {
         const handleRouteChange = (url) => {
             const history = [...routeHistory, url];
@@ -55,11 +69,13 @@ const MyApp = ({ Component, ...rest }) => {
 	return (
 		<Provider store={store}>
 			<SessionProvider session={pageProps.session}>
-				<FilterStore>
-					<Layout {...pageProps}>
-						<Component {...pageProps} />
-					</Layout>
-				</FilterStore>
+				<QueryClientProvider client={queryClient}>
+					<FilterStore>
+						<Layout {...pageProps}>
+							<Component {...pageProps} />
+						</Layout>
+					</FilterStore>
+				</QueryClientProvider>
 			</SessionProvider>
 		</Provider>
 	);
