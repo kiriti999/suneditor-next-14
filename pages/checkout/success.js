@@ -16,9 +16,9 @@ const success = () => {
                         <div className='success-page my-5'>
                             <h1>Thank You!</h1>
                             <p>Your payment is successful</p>
-                            <Link href={'/'}>
+                            <Link legacyBehavior href={'/'}>
                                 <h6 className='mt-5'>
-                                    <Link href='/'>Back to Home</Link>
+                                    <Link legacyBehavior href='/'>Back to Home</Link>
                                 </h6>
                             </Link>
                         </div>

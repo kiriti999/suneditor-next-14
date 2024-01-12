@@ -8,27 +8,27 @@ const Sidebar = () => {
             <div className={`${styles['widget']} ${styles['widget_insight']}`}>
                 <ul>
                     <li>
-                        <Link href="/about-1">
+                        <Link legacyBehavior href="/about-1">
                             <a>About Us</a>
                         </Link>
                     </li>
                     <li>
-                        <Link href="/contact">
+                        <Link legacyBehavior href="/contact">
                             <a>Contact Us</a>
                         </Link>
                     </li>
                     <li>
-                        <Link href="/purchase-guide">
+                        <Link legacyBehavior href="/purchase-guide">
                             <a>Purchase Guide</a>
                         </Link>
                     </li>
                     <li>
-                        <Link href="/privacy-policy">
+                        <Link legacyBehavior href="/privacy-policy">
                             <a>Privacy Policy</a>
                         </Link>
                     </li>
                     <li>
-                        <Link href="/terms-of-service">
+                        <Link legacyBehavior href="/terms-of-service">
                             <a>Terms of Service</a>
                         </Link>
                     </li>
@@ -39,7 +39,7 @@ const Sidebar = () => {
                 <h3 className={styles['widget-title']}>Recent Courses</h3>
 
                 <div className={styles['item']}>
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a className={styles['thumb']}>
                             <span className={`${styles['fullimage']} cover ${styles['bg1']}`} role="img"></span>
                         </a>
@@ -47,7 +47,7 @@ const Sidebar = () => {
                     <div className={styles['info']}>
                         <span>$49.00</span>
                         <h4 className={`${styles['title']} title usmall`}>
-                            <Link href="#">
+                            <Link legacyBehavior href="#">
                                 <a>The Data Science Course 2020: Complete Data Science Bootcamp</a>
                             </Link>
                         </h4>
@@ -56,7 +56,7 @@ const Sidebar = () => {
                 </div>
 
                 <div className={styles['item']}>
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a className={styles['thumb']}>
                             <span className={`${styles['fullimage']} cover ${styles['bg2']}`} role="img"></span>
                         </a>
@@ -64,7 +64,7 @@ const Sidebar = () => {
                     <div className={styles['info']}>
                         <span>$59.00</span>
                         <h4 className={`${styles['title']} title usmall`}>
-                            <Link href="#">
+                            <Link legacyBehavior href="#">
                                 <a>Java Programming MasterclassName for Software Developers</a>
                             </Link>
                         </h4>
@@ -73,7 +73,7 @@ const Sidebar = () => {
                 </div>
 
                 <div className={styles['item']}>
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a className={styles['thumb']}>
                             <span className={`${styles['fullimage']} cover ${styles['bg3']}`} role="img"></span>
                         </a>
@@ -81,7 +81,7 @@ const Sidebar = () => {
                     <div className={styles['info']}>
                         <span>$69.00</span>
                         <h4 className={`${styles['title']} title usmall`}>
-                            <Link href="#">
+                            <Link legacyBehavior href="#">
                                 <a>Deep Learning A-Z™: Hands-On Artificial Neural Networks</a>
                             </Link>
                         </h4>
@@ -94,35 +94,35 @@ const Sidebar = () => {
                 <h3 className={styles['widget-title']}>Popular Tags</h3>
 
                 <div className={styles['tagcloud']}>
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Business <span className="tag-link-count">(3)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Design <span className="tag-link-count">(3)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Braike <span className="tag-link-count">(2)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Fashion <span className="tag-link-count">(2)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Travel <span className="tag-link-count">(1)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Smart <span className="tag-link-count">(1)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Marketing <span className="tag-link-count">(1)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Tips <span className="tag-link-count">(2)</span></a>
                     </Link>
                 </div>

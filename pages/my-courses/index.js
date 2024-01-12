@@ -24,13 +24,13 @@ const MyCourses = ({ enrolled }) => {
                             <div className="col-lg-4 col-md-6" key={enrolledCourse._id}>
                                 <div className={styles['single-courses-box']}>
                                     <div className={styles['courses-image']}>
-                                        <Link href="/courses/[id]" as={`/courses/${enrolledCourse.course.slug}`}>
+                                        <Link legacyBehavior href="/courses/[id]" as={`/courses/${enrolledCourse.course.slug}`}>
                                             <a className={`d-block ${styles['image']}`}>
                                                 <img src={enrolledCourse.course.profilePhoto} alt={enrolledCourse.course.title} />
                                             </a>
                                         </Link>
 
-                                        <Link href="#">
+                                        <Link legacyBehavior href="#">
                                             <a className={styles['fav']}><i className="flaticon-heart"></i></a>
                                         </Link>
 
@@ -41,7 +41,7 @@ const MyCourses = ({ enrolled }) => {
                                         </div>
 
                                         <h3>
-                                            <Link href="/courses/[id]" as={`/courses/${enrolledCourse.course.slug}`}>
+                                            <Link legacyBehavior href="/courses/[id]" as={`/courses/${enrolledCourse.course.slug}`}>
                                                 <a>{enrolledCourse.course.title}</a>
                                             </Link>
                                         </h3>

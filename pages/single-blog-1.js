@@ -32,7 +32,7 @@ const BlogDetails = () => {
                                                 <i className='bx bx-folder-open'></i>
                                                 <span>Category</span>
 
-                                                <Link href="#">
+                                                <Link legacyBehavior href="#">
                                                     <a>Fashion</a>
                                                 </Link>
                                             </li>
@@ -40,7 +40,7 @@ const BlogDetails = () => {
                                                 <i className='bx bx-group'></i>
                                                 <span>View</span>
 
-                                                <Link href="#">
+                                                <Link legacyBehavior href="#">
                                                     <a>813,454</a>
                                                 </Link>
                                             </li>
@@ -48,7 +48,7 @@ const BlogDetails = () => {
                                                 <i className='bx bx-calendar'></i>
                                                 <span>Last Updated</span>
 
-                                                <Link href="#">
+                                                <Link legacyBehavior href="#">
                                                     <a>25/04/2020</a>
                                                 </Link>
                                             </li>

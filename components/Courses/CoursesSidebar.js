@@ -54,7 +54,7 @@ const CoursesSidebar = ({ setSidebarFilter }) => {
 
 				{courses ? courses.length && courses.map((course, i) => (
 					<div className={styles['item']} key={i}>
-						<Link href="/courses/[id]" as={`/courses/${course.slug}`}>
+						<Link legacyBehavior href="/courses/[id]" as={`/courses/${course.slug}`}>
 							<a className={styles['thumb']}>
 								<span className={`${styles['fullimage']} cover bg1"`} role="img"></span>
 							</a>
@@ -62,7 +62,7 @@ const CoursesSidebar = ({ setSidebarFilter }) => {
 						<div className={styles['info']}>
 							<span>&#8377;{kConverter(course.live_training_price)}</span>
 							<h4 className={`${styles['title']} title usmall`}>
-								<Link href="/courses/[id]" as={`/courses/${course.slug}`}>
+								<Link legacyBehavior href="/courses/[id]" as={`/courses/${course.slug}`}>
 									<a>{course.title}</a>
 								</Link>
 							</h4>
@@ -78,7 +78,7 @@ const CoursesSidebar = ({ setSidebarFilter }) => {
 				<h3 className={styles['widget-title']}>Popular Tags</h3>
 				<div className={styles['tagcloud']}>
 					{categories?.length > 0 ? categories.map((item, i) => (
-						<Link href="" legacyBehavior key={i}>
+						<Link legacyBehavior href="" legacyBehavior key={i}>
 							<a onClick={(e) => {
 								getCoursesByTagName(item.categoryName);
 							}}>{item.categoryName}

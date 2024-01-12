@@ -9,7 +9,7 @@ const PageBanner = ({pageTitle, homePageUrl, homePageText, activePageText}) => {
                 <div className={styles['page-title-content']}>
                     <ul>
                         <li>
-                            <Link href={homePageUrl}>
+                            <Link legacyBehavior href={homePageUrl}>
                                 <a>{homePageText}</a>
                             </Link>
                         </li>

@@ -38,7 +38,7 @@ const AboutArea = () => {
                   </strong>
                 </p>
 
-                <Link href="/contact">
+                <Link legacyBehavior href="/contact">
                   <a className={styles['link-btn']}>Explore Learning</a>
                 </Link>
               </div>

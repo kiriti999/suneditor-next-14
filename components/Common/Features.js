@@ -21,7 +21,7 @@ const Features = () => {
                             <h3>Learn the Latest Skills</h3>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
 
-                            <Link href="/authentication">
+                            <Link legacyBehavior href="/authentication">
                                 <a className={styles['link-btn']}>Start Now!</a>
                             </Link>
                         </div>
@@ -35,7 +35,7 @@ const Features = () => {
                             <h3>Go at Your Own Pace</h3>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
                             
-                            <Link href="/authentication">
+                            <Link legacyBehavior href="/authentication">
                                 <a className={styles['link-btn']}>Start Now!</a>
                             </Link>
                         </div>
@@ -49,7 +49,7 @@ const Features = () => {
                             <h3>Learn from Industry Experts</h3>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
                             
-                            <Link href="/authentication">
+                            <Link legacyBehavior href="/authentication">
                                 <a className={styles['link-btn']}>Start Now!</a>
                             </Link>
                         </div>

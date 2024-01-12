@@ -162,7 +162,7 @@ const UploadCourseVideo = () => {
                 <div className="container">
                     {courses.length === 0 && (
                         <Alert color="danger" className="text-center">
-                            You have to create course first here <Link href="/teacher/course/create"><a>Create Course</a></Link>
+                            You have to create course first here <Link legacyBehavior href="/teacher/course/create"><a>Create Course</a></Link>
                         </Alert>
                     )}
 
@@ -171,22 +171,22 @@ const UploadCourseVideo = () => {
                             <div className={styles['td-sidebar']}>
                                 <ul>
                                     <li>
-                                        <Link href="/teacher/courses" activeClassName={styles['active']}>
+                                        <Link legacyBehavior href="/teacher/courses" activeClassName={styles['active']}>
                                             <a>My Courses</a>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/teacher/course/create" activeClassName={styles['active']}>
+                                        <Link legacyBehavior href="/teacher/course/create" activeClassName={styles['active']}>
                                             <a>Create A Course</a>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/teacher/courses/course-edit" activeClassName={styles['active']}>
+                                        <Link legacyBehavior href="/teacher/courses/course-edit" activeClassName={styles['active']}>
                                             <a>Edit My Course</a>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/teacher/course/upload-course-video" activeClassName={styles['active']}>
+                                        <Link legacyBehavior href="/teacher/course/upload-course-video" activeClassName={styles['active']}>
                                             <a>Upload Course Video</a>
                                         </Link>
                                     </li>

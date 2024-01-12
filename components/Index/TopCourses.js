@@ -62,7 +62,7 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 							<div className="col-lg-3 col-md-6" key={course._id}>
 								<div className={`${styles['single-courses-box']} ${styles['course-box-border']}`}>
 									<div className={styles['courses-image']}>
-										<Link
+										<Link legacyBehavior
 											href="/courses/[id]"
 											as={`/courses/${course.slug}`}>
 											<a className={`d-block ${styles['image']}`}>
@@ -70,7 +70,7 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 											</a>
 										</Link>
 
-										{/* <Link href="#">
+										{/* <Link legacyBehavior href="#">
 											<a className="fav">
 												<i className="flaticon-heart"></i>
 											</a>
@@ -83,7 +83,7 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 
 									<div className={`${styles['courses-content']} pt-20 mb-2 ml-5`}>
 										<b title={course.title}>
-											<Link
+											<Link legacyBehavior
 												href="/courses/[id]"
 												as={`/courses/${course.slug}`}>
 												<a>
@@ -103,7 +103,7 @@ const TopCourses = ({ courses: initialCourses, total }) => {
 												{/* {parseInt(course.lessons)}{" "} */}
 												<b>₹ {course.live_training_price}</b>
 												{/* 
-												<Link
+												<Link legacyBehavior
 													href="/courses/[id]" as={`/courses/${course._id}`}>
 													<a>More details</a>
 												</Link>

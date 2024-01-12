@@ -14,12 +14,12 @@ const Custom404 = () => {
                             <p>The page you are looking for might have been removed  had its name changed or is temporarily unavailable.</p>
                             
 							<div className={styles['btn-box']}>
-								<Link href="/">
+								<Link legacyBehavior href="/">
                                 	<a className={`${styles['default-btn']} default-btn`}>
 										<i className="flaticon-history"></i> Go Back <span></span>
 									</a>
 								</Link>
-								<Link href="/">
+								<Link legacyBehavior href="/">
                                 	<a className={`${styles['default-btn']} default-btn`}>
 										<i className="flaticon-home"></i> Homepage <span></span>
 									</a>

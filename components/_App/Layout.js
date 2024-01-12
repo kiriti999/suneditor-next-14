@@ -35,7 +35,7 @@ const Layout = ({ children, user }) => {
                 <meta name="description" content="whatsnxt edu - Online skill development and learning provider" />
                 <meta name="og:title" property="og:title" content="whatsnxt edu - Online skill development and learning provider"></meta>
                 <meta name="twitter:card" content="whatsnxt edu - Online skill development and learning provider"></meta>
-                <link rel="canonical" href="https://whatsnxt.in"></link>
+                <link legacyBehavior rel="canonical" href="https://whatsnxt.in"></link>
             </Head>
 
             

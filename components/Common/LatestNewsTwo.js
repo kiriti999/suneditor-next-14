@@ -16,18 +16,18 @@ const LatestNewsTwo = () => {
                     <div className="col-lg-8 col-md-12">
                         <div className={styles['single-blog-post-item']}>
                             <div className={styles['post-image']}>
-                                <Link href="/single-blog-3">
+                                <Link legacyBehavior href="/single-blog-3">
                                     <a className="d-block">
                                         <img src="/images/blog/blog4.jpg" alt="image" />
                                     </a>
                                 </Link>
                             </div>
                             <div className={styles['post-content']}>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a className={styles['category']}>Education</a>
                                 </Link>
                                 <h3>
-                                    <Link href="/single-blog-3">
+                                    <Link legacyBehavior href="/single-blog-3">
                                         <a>University Admissions Could Face Emergency Controls</a>
                                     </Link>
                                 </h3>
@@ -52,7 +52,7 @@ const LatestNewsTwo = () => {
                                 <div className="col-lg-12 col-sm-6 col-md-6">
                                     <div className={styles['single-blog-post-item']}>
                                         <div className={styles['post-image']}>
-                                            <Link href="/single-blog-3">
+                                            <Link legacyBehavior href="/single-blog-3">
                                                 <a className="d-block">
                                                     <img src="/images/blog/blog5.jpg" alt="image" />
                                                 </a>
@@ -60,7 +60,7 @@ const LatestNewsTwo = () => {
                                         </div>
                                         <div className={styles['post-content']}>
                                             <h3>
-                                                <Link href="/single-blog-3">
+                                                <Link legacyBehavior href="/single-blog-3">
                                                     <a>Online Learning Can Prepare Students For A Fast-Changing</a>
                                                 </Link>
                                             </h3>
@@ -71,7 +71,7 @@ const LatestNewsTwo = () => {
                                 <div className="col-lg-12 col-sm-6 col-md-6">
                                     <div className={styles['single-blog-post-item']}>
                                         <div className={styles['post-image']}>
-                                            <Link href="/single-blog-3">
+                                            <Link legacyBehavior href="/single-blog-3">
                                                 <a className="d-block">
                                                     <img src="/images/blog/blog6.jpg" alt="image" />
                                                 </a>
@@ -79,7 +79,7 @@ const LatestNewsTwo = () => {
                                         </div>
                                         <div className={styles['post-content']}>
                                             <h3>
-                                                <Link href="/single-blog-3">
+                                                <Link legacyBehavior href="/single-blog-3">
                                                     <a>As Learning Moves Online, Trigger Warnings Must Too</a>
                                                 </Link>
                                             </h3>
@@ -92,7 +92,7 @@ const LatestNewsTwo = () => {
 
                     <div className="col-lg-12 col-md-12">
                         <div className={styles['blog-post-info']}>
-                            <p>Get into details now?​ <Link href="/blog-3"><a>View all posts</a></Link></p>
+                            <p>Get into details now?​ <Link legacyBehavior href="/blog-3"><a>View all posts</a></Link></p>
                         </div>
                     </div>
                 </div>

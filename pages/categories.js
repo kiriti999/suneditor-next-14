@@ -27,7 +27,7 @@ const Categories = () => {
                                     <span>10 Courses</span>
                                 </div>
 
-                                <Link href="/courses-1">
+                                <Link legacyBehavior href="/courses-1">
                                     <a className={`${styles['link-btn']} link-btn`}></a>
                                 </Link>
                             </div>
@@ -42,7 +42,7 @@ const Categories = () => {
                                     <span>20 Courses</span>
                                 </div>
 
-                                <Link href="/courses-1">
+                                <Link legacyBehavior href="/courses-1">
                                     <a className={`${styles['link-btn']} link-btn`}></a>
                                 </Link>
                             </div>
@@ -57,7 +57,7 @@ const Categories = () => {
                                     <span>15 Courses</span>
                                 </div>
                                 
-                                <Link href="/courses-1">
+                                <Link legacyBehavior href="/courses-1">
                                     <a className={`${styles['link-btn']} link-btn`}></a>
                                 </Link>
                             </div>
@@ -72,7 +72,7 @@ const Categories = () => {
                                     <span>11 Courses</span>
                                 </div>
                                 
-                                <Link href="/courses-1">
+                                <Link legacyBehavior href="/courses-1">
                                     <a className={`${styles['link-btn']} link-btn`}></a>
                                 </Link>
                             </div>
@@ -87,7 +87,7 @@ const Categories = () => {
                                     <span>10 Courses</span>
                                 </div>
                                 
-                                <Link href="/courses-1">
+                                <Link legacyBehavior href="/courses-1">
                                     <a className={`${styles['link-btn']} link-btn`}></a>
                                 </Link>
                             </div>
@@ -102,7 +102,7 @@ const Categories = () => {
                                     <span>12 Courses</span>
                                 </div>
                                 
-                                <Link href="/courses-1">
+                                <Link legacyBehavior href="/courses-1">
                                     <a className={`${styles['link-btn']} link-btn`}></a>
                                 </Link>
                             </div>
@@ -117,7 +117,7 @@ const Categories = () => {
                                     <span>05 Courses</span>
                                 </div>
                                 
-                                <Link href="/courses-1">
+                                <Link legacyBehavior href="/courses-1">
                                     <a className={`${styles['link-btn']} link-btn`}></a>
                                 </Link>
                             </div>
@@ -132,7 +132,7 @@ const Categories = () => {
                                     <span>20 Courses</span>
                                 </div>
                                 
-                                <Link href="/courses-1">
+                                <Link legacyBehavior href="/courses-1">
                                     <a className={`${styles['link-btn']} link-btn`}></a>
                                 </Link>
                             </div>

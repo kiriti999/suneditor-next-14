@@ -23,7 +23,7 @@ const Features = () => {
 							</div>
 							<h3>{t("learn-latest-skills")}</h3>
 							<p>{t("skills-description")} </p>
-							<Link href="/authentication">
+							<Link legacyBehavior href="/authentication">
 								<a className={styles['link-btn']}>{t("start-now")}</a>
 							</Link>
 							<div className={styles['back-icon']}>
@@ -38,7 +38,7 @@ const Features = () => {
 							</div>
 							<h3>{t("learn-industry-experts")}</h3>
 							<p>{t("industry-description")} </p>
-							<Link href="/authentication">
+							<Link legacyBehavior href="/authentication">
 								<a className={styles['link-btn']}>{t("start-now")}</a>
 							</Link>
 							<div className={styles['back-icon']}>
@@ -53,7 +53,7 @@ const Features = () => {
 							</div>
 							<h3>{t("learn-anywhere")}</h3>
 							<p>{t("learn-description")} </p>
-							<Link href="/authentication">
+							<Link legacyBehavior href="/authentication">
 								<a className={styles['link-btn']}>{t("start-now")}</a>
 							</Link>
 							<div className={styles['back-icon']}>

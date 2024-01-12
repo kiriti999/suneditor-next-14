@@ -11,7 +11,7 @@ const CartItems = ({ id, title, price, live_training_price, video_course_price, 
 	return (
 		<tr>
 			<td className={styles['product-thumbnail']}>
-				<Link href="#">
+				<Link legacyBehavior href="#">
 					<a>
 						<img src={image} alt="item" />
 					</a>
@@ -19,7 +19,7 @@ const CartItems = ({ id, title, price, live_training_price, video_course_price, 
 			</td>
 
 			<td className={styles['product-name']}>
-				<Link href="#">
+				<Link legacyBehavior href="#">
 					<a>{title}</a>
 				</Link>
 			</td>

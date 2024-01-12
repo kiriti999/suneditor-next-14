@@ -38,7 +38,7 @@ const ComingSoon = () => {
             <div className="d-table">
                 <div className="d-table-cell">
                     <div className={styles['coming-soon-content']}>
-                        <Link href="/">
+                        <Link legacyBehavior href="/">
                             <a className={styles['logo']}>
                                 <img src="/images/logo.png" alt="image" />
                             </a>

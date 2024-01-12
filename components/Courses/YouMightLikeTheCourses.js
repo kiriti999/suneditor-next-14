@@ -14,7 +14,7 @@ const YouMightLikeTheCourses = () => {
                     <div className="col-lg-4 col-md-6">
                         <div className={styles['single-courses-box']}>
                             <div className={styles['courses-image']}>
-                                <Link href="/single-courses-1">
+                                <Link legacyBehavior href="/single-courses-1">
                                     <a className={`d-block ${styles['image']}`}>
                                         <img src="/images/courses/courses1.jpg" alt="image" />
                                     </a>
@@ -30,7 +30,7 @@ const YouMightLikeTheCourses = () => {
                                     <span>Alex Morgan</span>
                                 </div>
                                 <h3>
-                                    <Link href="/single-courses-1">
+                                    <Link legacyBehavior href="/single-courses-1">
                                         <a>The Data Science Course 2020: Complete Data Science Bootcamp</a>
                                     </Link>
                                 </h3>
@@ -50,7 +50,7 @@ const YouMightLikeTheCourses = () => {
                     <div className="col-lg-4 col-md-6">
                         <div className={styles['single-courses-box']}>
                             <div className={styles['courses-image']}>
-                                <Link href="/single-courses-1">
+                                <Link legacyBehavior href="/single-courses-1">
                                     <a className={`d-block ${styles['image']}`}>
                                         <img src="/images/courses/courses2.jpg" alt="image" />
                                     </a>
@@ -66,7 +66,7 @@ const YouMightLikeTheCourses = () => {
                                     <span>Sarah Taylor</span>
                                 </div>
                                 <h3>
-                                    <Link href="/single-courses-1">
+                                    <Link legacyBehavior href="/single-courses-1">
                                         <a>Java Programming MasterclassName for Software Developers</a>
                                     </Link>
                                 </h3>
@@ -86,7 +86,7 @@ const YouMightLikeTheCourses = () => {
                     <div className="col-lg-4 col-md-6 offset-lg-0 offset-md-3">
                         <div className={styles['single-courses-box']}>
                             <div className={styles['courses-image']}>
-                                <Link href="/single-courses-1">
+                                <Link legacyBehavior href="/single-courses-1">
                                     <a className={`d-block ${styles['imag']}`}>
                                         <img src="/images/courses/courses3.jpg" alt="image" />
                                     </a>
@@ -102,7 +102,7 @@ const YouMightLikeTheCourses = () => {
                                     <span>David Warner</span>
                                 </div>
                                 <h3>
-                                    <Link href="/single-courses-1">
+                                    <Link legacyBehavior href="/single-courses-1">
                                         <a>Deep Learning A-Z™: Hands-On Artificial Neural Networks</a>
                                     </Link>
                                 </h3>

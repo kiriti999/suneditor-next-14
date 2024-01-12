@@ -16,19 +16,19 @@ const PopularCoursesTwo = () => {
                     <div className="col-lg-4 col-md-6">
                         <div className={`${styles['single-courses-box']} bg-color`}>
                             <div className={styles['courses-image']}>
-                                <Link href="/single-courses-2">
+                                <Link legacyBehavior href="/single-courses-2">
                                     <a className={`d-block ${styles['image']}`}>
                                         <img src="/images/courses/courses6.jpg" alt="image" />
                                     </a>
                                 </Link>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a className={styles['fav']}><i className="flaticon-heart"></i></a>
                                 </Link>
                                 <div className={`${styles['price']} shadow`}>$39</div>
                             </div>
                             <div className={styles['courses-content']}>
                                 <h3>
-                                    <Link href="/single-courses-2">
+                                    <Link legacyBehavior href="/single-courses-2">
                                         <a>PMP® Plus</a>
                                     </Link>
                                 </h3>
@@ -48,19 +48,19 @@ const PopularCoursesTwo = () => {
                     <div className="col-lg-4 col-md-6">
                         <div className={`${styles['single-courses-box']} bg-color`}>
                             <div className={styles['courses-image']}>
-                                <Link href="/single-courses-2">
+                                <Link legacyBehavior href="/single-courses-2">
                                     <a className={`d-block ${styles['image']}`}>
                                         <img src="/images/courses/courses7.jpg" alt="image" />
                                     </a>
                                 </Link>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a className={styles['fav']}><i className="flaticon-heart"></i></a>
                                 </Link>
                                 <div className={`${styles['price']} shadow`}>$49</div>
                             </div>
                             <div className={styles['courses-content']}>
                                 <h3>
-                                    <Link href="/single-courses-2">
+                                    <Link legacyBehavior href="/single-courses-2">
                                         <a>PMP® Renewal Pack</a>
                                     </Link>
                                 </h3>
@@ -80,19 +80,19 @@ const PopularCoursesTwo = () => {
                     <div className="col-lg-4 col-md-6 offset-lg-0 offset-md-3">
                         <div className={`${styles['single-courses-box']} bg-color`}>
                             <div className={styles['courses-image']}>
-                                <Link href="/single-courses-2">
+                                <Link legacyBehavior href="/single-courses-2">
                                     <a className={`d-block ${styles['image']}`}>
                                         <img src="/images/courses/courses8.jpg" alt="image" />
                                     </a>
                                 </Link>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a className={styles['fav']}><i className="flaticon-heart"></i></a>
                                 </Link>
                                 <div className={`${styles['price']} shadow`}>$59</div>
                             </div>
                             <div className={styles['courses-content']}>
                                 <h3>
-                                    <Link href="/single-courses-2">
+                                    <Link legacyBehavior href="/single-courses-2">
                                         <a>Digital Project Manager</a>
                                     </Link>
                                 </h3>

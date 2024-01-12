@@ -22,7 +22,7 @@ const ShopSidebar = () => {
                 <h3 className={styles['widget-title']}>Popular Products</h3>
 
                 <div className={styles['item']}>
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a className={styles['thumb']}>
                             <span className={`${styles['fullimage']} cover ${styles['bg1']}`} role="img"></span>
                         </a>
@@ -30,7 +30,7 @@ const ShopSidebar = () => {
                     <div className={styles['info']}>
                         <span>$49.00</span>
                         <h4 className={`${styles['title']} usmall`}>
-                            <Link href="#">
+                            <Link legacyBehavior href="#">
                                 <a>Random Romance Novel Title Generator</a>
                             </Link>
                         </h4>
@@ -46,7 +46,7 @@ const ShopSidebar = () => {
                 </div>
 
                 <div className={styles['item']}>
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a className={styles['thumb']}>
                             <span className={`${styles['fullimage']} cover ${styles['bg2']}`} role="img"></span>
                         </a>
@@ -54,7 +54,7 @@ const ShopSidebar = () => {
                     <div className={styles['info']}>
                         <span>$59.00</span>
                         <h4 className={`${styles['title']} usmall`}>
-                            <Link href="#">
+                            <Link legacyBehavior href="#">
                                 <a>Writing Exercises Story Title Ideas</a>
                             </Link>
                         </h4>
@@ -70,7 +70,7 @@ const ShopSidebar = () => {
                 </div>
 
                 <div className={styles['item']}>
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a className={styles['thumb']}>
                             <span className={`${styles['fullimage']} cover ${styles['bg3']}`} role="img"></span>
                         </a>
@@ -78,7 +78,7 @@ const ShopSidebar = () => {
                     <div className={styles['info']}>
                         <span>$69.00</span>
                         <h4 className={`${styles['title']} usmall`}>
-                            <Link href="#">
+                            <Link legacyBehavior href="#">
                                 <a>Amaze Story Kitt Net's Book Ideas</a>
                             </Link>
                         </h4>
@@ -98,51 +98,51 @@ const ShopSidebar = () => {
                 <h3 className={styles['widget-title']}>Popular Tags</h3>
 
                 <div className={styles['tagcloud']}>
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Business <span className="tag-link-count">(3)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Design <span className="tag-link-count">(3)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Digital <span className="tag-link-count">(2)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>SEO <span className="tag-link-count">(2)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Braike <span className="tag-link-count">(2)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Fashion <span className="tag-link-count">(2)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Software <span className="tag-link-count">(2)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Travel <span className="tag-link-count">(1)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Smart <span className="tag-link-count">(1)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Marketing <span className="tag-link-count">(1)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Tips <span className="tag-link-count">(2)</span></a>
                     </Link>
 
-                    <Link href="#">
+                    <Link legacyBehavior href="#">
                         <a>Website <span className="tag-link-count">(2)</span></a>
                     </Link>
                 </div>

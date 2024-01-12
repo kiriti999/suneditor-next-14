@@ -9,12 +9,12 @@ const PageBanner = ({pageTitle, homePageUrl, homePageText, innerPageUrl, innerPa
                 <div className={styles['page-title-content']}>
                     <ul>
                         <li>
-                            <Link href={homePageUrl}>
+                            <Link legacyBehavior href={homePageUrl}>
                                 <a>{homePageText}</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={innerPageUrl}>
+                            <Link legacyBehavior href={innerPageUrl}>
                                 <a>{innerPageText}</a>
                             </Link>
                         </li>

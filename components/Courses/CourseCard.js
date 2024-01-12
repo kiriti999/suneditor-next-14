@@ -46,7 +46,7 @@ const CourseCard = ({
         <div className="col-lg-12 col-md-12">
             <div className={styles['single-courses-box']}>
                 <div className={styles['courses-image']}>
-                    <Link href="/courses/[id]" as={`/courses/${slug}`}>
+                    <Link legacyBehavior href="/courses/[id]" as={`/courses/${slug}`}>
                         <a className={`d-block ${styles['image']}`}>
                             {/* <img src={profilePhoto} alt={title} /> */}
                         </a>
@@ -57,7 +57,7 @@ const CourseCard = ({
                 </div>
                 <div className={styles['courses-content']}>
                     <h3>
-                        <Link href="/courses/[_id]" as={`/courses/${slug}`}>
+                        <Link legacyBehavior href="/courses/[_id]" as={`/courses/${slug}`}>
 
                             <a>
                                 <Highlighter

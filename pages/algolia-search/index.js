@@ -90,7 +90,7 @@ const AlgoliaSearch = ({ data, pages }) => {
 		<div className="col-lg-3 col-md-6" key={course.title + (live ? 'live' : 'video')}>
 			<div className={courseStyles['single-courses-box']}>
 				<div className={courseStyles['courses-image']}>
-					<Link href="/courses/[id]" as={`/courses/${course.slug}`}>
+					<Link legacyBehavior href="/courses/[id]" as={`/courses/${course.slug}`}>
 						<a className={`d-block image ${courseStyles['image']}`}>
 							<img src={course.profilePhoto} alt={course.title} />
 						</a>
@@ -99,7 +99,7 @@ const AlgoliaSearch = ({ data, pages }) => {
 				<div className={courseStyles['courses-content']}>
 
 					<b title={course.title}>
-						<Link href="/courses/[id]" as={`/courses/${course.slug}`}>
+						<Link legacyBehavior href="/courses/[id]" as={`/courses/${course.slug}`}>
 							<a><h5>{course.title.slice(0, 45)}...</h5></a>
 						</Link>
 					</b>

@@ -168,7 +168,7 @@ const LoginForm = () => {
 					</div>
 
 					<div className={`col-lg-6 col-md-6 col-sm-6 ${styles['lost-your-password-wrap']}`}>
-						<Link href="/reset-password">
+						<Link legacyBehavior href="/reset-password">
 							<a className={styles['lost-your-password']}>
 								Lost your password?
 							</a>

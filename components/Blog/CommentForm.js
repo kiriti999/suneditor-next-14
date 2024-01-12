@@ -27,7 +27,7 @@ const CommentArea = () => {
                         </div>
 
                         <div className={styles['reply']}>
-                            <Link href="#">
+                            <Link legacyBehavior href="#">
                                 <a className={styles['comment-reply-link']}>Reply</a>
                             </Link>
                         </div>
@@ -53,7 +53,7 @@ const CommentArea = () => {
                                 </div>
 
                                 <div className={styles['reply']}>
-                                    <Link href="#">
+                                    <Link legacyBehavior href="#">
                                         <a className={styles['comment-reply-link']}>Reply</a>
                                     </Link>
                                 </div>
@@ -79,7 +79,7 @@ const CommentArea = () => {
                                         </div>
 
                                         <div className={styles['reply']}>
-                                            <Link href="#">
+                                            <Link legacyBehavior href="#">
                                                 <a className={styles['comment-reply-link']}>Reply</a>
                                             </Link>
                                         </div>
@@ -109,7 +109,7 @@ const CommentArea = () => {
                         </div>
 
                         <div className={styles['reply']}>
-                            <Link href="#">
+                            <Link legacyBehavior href="#">
                                 <a className={styles['comment-reply-link']}>Reply</a>
                             </Link>
                         </div>
@@ -135,7 +135,7 @@ const CommentArea = () => {
                                 </div>
 
                                 <div className={styles['reply']}>
-                                    <Link href="#">
+                                    <Link legacyBehavior href="#">
                                         <a className={styles['comment-reply-link']}>Reply</a>
                                     </Link>
                                 </div>

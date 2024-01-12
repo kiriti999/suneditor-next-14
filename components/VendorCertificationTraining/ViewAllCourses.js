@@ -13,7 +13,7 @@ const ViewAllCourses = () => {
                             <h2>Get ahead with Learning Paths. Stay Sharp.</h2>
                             <p>With The Open University you can study whenever and wherever you choose. We have students in over 128 countries, and a global reputation as a pioneer in the field of flexible learning. Our flexible teaching also means, if you travel often or need to relocate, you can continue to study wherever you go.</p>
 
-                            <Link href="/courses-2">
+                            <Link legacyBehavior href="/courses-2">
                                 <a className={`${styles['default-btn']} default-btn`}>
                                     <i className="flaticon-agenda"></i> View All Courses <span></span>
                                 </a>

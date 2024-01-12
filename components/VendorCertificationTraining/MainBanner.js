@@ -12,7 +12,7 @@ const MainBanner = () => {
                             <h1>Project Management Certification Training </h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse.</p>
 
-                            <Link href="/authentication">
+                            <Link legacyBehavior href="/authentication">
                                 <a className={`default-btn ${styles['default-btn']}`}>
                                     <i className="flaticon-user"></i> Join For Free <span></span>
                                 </a>

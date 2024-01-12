@@ -36,7 +36,7 @@ const CoursesCurriculum = ({ videos }) => {
                     <ul>
                         {videos.length && videos.map((video) => (
                             <li key={video._id}>
-                                <Link href="/courses">
+                                <Link legacyBehavior href="/courses">
                                     <a
                                         className="d-flex justify-content-between align-items-center"
                                         onClick={(e) => {

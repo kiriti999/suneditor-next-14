@@ -115,12 +115,12 @@ const CourseEdit = () => {
 							<div className={styles['td-sidebar']}>
 								<ul>
 									<li>
-										<Link href="/teacher/courses" activeClassName={styles['active']}>
+										<Link legacyBehavior href="/teacher/courses" activeClassName={styles['active']}>
 											<a>My Courses</a>
 										</Link>
 									</li>
 									<li>
-										<Link
+										<Link legacyBehavior
 											href="/teacher/course/create"
 											activeClassName={styles['active']}
 										>
@@ -128,7 +128,7 @@ const CourseEdit = () => {
 										</Link>
 									</li>
 									<li>
-										<Link
+										<Link legacyBehavior
 											href="/teacher/courses/course-edit"
 											activeClassName={styles['active']}
 										>
@@ -136,7 +136,7 @@ const CourseEdit = () => {
 										</Link>
 									</li>
 									<li>
-										<Link
+										<Link legacyBehavior
 											href="/teacher/course/upload-course-video"
 											activeClassName={styles['active']}
 										>
@@ -191,7 +191,7 @@ const CourseEdit = () => {
 															<i className="bx bxs-trash"></i>
 														</button>
 
-														<Link
+														<Link legacyBehavior
 															href="/teacher/course/[id]"
 															as={`/teacher/course/${course._id}`}
 														>

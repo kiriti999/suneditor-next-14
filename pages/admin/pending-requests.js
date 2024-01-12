@@ -75,17 +75,17 @@ const pendingRequests = () => {
                             <div className={styles['td-sidebar']}>
                                 <ul>
                                     <li>
-                                        <Link href="/admin/pending-requests" activeClassName={`${styles['active']} active`}>
+                                        <Link legacyBehavior href="/admin/pending-requests" activeClassName={`${styles['active']} active`}>
                                             <a>Pending Requests</a>
                                         </Link>
                                     </li>
                                     {/* <li>
-                                        <Link href="#" activeClassName="active">
+                                        <Link legacyBehavior href="#" activeClassName="active">
                                             <a></a>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="#" activeClassName="active">
+                                        <Link legacyBehavior href="#" activeClassName="active">
                                             <a></a>
                                         </Link>
                                     </li> */}

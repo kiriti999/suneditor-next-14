@@ -16,13 +16,13 @@ const PopularCourses = () => {
                     <div className="col-lg-4 col-md-6">
                         <div className={`${styles['single-courses-box']} ${styles['without-boxshadow']}`}>
                             <div className={styles['courses-image']}>
-                                <Link href="/single-courses-2">
+                                <Link legacyBehavior href="/single-courses-2">
                                     <a className={`d-block ${styles['image']}`}>
                                         <img src="/images/courses/courses9.jpg" alt="image" />
                                     </a>
                                 </Link>
 
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a className={styles['fav']}><i className="flaticon-heart"></i></a>
                                 </Link>
 
@@ -34,7 +34,7 @@ const PopularCourses = () => {
                                     <span>Alex Morgan</span>
                                 </div>
                                 <h3>
-                                    <Link href="/single-courses-2">
+                                    <Link legacyBehavior href="/single-courses-2">
                                         <a>PRINCE2® Practitioner Certification Training</a>
                                     </Link>
                                 </h3>
@@ -54,12 +54,12 @@ const PopularCourses = () => {
                     <div className="col-lg-4 col-md-6">
                         <div className={`${styles['single-courses-box']} without-boxshadow active`}>
                             <div className={styles['courses-image']}>
-                                <Link href="/single-courses-2">
+                                <Link legacyBehavior href="/single-courses-2">
                                     <a className={`d-block ${styles['image']}`}>
                                         <img src="/images/courses/courses10.jpg" alt="image" />
                                     </a>
                                 </Link>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a className={styles['fav']}><i className="flaticon-heart"></i></a>
                                 </Link>
                                 <div className={`${styles['price']} shadow`}>$49</div>
@@ -70,7 +70,7 @@ const PopularCourses = () => {
                                     <span>Sarah Taylor</span>
                                 </div>
                                 <h3>
-                                    <Link href="/single-courses-2">
+                                    <Link legacyBehavior href="/single-courses-2">
                                         <a>PMI-RMP® Certification Training</a>
                                     </Link>
                                 </h3>
@@ -90,12 +90,12 @@ const PopularCourses = () => {
                     <div className="col-lg-4 col-md-6 offset-lg-0 offset-md-3">
                         <div className={`${styles['single-courses-box']} ${styles['without-boxshadow']}`}>
                             <div className={styles['courses-image']}>
-                                <Link href="/single-courses-2">
+                                <Link legacyBehavior href="/single-courses-2">
                                     <a className={`d-block ${styles['image']}`}>
                                         <img src="/images/courses/courses11.jpg" alt="image" />
                                     </a>
                                 </Link>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a className={styles['fav']}><i className="flaticon-heart"></i></a>
                                 </Link>
                                 <div className={`${styles['price']} shadow`}>$59</div>
@@ -106,7 +106,7 @@ const PopularCourses = () => {
                                     <span>David Warner</span>
                                 </div>
                                 <h3>
-                                    <Link href="/single-courses-2">
+                                    <Link legacyBehavior href="/single-courses-2">
                                         <a>PRINCE2® Foundation Certification Training</a>
                                     </Link>
                                 </h3>
@@ -125,13 +125,13 @@ const PopularCourses = () => {
 
                     <div className="col-lg-12 col-md-12">
                         <div className={styles['courses-info']}>
-                            <Link href="/courses-2">
+                            <Link legacyBehavior href="/courses-2">
                                 <a className={`${styles['default-btn']} default-btn`}>
                                     <i className="flaticon-user"></i> View All Courses <span></span>
                                 </a>
                             </Link>
 
-                            <p>Get into details now?​ <Link href="/courses-2"><a>PM Master’s Program</a></Link></p>
+                            <p>Get into details now?​ <Link legacyBehavior href="/courses-2"><a>PM Master’s Program</a></Link></p>
                         </div>
                     </div>
                 </div>

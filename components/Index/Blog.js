@@ -17,7 +17,7 @@ const Blog = () => {
 					<div className="col-lg-4 col-md-6">
 						<div className={styles['single-blog-post']}>
 							<div className={styles['post-image']}>
-								<Link href="/single-blog-1">
+								<Link legacyBehavior href="/single-blog-1">
 									<a className="d-block">
 										<img
 											src="/images/blog/img16.jpg"
@@ -27,11 +27,11 @@ const Blog = () => {
 								</Link>
 							</div>
 							<div className={styles['post-content']}>
-								<Link href="#">
+								<Link legacyBehavior href="#">
 									<a className={styles['category']}>Education</a>
 								</Link>
 								<h3>
-									<Link href="/single-blog-1">
+									<Link legacyBehavior href="/single-blog-1">
 										<a>
 											University Admissions Could Face
 											Emergency Controls
@@ -60,7 +60,7 @@ const Blog = () => {
 					<div className="col-lg-4 col-md-6">
 						<div className={styles['single-blog-post']}>
 							<div className={styles['post-image']}>
-								<Link href="/single-blog-1">
+								<Link legacyBehavior href="/single-blog-1">
 									<a className="d-block">
 										<img
 											src="/images/blog/img17.jpg"
@@ -70,11 +70,11 @@ const Blog = () => {
 								</Link>
 							</div>
 							<div className={styles['post-content']}>
-								<Link href="#">
+								<Link legacyBehavior href="#">
 									<a className={styles['category']}>Online</a>
 								</Link>
 								<h3>
-									<Link href="/single-blog-1">
+									<Link legacyBehavior href="/single-blog-1">
 										<a>
 											Online Learning Can Prepare Students
 											For A Fast-Changing
@@ -103,7 +103,7 @@ const Blog = () => {
 					<div className="col-lg-4 col-md-6">
 						<div className={styles['single-blog-post']}>
 							<div className={styles['post-image']}>
-								<Link href="/single-blog-1">
+								<Link legacyBehavior href="/single-blog-1">
 									<a className="d-block">
 										<img
 											src="/images/blog/img18.jpg"
@@ -113,11 +113,11 @@ const Blog = () => {
 								</Link>
 							</div>
 							<div className={styles['post-content']}>
-								<Link href="#">
+								<Link legacyBehavior href="#">
 									<a className={styles['category']}>Learning</a>
 								</Link>
 								<h3>
-									<Link href="/single-blog-1">
+									<Link legacyBehavior href="/single-blog-1">
 										<a>
 											As Learning Moves Online, Trigger
 											Warnings Must Too
@@ -147,7 +147,7 @@ const Blog = () => {
 						<div className={styles['blog-post-info']}>
 							<p>
 								Get into details now?​ {` `}
-								<Link href="/blog-1">
+								<Link legacyBehavior href="/blog-1">
 									<a>View all posts</a>
 								</Link>
 							</p>

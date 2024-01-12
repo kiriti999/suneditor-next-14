@@ -21,7 +21,7 @@ const Quizzes = () => {
                     <tbody>
                         <tr>
                             <td>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a>Introduction to Python for Beginners</a>
                                 </Link>
                             </td>
@@ -32,7 +32,7 @@ const Quizzes = () => {
                         </tr>
                         <tr>
                             <td>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a>Python for Data Science and Machine Learning Bootcamp</a>
                                 </Link>
                             </td>
@@ -43,7 +43,7 @@ const Quizzes = () => {
                         </tr>
                         <tr>
                             <td>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a>The Modern Python 3 Bootcamp</a>
                                 </Link>
                             </td>
@@ -54,7 +54,7 @@ const Quizzes = () => {
                         </tr>
                         <tr>
                             <td>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a>REST APIs with Flask and Python</a>
                                 </Link>
                             </td>
@@ -65,7 +65,7 @@ const Quizzes = () => {
                         </tr>
                         <tr>
                             <td>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a>Reinforcement Learning in Python</a>
                                 </Link>
                             </td>

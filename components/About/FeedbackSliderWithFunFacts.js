@@ -137,7 +137,7 @@ const FeedbackSliderWithFunFacts = () => {
 								<div className={fbStyles['feedback-info']}>
 									<p>
 										Not a member yet?​{" "}
-										<Link href="/authentication">
+										<Link legacyBehavior href="/authentication">
 											<a>Register Now</a>
 										</Link>
 									</p>

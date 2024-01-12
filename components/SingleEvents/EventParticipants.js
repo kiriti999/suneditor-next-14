@@ -87,7 +87,7 @@ const EventParticipants = () => {
 
 								<div className={styles['advisor-content']}>
 									<h3>
-										<Link href="#">
+										<Link legacyBehavior href="#">
 											<a>James Andy</a>
 										</Link>
 									</h3>
@@ -146,7 +146,7 @@ const EventParticipants = () => {
 
 								<div className={styles['advisor-content']}>
 									<h3>
-										<Link href="#">
+										<Link legacyBehavior href="#">
 											<a>Jassica Hische</a>
 										</Link>
 									</h3>
@@ -205,7 +205,7 @@ const EventParticipants = () => {
 
 								<div className={styles['advisor-content']}>
 									<h3>
-										<Link href="#">
+										<Link legacyBehavior href="#">
 											<a>Alister Cock</a>
 										</Link>
 									</h3>
@@ -264,7 +264,7 @@ const EventParticipants = () => {
 
 								<div className={styles['advisor-content']}>
 									<h3>
-										<Link href="#">
+										<Link legacyBehavior href="#">
 											<a>Lina Ninja</a>
 										</Link>
 									</h3>

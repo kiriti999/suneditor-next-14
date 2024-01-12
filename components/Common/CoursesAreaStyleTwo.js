@@ -73,7 +73,7 @@ const CoursesAreaStyleTwo = () => {
 
                 <div className={styles['advisor-content']}>
                   <h3>
-                    <Link href="/profile">
+                    <Link legacyBehavior href="/profile">
                       <a>James Andy</a>
                     </Link>
                   </h3>
@@ -113,7 +113,7 @@ const CoursesAreaStyleTwo = () => {
 
                 <div className={styles['advisor-content']}>
                   <h3>
-                    <Link href="/profile">
+                    <Link legacyBehavior href="/profile">
                       <a>Jassica Hische</a>
                     </Link>
                   </h3>
@@ -153,7 +153,7 @@ const CoursesAreaStyleTwo = () => {
 
                 <div className={styles['advisor-content']}>
                   <h3>
-                    <Link href="/profile">
+                    <Link legacyBehavior href="/profile">
                       <a>Alister Cock</a>
                     </Link>
                   </h3>
@@ -193,7 +193,7 @@ const CoursesAreaStyleTwo = () => {
 
                 <div className={styles['advisor-content']}>
                   <h3>
-                    <Link href="/profile">
+                    <Link legacyBehavior href="/profile">
                       <a>Lina Ninja</a>
                     </Link>
                   </h3>

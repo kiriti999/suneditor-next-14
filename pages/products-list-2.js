@@ -42,7 +42,7 @@ const Shop = () => {
                                 <div className="col-lg-6 col-md-6 col-sm-6">
                                     <div className={styles['single-products-box']}>
                                         <div className={styles['products-image']}>
-                                            <Link href="/single-products">
+                                            <Link legacyBehavior href="/single-products">
                                                 <a>
                                                     <img src="/images/products/product1.jpg" className="main-image" alt="image" />
                                                 </a>
@@ -64,7 +64,7 @@ const Shop = () => {
 
                                         <div className={styles['products-content']}>
                                             <h3>
-                                                <Link href="/single-products">
+                                                <Link legacyBehavior href="/single-products">
                                                     <a>Note Book Mockup</a>
                                                 </Link>
                                             </h3>
@@ -87,7 +87,7 @@ const Shop = () => {
                                 <div className="col-lg-6 col-md-6 col-sm-6">
                                     <div className={styles['single-products-box']}>
                                         <div className={styles['products-image']}>
-                                            <Link href="/single-products">
+                                            <Link legacyBehavior href="/single-products">
                                                 <a>
                                                     <img src="/images/products/product2.jpg" className="main-image" alt="image" />
                                                 </a>
@@ -111,7 +111,7 @@ const Shop = () => {
 
                                         <div className={styles['products-content']}>
                                             <h3>
-                                                <Link href="/single-products">
+                                                <Link legacyBehavior href="/single-products">
                                                     <a>Motivational Book Cover</a>
                                                 </Link>
                                             </h3>
@@ -134,7 +134,7 @@ const Shop = () => {
                                 <div className="col-lg-6 col-md-6 col-sm-6">
                                     <div className={styles['single-products-box']}>
                                         <div className={styles['products-image']}>
-                                            <Link href="/single-products">
+                                            <Link legacyBehavior href="/single-products">
                                                 <a>
                                                     <img src="/images/products/product3.jpg" className="main-image" alt="image" />
                                                 </a>
@@ -156,7 +156,7 @@ const Shop = () => {
 
                                         <div className={styles['products-content']}>
                                             <h3>
-                                                <Link href="/single-products">
+                                                <Link legacyBehavior href="/single-products">
                                                     <a>Book Cover Softcover</a>
                                                 </Link>
                                             </h3>
@@ -179,7 +179,7 @@ const Shop = () => {
                                 <div className="col-lg-6 col-md-6 col-sm-6">
                                     <div className={styles['single-products-box']}>
                                         <div className={styles['products-image']}>
-                                            <Link href="/single-products">
+                                            <Link legacyBehavior href="/single-products">
                                                 <a>
                                                     <img src="/images/products/product4.jpg" className="main-image" alt="image" />
                                                 </a>
@@ -201,7 +201,7 @@ const Shop = () => {
 
                                         <div className={styles['products-content']}>
                                             <h3>
-                                                <Link href="/single-products">
+                                                <Link legacyBehavior href="/single-products">
                                                     <a>Stop and Take a Second</a>
                                                 </Link>
                                             </h3>
@@ -223,7 +223,7 @@ const Shop = () => {
                                 <div className="col-lg-6 col-md-6 col-sm-6">
                                     <div className={styles['single-products-box']}>
                                         <div className={styles['products-image']}>
-                                            <Link href="/single-products">
+                                            <Link legacyBehavior href="/single-products">
                                                 <a>
                                                     <img src="/images/products/product5.jpg" className="main-image" alt="image" />
                                                 </a>
@@ -245,7 +245,7 @@ const Shop = () => {
 
                                         <div className={styles['products-content']}>
                                             <h3>
-                                                <Link href="/single-products">
+                                                <Link legacyBehavior href="/single-products">
                                                     <a>Real Life Fairytale</a>
                                                 </Link>
                                             </h3>
@@ -267,7 +267,7 @@ const Shop = () => {
                                 <div className="col-lg-6 col-md-6 col-sm-6">
                                     <div className={styles['single-products-box']}>
                                         <div className={styles['products-image']}>
-                                            <Link href="/single-products">
+                                            <Link legacyBehavior href="/single-products">
                                                 <a>
                                                     <img src="/images/products/product6.jpg" className="main-image" alt="image" />
                                                 </a>
@@ -291,7 +291,7 @@ const Shop = () => {
 
                                         <div className={styles['products-content']}>
                                             <h3>
-                                                <Link href="/single-products">
+                                                <Link legacyBehavior href="/single-products">
                                                     <a>Running From Me</a>
                                                 </Link>
                                             </h3>

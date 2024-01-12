@@ -40,22 +40,22 @@ const Index = () => {
                             <div className={styles['td-sidebar']}>
                                 <ul>
                                     <li>
-                                        <Link href="/teacher/courses" activeClassName={styles['active']}>
+                                        <Link legacyBehavior href="/teacher/courses" activeClassName={styles['active']}>
                                             <a>My Courses</a>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/teacher/course/create" activeClassName={styles['active']}>
+                                        <Link legacyBehavior href="/teacher/course/create" activeClassName={styles['active']}>
                                             <a>Create A Course</a>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/teacher/courses/course-edit" activeClassName={styles['active']}>
+                                        <Link legacyBehavior href="/teacher/courses/course-edit" activeClassName={styles['active']}>
                                             <a>Edit My Course</a>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/teacher/course/upload-course-video" activeClassName={styles['active']}>
+                                        <Link legacyBehavior href="/teacher/course/upload-course-video" activeClassName={styles['active']}>
                                             <a>Upload Course Video</a>
                                         </Link>
                                     </li>

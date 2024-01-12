@@ -172,7 +172,7 @@ const CoursesPage = ({ data, totalRecords }) => {
                                     <div className="col-lg-4 col-md-6" key={course._id}>
                                         <div className={styles['single-courses-box']}>
                                             <div className={styles['courses-image']}>
-                                                <Link href="/courses/[id]" as={`/courses/${course.slug}`}>
+                                                <Link legacyBehavior href="/courses/[id]" as={`/courses/${course.slug}`}>
                                                     <a className={`d-block ${styles['image']}`}>
                                                         <img src={course.profilePhoto} alt={course.title} />
                                                     </a>
@@ -184,7 +184,7 @@ const CoursesPage = ({ data, totalRecords }) => {
                                             <div className={styles['courses-content']}>
 
                                                 <b title={course.title}>
-                                                    <Link href="/courses/[id]" as={`/courses/${course.slug}`}>
+                                                    <Link legacyBehavior href="/courses/[id]" as={`/courses/${course.slug}`}>
                                                         <a>{course.title.slice(0, 45)}...</a>
                                                     </Link>
                                                 </b>
@@ -202,7 +202,7 @@ const CoursesPage = ({ data, totalRecords }) => {
                                                         {/* {parseInt(course.lessons)}{" "} */}
                                                         <b>₹ {course.live_training_price}</b>
                                                         {/* 
-                                                            <Link
+                                                            <Link legacyBehavior
                                                                 href="/courses/[id]" as={`/courses/${course._id}`}>
                                                                 <a>More details</a>
                                                             </Link>

@@ -142,7 +142,7 @@ export const GuestCheckout = () => {
                 <div className="container">
                     <div className={styles['user-actions']}>
                         <i className='bx bx-log-in'></i>
-                        <span>Returning customer? <Link href="/authentication"><a>Click here to login</a></Link></span>
+                        <span>Returning customer? <Link legacyBehavior href="/authentication"><a>Click here to login</a></Link></span>
                     </div>
 
                     <form onSubmit={handleSubmit(handleRegister)}>

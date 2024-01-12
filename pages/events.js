@@ -21,7 +21,7 @@ const Events = () => {
                             <div className="col-lg-4 col-sm-6 col-md-6">
                                 <div className={styles['single-events-box']}>
                                     <div className={styles['image']}>
-                                        <Link href="/single-events">
+                                        <Link legacyBehavior href="/single-events">
                                             <a className="d-block">
                                                 <img src="/images/events/events1.jpg" alt="image" />
                                             </a>
@@ -31,7 +31,7 @@ const Events = () => {
 
                                     <div className={styles['content']}>
                                         <h3>
-                                            <Link href="/single-events">
+                                            <Link legacyBehavior href="/single-events">
                                                 <a>Global Conference on Business Management</a>
                                             </Link>
                                         </h3>
@@ -43,7 +43,7 @@ const Events = () => {
                             <div className="col-lg-4 col-sm-6 col-md-6">
                                 <div className={styles['single-events-box']}>
                                     <div className={styles['image']}>
-                                        <Link href="/single-events">
+                                        <Link legacyBehavior href="/single-events">
                                             <a className="d-block">
                                                 <img src="/images/events/events2.jpg" alt="image" />
                                             </a>
@@ -53,7 +53,7 @@ const Events = () => {
 
                                     <div className={styles['content']}>
                                         <h3>
-                                            <Link href="/single-events">
+                                            <Link legacyBehavior href="/single-events">
                                                 <a>International Conference on Teacher Education</a>
                                             </Link>
                                         </h3>
@@ -65,7 +65,7 @@ const Events = () => {
                             <div className="col-lg-4 col-sm-6 col-md-6">
                                 <div className={styles['single-events-box']}>
                                     <div className={styles['image']}>
-                                        <Link href="/single-events">
+                                        <Link legacyBehavior href="/single-events">
                                             <a className="d-block">
                                                 <img src="/images/events/events3.jpg" alt="image" />
                                             </a>
@@ -75,7 +75,7 @@ const Events = () => {
 
                                     <div className={styles['content']}>
                                         <h3>
-                                            <Link href="/single-events">
+                                            <Link legacyBehavior href="/single-events">
                                                 <a>International Conference on Special Needs Education</a>
                                             </Link>
                                         </h3>
@@ -87,7 +87,7 @@ const Events = () => {
                             <div className="col-lg-4 col-sm-6 col-md-6">
                                 <div className={styles['single-events-box']}>
                                     <div className={styles['image']}>
-                                        <Link href="/single-events">
+                                        <Link legacyBehavior href="/single-events">
                                             <a className="d-block">
                                                 <img src="/images/events/events4.jpg" alt="image" />
                                             </a>
@@ -97,7 +97,7 @@ const Events = () => {
 
                                     <div className={styles['content']}>
                                         <h3>
-                                            <Link href="/single-events">
+                                            <Link legacyBehavior href="/single-events">
                                                 <a>International Conference on Literacy Teaching</a>
                                             </Link>
                                         </h3>
@@ -109,7 +109,7 @@ const Events = () => {
                             <div className="col-lg-4 col-sm-6 col-md-6">
                                 <div className={styles['single-events-box']}>
                                     <div className={styles['image']}>
-                                        <Link href="/single-events">
+                                        <Link legacyBehavior href="/single-events">
                                             <a className="d-block">
                                                 <img src="/images/events/events5.jpg" alt="image" />
                                             </a>
@@ -119,7 +119,7 @@ const Events = () => {
 
                                     <div className={styles['content']}>
                                         <h3>
-                                            <Link href="/single-events">
+                                            <Link legacyBehavior href="/single-events">
                                                 <a>International Conference on Educational Administration</a>
                                             </Link>
                                         </h3>
@@ -131,7 +131,7 @@ const Events = () => {
                             <div className="col-lg-4 col-sm-6 col-md-6">
                                 <div className={styles['single-events-box']}>
                                     <div className={styles['image']}>
-                                        <Link href="/single-events">
+                                        <Link legacyBehavior href="/single-events">
                                             <a className="d-block">
                                                 <img src="/images/events/events6.jpg" alt="image" />
                                             </a>
@@ -141,7 +141,7 @@ const Events = () => {
 
                                     <div className={styles['content']}>
                                         <h3>
-                                            <Link href="/single-events">
+                                            <Link legacyBehavior href="/single-events">
                                                 <a>International Conference on Education and Pedagogy</a>
                                             </Link>
                                         </h3>
@@ -153,7 +153,7 @@ const Events = () => {
                             <div className="col-lg-4 col-sm-6 col-md-6">
                                 <div className={styles['single-events-box']}>
                                     <div className={styles['image']}>
-                                        <Link href="/single-events">
+                                        <Link legacyBehavior href="/single-events">
                                             <a className="d-block">
                                                 <img src="/images/events/events7.jpg" alt="image" />
                                             </a>
@@ -163,7 +163,7 @@ const Events = () => {
 
                                     <div className={styles['content']}>
                                         <h3>
-                                            <Link href="/single-events">
+                                            <Link legacyBehavior href="/single-events">
                                                 <a>Research Conference Aims and Objectives</a>
                                             </Link>
                                         </h3>
@@ -175,7 +175,7 @@ const Events = () => {
                             <div className="col-lg-4 col-sm-6 col-md-6">
                                 <div className={styles['single-events-box']}>
                                     <div className={styles['image']}>
-                                        <Link href="/single-events">
+                                        <Link legacyBehavior href="/single-events">
                                             <a className="d-block">
                                                 <img src="/images/events/events8.jpg" alt="image" />
                                             </a>
@@ -185,7 +185,7 @@ const Events = () => {
 
                                     <div className={styles['content']}>
                                         <h3>
-                                            <Link href="/single-events">
+                                            <Link legacyBehavior href="/single-events">
                                                 <a>Conference on Gender Discrimination in Education</a>
                                             </Link>
                                         </h3>
@@ -197,7 +197,7 @@ const Events = () => {
                             <div className="col-lg-4 col-sm-6 col-md-6">
                                 <div className={styles['single-events-box']}>
                                     <div className={styles['image']}>
-                                        <Link href="/single-events">
+                                        <Link legacyBehavior href="/single-events">
                                             <a className="d-block">
                                                 <img src="/images/events/events9.jpg" alt="image" />
                                             </a>
@@ -207,7 +207,7 @@ const Events = () => {
 
                                     <div className={styles['content']}>
                                         <h3>
-                                            <Link href="/single-events">
+                                            <Link legacyBehavior href="/single-events">
                                                 <a>Quality and Improvement in Education Conference</a>
                                             </Link>
                                         </h3>

@@ -38,12 +38,12 @@ const EventsSidebar = () => {
             </ul>
 
             <div className={styles['btn-box']}>
-                <Link href="#">
+                <Link legacyBehavior href="#">
                     <a className={`${styles['default-btn']} default-btn`}>
                         <i className="flaticon-user"></i> Book Now <span></span>
                     </a>
                 </Link>
-                <p>You must <Link href="#"><a>login</a></Link> before register event.</p>
+                <p>You must <Link legacyBehavior href="#"><a>login</a></Link> before register event.</p>
             </div>
 
             <div className={styles['events-share']}>

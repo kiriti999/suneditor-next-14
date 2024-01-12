@@ -16,7 +16,7 @@ const Instance = () => {
 							</span>
 							<h2>{t("self-development-course")}</h2>
 							<p>{t("self-development-desc")}</p>
-							<Link href="/authentication">
+							<Link legacyBehavior href="/authentication">
 								<a className={`${styles['default-btn']} default-btn`}>
 									<i className="flaticon-user"></i>
 									{t("start-for-free")}

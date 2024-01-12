@@ -25,7 +25,7 @@ const SingleCourses = ({ videos }) => {
                             <div className={styles['course-video-list']}>
                                 {videos.length ? videos.map(video => (
                                     <div key={video.id}>
-                                        <Link href="/my-courses/[videos]/[id]" as={`/my-courses/${video.course._id}/${video.id}`}>
+                                        <Link legacyBehavior href="/my-courses/[videos]/[id]" as={`/my-courses/${video.course._id}/${video.id}`}>
                                             <a
                                                 onClick={e => {
                                                     e.preventDefault();

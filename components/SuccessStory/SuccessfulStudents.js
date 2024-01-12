@@ -16,7 +16,7 @@ const SuccessfulStudents = () => {
                     <div className="col-lg-4 col-md-6 col-sm-6">
                         <div className={styles['start-with-success-box']}>
                             <div className={styles['image']}>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a>
                                         <img src="/images/success-people/success-people1.jpg" alt="image" />
                                     </a>
@@ -24,7 +24,7 @@ const SuccessfulStudents = () => {
                             </div>
 
                             <div className={styles['content']}>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a className={styles['link-btn']}>
                                         <i className="flaticon-right"></i>
                                     </a>
@@ -38,7 +38,7 @@ const SuccessfulStudents = () => {
                     <div className="col-lg-4 col-md-6 col-sm-6">
                         <div className={styles['start-with-success-box']}>
                             <div className={styles['image']}>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a>
                                         <img src="/images/success-people/success-people2.jpg" alt="image" />
                                     </a>
@@ -46,7 +46,7 @@ const SuccessfulStudents = () => {
                             </div>
 
                             <div className={styles['content']}>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a className={styles['link-btn']}>
                                         <i className="flaticon-right"></i>
                                     </a>
@@ -60,7 +60,7 @@ const SuccessfulStudents = () => {
                     <div className="col-lg-4 col-md-6 col-sm-6">
                         <div className={styles['start-with-success-box']}>
                             <div className={styles['image']}>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a>
                                         <img src="/images/success-people/success-people3.jpg" alt="image" />
                                     </a>
@@ -68,7 +68,7 @@ const SuccessfulStudents = () => {
                             </div>
 
                             <div className={styles['content']}>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a className={styles['link-btn']}>
                                         <i className="flaticon-right"></i>
                                     </a>
@@ -82,7 +82,7 @@ const SuccessfulStudents = () => {
                     <div className="col-lg-4 col-md-6 col-sm-6">
                         <div className={styles['start-with-success-box']}>
                             <div className={styles['image']}>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a>
                                         <img src="/images/success-people/success-people4.jpg" alt="image" />
                                     </a>
@@ -90,7 +90,7 @@ const SuccessfulStudents = () => {
                             </div>
 
                             <div className={styles['content']}>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a className={styles['link-btn']}>
                                         <i className="flaticon-right"></i>
                                     </a>
@@ -104,7 +104,7 @@ const SuccessfulStudents = () => {
                     <div className="col-lg-4 col-md-6 col-sm-6">
                         <div className={styles['start-with-success-box']}>
                             <div className={styles['image']}>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a>
                                         <img src="/images/success-people/success-people5.jpg" alt="image" />
                                     </a>
@@ -112,7 +112,7 @@ const SuccessfulStudents = () => {
                             </div>
 
                             <div className={styles['content']}>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a className={styles['link-btn']}>
                                         <i className="flaticon-right"></i>
                                     </a>
@@ -126,7 +126,7 @@ const SuccessfulStudents = () => {
                     <div className="col-lg-4 col-md-6 col-sm-6">
                         <div className={styles['start-with-success-box']}>
                             <div className={styles['image']}>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a>
                                         <img src="/images/success-people/success-people6.jpg" alt="image" />
                                     </a>
@@ -134,7 +134,7 @@ const SuccessfulStudents = () => {
                             </div>
 
                             <div className={styles['content']}>
-                                <Link href="#">
+                                <Link legacyBehavior href="#">
                                     <a className={styles['link-btn']}>
                                         <i className="flaticon-right"></i>
                                     </a>
