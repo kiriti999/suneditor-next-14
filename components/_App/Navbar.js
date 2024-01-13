@@ -34,6 +34,28 @@ const Navbar = ({ user }) => {
 		});
 	});
 
+	useEffect(() => {
+		const onScroll = document.addEventListener('scroll', () => {
+			if (!menu) setMenu(true);
+		});
+
+		return () => document.removeEventListener('scroll', onScroll);
+	}, [menu]);
+
+	useEffect(() => {
+		const onClick = document.addEventListener('click', (event) => {
+			let elem = event.target;
+			while (elem.parentNode !== null) {
+				if (elem.id === 'navbar') return;
+				elem = elem.parentNode;
+			}
+
+			setMenu(true);
+		});
+
+		return () => document.removeEventListener('click', onClick);
+	}, []);
+
 	const isAdmin = user && user.role === "admin";
 	const isTeacher = user && user.role === "teacher";
 
@@ -49,7 +71,6 @@ const Navbar = ({ user }) => {
 						<div className={`navbar navbar-expand-lg navbar-light ${styles['navbar']} ${displaySearch ? 'd-none' : ''}`}>
 							<Link legacyBehavior href="/">
 								<a
-									onClick={toggleNavbar}
 									className={`navbar-brand ${styles['navbar-brand']}`}
 								>
 									<img src="/images/logo.png" alt="logo" />

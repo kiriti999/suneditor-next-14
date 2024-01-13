@@ -600,13 +600,6 @@ button.navbar-toggler .icon-bar {
   height: 100px;
 }
 
-@media only screen and (max-width: 1199px) {
-  .navbar-area {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-}
-
 @media only screen and (max-width: 767px) {
   .navbar-brand img {
     width: 100px;
