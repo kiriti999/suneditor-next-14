@@ -78,7 +78,7 @@ const CoursesSidebar = ({ setSidebarFilter }) => {
 				<h3 className={styles['widget-title']}>Popular Tags</h3>
 				<div className={styles['tagcloud']}>
 					{categories?.length > 0 ? categories.map((item, i) => (
-						<Link legacyBehavior href="" legacyBehavior key={i}>
+						<Link legacyBehavior href="" key={i}>
 							<a onClick={(e) => {
 								getCoursesByTagName(item.categoryName);
 							}}>{item.categoryName}
