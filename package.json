@@ -54,7 +54,7 @@
 		"redux-thunk": "^2.4.1",
 		"sass": "^1.41.1",
 		"shortid": "^2.2.16",
-		"suneditor": "^2.45.1",
+		"suneditor-nextjs-14": "^2.45.1",
 		"suneditor-react": "^3.6.1",
 		"swiper": "^9.1.0",
 		"uuid": "^8.3.1",
